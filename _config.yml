@@ -47,3 +47,13 @@ plugins:
 # show_excerpts: true # will add 2-3 first lines of each post to the index page
 minima:
   date_format: "%Y-%m-%d"
+
+# from https://jekyllrb.com/docs/configuration/front-matter-defaults/
+defaults:
+  -
+    scope:
+      path: "" # an empty string here means all files in the project
+      type: posts # this will apply to all posts
+    values:
+      comments: true # from https://mmistakes.github.io/minimal-mistakes/docs/configuration/#comments
+      mathjax: true # to use mathjax

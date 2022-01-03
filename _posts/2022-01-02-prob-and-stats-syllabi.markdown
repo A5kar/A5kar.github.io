@@ -11,7 +11,7 @@ If you have issues following the links, then you probably completed a different 
 
 |Topic|Probability|Statistics|
 |-|:-:|:-:|
-|Probability models and axioms|[U1 L1: Probability models and axioms](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__1_Probability_models_and_axioms)<br>(10 Questions)||
+|[Probability models and axioms](/2022/01/03/probability-models-and-axioms.html)|[U1 L1: Probability models and axioms](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__1_Probability_models_and_axioms)<br>(10 Questions)<br>[Problem Set 1](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_1)<br>(6 Questions)||
 |Conditioning and Bayes' rule|[U2 L2: Conditioning and Bayes' rule](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__2_Conditioning_and_Bayes_rule)<br>(5 Questions)||
 |Independence|[U2 L3: Independence](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__3_Independence)<br>(7 Questions)||
 |Counting|[U3 L4: Counting](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__4_Counting)<br>(6 Questions)||
