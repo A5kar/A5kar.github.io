@@ -41,3 +41,5 @@ From the above, the following results can be derived:
 - \$$\mathbb P(A\cup B\cup C)=\mathbb P(A)+\mathbb P(A^C\cap B)+\mathbb P(A^C\cap B^C\cap C)$$
 
 In case you tend to forget them, you may also want to taking note of some basic [properties of set algebra](https://en.wikipedia.org/wiki/Algebra_of_sets). In particular, you should know by heart the commutative, associative and distributive properties of union/intersect operators, De Morgan's laws, as well as identity and complement relationships.
+
+Go back to the [syllabi breakdown](/2022/01/02/prob-and-stats-syllabi.html).
