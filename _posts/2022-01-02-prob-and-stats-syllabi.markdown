@@ -1,0 +1,76 @@
+---
+layout: post
+title: "Probability and Statistics syllabi breakdown"
+---
+
+Below is a tentative recap of the main contents of [Prob](https://www.edx.org/course/probability-the-science-of-uncertainty-and-data) (Prob) and [Stats](https://www.edx.org/course/fundamentals-of-statistics) courses, arranged in a form to identify possible *overlaps* that could give place to a dedicated topic. Note that the table is still under development, and therefore may be subject to changes (e.g. different aggregation or association with lectures from different courses). **This is a good example of where collaborative between students could yield powerful results.**
+
+Bit of notation used in the table below: **U/M** - Unit/Module, **L** - Lecture, **R** - Recitation/Solved Problems, **PS/HW** - Problem Set/Homework.
+
+If you have issues following the links, then you probably completed a different run from those indicated in my [Program Record](/index.html#grading_policy_and_program_record). In such case, you should be using a different link, which maybe the same as mine, but with a different `Course ID` in the URL.
+
+|Topic|Probability|Statistics|
+|-|:-:|:-:|
+|Probability models and axioms|[U1 L1: Probability models and axioms](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__1_Probability_models_and_axioms)<br>(10 Questions)||
+|Conditioning and Bayes' rule|[U2 L2: Conditioning and Bayes' rule](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__2_Conditioning_and_Bayes_rule)<br>(5 Questions)||
+|Independence|[U2 L3: Independence](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__3_Independence)<br>(7 Questions)||
+|Counting|[U3 L4: Counting](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__4_Counting)<br>(6 Questions)||
+|Probability mass functions and expectations|[U4 L5: Probability mass functions and expectations](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__5_Probability_mass_functions_and_expectations)<br>(9 Questions)||
+|Variance; Conditioning on an event; Multiple r.v.'s|[U4 L6: Variance; Conditioning on an event; Multiple r.v.'s](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__6_Variance__Conditioning_on_an_event__Multiple_r_v_s)<br>(10 Questions)||
+|Conditioning on a random variable; Independence of r.v.'s|[U4 L7: Conditioning on a random variable; Independence of r.v.'s](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__7_Conditioning_on_a_random_variable__Independence_of_r_v_s)<br>(7 Questions)||
+|Probability density functions|[U5 L8: Probability density functions](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__8_Probability_density_functions)<br>(7 Questions)||
+|Conditioning on an event; Multiple r.v.'s|[U5 L9: Conditioning on an event; Multiple r.v.'s](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__9_Conditioning_on_an_event__Multiple_r_v_s)<br>(9 Questions)||
+|Conditioning on a random variable; Independence; Bayes' rule|[U5 L10: Conditioning on a random variable; Independence; Bayes' rule](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__10_Conditioning_on_a_random_variable__Independence__Bayes_rule)<br>(11 Questions)||
+|Derived distributions|[U6 L11: Derived distributions](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__11_Derived_distributions)<br>(6 Questions)||
+|Sums of independent r.v.'s; Covariance and correlation|[U6 L12: Sums of independent r.v.'s; Covariance and correlation](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__12_Sums_of_independent_r_v_s__Covariance_and_correlation)<br>(8 Questions)||
+|Conditional expectation and variance revisited; Sum of a random number of independent r.v.'s|[U6 L13: Conditional expectation and variance revisited; Sum of a random number of independent r.v.'s](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__13_Conditional_expectation_and_variance_revisited__Sum_of_a_random_number_of_independent_r_v_s)<br>(7 Questions)||
+|Inequalities, convergence, and the Weak Law of Large Numbers|[U8 L18: Inequalities, convergence, and the Weak Law of Large Numbers](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__18_Inequalities__convergence__and_the_Weak_Law_of_Large_Numbers)<br>(6 Questions)|[U1 L2: Probability Redux](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u1s2_probredux)<br>(18 Questions)|
+|The Central Limit Theorem (CLT)|[U8 L19: The Central Limit Theorem (CLT)](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__19_The_Central_Limit_Theorem__CLT_)<br>(4 Questions)||
+|An introduction to classical statistics|[U8 L20: An introduction to classical statistics](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__20_An_introduction_to_classical_statistics)<br>(7 Questions)|[U1 L1: What is statistics](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u1s1_whatisstats)<br>(11 Questions)|
+|The Bernoulli process|[U9 L21: The Bernoulli process](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__21_The_Bernoulli_process)<br>(7 Questions)||
+|The Poisson process|[U9 L22: The Poisson process](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__22_The_Poisson_process)<br>(7 Questions)||
+|More on the Poisson process|[U9 L23: More on the Poisson process](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__23_More_on_the_Poisson_process)<br>(10 Questions)||
+|Finite-state Markov chains|[U10 L24: Finite-state Markov chains](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__24_Finite-state_Markov_chains)||
+|Steady-state behavior of Markov chains|[U10 L25: Steady-state behavior of Markov chains](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__25_Steady-state_behavior_of_Markov_chains)||
+|Absorption probabilities and expected time to absorption|[U10 L26: Absorption probabilities and expected time to absorption](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__26_Absorption_probabilities_and_expected_time_to_absorption)||
+|Parametric Statistical Models||[U2 L3: Parametric Statistical Models](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u02s01_parainference)<br>(17 Questions)|
+|Parametric Estimation and Confidence Intervals||[U2 L4: Parametric Estimation and Confidence Intervals](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u02s02_parainference)<br>(17 Questions)|
+|Delta Method and Confidence Intervals||[U2 L5: Delta Method and Confidence Intervals](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u02s03_parainference)<br>(19 Questions)|
+|Introduction to Hypothesis Testing, and Type 1 and Type 2 Errors||[U2 L6: Introduction to Hypothesis Testing, and Type 1 and Type 2 Errors](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u02s04_parainference)<br>(34 Questions)|
+|Hypothesis Testing (Continued): Levels and P-values||[U2 L7: Hypothesis Testing (Continued): Levels and P-values](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u02s05_parainference)<br>(19 Questions)|
+|Distance measures between distributions||[U3 L8: Distance measures between distributions](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u03s01_methodestimation)<br>(29 Questions)|
+|Introduction to Maximum Likelihood Estimation||[U3 L9: Introduction to Maximum Likelihood Estimation](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u03s02_methodestimation)<br>(20 Questions)|
+|Consistency of MLE, Covariance Matrices, and Multivariate Statistics||[U3 L10: Consistency of MLE, Covariance Matrices, and Multivariate Statistics](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u03s03_methodestimation)<br>(22 Questions)|
+|Fisher Information, Asymptotic Normality of MLE; Method of Moments||[U3 L11: Fisher Information, Asymptotic Normality of MLE; Method of Moments](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u03s04_methodestimation)<br>(27 Questions)|
+|M-Estimation||[U3 L12: M-Estimation](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u03s05_methodestimation)<br>(23 Questions)|
+|Chi Squared Distribution, T-Test||[U4 L13: Chi Squared Distribution, T-Test](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u04s03_hypotesting)<br>(16 Questions)|
+|Wald's Test, Likelihood Ratio Test, and Implicit Hypothesis Test||[U4 L14: Wald's Test, Likelihood Ratio Test, and Implicit Hypothesis Test](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u04s04_hypotesting)<br>(17 Questions)|
+|Goodness of Fit Test for Discrete Distributions||[U4 L15: Goodness of Fit Test for Discrete Distributions](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u04s05_hypotesting)<br>(19 Questions)|
+|Goodness of Fit Tests Continued: Kolmogorov-Smirnov test, Kolmogorov-Lilliefors test, Quantile-Quantile Plots||[U4 L16: Goodness of Fit Tests Continued: Kolmogorov-Smirnov test, Kolmogorov-Lilliefors test, Quantile-Quantile Plots](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u04s06_hypotesting)<br>(23 Questions)|
+|Introduction to Bayesian Statistics|[U7 L14: Introduction to Bayesian inference](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__14_Introduction_to_Bayesian_inference)<br>(7 Questions)|[U5 L17: Introduction to Bayesian Statistics](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u5s1_Bayes1)<br>(23 Questions)|
+|Jeffreys Prior and Bayesian Confidence Interval||[U5 L18: Jeffreys Prior and Bayesian Confidence Interval](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u5s2_Bayes2)<br>(19 Questions)|
+|Linear Regression|[U7 L15: Linear models with normal noise](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__15_Linear_models_with_normal_noise)<br>(7 Questions)|[U6 L19: Linear Regression 1](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u6s1_regression)<br>(21 Questions)|
+|Linear Regression|[U7 L16: Least mean squares (LMS) estimation](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__16_Least_mean_squares__LMS__estimation)<br>(6 Questions)|[U6 L20: Linear Regression 2](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u6s2_regression)<br>(21 Questions)|
+|Introduction to Generalized Linear Models; Exponential Families|[U7 L17: Linear least mean squares (LLMS) estimation](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__17_Linear_least_mean_squares__LLMS__estimation)<br>(7 Questions)|[U7 L21: Introduction to Generalized Linear Models; Exponential Families](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u7s1_glm1)<br>(17 Questions)|
+|GLM: Link Functions and the Canonical Link Function||[U7 L22: GLM: Link Functions and the Canonical Link Function](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u7s2_glm2)<br>(8 Questions)|
+|Principal Component Analysis||[U8 L23: Principal Component Analysis](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u8s2_PCA)|
+
+In the coming days, I will start working on the **Topics** column, creating dedicated posts per each topic. The idea is to:
+
+- review the lectures (mainly finger exercises);
+- solve again all PS/HW from scratch;
+- take note of the formulas/concepts in the official answer;
+- identify the link between definitions and the solutions;
+- reduce the links to a *minimum* set of pairs (definition, solution);
+- translate these pairs into cheat sheet for that Topic.
+
+Meantime, if you have any suggestions concerning above table (how to rearrange or aggregate topics), feel free to comment below; any suggestion is welcome!
+
+<script
+  async
+  src="https://utteranc.es/client.js"
+  repo="A5kar/A5kar.github.io"
+  issue-term="title"
+  theme="github-light"
+  crossorigin="anonymous">
+</script>
