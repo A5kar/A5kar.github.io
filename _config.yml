@@ -13,16 +13,17 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Your awesome title
-email: your-email@example.com
+title: A5kar's blog
+email: askar.bektassov@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+  Personal log of the learning journey through the lands of probability,
+  data analysis, statistics and data science. Also, an organized notebook
+  to record my personal progress in using a laptop for anything beyond
+  than just sending emails and browsing web.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
-github_username:  jekyll
+linkedin_username: askarbektassov
+github_username:  A5kar
 
 # Build settings
 markdown: kramdown
@@ -41,3 +42,7 @@ plugins:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+# show_excerpts: true # will add 2-3 first lines of each post to the index page
+minima:
+  date_format: "%Y-%m-%d"
