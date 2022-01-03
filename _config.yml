@@ -27,7 +27,8 @@ github_username:  A5kar
 
 # Build settings
 markdown: kramdown
-theme: minima
+# theme: minima
+remote_theme: A5kar/minima-2.5.1
 plugins:
   - jekyll-feed
 
