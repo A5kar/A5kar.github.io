@@ -172,12 +172,3 @@ Ultimately, let's see if GitHub Pages has published the contents of the new repo
 I hope you found this mini-guide helpful. It certainly helped me understanding each single step I was performing. This is the first time I developed a small website and you may understand my excitement. If you share my enthusiasm, feel free to login with your GitHub account and leave a message in the comment section!
 
 *NOTE: at the time of my initial commit, I did not know how to add comments section. To learn how I did that, read the dedicated [post](/2021/12/30/adding-a-comments-section.html).*
-
-<script
-  async
-  src="https://utteranc.es/client.js"
-  repo="A5kar/A5kar.github.io"
-  issue-term="title"
-  theme="github-light"
-  crossorigin="anonymous">
-</script>

@@ -65,12 +65,3 @@ In the coming days, I will start working on the **Topics** column, creating dedi
 - translate these pairs into cheat sheet for that Topic.
 
 Meantime, if you have any suggestions concerning above table (how to rearrange or aggregate topics), feel free to comment below; any suggestion is welcome!
-
-<script
-  async
-  src="https://utteranc.es/client.js"
-  repo="A5kar/A5kar.github.io"
-  issue-term="title"
-  theme="github-light"
-  crossorigin="anonymous">
-</script>

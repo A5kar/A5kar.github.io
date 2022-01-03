@@ -51,12 +51,3 @@ For instance, below is what you would get inside your code, while writing this p
 So far, the solution seems simple and immediate. I wonder however what would be the way to add the above script at the end of each post, to avoid this repetitive task (which easily can lead to mistakes and bugs). If you know a way, jump in and be the first to comment below!
 
 *NOTE: just to clarify, the solution I would like to see should not require using [third party themes](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/adding-a-theme-to-your-github-pages-site-using-jekyll), or modifying the default (minima) theme. Locally, I can easily modify the local copy of the theme and add the above few lines to `_layouts/post.html`, but I believe this solution will not work in the remote GitHub Pages server, where a separate instance of Jekyll will generate the website files. Did not try it though, since it would require me to [upload](/2021/12/29/opening-a-blog.html#submit_initial_commit) the entire `vendor` folder (99 MB) to repository.*
-
-<script
-  async
-  src="https://utteranc.es/client.js"
-  repo="A5kar/A5kar.github.io"
-  issue-term="title"
-  theme="github-light"
-  crossorigin="anonymous">
-</script>
