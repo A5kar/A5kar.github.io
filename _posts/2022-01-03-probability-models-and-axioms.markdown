@@ -28,18 +28,34 @@ Can be:
 
  Assuming $$A$$, $$B$$ and $$C$$ are events $$\subseteq\Omega$$, the following axioms are defined:
 
-- **non-negativity**, $$\mathbb P(A)\geq 0$$
-- **normalization**, $$\mathbb P(\Omega)=1$$
-- **(finite) additivity**, $$A\cap B=\emptyset\implies\mathbb P(A\cup B)=\mathbb P(A)+\mathbb P(B)$$
+ |Axiom|Formula|
+ |-|:-:|
+ |non-negativity|$$\mathbb P(A)\geq 0$$|
+ |normalization|$$\mathbb P(\Omega)=1$$|
+ |(finite) additivity|$$\begin{align}A\cap B&=\emptyset\implies\\\mathbb P(A\cup B)&=\mathbb P(A)+\mathbb P(B)\end{align}$$|
 
 From the above, the following results can be derived:
 
 - \$$\mathbb P(A)\leq 1$$
 - \$$\mathbb P(\emptyset)=0$$
-- \$$A\subseteq B\implies \mathbb P(A)\leq\mathbb P(B)$$
+- \$$A\subseteq B\implies \mathbb P(A)\leq\mathbb P(A)+\mathbb P(B\cap A^C)=\mathbb P(B)$$
 - \$$\mathbb P(A\cup B)=\mathbb P(A)+\mathbb P(B)-\mathbb P(A\cap B)\leq\mathbb P(A)+\mathbb P(B)$$
 - \$$\mathbb P(A\cup B\cup C)=\mathbb P(A)+\mathbb P(A^C\cap B)+\mathbb P(A^C\cap B^C\cap C)$$
 
-In case you tend to forget them, you may also want to taking note of some basic [properties of set algebra](https://en.wikipedia.org/wiki/Algebra_of_sets). In particular, you should know by heart the commutative, associative and distributive properties of union/intersect operators, De Morgan's laws, as well as identity and complement relationships.
-
 Go back to the [syllabi breakdown](/2022/01/02/prob-and-stats-syllabi.html).
+
+<hr>
+
+The properties below come from the basic [properties of set algebra](https://en.wikipedia.org/wiki/Algebra_of_sets). You should know them by heart (especially the De Morgan's law). You may add them in case you have some spare space and if they keep slipping out of your mind.
+
+|Property|Formula|
+|-|:-:|
+|commutative|$$\begin{align}A\cup B&=B\cup A\\ A\cap B&=B\cap A\end{align}$$|
+|associative|$$\begin{align}A\cup(B\cup C)&=(A\cup B)\cup C\\ A\cap (B\cap C)&=(A\cap B)\cap C\end{align}$$|
+|distributive|$$\begin{align}A\cup(B\cap C)&=(A\cup B)\cap(A\cup C)\\ A\cap (B\cup C)&=(A\cap B)\cup(A\cap C)\end{align}$$|
+|identity|$$\begin{align}A\cap\Omega&=A\\ A\cup\emptyset&=A\end{align}$$|
+|complement|$$\begin{align}A\cup A^C&=\Omega\\ A\cap A^C&=\emptyset\\\Omega^C&=\emptyset\\\emptyset^C&=\Omega\end{align}$$|
+|idempotent|$$\begin{align}A\cup A&=A\\ A\cap A&=A\end{align}$$|
+|domination|$$\begin{align}A\cup\Omega&=\Omega\\ A\cap\emptyset&=\emptyset\end{align}$$|
+|absorption law|$$\begin{align}A\cup(A\cap B)&=A\\ A\cap (A\cup B)&=A\end{align}$$|
+|**De Morgan's law**|$$\begin{align}(A\cap B)^C&=A^C\cup B^C\\ (A\cup B)^C&=A^C\cap B^C\end{align}$$|
