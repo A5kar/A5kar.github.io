@@ -6,7 +6,7 @@ title: "Probability Models and Axioms"
 General framework to calculate probability consists of the following steps:
 
 - Specify the sample space $$\Omega$$.
-- Specify the probability law
+- Specify the probability law/distribution
 - Identify an event of interest
 - Calculate...
 
@@ -17,12 +17,12 @@ A sample space is legitimate when its elements are:
 - collectively exhaustive
 - at the *right* granularity
 
-## Probability Law
+## Probability Law/Distribution
 
-Can be:
+The mathematical function that describes the probabilities of different possible outcomes are mainly of two types:
 
-- **discrete**, in which case $$\mathbb P(A)=\frac k n$$, where $$k$$ is the number of elements in $$A$$ and $$n$$ is the number of elements in $$\Omega$$.
-- **continous**, in which case $$\mathbb P(A)$$ is the area/volume of the relevant range within which a variable can vary.
+- **discrete**, in which case $$\mathbb P(A)=\frac k n$$, where $$k$$ is the number of elements in $$A$$ and $$n$$ is the number of elements in $$\Omega$$ (e.g. uniform, geometric...).
+- **continous**, in which case $$\mathbb P(A)$$ is the area/volume of the relevant range within which a variable can vary (e.g. uniform, exponential...).
 
 ## Events
 
@@ -32,7 +32,7 @@ Can be:
  |-|:-:|
  |non-negativity|$$\mathbb P(A)\geq 0$$|
  |normalization|$$\mathbb P(\Omega)=1$$|
- |(finite) additivity|$$\begin{align}A\cap B&=\emptyset\implies\\\mathbb P(A\cup B)&=\mathbb P(A)+\mathbb P(B)\end{align}$$|
+ |(finite) additivity|$$\begin{align}A_i\cap A_j=\emptyset, i\neq&j\implies\\\mathbb P(A_1\cup A_2\cup\dots A_n)&=\sum_{i=1}^n\mathbb P(A_i)\end{align}$$|
 
 From the above, the following results can be derived:
 

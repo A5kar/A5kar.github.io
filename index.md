@@ -19,6 +19,11 @@ My resolutions for 2022 include succeeding the Capstone Exam for the MM program 
 
 TL;DR, if you are interested about the preparation of cheat sheets, feel free to jump directly to the [last section](#conclusion) of this introductory page. Otherwise, feel free to read below a little more detail, to refresh the contents of the Capstone Exam and general requirements.
 
+For syllabi breakdown, see below:
+
+- [Probability and statistics](/2022/01/02/prob-and-stats-syllabi.html)
+- Data analysis and machine learning (TBD)
+
 ## Capstone Exam
 
 The Capstone Exam is a set of cumulative exams on all content in the three core courses and one elective course in the [MicroMasters Program in Statistics and Data Science](https://micromasters.mit.edu/ds/) (SDS). Students are eligible to take this exam only if they have passed and obtained the certificates for three core courses:

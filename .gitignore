@@ -6,3 +6,4 @@ vendor/bundle/ruby/2.6.0/*
 !vendor/bundle/ruby/2.6.0/gems
 vendor/bundle/ruby/2.6.0/gems/*
 !vendor/bundle/ruby/2.6.0/gems/minima-2.5.1
+*.drawio
