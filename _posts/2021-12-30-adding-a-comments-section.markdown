@@ -11,7 +11,7 @@ A quick search brought me to this incredible [post](https://mmistakes.github.io/
 
 You will see that there is a large selection of blog comment hosting services, including [Disquis](https://disqus.com) and [Facebook](https://developers.facebook.com/docs/plugins/comments). In my case, I found it convenient relying on [utterances](https://utteranc.es), which uses GitHub Issues, the tracking tool integrated in my GitHub Pages repository, without need of relying in additional third party tools.
 
-## Configuring utterances
+## Configuring utterances {#configuring_utterances}
 
 First and foremost, we need to add utterances application to our GitHub Pages repository. To do that, go to utterances official site.
 
@@ -46,7 +46,7 @@ For instance, below is what you would get inside your code, while writing this p
 
 ![20402](/assets/images/2021-12-30-adding-a-comments-section/20402.png)
 
-## Way forward
+## Way forward {#way_forward}
 
 So far, the solution seems simple and immediate. I wonder however what would be the way to add the above script at the end of each post, to avoid this repetitive task (which easily can lead to mistakes and bugs). If you know a way, jump in and be the first to comment below!
 

@@ -28,10 +28,9 @@ github_username:  A5kar
 # Build settings
 markdown: kramdown
 # theme: minima
-remote_theme: A5kar/minima-2.5.1
+remote_theme: "A5kar/minima-A5kar.github.io"
 plugins:
   - jekyll-feed
-  - jekyll-last-modified-at
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
@@ -48,11 +47,6 @@ plugins:
 # show_excerpts: true # will add 2-3 first lines of each post to the index page
 minima:
   date_format: "%Y-%m-%d"
-
-# Optional. The default date format, used if none is specified in the tag.
-# https://github.com/gjtorikian/jekyll-last-modified-at
-last-modified-at:
-    date-format: '%Y-%m-%d'
 
 # from https://jekyllrb.com/docs/configuration/front-matter-defaults/
 defaults:
