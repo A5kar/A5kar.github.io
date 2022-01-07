@@ -3,17 +3,17 @@ layout: post
 title: "Probability and Statistics syllabi breakdown"
 ---
 
-Below is a tentative recap of the main contents of [Prob](https://www.edx.org/course/probability-the-science-of-uncertainty-and-data) (Prob) and [Stats](https://www.edx.org/course/fundamentals-of-statistics) courses, arranged in a form to identify possible *overlaps* that could give place to a dedicated topic. Note that the table is still under development, and therefore may be subject to changes (e.g. different aggregation or association with lectures from different courses). **This is a good example of where collaborative between students could yield powerful results.**
+Below is a tentative recap of the main contents of [Prob](https://www.edx.org/course/probability-the-science-of-uncertainty-and-data) and [Stats](https://www.edx.org/course/fundamentals-of-statistics) courses, arranged in a form to identify possible *overlaps* that could give place to a dedicated topic. Note that the table is still under development, and therefore may be subject to changes (e.g. different aggregation or association with lectures from different courses). **This is a good example of where collaborative between students could yield powerful results.**
 
 Bit of notation used in the table below: **U/M** - Unit/Module, **L** - Lecture, **R** - Recitation/Solved Problems, **PS/HW** - Problem Set/Homework.
 
-If you have issues following the links, then you probably completed a different run from those indicated in my [Program Record](/index.html#grading_policy_and_program_record). In such case, you should be using a different link, which maybe the same as mine, but with a different `Course ID` in the URL.
+If you have issues following the links, then you probably completed a different run from those indicated in my [Program Record](/index.html#grading_policy_and_program_record). In such case, if you want to create your own customized index, you can create a copy of this page and correct the links using your `Course ID` (did not try it though, for the obvious reason I do not have access to other courses).
 
 |Topic|Probability|Statistics|
 |-|:-:|:-:|
 |[Probability models and axioms](/2022/01/03/probability-models-and-axioms.html)|[U1 L1: Probability models and axioms](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__1_Probability_models_and_axioms)<br>(10 Questions)<br>[PS1](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_1)<br>(6 Questions)||
 |[Conditioning and Independence](/2022/01/05/conditioning-and-independence.html)|[U2 L2: Conditioning and Bayes' rule](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__2_Conditioning_and_Bayes_rule)<br>(5 Questions)<br>[U2 L3: Independence](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__3_Independence)<br>(7 Questions)<br>[PS2](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_2)<br>(4 Questions)||
-|Counting|[U3 L4: Counting](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__4_Counting)<br>(6 Questions)||
+|[Counting](/2022/01/06/counting.html)|[U3 L4: Counting](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__4_Counting)<br>(6 Questions)<br>[Problem Set 3](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_3)<br>(6 Questions)||
 |Probability mass functions and expectations|[U4 L5: Probability mass functions and expectations](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__5_Probability_mass_functions_and_expectations)<br>(9 Questions)||
 |Variance; Conditioning on an event; Multiple r.v.'s|[U4 L6: Variance; Conditioning on an event; Multiple r.v.'s](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__6_Variance__Conditioning_on_an_event__Multiple_r_v_s)<br>(10 Questions)||
 |Conditioning on a random variable; Independence of r.v.'s|[U4 L7: Conditioning on a random variable; Independence of r.v.'s](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__7_Conditioning_on_a_random_variable__Independence_of_r_v_s)<br>(7 Questions)||
@@ -60,7 +60,7 @@ In the coming days, I will start working on the **Topics** column, creating dedi
 - solve again all PS/HW from scratch;
 - take note of the formulas/concepts in the official answer;
 - identify the link between definitions and the solutions;
-- reduce the links to a *minimum* set of pairs (definition, solution);
+- reduce the links to a *minimum* set of pairs (definition, solution) or add a URL to a specific problem where the formula is used (to avoid breaches of edX/MIT honor code);
 - translate these pairs into cheat sheet for that Topic.
 
 Meantime, if you have any suggestions concerning above table (how to rearrange or aggregate topics), feel free to comment below; any suggestion is welcome!

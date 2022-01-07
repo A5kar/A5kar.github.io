@@ -24,7 +24,7 @@ The mathematical function that describes the probabilities of different possible
 - **discrete**, in which case $$\mathbb P(A)=\frac k n$$, where $$k$$ is the number of elements in $$A$$ and $$n$$ is the number of elements in $$\Omega$$ (e.g. uniform, geometric...).
 - **continous**, in which case $$\mathbb P(A)$$ is the area/volume of the relevant range within which a variable can vary (e.g. uniform, exponential...).
 
-## Events
+## Axioms {#axioms}
 
  Assuming $$A$$, $$B$$ and $$C$$ are events $$\subseteq\Omega$$, the following axioms are defined:
 
