@@ -13,6 +13,7 @@ General framework to calculate probability consists of the following steps:
 ## Sample Space
 
 A sample space is legitimate when its elements are:
+
 - mutually exclusive
 - collectively exhaustive
 - at the *right* granularity
@@ -22,7 +23,7 @@ A sample space is legitimate when its elements are:
 The mathematical function that describes the probabilities of different possible outcomes are mainly of two types:
 
 - **discrete**, in which case $$\mathbb P(A)=\frac k n$$, where $$k$$ is the number of elements in $$A$$ and $$n$$ is the number of elements in $$\Omega$$ (e.g. uniform, geometric...).
-- **continous**, in which case $$\mathbb P(A)$$ is the area/volume of the relevant range within which a variable can vary (e.g. uniform, exponential...).
+- **continuous**, in which case $$\mathbb P(A)$$ is the area/volume of the relevant range within which a variable can vary (e.g. uniform, exponential...).
 
 ## Axioms {#axioms}
 
