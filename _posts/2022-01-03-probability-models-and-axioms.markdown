@@ -59,7 +59,7 @@ $$\begin{align}
 
 Go back to the [syllabi breakdown](/2022/01/02/prob-and-stats-syllabi.html).
 
----
+***
 
 ## Back-up
 

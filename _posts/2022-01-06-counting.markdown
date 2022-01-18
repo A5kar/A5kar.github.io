@@ -11,28 +11,28 @@ An $$k$$-long sequence of $$a_i$$ variables, each being able to take $$n_i$$ val
 
 |Values|Number of outcomes|
 |-|:-:|
-|$$a_i=\{0,1\}$$|$$2^k$$ (all possible $$0$$ to $$k$$-long subsets)|
+|$$a_i=\{0,1\}$$|$$2^k$$|
 |$$a_i=\{0,\dots n\}$$|$$n^k$$|
 |$$a_i=\{0,\dots n\}, n>k$$, without repetitions|$$\displaystyle n\cdot(n-1)\dots (n-k+1)=\frac{n!}{(n-k)!}$$|
-|$$a_i=\{0,\dots n\}, n=k$$, without repetitions|$$\displaystyle n!$$ (permutation)|
+|$$a_i=\{0,\dots n\}, n=k$$, without repetitions|$$\displaystyle n!$$ (see [L4 Q4](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__4_Counting/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch5-s1-tab4) and [L4 Q6](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__4_Counting/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch5-s1-tab6))|
 
 ## Combinations
 
-There are $$\frac{n!}{(n-k)!}$$ ways to create a subset of $$k$$ elements out of a group of $$n$$ elements, which in turn can be reordered in $$k!$$ ways (permutation, see [PS3 Q5](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_3/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch5-s3-tab5)). Therefore, there are $$\frac{n!}{(n-k)!k!}$$ of possible $$k$$-element subsets of a given $$n$$-element set. Few remarks (see [PS3 Q4](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_3/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch5-s3-tab4)).
+There are $$\frac{n!}{(n-k)!}$$ ways to create a subset of $$k$$ elements out of a group of $$n$$ elements, which in turn can be reordered in $$k!$$ ways (see [PS3 Q5](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_3/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch5-s3-tab5)). Therefore, there are $$\frac{n!}{(n-k)!k!}$$ of possible $$k$$-element subsets of a given $$n$$-element set. Few remarks (see [PS3 Q4](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_3/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch5-s3-tab4)).
 
 |Formula|Equivalent form|
 |:-:|:-:|
-|$$0!$$|1 (convention)|
-|$$\displaystyle{n\choose k}$$ or $$\displaystyle{n\choose n-k}$$|$$\displaystyle\frac{n!}{k!(n-k)!}$$ (binomial coefficient)|
+|$$0!$$|1|
+|$$\displaystyle{n\choose k}$$ or $$\displaystyle{n\choose n-k}$$|$$\displaystyle\frac{n!}{k!(n-k)!}$$ (see [L4 Q12](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__4_Counting/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch5-s1-tab12))|
 |$$\displaystyle{n\choose n}$$ or $$\displaystyle{n\choose 0}$$|$$1$$|
-|$$\displaystyle k{n\choose k}$$|$$\displaystyle n{n-1\choose k-1}$$ (all possible $$k$$-long subsets, with a representative)|
+|$$\displaystyle k{n\choose k}$$|$$\displaystyle n{n-1\choose k-1}$$|
 |$$\displaystyle{n\choose k}$$|$$\displaystyle\sum_{i=0}^k{m\choose i}{n-m\choose k-i}, n\ge m$$|
-|$$\displaystyle\sum_{k=0}^n{n\choose k}$$|$$2^n$$ (all possible $$0$$ to $$n$$-long subsets)|
-|$$\displaystyle\sum_{k=0}^nk{n\choose k}$$|$$n2^{n-1}$$ (all possible $$0$$ to $$n$$-long subsets, with a representative)|
+|$$\displaystyle\sum_{k=0}^n{n\choose k}$$|$$2^n$$|
+|$$\displaystyle\sum_{k=0}^nk{n\choose k}$$|$$n2^{n-1}$$ (see [L4 Q8](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__4_Counting/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch5-s1-tab8))|
 
 ## Binomial probability
 
-Binomial coefficient and is the basis of the binomial probability. Assuming a coin with $$\mathbb P(\text{heads})=p$$, the probability that there will be $$k$$ heads in $$n$$ coin tosses is $$\mathbb P(k\text{ heads})={n\choose k}p^k(1-p)^{n-k}$$, where
+Binomial coefficient $${n\choose k}$$ is the basis of the binomial probability. Assume a coin with $$\mathbb P(\text{heads})=p$$, probability of $$k$$ heads in $$n$$ tosses is $$\mathbb P(k\text{ heads})={n\choose k}p^k(1-p)^{n-k}$$ (see [L4 Q10](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__4_Counting/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch5-s1-tab10)).
 
 - $$p^k$$ is the probability of tossing $$k$$ heads;
 - $$(1-p)^{n-k}$$ is the probability of tossing $$n-k$$ tails;
@@ -45,6 +45,6 @@ If all sequences share the same probability (recall discrete uniform law), the p
 
 ## Partitioning
 
-More generally, a set can be partitioned in $$r$$ subsets, each of cardinality $$n_i$$, $$i=1,\dots,r$$. In such case, the number of subsets in which partitioning could occur is $$\frac{n!}{n_1!\dots n_r!}$$, which is also defined as multinomial coefficient $${n\choose n_1,\dots,n_r}$$.
+More generally, a set can be partitioned in $$r$$ subsets, each of cardinality $$n_i$$, $$i=1,\dots,r$$. In such case, the number of subsets in which partitioning could occur is $$\frac{n!}{n_1!\dots n_r!}$$, which is also defined as multinomial coefficient $${n\choose n_1,\dots,n_r}$$ (see [L4 Q14](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__4_Counting/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch5-s1-tab14)).
 
 Go back to the [syllabi breakdown](/2022/01/02/prob-and-stats-syllabi.html).

@@ -3,7 +3,7 @@ layout: post
 title: "Conditioning and Independence"
 ---
 
-## Definition {#definition}
+## Conditioning
 
 Conditional probability is defined as $$\mathbb P(A\lvert B)=\frac{\mathbb P(A\cap B)}{\mathbb P(B)}$$, assuming $$\mathbb P(B)>0$$. Conditioning makes the events outside of $$B$$ have *zero* probability (see [L2 Q3](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__2_Conditioning_and_Bayes_rule/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch4-s2-tab3)). Also note $$A\subseteq B\implies\mathbb P(A\lvert B)=\frac{\mathbb P(A)}{\mathbb P(B)}$$ (see [L3 Q5](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__3_Independence/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch4-s3-tab5)).
 
