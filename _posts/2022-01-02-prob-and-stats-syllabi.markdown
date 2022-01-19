@@ -7,7 +7,7 @@ Below is a tentative recap of the main contents of [Prob](https://www.edx.org/co
 
 Bit of notation used in the table below: **U/M** - Unit/Module, **L** - Lecture, **R** - Recitation/Solved Problems, **PS/HW** - Problem Set/Homework.
 
-If you have issues following the links, then you probably completed a different run from those indicated in my [Program Record](/index.html#grading_policy_and_program_record). In such case, if you want to create your own customized index, you can create a copy of this page and correct the links using your `Course ID` (did not try it though, for the obvious reason I do not have access to other courses).
+{% if jekyll.environment == "development" %}If you have issues following the links, then you probably completed a different run from those indicated in my [Program Record](/index.html#grading_policy_and_program_record). In such case, if you want to create your own customized index, you can create a copy of this page and correct the links using your `Course ID` (did not try it though, for the obvious reason I do not have access to other courses).{% endif %}
 
 |Topic|Probability|Statistics|
 |-|:-:|:-:|

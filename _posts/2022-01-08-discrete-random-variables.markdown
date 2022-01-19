@@ -93,6 +93,8 @@ Taking two discrete RV, each having its own *marginal* distribution, say $$p_X(x
 
 Given $$Z=g(X,Y)$$, we have $$p_Z(z)=\mathbb P(g(x,y)=z)=\sum_{(x,y):g(x,y)=z}p_{X,Y}(x,y)$$ (see [PS4 Q2](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_4/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s7-tab2)) and $$\mathbb E[Z]=\mathbb E[g(X,Y)]=\sum_x\sum_y g(x,y)p_{X,Y}(x,y)$$  (see [PS4 Q3](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_4/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s7-tab3)). If $$g(X,Y)=aX+bY$$, linearity of expectations can be proven $$\mathbb E[g(X,Y)]=g(\mathbb E[X],\mathbb E[Y])=a\mathbb E[X]+b\mathbb E[Y]$$.
 
+Knowing marginal distributions $$p_X(x)$$ and conditional distribution $$p_{Y\lvert X}(y\lvert x)$$, derivation of $$p_Z(z)$$ should be straightforward. Assume that $$Y$$ can be calculated as $$Y=h(Z,X)$$, in such case fix $$X=x$$ and observe that $$p_{Z\lvert X}(z\lvert x)=p_{h(Z,X)\lvert X}(h(z,x)\lvert x)$$. By exploiting the total probability theorem, one can compute $$p_Z(z)=\sum_x p_X(x)p_{Z\lvert X}(z\lvert x)$$.
+
 Quite often, we need to model joint probability of *independent and identically distributed* (iid) RVs, such as $$X_i\overset{iid}{\sim}\mathcal P$$. In such case, the joint PMF $$p_{X_1,\dots X_n}(x_1,\dots,x_n)=\prod_{i=1}^n p_{X_i}(x_i)$$.
 
 Go back to the [syllabi breakdown](/2022/01/02/prob-and-stats-syllabi.html).
