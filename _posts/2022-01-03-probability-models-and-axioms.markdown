@@ -12,7 +12,7 @@ General framework to calculate probability consists of the following steps:
 
 ## Sample Space
 
-A sample space is legitimate (see [L1 Q4](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__1_Probability_models_and_axioms/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch3-s1-tab4)) when its elements are:
+A sample space is legitimate{% if jekyll.environment == "development" %} (see [L1 Q4](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__1_Probability_models_and_axioms/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch3-s1-tab4)){% endif %} when its elements are:
 
 - mutually exclusive
 - collectively exhaustive
@@ -32,24 +32,26 @@ The mathematical function that describes the probabilities of different possible
 |Axiom|Formula|
 |-|:-:|
 |Non negativity|$$\mathbb P(A)\geq 0$$|
-|Normalization|$$\mathbb P(\Omega)=1$$ (see [L1 Q19](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__1_Probability_models_and_axioms/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch3-s1-tab19))|
-|(finite) Additivity|$$\begin{align}A_i\cap A_j=\emptyset, i\neq&j\implies\\\mathbb P(A_1\cup A_2\cup\dots A_n)&=\sum_{i=1}^n\mathbb P(A_i)\end{align}$$<br>(applies if $$A_i$$ are countable) (see [L1 Q20](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__1_Probability_models_and_axioms/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch3-s1-tab20))|
+|Normalization|$$\mathbb P(\Omega)=1$${% if jekyll.environment == "development" %} (see [L1 Q19](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__1_Probability_models_and_axioms/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch3-s1-tab19)){% endif %}|
+|(finite) Additivity|$$\begin{align}A_i\cap A_j=\emptyset, i\neq&j\implies\\\mathbb P(A_1\cup A_2\cup\dots A_n)&=\sum_{i=1}^n\mathbb P(A_i)\end{align}$$<br>(applies if $$A_i$$ are countable){% if jekyll.environment == "development" %} (see [L1 Q20](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__1_Probability_models_and_axioms/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch3-s1-tab20)){% endif %}|
 
-It follows that $$\mathbb P(A)\leq 1$$ and $$\mathbb P(\emptyset)=0$$, as well as relationships below (see [PS1 Q6](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_1/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch3-s4-tab6)).
+It follows that $$\mathbb P(A)\leq 1$$ and $$\mathbb P(\emptyset)=0$$, as well as relationships below{% if jekyll.environment == "development" %} (see [PS1 Q6](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_1/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch3-s4-tab6)){% endif %}.
 
-- $$A\subseteq B\implies\mathbb P(A)\leq\mathbb P(B)=\mathbb P(A)+\mathbb P(B\cap A^C)$$ (see [L1 Q10](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__1_Probability_models_and_axioms/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch3-s1-tab10))
-- $$\mathbb P(A)+\mathbb P(B)-\mathbb P(A\cap B)=\mathbb P(A\cup B)\leq\mathbb P(A)+\mathbb P(B)\le1$$ (see [L1 Q8](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__1_Probability_models_and_axioms/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch3-s1-tab8))
-- $$\mathbb P(A\cup B\cup C)=\mathbb P(A)+\mathbb P(A^C\cap B)+\mathbb P(A^C\cap B^C\cap C)$$ (see [L1 Q12](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__1_Probability_models_and_axioms/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch3-s1-tab12))
+|Formula|Equivalent form|
+|:-:|:-:|
+|$$\mathbb P(A)$$|$$\mathbb P(A\cap B)$$, if $$A\subseteq B$$|
+|$$\mathbb P(A\cup B)$$|$$\mathbb P(A)+\mathbb P(B)-\mathbb P(A\cap B)\le\mathbb P(A)+\mathbb P(B)\le 1$${% if jekyll.environment == "development" %} (see [L1 Q8](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__1_Probability_models_and_axioms/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch3-s1-tab8)){% endif %}<br>(implies $$\mathbb P(A)\le\mathbb P(B)=\mathbb P(A\cup B)$$, if $$A\subseteq B$$){% if jekyll.environment == "development" %} (see [L1 Q10](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__1_Probability_models_and_axioms/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch3-s1-tab10)){% endif %}|
+|$$\mathbb P(A\cup B\cup C)$$|$$\mathbb P(A)+\mathbb P(A^C\cap B)+\mathbb P(A^C\cap B^C\cap C)$${% if jekyll.environment == "development" %} (see [L1 Q12](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__1_Probability_models_and_axioms/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch3-s1-tab12)){% endif %}|
 
-Note that the second bullet can be rewritten as $$\mathbb P(A)+\mathbb P(B)-1\le \mathbb P(A\cap B)$$, or in a more general fashion $$\mathbb P(A_1\cap A_2\cap\dots A_n)\le\mathbb P(A_1)+\mathbb P(A_2)+\dots+\mathbb P(A_n)-(n-1)$$, which is known as [Bonferroni's inequality](https://en.wikipedia.org/wiki/Boole%27s_inequality#Bonferroni_inequalities).
+From the above, it follows that $$\mathbb P(A_1\cap\ldots\cap A_n)\le\mathbb P(A_1)+\ldots+\mathbb P(A_n)-(n-1)$$, known as [Bonferroni's inequality](https://en.wikipedia.org/wiki/Boole%27s_inequality#Bonferroni_inequalities), which comes from observation that $$\mathbb P(A)+\mathbb P(B)-1\le \mathbb P(A\cap B)$$.
 
 ## Miscellanea
 
-Worthy of mention is the De Morgan's law (see [PS1 Q2](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_1/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch3-s4-tab2))
+Worthy of mention is the De Morgan's law{% if jekyll.environment == "development" %} (see [PS1 Q2](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_1/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch3-s4-tab2)){% endif %}
 
 $$\begin{align}(A\cap B)^C&=A^C\cup B^C\\ (A\cup B)^C&=A^C\cap B^C\end{align}$$
 
-Finally, refreshing memory on the geometric series is also a good thing (see [L1 Q18](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__1_Probability_models_and_axioms/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch3-s1-tab18))
+Finally, refreshing memory on the geometric series is also a good thing{% if jekyll.environment == "development" %} (see [L1 Q18](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__1_Probability_models_and_axioms/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch3-s1-tab18)){% endif %}
 
 $$\begin{align}
 \sum_{i=0}^n q^i&=\frac{1-q^{n+1}}{1-q}\\
