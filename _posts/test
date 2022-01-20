@@ -1,55 +1,50 @@
 ---
 layout: post
-title: "Conditioning and Independence"
+title: "Counting"
 ---
 
-## Conditioning
+Counting assumes **discrete uniform law**, where $$\Omega$$ consists of $$n$$ equally likely elements. If $$A$$ is a subset of $$k$$ elements, then $$\mathbb P(A)=\frac{k}{n}$$.
 
-Conditional probability is defined as $$\mathbb P(A\lvert B)=\frac{\mathbb P(A\cap B)}{\mathbb P(B)}$$, assuming $$\mathbb P(B)>0$$. Conditioning makes the events outside of $$B$$ have *zero* probability{% if jekyll.environment != "development" %} (see [L2 Q3](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__2_Conditioning_and_Bayes_rule/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch4-s2-tab3)){% endif %}. Also note $$A\subseteq B\implies\mathbb P(A\lvert B)=\frac{\mathbb P(A)}{\mathbb P(B)}$${% if jekyll.environment != "development" %} (see [L3 Q5](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__3_Independence/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch4-s3-tab5)){% endif %}.
+## Basic counting principle
 
-Conditional probabilities share properties of ordinary probabilities.
+An $$k$$-long sequence of $$a_i$$ variables, each being able to take $$n_i$$ values ($$i=1,\dots,k$$), can generate a total of $$n=n_1\dots n_k$$ outcomes.
 
-|Axiom|Formula|
+|Values|Number of outcomes|
 |-|:-:|
-|Non negativity|$$\mathbb P(A\lvert B)\geq 0$$|
-|Normalization|$$\mathbb P(\Omega\lvert B)=1$$|
-|(finite) Additivity|$$\begin{align}A_i\cap A_j=\emptyset, i\neq&j\implies\\\mathbb P(A_1\cup A_2\cup\dots A_n\vert B)&=\sum_{i=1}^n\mathbb P(A_i\lvert B)\end{align}$$|
+|$$a_i=\{0,1\}$$|$$2^k$$|
+|$$a_i=\{0,\dots n\}$$|$$n^k$$|
+|$$a_i=\{0,\dots n\}, n>k$$, without repetitions|$$\displaystyle n\cdot(n-1)\dots (n-k+1)=\frac{n!}{(n-k)!}$$|
+|$$a_i=\{0,\dots n\}, n=k$$, without repetitions|$$\displaystyle n!$${% if jekyll.environment != "development" %} (see [L4 Q4](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__4_Counting/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch5-s1-tab4) and [L4 Q6](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__4_Counting/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch5-s1-tab6)){% endif %}|
 
-## Main three tools {#main_three_tools}
+## Combinations
 
-Obtained from application of the definition $$\mathbb P(A\cap B)=\mathbb P(A)\mathbb P(B\lvert A)$$.
+There are $$\frac{n!}{(n-k)!}$$ ways to create a subset of $$k$$ elements out of a group of $$n$$ elements, which in turn can be reordered in $$k!$$ ways{% if jekyll.environment != "development" %} (see [PS3 Q5](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_3/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch5-s3-tab5)){% endif %}. Therefore, there are $$\frac{n!}{(n-k)!k!}$$ of possible $$k$$-element subsets of a given $$n$$-element set. Few remarks{% if jekyll.environment != "development" %} (see [PS3 Q4](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_3/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch5-s3-tab4)){% endif %}.
 
-|Name|Rule|
-|-|:-:|
-|Multiplication rule|$$\mathbb P(A_1\cap A_2\cap\dots A_n)=\mathbb P(A_1)\prod_{i=2}^n\mathbb P(A_i\lvert A_1\cap\dots A_{i-1})$$<br>{% if jekyll.environment != "development" %}(see [L2 Q9](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__2_Conditioning_and_Bayes_rule/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch4-s2-tab9)){% endif %}|
-|Total probability theorem|$$\mathbb  P(B)=\sum_{i=1}^n\mathbb P(A_i)\mathbb P(B\lvert A_i)$$<br>{% if jekyll.environment != "development" %}(see [L2 Q11](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__2_Conditioning_and_Bayes_rule/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch4-s2-tab11)){% endif %}|
-|Bayes' rule|$$\displaystyle\mathbb P(A_i\lvert B)=\frac{\mathbb P(A_i\cap B)}{\sum_{i=1}^n\mathbb P(A_i)\mathbb P(B\lvert A_i)}$$<br>{% if jekyll.environment != "development" %}(see [L2 Q13](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__2_Conditioning_and_Bayes_rule/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch4-s2-tab13)){% endif %}|
+|Formula|Equivalent form|
+|:-:|:-:|
+|$$0!$$|1|
+|$$\displaystyle{n\choose k}$$ or $$\displaystyle{n\choose n-k}$$|$$\displaystyle\frac{n!}{k!(n-k)!}$${% if jekyll.environment != "development" %} (see [L4 Q12](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__4_Counting/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch5-s1-tab12)){% endif %}|
+|$$\displaystyle{n\choose n}$$ or $$\displaystyle{n\choose 0}$$|$$1$$|
+|$$\displaystyle k{n\choose k}$$|$$\displaystyle n{n-1\choose k-1}$$|
+|$$\displaystyle{n\choose k}$$|$$\displaystyle\sum_{i=0}^k{m\choose i}{n-m\choose k-i}, n\ge m$$|
+|$$\displaystyle\sum_{k=0}^n{n\choose k}$$|$$2^n$$|
+|$$\displaystyle\sum_{k=0}^nk{n\choose k}$$|$$n2^{n-1}$${% if jekyll.environment != "development" %} (see [L4 Q8](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__4_Counting/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch5-s1-tab8)){% endif %}|
 
-Bayesian inference, is a three step procedure:
+## Binomial probability
 
-- Draw an initial belief $$\mathbb P(A)$$ on possible causes of $$B$$
-- Model $$B$$ under each $$A_i$$, that is $$\mathbb (B\lvert A_i)$$
-- Draw conclusions about causes, $$\mathbb P(A_i\lvert B)$$
+Binomial coefficient $${n\choose k}$$ is the basis of the binomial probability. Assume a coin with $$\mathbb P(\text{heads})=p$$, probability of $$k$$ heads in $$n$$ tosses is $$\mathbb P(k\text{ heads})={n\choose k}p^k(1-p)^{n-k}$${% if jekyll.environment != "development" %} (see [L4 Q10](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__4_Counting/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch5-s1-tab10)){% endif %}.
 
-When building a model, create a separate branch for every combination events{% if jekyll.environment != "development" %} (see [PS2 Q3](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_2/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch4-s5-tab3)){% endif %}.
+- $$p^k$$ is the probability of tossing $$k$$ heads;
+- $$(1-p)^{n-k}$$ is the probability of tossing $$n-k$$ tails;
+- $$p^k(1-p)^{n-k}$$ is the *joint* probability of the above two [independent](/2022/01/05/conditioning-and-independence.html#independence) events; and
+- $${n\choose k}p^k(1-p)^{n-k}$$ is the [additive](/2022/01/03/probability-models-and-axioms.html#axioms) probability of the mutually exclusive events.
 
-## Independence {#independence}
+Many problems can be reduced to binomial probability. Start from counting **how may event(s)** are associated with probability $$p$${% if jekyll.environment != "development" %} (see [PS3 Q1(2)](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_3/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch5-s3-tab2) and [PS3 Q3](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_3/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch5-s3-tab3)){% endif %}, as well the event(s) associated with its complement $$1-p$${% if jekyll.environment != "development" %} (see [PS3 Q1](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_3/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch5-s3-tab1) and [PS3 Q1(1)](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_3/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch5-s3-tab2)){% endif %}.
 
-Intuitively, $$A$$ is independent from $$B$$ when $$\mathbb P(A\lvert B)=\mathbb P(A)$${% if jekyll.environment != "development" %} (see [PS2 Q1](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_2/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch4-s5-tab1) and [PS2 Q4](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_2/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch4-s5-tab4)){% endif %}. Accordingly, $$\mathbb P(A\cap B)=\mathbb P(A)\mathbb P(B)$${% if jekyll.environment != "development" %} (see [L3 Q4](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__3_Independence/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch4-s3-tab4) and [L3 Q6](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__3_Independence/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch4-s3-tab6)){% endif %}. It follows that independence is symmetric, allows $$\mathbb P(B)=0$$ and extends to complements, $$\mathbb P(A\cap B^C)=\mathbb P(A)\mathbb P(B^C)$${% if jekyll.environment != "development" %} (see [L3 Q8](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__3_Independence/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch4-s3-tab8)){% endif %}. 
+If all sequences share the same probability (recall discrete uniform law), the problem reduces to *counting* and you can get rid of all $$p^k(1-p)^{n-k}$$ occurrences. Just bear in mind that you can further breakdown the *counting* into products, if combinations of joint events are present, and that if conditions are in order, you need to divide by the number of occurrences that satisfy that condition.
 
-Conditioning, however, affects independence, and $$\mathbb P(A\cap B\lvert C)=\mathbb P(A\lvert C)\mathbb P(B\lvert C)$$ **does not mean** that $$\mathbb P(A\cap B\lvert C^C)=\mathbb P(A\lvert C^C)\mathbb P(B\lvert C^C)$${% if jekyll.environment != "development" %} (see [L3 Q10](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__3_Independence/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch4-s3-tab10)){% endif %}.
+## Partitioning
 
-Also, pairwise independence $$\mathbb P(A_i\cap A_j)=\mathbb P(A_i)\mathbb P(A_j), i\neq j$$ **does not imply** collective independence $$\mathbb P(A_1\cup A_2\cup\dots A_n)=\mathbb P(A_2)\mathbb P(A_2)\dots\mathbb P(A_n)$${% if jekyll.environment != "development" %} (see [L3 Q13](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__3_Independence/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch4-s3-tab13)){% endif %}.
-
-## Reliability
-
-Reliability is good example of *joint* probability of *independent* events. In the table below, $$U$$ and $$D$$ indicate that the *link* is up or down, respectively{% if jekyll.environment != "development" %} (see [L3 Q16](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__3_Independence/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch4-s3-tab16)){% endif %}.
-
-|Mode|Diagram|Probability|
-|-|:-:|:-:|
-|Serial|![12457](/assets/images/2022-01-05-conditioning-and-independence/12457.png)|$$\mathbb P(U)=\mathbb P(U_1)\mathbb P(U_2)$$|
-|Parallel|![21589](/assets/images/2022-01-05-conditioning-and-independence/21589.png)|$$\mathbb P(D)=\mathbb P(D_1)\mathbb P(D_2)$$|
-
-Assuming $$L_i\in\{0,1\}$$ indicates that the *network* is up when the link $$i$$ has failed, then the probability of the *network* being up despite one element failing is $$\mathbb P(L)=\sum_{i=1}^n \frac{p_i}{\sum_{i=1}^np_i}L_i$${% if jekyll.environment != "development" %} (see [PS2 Q2](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_2/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch4-s5-tab2)){% endif %}.
+More generally, a set can be partitioned in $$r$$ subsets, each of cardinality $$n_i$$, $$i=1,\dots,r$$. In such case, the number of subsets in which partitioning could occur is $$\frac{n!}{n_1!\dots n_r!}$$, which is also defined as multinomial coefficient $${n\choose n_1,\dots,n_r}$${% if jekyll.environment != "development" %} (see [L4 Q14](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__4_Counting/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch5-s1-tab14)){% endif %}.
 
 Go back to the [syllabi breakdown](/2022/01/02/prob-and-stats-syllabi.html).
