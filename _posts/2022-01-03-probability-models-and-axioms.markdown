@@ -33,7 +33,7 @@ The mathematical function that describes the probabilities of different possible
 |-|:-:|
 |Non negativity|$$\mathbb P(A)\geq 0$$|
 |Normalization|$$\mathbb P(\Omega)=1$$ (see [L1 Q19](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__1_Probability_models_and_axioms/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch3-s1-tab19))|
-|(finite) Additivity|$$\begin{align}A_i\cap A_j=\emptyset, i\neq&j\implies\\\mathbb P(A_1\cup A_2\cup\dots A_n)&=\sum_{i=1}^n\mathbb P(A_i)\end{align}$$<br>(applies if $$A_i$$ are countable, see [L1 Q20](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__1_Probability_models_and_axioms/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch3-s1-tab20))|
+|(finite) Additivity|$$\begin{align}A_i\cap A_j=\emptyset, i\neq&j\implies\\\mathbb P(A_1\cup A_2\cup\dots A_n)&=\sum_{i=1}^n\mathbb P(A_i)\end{align}$$<br>(applies if $$A_i$$ are countable) (see [L1 Q20](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__1_Probability_models_and_axioms/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch3-s1-tab20))|
 
 It follows that $$\mathbb P(A)\leq 1$$ and $$\mathbb P(\emptyset)=0$$, as well as relationships below (see [PS1 Q6](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_1/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch3-s4-tab6)).
 

@@ -9,11 +9,11 @@ Conditional probability is defined as $$\mathbb P(A\lvert B)=\frac{\mathbb P(A\c
 
 Conditional probabilities share properties of ordinary probabilities.
 
- |Axiom|Formula|
- |-|:-:|
- |Non negativity|$$\mathbb P(A\lvert B)\geq 0$$|
- |Normalization|$$\mathbb P(\Omega\lvert B)=1$$|
- |(finite) Additivity|$$\begin{align}A_i\cap A_j=\emptyset, i\neq&j\implies\\\mathbb P(A_1\cup A_2\cup\dots A_n\vert B)&=\sum_{i=1}^n\mathbb P(A_i\lvert B)\end{align}$$|
+|Axiom|Formula|
+|-|:-:|
+|Non negativity|$$\mathbb P(A\lvert B)\geq 0$$|
+|Normalization|$$\mathbb P(\Omega\lvert B)=1$$|
+|(finite) Additivity|$$\begin{align}A_i\cap A_j=\emptyset, i\neq&j\implies\\\mathbb P(A_1\cup A_2\cup\dots A_n\vert B)&=\sum_{i=1}^n\mathbb P(A_i\lvert B)\end{align}$$|
 
 ## Main three tools {#main_three_tools}
 
