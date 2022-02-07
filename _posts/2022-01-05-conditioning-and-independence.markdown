@@ -47,8 +47,8 @@ Reliability is good example of *joint* probability of *independent* events. In t
 
 |Mode|Diagram|Probability|
 |-|:-:|:-:|
-|Serial|![12457](/assets/images/2022-01-05-conditioning-and-independence/12457.png)|$$\mathbb P(U)=\mathbb P(U_1)\mathbb P(U_2)$$|
-|Parallel|![21589](/assets/images/2022-01-05-conditioning-and-independence/21589.png)|$$\mathbb P(D)=\mathbb P(D_1)\mathbb P(D_2)$$|
+|Serial|![12457](/assets/images/2022-01-05-conditioning-and-independence/12457.png)|$$\mathbb P(U)=\mathbb P(U_1\cap U_2)=pq$$|
+|Parallel|![21589](/assets/images/2022-01-05-conditioning-and-independence/21589.png)|$$\mathbb P(D)=\mathbb P(D_1\cap D_2)=(1-p)(1-q)$$<br>$$\mathbb P(U)=\mathbb P(U_1\cup U_2)=p+q-pq$$<br>(according to [inclusion-exclusion](/2022/01/03/probability-models-and-axioms.html#axioms) formula)|
 
 Assuming $$L_i\in\{0,1\}$$ indicates that the *network* is up when the link $$i$$ has failed, then the probability of the *network* being up despite one element failing is $$\mathbb P(L)=\sum_{i=1}^n \frac{p_i}{\sum_{i=1}^np_i}L_i$${% if jekyll.environment == "development" %} (see [PS2 Q2](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_2/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch4-s5-tab2)){% endif %}.
 
