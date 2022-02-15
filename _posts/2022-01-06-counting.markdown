@@ -13,7 +13,7 @@ An $$k$$-long sequence of $$a_i$$ variables, each being able to take $$n_i$$ val
 |:-:|:-:|
 |$$a_i\in\{0,1\}$$, with $$\lvert A\rvert=n=k$$|$$2^n$$ (number of all possible subsets in $$A$$)|
 |$$a_i\in A$$, with $$\lvert A\rvert=n$$|$$n^k$$|
-|$$a_i\in\{1,\dots n\}$$, $$k\le n$$<br>without repetitions|$$\displaystyle n\cdot(n-1)\dots (n-k+1)=\frac{n!}{(n-k)!}$$<br>{% if jekyll.environment == "development" %}(see [L4 Q4](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__4_Counting/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch5-s1-tab4) and [L4 Q6](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__4_Counting/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch5-s1-tab6)){% endif %}|
+|$$a_i\in\{1,\dots n\}$$, $$k\le n$$<br>without repetitions|$$\displaystyle n\cdot(n-1)\dots (n-k+1)=\frac{n!}{(n-k)!}$${% if jekyll.environment == "development" %}<br>(see [L4 Q4](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__4_Counting/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch5-s1-tab4) and [L4 Q6](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__4_Counting/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch5-s1-tab6)){% endif %}|
 
 ## Combinations
 
