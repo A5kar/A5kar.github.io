@@ -58,13 +58,13 @@ Worthy of mention is the De Morgan's law{% if jekyll.environment == "development
 
 $$\begin{align}(A\cap B)^C&=A^C\cup B^C\\ (A\cup B)^C&=A^C\cap B^C\end{align}$$
 
-Finally, refreshing memory on the geometric series is also a good thing{% if jekyll.environment == "development" %} (see [L1 Q18](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__1_Probability_models_and_axioms/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch3-s1-tab18)){% endif %}
+Finally, refreshing memory on the geometric series is also a good thing{% if jekyll.environment == "development" %} (see [L1 Q18](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__1_Probability_models_and_axioms/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch3-s1-tab18)){% endif %}.
 
-$$\begin{align}
-\sum_{i=0}^n q^i&=\frac{1-q^{n+1}}{1-q}\\
-\sum_{i=0}^\infty q^i&=\frac{1}{1-q}, \lvert q\rvert<1\\
-\sum_{i=1}^\infty q^i&=\frac{q}{1-q}, \lvert q\rvert<1
-\end{align}$$
+$$\begin{align}\sum_{i=0}^n q^i&=\frac{1-q^{n+1}}{1-q}&\sum_{i=0}^\infty q^i&=\frac{1}{1-q}, \lvert q\rvert<1\end{align}$$
+
+Which leads to the following general formula{% if jekyll.environment == "development" %} (see [MT1 Q6](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@sequential_Exam_1/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch7-s1-tab7)){% endif %}.
+
+$$\sum_{i=k}^\infty q^i=\sum_{i=0}^\infty q^i-\sum_{i=0}^{k-1} q^i=\frac{1}{1-q}-\frac{1-q^{k-1+1}}{1-q}=\frac{q^k}{1-q}$$
 
 Go back to the [syllabi breakdown](/2022/01/02/prob-and-stats-syllabi.html).
 
