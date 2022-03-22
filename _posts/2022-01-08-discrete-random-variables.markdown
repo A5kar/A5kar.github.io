@@ -5,7 +5,7 @@ title: "Discrete Random Variables"
 
 ## Definition {#definition}
 
-A random variable (RV) $$X$$ is a function that associates a value with every possible outcome $$\omega\in\Omega$$. A random variable $$X(\omega)=x$$ can map into discrete (e.g. $$x\in\mathbb Z$$) or continuous (e.g. $$x\in\mathbb R$$) values. There could be multiple RV associated with the same sample space; and a function of one or more RV is in turn a RV{% if jekyll.environment == "development" %} (see [L5 Q3](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__5_Probability_mass_functions_and_expectations/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s2-tab3) and [L5 Q6](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__5_Probability_mass_functions_and_expectations/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s2-tab6)){% endif %}.
+A random variable (r.v.) $$X$$ is a function that associates a value with every possible outcome $$\omega\in\Omega$$. A random variable $$X(\omega)=x$$ can map into discrete (e.g. $$x\in\mathbb Z$$) or continuous (e.g. $$x\in\mathbb R$$) values. There could be multiple r.v. associated with the same sample space; and a function of one or more r.v. is in turn a r.v.{% if jekyll.environment == "development" %} (see [L5 Q3](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__5_Probability_mass_functions_and_expectations/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s2-tab3) and [L5 Q6](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__5_Probability_mass_functions_and_expectations/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s2-tab6)){% endif %}.
 
 Probability mass function (PMF) $$p_X(x)$$, on the other hand, is a function that associates a real number to every possible outcome $$\omega\in\Omega$$. Or, more formally, $$p_X(x)=\mathbb P(\omega\in\Omega: X(\omega)=x)$$. Usual [axioms](/2022/01/03/probability-models-and-axioms.html#axioms) apply:
 
@@ -25,7 +25,7 @@ Expected value of $$X$$ is defined as $$\mu_X=\mathbb E[X]=\sum_x xp_X(x)$${% if
 |Indicator, $$g(X)=\begin{cases}1&\text{$A$ occurs}\\0&\text{otherwise}\end{cases}$$|$$\mathbb E[I_A]=\mathbb P(A)$$|
 |Linearity|$$E[aX+b]=a\mathbb E[X]+b$${% if jekyll.environment == "development" %}<br>(see [L5 Q21](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__5_Probability_mass_functions_and_expectations/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s2-tab21), [L6 Q17](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__6_Variance__Conditioning_on_an_event__Multiple_r_v_s/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s3-tab17) and [L6 Q18](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__6_Variance__Conditioning_on_an_event__Multiple_r_v_s/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s3-tab18)){% endif %}|
 
-Observe that where $$I_{A\cap B}=I_A\cdot I_B\in\{0,1\}$$ is still an indicator RV, $$I=I_A+I_B\in\{0,1,2\}$$ is not{% if jekyll.environment == "development" %} (see [L5 Q8](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__5_Probability_mass_functions_and_expectations/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s2-tab8)){% endif %}. In this case, $$I_{A\cup B}=I_A+I_B-I_AI_B$$, given by the [inclusion-exclusion](/2022/01/03/probability-models-and-axioms.html#axioms) formula.
+Observe that where $$I_{A\cap B}=I_A\cdot I_B\in\{0,1\}$$ is still an indicator r.v., $$I=I_A+I_B\in\{0,1,2\}$$ is not{% if jekyll.environment == "development" %} (see [L5 Q8](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__5_Probability_mass_functions_and_expectations/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s2-tab8)){% endif %}. In this case, $$I_{A\cup B}=I_A+I_B-I_AI_B$$, given by the [inclusion-exclusion](/2022/01/03/probability-models-and-axioms.html#axioms) formula.
 
 ## Variance {#variance}
 
@@ -39,35 +39,35 @@ Defined as $$\sigma_X^2=\text{var}(X)=\mathbb E[(X-\mathbb E[X])^2]$$, variance 
 
 Variance is always non negative, therefore $$\mathbb E[X^2]\ge\mathbb (E[X])^2$$ is always true{% if jekyll.environment == "development" %} (see [L6 Q4](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__6_Variance__Conditioning_on_an_event__Multiple_r_v_s/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s3-tab4)){% endif %}. In general, for any convex function $$g(x)$$, we have that $$g(\mathbb E[X])\le\mathbb E[g(X)]$$. This is known as [Jensen's Inequality](https://en.wikipedia.org/wiki/Jensen%27s_inequality).
 
-## Basic discrete RV distributions {#basic_discrete_distributions}
+## Basic discrete r.v. distributions {#basic_discrete_distributions}
 
-|RV|PMF<br>$$p_X(x)$$|Expectation<br>$$\mu_X=\mathbb E[X]$$|Variance<br>$$\sigma_X^2=\text{var}(X)$$|
+|r.v.|PMF<br>$$p_X(x)$$|Expectation<br>$$\mu_X=\mathbb E[X]$$|Variance<br>$$\sigma_X^2=\text{var}(X)$$|
 |-|:-:|:-:|:-:|:-:|
-|Bernoulli<br>$$\text{Bin}(1,p)$$|$$\begin{cases}p^x(1-p)^{1-x}&x\in\{0,1\}\\0&\text{otherwise}\end{cases}$$|$$p$$|$$p(1-p)$$|
+|Bernoulli<br>$$\text{Ber}(p)$$|$$\begin{cases}p^x(1-p)^{1-x}&x\in\{0,1\}\\0&\text{otherwise}\end{cases}$$|$$p$$|$$p(1-p)$$|
 |Binomial<br>$$\text{Bin}(n,p)$$|$$\begin{cases}\displaystyle{n\choose x}p^x(1-p)^{n-x}&x\in\mathbb Z_{\ge0}\\0&\text{otherwise}\end{cases}$${% if jekyll.environment == "development" %}<br>(see [L5 Q11](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__5_Probability_mass_functions_and_expectations/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s2-tab11)){% endif %}|$$np$$|$$np(1-p)$$|
 |Uniform<br>$$\text{Unif}(a,b)$$|$$\begin{cases}\displaystyle\frac{1}{n+1}&a\le x\le b\\0&\text{otherwise}\end{cases}$$<br>for simplicity, $$n=b-a$$|$$\displaystyle a+\frac{n}{2}$$|$$\displaystyle\frac{1}{12}n(n+2)$$|
 |Constant<br>$$\text{Unif}(c,c)$$|$$\begin{cases}1&\text{if $x=c$}\\0&\text{otherwise}\end{cases}$$|$$c$$|$$0$$|
 |Geometric<br>$$\text{Geom}(p)$$|$$\begin{cases}(1-p)^{x-1}p&x\in\mathbb Z_{\ge1}\\0&\text{otherwise}\end{cases}$$|$$\displaystyle\frac{1}{p}$${% if jekyll.environment == "development" %}<br>(see [MT1 Q3](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@sequential_Exam_1/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch7-s1-tab4)){% endif %}|$$\displaystyle\frac{1-p}{p^2}$$|
 |Pascal<br>$$\text{NBin}(k,p)$$|$$\begin{cases}\displaystyle{x-1\choose k-1}p^k(1-p)^{x-k}&x\in\mathbb Z_{\ge k}\\0&\text{otherwise}\end{cases}$$|$$\displaystyle k\frac{1}{p}$$|$$\displaystyle k\frac{(1-p)}{p^2}$$|
-|Poisson<br>$$\displaystyle\text{Pois}(\lambda)$$|$$\begin{cases}e^{-\lambda}\displaystyle\frac{\lambda^k}{k!}&k\in\mathbb Z_{\ge0}\\0&\text{otherwise}\end{cases}$$|$$\lambda$$|$$\lambda$$|
+|Poisson<br>$$\displaystyle\text{Pois}(\lambda)$$|$$\begin{cases}e^{-\lambda}\displaystyle\frac{\lambda^x}{x!}&x\in\mathbb Z_{\ge0}\\0&\text{otherwise}\end{cases}$$|$$\lambda$$|$$\lambda$$|
 
 Second moment of $$X$$ can be derived as $$\mathbb E[X^2]=\text{var}(X)+(\mathbb E[X])^2=\sigma_X^2+\mu_X^2$$.
 
-Computing expectation and variance for Pascal RV (a.k.a. negative binomial), is easier if we [assume](/2022/02/08/bernoulli-and-poisson-processes.html#kth_arrival) $$X=\sum_{i=1}^k X_i$$, with $$X_i\sim\text{Geom}(p)$$, in which case $$\mathbb E[X]=k\mathbb E[X_i]$$ and $$\text{var}(X)=k\text{var}(X_i)$$.
+Computing expectation and variance for Pascal r.v. (a.k.a. negative binomial), is easier if we [assume](/2022/02/08/bernoulli-and-poisson-processes.html#kth_arrival) $$X=\sum_{i=1}^k X_i$$, with $$X_i\sim\text{Geom}(p)$$, in which case $$\mathbb E[X]=k\mathbb E[X_i]$$ and $$\text{var}(X)=k\text{var}(X_i)$$.
 
-As for Poisson RV, its PMF can be computed as Binomial with $$n\rightarrow\infty$$ and $$\lambda=np$$.
+As for Poisson r.v., its PMF can be computed as Binomial with $$n\rightarrow\infty$$ and $$\lambda=np$$.
 
 $$\displaystyle p_X(k)=\lim_{n\rightarrow\infty}{n\choose k}\left(\frac{\lambda}{n}\right)^k\left(1-\frac{\lambda}{n}\right)^{n-k}=e^{-\lambda}\frac{\lambda^k}{k!}$$
 
 Accordingly, derivation of $$\mathbb E[X]=np=\lambda$$ and $$\text{var}(X)=np(1-p)=\lambda-\frac{\lambda^2}{n}\approx\lambda$$ is immediate.
 
-If you are curious about distributions and want to experiment with various parameters, check out this [great resource](https://share.streamlit.io/kaykozaronek/distributed/main/app.py) built by a fellow edX learner!
+Refer to [back-up](/2022/01/08/discrete-random-variables.html#cdf) for CDF of the above basic distributions and if you are curious about distributions and want to experiment with various parameters, check out this [great resource](https://share.streamlit.io/kaykozaronek/distributed/main/app.py) built by a fellow edX learner!
 
 ## Conditioning {#conditioning}
 
-Conditioning to an event $$A$$, with $$\mathbb P(A)>0$$, does not alter the main PMF and expectation properties. Note that conditioning could also include another discrete RV, e.g. $$A=\{Y=y\}$${% if jekyll.environment == "development" %} (see [PS4 Q4](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_4/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s7-tab4)){% endif %}.
+Conditioning to an event $$A$$, with $$\mathbb P(A)>0$$, does not alter the main PMF and expectation properties. Note that conditioning could also include another discrete r.v., e.g. $$A=\{Y=y\}$${% if jekyll.environment == "development" %} (see [PS4 Q4](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_4/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s7-tab4)){% endif %}.
 
-|Property|Conditional on event $$A$$|Conditional on RV $$Y$$|
+|Property|Conditional on event $$A$$|Conditional on r.v. $$Y$$|
 |-|:-:|:-:|
 |PMF|$$\displaystyle p_{X\lvert A}(x)=\frac{\mathbb P(X=x \cap A)}{\mathbb P(A)}$$<br>$$\displaystyle p_{X\lvert X\in A}(x)=\begin{cases}\frac{p_X(x)}{\mathbb P(A)}&\text{if $x\in A$}\\0&\text{otherwise}\end{cases}$$|$$\displaystyle p_{X\lvert Y}(x\lvert y)=\frac{p_{X,Y}(x,y)}{p_Y(y)}$${% if jekyll.environment == "development" %}<br>(see [L7 Q3](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__7_Conditioning_on_a_random_variable__Independence_of_r_v_s/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s4-tab3)){% endif %}|
 |Normalization|$$\displaystyle\sum_x p_{X\lvert A}(x)=1$$|$$\displaystyle\sum_x p_{X\lvert Y}(x\lvert y)=1$$|
@@ -86,7 +86,7 @@ According to [independence](/2022/01/05/conditioning-and-independence.html#indep
 |-|:-:|
 |Expectations|$$\mathbb E[XY]=\mathbb E[X]\mathbb E[Y]$${% if jekyll.environment == "development" %} (see [L7 Q15](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__7_Conditioning_on_a_random_variable__Independence_of_r_v_s/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s4-tab15)){% endif %}|
 |Independence of functions|$$\mathbb E[g(X)h(Y)]=\mathbb E[g(X)]\mathbb E[h(Y)]$${% if jekyll.environment == "development" %} (see [L7 Q11](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__7_Conditioning_on_a_random_variable__Independence_of_r_v_s/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s4-tab11)){% endif %}|
-|Sum of independent RV|$$\text{var}(aX+bY)=a^2\text{var}(X)+b^2\text{var}(Y)$${% if jekyll.environment == "development" %}<br>(see [L6 Q3](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__6_Variance__Conditioning_on_an_event__Multiple_r_v_s/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s3-tab3), [L6 Q6](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__6_Variance__Conditioning_on_an_event__Multiple_r_v_s/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s3-tab6) and [L7 Q13](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__7_Conditioning_on_a_random_variable__Independence_of_r_v_s/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s4-tab13)){% endif %}|
+|Sum of independent r.v.|$$\text{var}(aX+bY)=a^2\text{var}(X)+b^2\text{var}(Y)$${% if jekyll.environment == "development" %}<br>(see [L6 Q3](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__6_Variance__Conditioning_on_an_event__Multiple_r_v_s/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s3-tab3), [L6 Q6](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__6_Variance__Conditioning_on_an_event__Multiple_r_v_s/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s3-tab6) and [L7 Q13](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__7_Conditioning_on_a_random_variable__Independence_of_r_v_s/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s4-tab13)){% endif %}|
 
 Sometimes, independence may involve more than two variables, in such case we should always bear in mind that if certain variables are inter-dependent (say $$X$$ and $$Y$$) but independent from others (say $$Z$$), then $$p_{X,Y,Z}(x,y,z)=p_{X,Y}(x,y)p_Z(z)\neq p_X(x)p_Y(y)p_Z(z)$${% if jekyll.environment == "development" %} (see [L7 Q7](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__7_Conditioning_on_a_random_variable__Independence_of_r_v_s/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s4-tab7)){% endif %}.
 
@@ -101,9 +101,9 @@ $$\begin{align}
 
 Alternative way to derive the above is by thinking that $$\mathbb P(X> k)=(1-p)^{k}$$, and since each toss is independent the conditioned probability will be derived by dividing the probability by $$(1-p)^{k}$${% if jekyll.environment == "development" %} (see [L5 Q13](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__5_Probability_mass_functions_and_expectations/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s2-tab13)){% endif %}. 
 
-## Joint PMFs {#joint_pmfs}
+## Joint PMF {#joint_pmf}
 
-Taking two discrete RV, each having its own *marginal* distribution, say $$p_X(x)=\mathbb P(X=x)$$ and $$p_Y(y)=\mathbb P(Y=y)$$, their *joint* distribution is defined as $$p_{X,Y}(x,y)=\mathbb P(X=x\cap Y=y)$$. *Marginal* distributions can be derived again from the *joint* distribution as $$p_X(x)=\sum_y p_{X,Y}(x,y)$$ and $$p_Y(y)=\sum_x p_{X,Y}(x,y)$${% if jekyll.environment == "development" %} (see [L6 Q14](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__6_Variance__Conditioning_on_an_event__Multiple_r_v_s/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s3-tab14)){% endif %}.
+Taking two discrete r.v., each having its own *marginal* distribution, say $$p_X(x)=\mathbb P(X=x)$$ and $$p_Y(y)=\mathbb P(Y=y)$$, their *joint* distribution is defined as $$p_{X,Y}(x,y)=\mathbb P(X=x\cap Y=y)$$. *Marginal* distributions can be derived again from the *joint* distribution as $$p_X(x)=\sum_y p_{X,Y}(x,y)$$ and $$p_Y(y)=\sum_x p_{X,Y}(x,y)$${% if jekyll.environment == "development" %} (see [L6 Q14](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__6_Variance__Conditioning_on_an_event__Multiple_r_v_s/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s3-tab14)){% endif %}.
 
 |Property|Formula|
 |-|:-:|
@@ -113,7 +113,7 @@ Taking two discrete RV, each having its own *marginal* distribution, say $$p_X(x
 
 Given $$Z=g(X,Y)$$, we have $$p_Z(z)=\mathbb P(g(x,y)=z)=\sum_{(x,y):g(x,y)=z}p_{X,Y}(x,y)$${% if jekyll.environment == "development" %} (see [L5 Q5](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__5_Probability_mass_functions_and_expectations/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s2-tab5), [L5 Q17](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__5_Probability_mass_functions_and_expectations/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s2-tab17) and [PS4 Q2](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_4/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s7-tab2)){% endif %}. Accordingly, $$\mathbb E[Z]=\mathbb E[g(X,Y)]=\sum_x\sum_y g(x,y)p_{X,Y}(x,y)$${% if jekyll.environment == "development" %} (see [PS4 Q3](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_4/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s7-tab3)){% endif %}. Due to liearity, if $$g(X,Y)=aX+bY$$ then $$\mathbb E[g(X,Y)]=g(\mathbb E[X],\mathbb E[Y])=a\mathbb E[X]+b\mathbb E[Y]$$.
 
-Quite often, we need to model joint probability of *independent and identically distributed* (iid) RV, such as $$X_i\overset{iid}{\sim}\mathcal P$$. In such case, the joint PMF $$p_{X_1,\dots X_n}(x_1,\dots,x_n)=\prod_{i=1}^n p_{X_i}(x_i)$$.
+Quite often, we need to model joint probability of *independent and identically distributed* (i.i.d.) r.v., such as $$X_i\overset{i.i.d.}{\sim}\mathcal P$$. In such case, the joint PMF $$p_{X_1,\dots X_n}(x_1,\dots,x_n)=\prod_{i=1}^n p_{X_i}(x_i)$$.
 
 Go back to the [syllabi breakdown](/2022/01/02/prob-and-stats-syllabi.html).
 
@@ -131,3 +131,15 @@ In deriving the various relations, it may be useful bearing in mind the followin
 |$$\displaystyle\sum_{k=1}^nk$$|$$\displaystyle\frac{k(k+1)}{2}$$|
 |$$\displaystyle\sum_{k=1}^nk$$|$$\displaystyle\frac{k(k+1)(2k+1)}{6}$$|
 |$$(X_1+\dots+X_n)^2$$|$$\displaystyle\underbrace{\sum_{i=1}^n X^2}_\text{$n$ terms}+\underbrace{\sum_{i\neq j}X_iX_j}_\text{$n^2-n$ terms}$$|
+
+## CDF of basic discrete r.v. distributions {#cdf}
+
+|r.v.|CDF<br>$$F_X(x)$$|
+|-|:-:|
+|Bernoulli<br>$$\text{Ber}(p)$$|$$\begin{cases}0&x\lt 0\\1-p&0\le x\lt1\\1& x\ge 1\end{cases}$$|
+|Binomial<br>$$\text{Bin}(n,p)$$|$$\begin{cases}0&x\lt 0\\\displaystyle\sum_{k=0}^{\lfloor x\rfloor}{n\choose k}p^k(1-p)^{n-k}&0\le x\lt1\\1& x\ge n\end{cases}$$|
+|Uniform<br>$$\text{Unif}(a,b)$$|$$\begin{cases}0&x\lt a\\\displaystyle\frac{\lfloor x\rfloor-a+1}{b-a+1}&a\le x\lt b\\1& x\ge b\end{cases}$$|
+|Constant<br>$$\text{Unif}(c,c)$$|$$\begin{cases}0&x\lt c\\1& x\ge c\end{cases}$$|
+|Geometric<br>$$\text{Geom}(p)$$|$$\begin{cases}0&x\lt 1\\\displaystyle 1-(1-p)^{\lfloor x\rfloor}&x\ge1\end{cases}$$|
+|Pascal<br>$$\text{NBin}(k,p)$$|$$\begin{cases}0&x\lt 0\\\displaystyle\sum_{n=k}^{\lfloor x\rfloor}{n-1\choose k-1}p^k(1-p)^{n-k}&x\ge0\end{cases}$$|
+|Poisson<br>$$\displaystyle\text{Pois}(\lambda)$$|$$\begin{cases}0&x\lt 0\\\displaystyle e^{-\lambda}\sum_{k=0}^{\lfloor x\rfloor}\frac{\lambda^k}{k!}&x\ge0\end{cases}$$|
