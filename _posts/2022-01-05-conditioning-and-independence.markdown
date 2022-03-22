@@ -39,7 +39,7 @@ Intuitively, $$A$$ is independent from $$B$$ when $$\mathbb P(A\lvert B)=\mathbb
 
 Conditioning, however, affects independence, and $$\mathbb P(A\cap B\lvert C)=\mathbb P(A\lvert C)\mathbb P(B\lvert C)$$ **does not mean** that $$\mathbb P(A\cap B\lvert C^C)=\mathbb P(A\lvert C^C)\mathbb P(B\lvert C^C)$${% if jekyll.environment == "development" %} (see [L3 Q10](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__3_Independence/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch4-s3-tab10)){% endif %}.
 
-Also, pairwise independence $$\mathbb P(A_i\cap A_j)=\mathbb P(A_i)\mathbb P(A_j), i\neq j$$ **does not imply** collective independence $$\mathbb P(A_1\cup A_2\cup\dots A_n)=\mathbb P(A_2)\mathbb P(A_2)\dots\mathbb P(A_n)$${% if jekyll.environment == "development" %} (see [L3 Q13](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__3_Independence/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch4-s3-tab13)){% endif %}.
+Also, pairwise independence $$\mathbb P(A_i\cap A_j)=\mathbb P(A_i)\mathbb P(A_j), i\neq j$$ **does not imply** collective independence $$\mathbb P(A_1\cap A_2\cap\dots A_n)=\mathbb P(A_2)\mathbb P(A_2)\dots\mathbb P(A_n)$${% if jekyll.environment == "development" %} (see [L3 Q13](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__3_Independence/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch4-s3-tab13)){% endif %}.
 
 ## Reliability
 
