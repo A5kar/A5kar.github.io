@@ -146,5 +146,5 @@ Go back to the [syllabi breakdown](/2022/01/02/prob-and-stats-syllabi.html).
 |-|:-:|
 |Uniform<br>$$\text{Unif}(a,b)$$|$$\begin{cases}0&x\lt a\\\displaystyle\frac{x-a}{b-a}&a\le x\lt b\\1& x\ge b\end{cases}$$|
 |Triangular<br>$$\text{Tri}(a,b,c)$$||
-|Exponential<br>$$\text{Exp}(\lambda)$$|$$\begin{cases}0&x\lt 0\\1-e^{\lambda x}& x\ge 0\end{cases}$$|
+|Exponential<br>$$\text{Exp}(\lambda)$$|$$\begin{cases}0&x\lt 0\\1-e^{\lambda x}& x\ge 0\end{cases}$${% if jekyll.environment == "development" %}<br>(see [Stats HW0 Q5](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@prob_linalg_diag/block-v1:MITx+18.6501x+2T2021+type@vertical+block@prob_linalg_diag-tab5)){% endif %}|
 |Erlang<br>$$\text{Erlang}(k,\lambda)$$|$$\begin{cases}0&x\lt 0\\\displaystyle\int_{0}^x e^{-\lambda s}\frac{\lambda(\lambda s)^{k-1}}{(k-1)!}ds=1-e^{-\lambda x}\sum_{n=0}^{k-1}\frac{(\lambda x)^n}{n!}& x\ge 0\end{cases}$$|

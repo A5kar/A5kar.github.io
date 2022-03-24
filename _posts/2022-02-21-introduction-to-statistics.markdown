@@ -25,7 +25,7 @@ $$\mathbb P(X\ge a)\le\frac{\mathbb E[X]}{a}, a>0$$
 
 In the relation above, $$X$$ indicates *any* r.v. Hence, if $$g(X)$$ is another, non-negative r.v., an analogous relation can be derived in terms of $$\mathbb E[g(X)]$${% if jekyll.environment == "development" %} (see [Prob L18 Q3](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__18_Inequalities__convergence__and_the_Weak_Law_of_Large_Numbers/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch12-s2-tab3)){% endif %}.
 
-Another intuition, "*if the variance is small, then $$X$$ is unlikely to be far from the mean*", leads us to the **Chebyshev's inequality**, obtained from replacing $$X=(Y-\mathbb E[Y])^2$$ in the Markov's inequality{% if jekyll.environment == "development" %} (see [Prob L18 Q5](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__18_Inequalities__convergence__and_the_Weak_Law_of_Large_Numbers/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch12-s2-tab5)){% endif %}.
+Another intuition, "*if the variance is small, then $$X$$ is unlikely to be far from the mean*", leads us to the **Chebyshev's inequality**, obtained from replacing $$X=(Y-\mathbb E[Y])^2$$ in the Markov's inequality{% if jekyll.environment == "development" %} (see [Prob L18 Q5](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__18_Inequalities__convergence__and_the_Weak_Law_of_Large_Numbers/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch12-s2-tab5) and [Prob PS8 Q3](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_8/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch12-s7-tab3)){% endif %}.
 
 $$\mathbb P(\lvert Y-\mathbb E[Y]\lvert\ge\varepsilon)\le\frac{\text{var}(Y)}{\varepsilon^2}$$
 
@@ -109,9 +109,9 @@ Formally, the CLT states that if $$X_i\overset{i.i.d.}{\sim}\mathcal P$$, with $
 
 |Query|Application|
 |-|:-:|
-|Find $$\mathbb P(S_n\le a)$$|$$\Phi(\frac{a-n\mu_X}{\sqrt n\sigma})$$|
-|Find $${\color{red} a}$$ s.t. $$\mathbb P(S_n\le{\color{red}a})=b$$|$$\displaystyle\frac{ {\color{red}a}-n\mu_X}{\sqrt n\sigma}=q_b$$, where $$\Phi(q_b)=b$$|
-|Find $${\color{red} n}$$ s.t. $$\mathbb P(S_{\color{red}n}\le a)=b$$|$$\displaystyle\frac{a-{\color{red} n}\mu_X}{\sqrt{\color{red} n}\sigma}=q_b$$, where $$\Phi(q_b)=b$${% if jekyll.environment == "development" %}<br>(see [Prob PS8 Q4](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_8/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch12-s7-tab4)){% endif %}|
+|Find $$\mathbb P(S_n\le a)$$|$$\Phi\left(\frac{a-n\mu_X}{\sqrt n\sigma}\right)$$|
+|Find $${\color{red} a}$$ s.t. $$\mathbb P(S_n\le{\color{red}a})=b$$|$$\displaystyle\frac{ {\color{red}a}-n\mu_X}{\sqrt n\sigma}=\Phi^{-1}(b)$$|
+|Find $${\color{red} n}$$ s.t. $$\mathbb P(S_{\color{red}n}\le a)=b$$|$$\displaystyle\frac{a-{\color{red} n}\mu_X}{\sqrt{\color{red} n}\sigma}=\Phi^{-1}(b)$${% if jekyll.environment == "development" %}<br>(see [Prob PS8 Q4](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_8/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch12-s7-tab4)){% endif %}|
 
 An additional application is estimating the probability that a sum of $$n$$ copies of $$X_i$$ stays below given $$a$$. This problem is very similar to describing the probability of $$k$$-th [arrival](/2022/02/08/bernoulli-and-poisson-processes.html#kth_arrival) and is formulated as follows.
 
@@ -127,7 +127,7 @@ $$\sqrt{n}(\bar X_n-\mu_X)\xrightarrow[n\rightarrow\infty]{(d)}\mathcal N(0,\sig
 
 ## CLT and the binomial approximation {#clt_binomial}
 
-Taking into account that $$S_n\sim\text{Bin}(n,p)$$ is equivalent to $$S_n=\sum_{i=0}^n X_i$$, where $$X_i\overset{i.i.d.}{\sim}\text{Ber}(p)$$, one observes that $$\frac{S_n-np}{\sqrt{np(1-p)}}\xrightarrow[n\rightarrow\infty]{(d)}\mathcal N(0,1)$$.
+Taking into account that $$S_n\sim\text{Bin}(n,p)$$ is equivalent to $$S_n=\sum_{i=0}^n X_i$$, where $$X_i\overset{i.i.d.}{\sim}\text{Ber}(p)$$, one observes that $$\frac{S_n-np}{\sqrt{np(1-p)}}\xrightarrow[n\rightarrow\infty]{(d)}\mathcal N(0,1)$${% if jekyll.environment == "development" %} (see [Prob PS8 Q2](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_8/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch12-s7-tab2) and [Stats HW0 Q6](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@prob_linalg_diag/block-v1:MITx+18.6501x+2T2021+type@vertical+block@prob_linalg_diag-tab6)){% endif %}.
 
 Above approximation suffers from Binomial and Normal living in different spaces: where the following holds true in discrete space $$\mathbb P(S_n\lt k+1)=\mathbb P(S_n\le k)$$, it may not be true in a continuous space. [De Moivre and Laplace](https://en.wikipedia.org/wiki/De_Moivre–Laplace_theorem) addressed this with *one-half* correction, and we compute $$\mathbb P(S_n\le k+\frac 1 2)$$ in the continuous space, which should be equivalent to the former two in the discrete space{% if jekyll.environment == "development" %} (see [Prob F Q5](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@sequential_Final_Exam/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch16-s1-tab6)){% endif %}.
 
