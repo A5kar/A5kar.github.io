@@ -22,10 +22,10 @@ Expected value of $$X$$ is defined as $$\mu_X=\mathbb E[X]=\sum_x xp_X(x)$${% if
 |Non negativity|$$X\ge0\implies\mathbb E[X]\ge0$$|
 |Non negativity, with $$X\in\{0,1,\dots,\infty\}$$|$$\displaystyle\mathbb E[X]=\sum_{k=0}^\infty\mathbb P(X>k)$$|
 |[Law Of The Unconscious Statistician](https://en.wikipedia.org/wiki/Law_of_the_unconscious_statistician) (LOTUS)|$$\displaystyle\mathbb E[g(X)]=\sum_x g(x)p_X(x)$${% if jekyll.environment == "development" %}<br>(see [Prob L5 Q19](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__5_Probability_mass_functions_and_expectations/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s2-tab19)){% endif %}|
-|Indicator, $$g(X)=\begin{cases}1&\text{$A$ occurs}\\0&\text{otherwise}\end{cases}$$|$$\mathbb E[I_A]=\mathbb P(A)$$|
+|Indicator, $$\mathbb 1_A=\begin{cases}1&\text{event $A$ occurs}\\0&\text{otherwise}\end{cases}$$|$$\mathbb E[\mathbb 1_A]=\mathbb P(A)$$|
 |Linearity|$$E[aX+b]=a\mathbb E[X]+b$${% if jekyll.environment == "development" %}<br>(see [Prob L5 Q21](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__5_Probability_mass_functions_and_expectations/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s2-tab21), [Prob L6 Q17](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__6_Variance__Conditioning_on_an_event__Multiple_r_v_s/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s3-tab17) and [Prob L6 Q18](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__6_Variance__Conditioning_on_an_event__Multiple_r_v_s/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s3-tab18)){% endif %}|
 
-Observe that where $$I_{A\cap B}=I_A\cdot I_B\in\{0,1\}$$ is still an indicator r.v., $$I=I_A+I_B\in\{0,1,2\}$$ is not{% if jekyll.environment == "development" %} (see [Prob L5 Q8](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__5_Probability_mass_functions_and_expectations/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s2-tab8)){% endif %}. In this case, $$I_{A\cup B}=I_A+I_B-I_AI_B$$, given by the [inclusion-exclusion](/2022/01/03/probability-models-and-axioms.html#axioms) formula.
+Observe that where $$\mathbb 1_{A\cap B}=\mathbb 1_A\cdot\mathbb 1_B\in\{0,1\}$$ is still an indicator r.v., $$\mathbb 1_A+\mathbb 1_B\in\{0,1,2\}$$ is not{% if jekyll.environment == "development" %} (see [Prob L5 Q8](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__5_Probability_mass_functions_and_expectations/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s2-tab8)){% endif %}. In this case, $$\mathbb 1_{A\cup B}=\mathbb 1_A+\mathbb 1_B-\mathbb 1_A\mathbb 1_B$$, given by the [inclusion-exclusion](/2022/01/03/probability-models-and-axioms.html#axioms) formula.
 
 ## Variance {#variance}
 
@@ -36,31 +36,31 @@ Defined as $$\sigma_X^2=\text{var}(X)=\mathbb E[(X-\mathbb E[X])^2]$$, variance 
 |Non negativity (*zero* only for constants)|$$\text{var}(X)\ge0$$|
 |Equivalency|$$\text{var}(X)=\mathbb E[X^2]-(\mathbb E[X])^2$${% if jekyll.environment == "development" %}<br>(see [Prob L6 Q8](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__6_Variance__Conditioning_on_an_event__Multiple_r_v_s/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s3-tab8), [Prob PS4 Q4](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_4/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s7-tab5) and [Prob MT1 Q5](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@sequential_Exam_1/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch7-s1-tab6)){% endif %}|
 
-From the above, we see that $$(\mathbb E[X])^2\le\mathbb E[X^2]$${% if jekyll.environment == "development" %} (see [Prob L6 Q4](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__6_Variance__Conditioning_on_an_event__Multiple_r_v_s/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s3-tab4)){% endif %}. A more general concept is known as [Jensens's inequality](/2022/02/21/introduction-to-statistics.html#basic_inequalities).
+From the above, we see that $$(\mathbb E[X])^2\le\mathbb E[X^2]$${% if jekyll.environment == "development" %} (see [Prob L6 Q4](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__6_Variance__Conditioning_on_an_event__Multiple_r_v_s/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s3-tab4)){% endif %}. A more general concept is known as [Jensens's inequality](/2022/02/21/introduction-to-statistics.html#basic).
 
-For any bounded r.v. $$X$$, that is $$a\le X\le b$$, the variances is also bounded $$\text{var}(X)\le\frac{(b-a)^2}{4}$$. The rationale behind is that the *maximum* dispersion is when $$\mathbb P(X=a)=\mathbb P(X=b)$$, or equivalently $$X=a+(b-a)Y$$, where $$Y\sim\text{Ber}(\frac 1 2)$$.
+For any bounded r.v. $$X$$, that is $$a\le X\le b$$, the variances is also bounded $$\text{var}(X)\le\frac{1}{4}(b-a)^2$$. The rationale behind is that the *maximum* dispersion is when $$\mathbb P(X=a)=\mathbb P(X=b)$$, or equivalently $$X=a+(b-a)Y$$, where $$Y\sim\text{Ber}(\frac 1 2)$$.
 
-## Basic discrete r.v. distributions {#basic_discrete_distributions}
+## Basic discrete r.v. distributions {#basic}
 
 |r.v.|PMF<br>$$p_X(x)$$|Expectation<br>$$\mu_X=\mathbb E[X]$$|Variance<br>$$\sigma_X^2=\text{var}(X)$$|
 |-|:-:|:-:|:-:|:-:|
-|Bernoulli<br>$$\text{Ber}(p)$$|$$\begin{cases}p^x(1-p)^{1-x}&x\in\{0,1\}\\0&\text{otherwise}\end{cases}$$|$$p$$|$$p(1-p)$$|
-|Binomial<br>$$\text{Bin}(n,p)$$|$$\begin{cases}\displaystyle{n\choose x}p^x(1-p)^{n-x}&x\in\mathbb Z_{\ge0}\\0&\text{otherwise}\end{cases}$${% if jekyll.environment == "development" %}<br>(see [Prob L5 Q11](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__5_Probability_mass_functions_and_expectations/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s2-tab11)){% endif %}|$$np$$|$$np(1-p)$$|
-|Uniform<br>$$\text{Unif}(a,b)$$|$$\begin{cases}\displaystyle\frac{1}{n+1}&a\le x\le b\\0&\text{otherwise}\end{cases}$$<br>for simplicity, $$n=b-a$$|$$\displaystyle a+\frac{n}{2}$$|$$\displaystyle\frac{1}{12}n(n+2)$$|
+|Bernoulli<br>$$\text{Ber}(p)$$ or $$\text{Bin}(1,p)$$|$$\begin{cases}p^x(1-p)^{1-x}&x\in\{0,1\}\\0&\text{otherwise}\end{cases}$$|$$p$$|$$p(1-p)$$|
+|Binomial<br>$$\text{Bin}(n,p)$$|$$\begin{cases}\displaystyle{n\choose x}p^x(1-p)^{n-x}&x\in\{0,1,\dots,n\}\\0&\text{otherwise}\end{cases}$${% if jekyll.environment == "development" %}<br>(see [Prob L5 Q11](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__5_Probability_mass_functions_and_expectations/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s2-tab11)){% endif %}|$$np$$|$$np(1-p)$$|
+|Geometric<br>$$\text{Geom}(p)$$|$$\begin{cases}(1-p)^{x-1}p&\mathbb Z_{\ge1}\\0&\text{otherwise}\end{cases}$$|$$\displaystyle\frac{1}{p}$${% if jekyll.environment == "development" %}<br>(see [Prob MT1 Q3](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@sequential_Exam_1/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch7-s1-tab4)){% endif %}|$$\displaystyle\frac{1-p}{p^2}$$|
+|Pascal<br>$$\text{NBin}(k,p)$$|$$\begin{cases}\displaystyle{x-1\choose k-1}p^k(1-p)^{x-k}&\mathbb Z_{\ge k}\\0&\text{otherwise}\end{cases}$$|$$\displaystyle k\frac{1}{p}$$|$$\displaystyle k\frac{(1-p)}{p^2}$$|
+|Poisson<br>$$\displaystyle\text{Pois}(\lambda)$$|$$\begin{cases}e^{-\lambda}\displaystyle\frac{\lambda^x}{x!}&\mathbb Z_{\ge0}\\0&\text{otherwise}\end{cases}$$|$$\lambda$$|$$\lambda$$|
+|Uniform<br>$$\text{Unif}(a,b)$$|$$\begin{cases}\displaystyle\frac{1}{n}&x\in\{a,a+1,\dots,b-1,b\}\\0&\text{otherwise}\end{cases}$$<br>where $$n=b-a+1$$|$$\displaystyle\frac{a+b}{2}$$|$$\displaystyle\frac{1}{12}(n^2-1)$$|
 |Constant<br>$$\text{Unif}(c,c)$$|$$\begin{cases}1&\text{if $x=c$}\\0&\text{otherwise}\end{cases}$$|$$c$$|$$0$$|
-|Geometric<br>$$\text{Geom}(p)$$|$$\begin{cases}(1-p)^{x-1}p&x\in\mathbb Z_{\ge1}\\0&\text{otherwise}\end{cases}$$|$$\displaystyle\frac{1}{p}$${% if jekyll.environment == "development" %}<br>(see [Prob MT1 Q3](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@sequential_Exam_1/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch7-s1-tab4)){% endif %}|$$\displaystyle\frac{1-p}{p^2}$$|
-|Pascal<br>$$\text{NBin}(k,p)$$|$$\begin{cases}\displaystyle{x-1\choose k-1}p^k(1-p)^{x-k}&x\in\mathbb Z_{\ge k}\\0&\text{otherwise}\end{cases}$$|$$\displaystyle k\frac{1}{p}$$|$$\displaystyle k\frac{(1-p)}{p^2}$$|
-|Poisson<br>$$\displaystyle\text{Pois}(\lambda)$$|$$\begin{cases}e^{-\lambda}\displaystyle\frac{\lambda^x}{x!}&x\in\mathbb Z_{\ge0}\\0&\text{otherwise}\end{cases}$$|$$\lambda$$|$$\lambda$$|
 
 Second moment of $$X$$ can be derived as $$\mathbb E[X^2]=\text{var}(X)+(\mathbb E[X])^2=\sigma_X^2+\mu_X^2$$. As for Bernoulli, bear in mind that $$\mathbb E[X^k]=p$$, where $$k=1,2\dots$$
 
-Computing expectation and variance for Pascal r.v. (a.k.a. negative binomial), is easier if we [assume](/2022/02/08/bernoulli-and-poisson-processes.html#kth_arrival) $$X=\sum_{i=1}^k X_i$$, with $$X_i\sim\text{Geom}(p)$$, in which case $$\mathbb E[X]=k\mathbb E[X_i]$$ and $$\text{var}(X)=k\text{var}(X_i)$$.
+Computing expectation and variance for Pascal r.v. (a.k.a. negative binomial) is easier if we [assume](/2022/02/08/bernoulli-and-poisson-processes.html#kth_arrival) $$X=\sum_{i=1}^k X_i$$, with $$X_i\sim\text{Geom}(p)$$, in which case $$\mathbb E[X]=k\mathbb E[X_i]$$ and $$\text{var}(X)=k\text{var}(X_i)$$.
 
 As for Poisson r.v., its PMF can be computed as Binomial with $$n\rightarrow\infty$$ and $$\lambda=np$$.
 
 $$\displaystyle p_X(k)=\lim_{n\rightarrow\infty}{n\choose k}\left(\frac{\lambda}{n}\right)^k\left(1-\frac{\lambda}{n}\right)^{n-k}=e^{-\lambda}\frac{\lambda^k}{k!}$$
 
-Accordingly, derivation of $$\mathbb E[X]=np=\lambda$$ and $$\text{var}(X)=np(1-p)=\lambda-\frac{\lambda^2}{n}\approx\lambda$$ is immediate.
+Accordingly, derivation of $$\mathbb E[X]=np=\lambda$$ and $$\text{var}(X)=np(1-p)=\lambda-\frac{\lambda^2}{n}\rightarrow\lambda$$ is immediate.
 
 Refer to [back-up](/2022/01/08/discrete-random-variables.html#cdf) for CDF of the above basic distributions and if you are curious about distributions and want to experiment with various parameters, check out this [great resource](https://share.streamlit.io/kaykozaronek/distributed/main/app.py) built by a fellow edX learner!
 
@@ -130,7 +130,8 @@ In deriving the various relations, it may be useful bearing in mind the followin
 |$$\displaystyle s_n=\prod_{i=1}^n a_i$$|$$s_n={\bar a}^n$$, with $$\displaystyle\bar a=\sqrt[n]{\prod_{i=1}^n a_i}$$ geometric mean|
 |$$\displaystyle s_n=\sum_{i=1}^n\frac{1}{a_i}$$|$$s_n=\frac{n}{\bar a}$$, with $$\displaystyle\bar a=\frac{n}{\sum_{i=1}^n \frac{1}{a_i}}$$ harmonic mean|
 |$$\displaystyle\sum_{k=1}^nk$$|$$\displaystyle\frac{k(k+1)}{2}$$|
-|$$\displaystyle\sum_{k=1}^nk$$|$$\displaystyle\frac{k(k+1)(2k+1)}{6}$$|
+|$$\displaystyle\sum_{k=1}^nk^2$$|$$\displaystyle\frac{k(k+1)(2k+1)}{6}$$|
+|$$\displaystyle\sum_{k=0}^\infty\frac{\lambda^k}{k!}$$|$$e^\lambda$${% if jekyll.environment == "development" %}<br>(see [Stats HW0 Q2](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@prob_linalg_diag/block-v1:MITx+18.6501x+2T2021+type@vertical+block@prob_linalg_diag-tab2)){% endif %}|
 |$$(X_1+\dots+X_n)^2$$|$$\displaystyle\underbrace{\sum_{i=1}^n X^2}_\text{$n$ terms}+\underbrace{\sum_{i\neq j}X_iX_j}_\text{$n^2-n$ terms}$$|
 
 ## CDF of basic discrete r.v. distributions {#cdf}
@@ -139,7 +140,7 @@ In deriving the various relations, it may be useful bearing in mind the followin
 |-|:-:|
 |Bernoulli<br>$$\text{Ber}(p)$$|$$\begin{cases}0&x\lt 0\\1-p&0\le x\lt1\\1& x\ge 1\end{cases}$$|
 |Binomial<br>$$\text{Bin}(n,p)$$|$$\begin{cases}0&x\lt 0\\\displaystyle\sum_{k=0}^{\lfloor x\rfloor}{n\choose k}p^k(1-p)^{n-k}&0\le x\lt1\\1& x\ge n\end{cases}$$|
-|Uniform<br>$$\text{Unif}(a,b)$$|$$\begin{cases}0&x\lt a\\\displaystyle\frac{\lfloor x\rfloor-a+1}{b-a+1}&a\le x\lt b\\1& x\ge b\end{cases}$$|
+|Uniform<br>$$\text{Unif}(a,b)$$|$$\begin{cases}0&x\lt a\\\displaystyle\frac{\lfloor x\rfloor-a+1}{n}&a\le x\lt b\\1& x\ge b\end{cases}$$<br>where $$n=b-a+1$$|
 |Constant<br>$$\text{Unif}(c,c)$$|$$\begin{cases}0&x\lt c\\1& x\ge c\end{cases}$$|
 |Geometric<br>$$\text{Geom}(p)$$|$$\begin{cases}0&x\lt 1\\\displaystyle 1-(1-p)^{\lfloor x\rfloor}&x\ge1\end{cases}$$|
 |Pascal<br>$$\text{NBin}(k,p)$$|$$\begin{cases}0&x\lt 0\\\displaystyle\sum_{n=k}^{\lfloor x\rfloor}{n-1\choose k-1}p^k(1-p)^{n-k}&x\ge0\end{cases}$$|

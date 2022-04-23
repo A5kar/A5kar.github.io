@@ -15,13 +15,13 @@ Accordingly, where **probability** studies randomness (a way of modeling lack of
 
 
 
-## Basic inequalities {#basic_inequalities}
+## Basic inequalities {#basic}
 
 Fundamental results in statistics are derived from certain inequalities, which attempt to explain probabilities of "*extreme events*", using only a bit of information about the underlying distribution (usually expectation and variance).
 
-From the intuition that "*if $$X\ge0$$ and $$\mathbb E[X]$$ is small, then $$X$$ is unlikely to be large*", we derive the **Markov's inequality** which can be derived from observing that $$\mathbb E[X]\ge\int_{a}^\infty a f_X(x)dx$$.
+From the intuition that "*if $$X\ge0$$ and $$\mathbb E[X]$$ is small, then $$X$$ is unlikely to be large*", we derive the **Markov's inequality** which can be derived from observing that $$\mathbb E[X]\ge\int_{\varepsilon}^\infty\varepsilon f_X(x)dx$$.
 
-$$\mathbb P(X\ge a)\le\frac{\mathbb E[X]}{a}, a>0$$
+$$\mathbb P(X\ge\varepsilon)\le\frac{\mathbb E[X]}{\varepsilon},\varepsilon>0$$
 
 In the relation above, $$X$$ indicates *any* r.v. Hence, if $$g(X)$$ is another, non-negative r.v., an analogous relation can be derived in terms of $$\mathbb E[g(X)]$${% if jekyll.environment == "development" %} (see [Prob L18 Q3](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__18_Inequalities__convergence__and_the_Weak_Law_of_Large_Numbers/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch12-s2-tab3)){% endif %}.
 
@@ -29,7 +29,7 @@ Another intuition, "*if the variance is small, then $$X$$ is unlikely to be far 
 
 $$\mathbb P(\lvert Y-\mathbb E[Y]\lvert\ge\varepsilon)\le\frac{\text{var}(Y)}{\varepsilon^2}$$
 
-One may be tempted to think that Chebyshev's inequality is *always* tighter than Markov's inequality; but this is not true{% if jekyll.environment == "development" %} (see [Prob L18 Q6](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__18_Inequalities__convergence__and_the_Weak_Law_of_Large_Numbers/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch12-s2-tab6)){% endif %} and one should evaluate on a case-by-case basis. In general, Markov's and Chebyshev's inequalities are too conservative and their importance is mainly due to derivation of other, significantly tigher (exponentially decaying) inequalities.
+One may be tempted to think that Chebyshev's inequality is *always* tighter than Markov's inequality; but this is not true{% if jekyll.environment == "development" %} (see [Prob L18 Q6](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__18_Inequalities__convergence__and_the_Weak_Law_of_Large_Numbers/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch12-s2-tab6)){% endif %} and one should evaluate on a case-by-case basis. In general, Markov's and Chebyshev's inequalities are too conservative, but are important to prove other claims, including derivation of significantly tigher (exponentially decaying) inequalities.
 
 Finally, let $$f(\cdot)$$ is a [convex](https://en.wikipedia.org/wiki/Convex_function) and [differentiable](https://en.wikipedia.org/wiki/Differentiable_function) function. In such case, for any $$a,b\in\mathbb R$$ and $$0\le p\le1$$, we have that $$f(a+(1-p)b)\le pf(a)+(1-p)f(b)$$, and that $$f'(c)(x-c)+f(c)\le f(x)$$, where $$c\in\mathbb R$$ is a constant. If we replace $$x=X$$, $$c=\mathbb E[X]$$, and apply expectation on both sides of inequality, we obtain the **Jensen's inequality**.
 
@@ -61,19 +61,24 @@ $$\lim_{n\rightarrow\infty}\mathbb P(\lvert\bar X_n-\mu\rvert\ge\varepsilon)\le\
 
 Worth mentioning that according to the strong law of large numbers (SLLN), convergence of the sample mean holds even under a stronger notion of convergence, known as convergence almost surely (or with certain probability), or $$\mathbb P(\lim_{n\rightarrow\infty}\bar X_n=\mu)=1$${% if jekyll.environment == "development" %} (see [Stats L2 Q7](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u1s2_probredux/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u1s2_probredux-tab7)){% endif %}.
 
-## Types of convergences
+## Types of convergences {#types_of_convergences}
 
 Denoting $$T_n$$ a sequence of r.v. and $$T$$ a r.v. (which can also be deterministic), we define the following three convergences.
 
 |Convergence|Notation|Requirement|
 |-|:-:|:-:|
-|Almost surely|$$\displaystyle T_n\xrightarrow[n\rightarrow\infty]{a.s.}T$$|$$\mathbb P(\{\omega:T_n(\omega)\xrightarrow[n\rightarrow\infty]{}T(\omega)\})=1$$|
-|In probability|$$\displaystyle T_n\xrightarrow[n\rightarrow\infty]{\mathbb P}T$$|$$\mathbb P(\lvert T_n-T\rvert\ge\varepsilon)\xrightarrow[n\rightarrow\infty]{}0,\forall\varepsilon\gt0$${% if jekyll.environment == "development" %}<br>(see [Prob PS8 Q1](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_8/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch12-s7-tab1)){% endif %}|
-|In distribution|$$\displaystyle T_n\xrightarrow[n\rightarrow\infty]{(d)}T$$|$$\mathbb E[f(T_n)]\xrightarrow[n\rightarrow\infty]{}\mathbb E[f(T)],\forall f$$ continuous and bounded<br>or, equivalently<br>$$F_{T_n}(x)\xrightarrow[n\rightarrow\infty]{}F_T(x)$$, $$\forall x$$ at which $$F_T(x)$$ is continuous|
+|**Almost surely**|$$\displaystyle T_n\xrightarrow[n\rightarrow\infty]{a.s.}T$$|$$\mathbb P(\{\omega:T_n(\omega)\xrightarrow[n\rightarrow\infty]{}T(\omega)\})=1$$|
+|**In probability**|$$\displaystyle T_n\xrightarrow[n\rightarrow\infty]{\mathbb P}T$$|$$\mathbb P(\lvert T_n-T\rvert\ge\varepsilon)\xrightarrow[n\rightarrow\infty]{}0,\forall\varepsilon\gt0$${% if jekyll.environment == "development" %}<br>(see [Prob PS8 Q1](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_8/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch12-s7-tab1)){% endif %}|
+|**In distribution**|$$\displaystyle T_n\xrightarrow[n\rightarrow\infty]{(d)}T$$|$$\mathbb E[f(T_n)]\xrightarrow[n\rightarrow\infty]{}\mathbb E[f(T)],\forall f$$ continuous and bounded<br>or, equivalently<br>$$F_{T_n}(x)\xrightarrow[n\rightarrow\infty]{}F_T(x)$$, $$\forall x$$ at which $$F_T(x)$$ is continuous|
+|**In $$L^r$$ norm**|$$T_n\xrightarrow[n\rightarrow\infty]{L^r}$$|$$\displaystyle\lim_{n\rightarrow\infty}\mathbb E[\lvert T_n-T\rvert^r]=0$$|
 
-Above convergences are in the decreasing strength order; this means that almost surely convergence implies convergence in probability, which in turn implies convergence in distribution.
+For ease of notation, note that $$T_n\xrightarrow[n\rightarrow\infty]{a.s./\mathbb P/(d)/L^r}T$$ may also be written as $$T_n\xrightarrow{a.s./\mathbb P/(d)/L^r}T$$. Follows an overview of mutual implications.
 
-In general, if $$\mathbb E[T_n]\xrightarrow[n\rightarrow\infty]{}T$$ and $$\text{var}(T_n)\xrightarrow[n\rightarrow\infty]{}0$$, then $$T_n\xrightarrow[n\rightarrow\infty]{\mathbb P}T$$. The converse, however, is not true and convergence in probability of $$T_n$$ **does not imply** that $$\mathbb E[T_n]$$ converges{% if jekyll.environment == "development" %} (see [Stats L2 Q7](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u1s2_probredux/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u1s2_probredux-tab7)){% endif %}.
+$$\begin{align}
+T_n\xrightarrow{L^{s>r}}T\implies T_n&\xrightarrow{L^{r\ge1}}T\\
+&\Downarrow\\
+T_n\xrightarrow{a.s.}T\implies T_n&\xrightarrow{\mathbb P}T\implies T_n\xrightarrow{(d)}T
+\end{align}$$
 
 Difference between "*almost surely convergence*" and "*convergence in probability*" is subtle, and is not supposed to be obvious. Eventually, one could refer to a different order of appearance among the limit and probability. Think of the sample mean and rearrange the above requirements as follows.
 
@@ -81,31 +86,33 @@ $$\begin{cases}WLLN:&\displaystyle{\color{red}\lim_{n\rightarrow\infty}}\mathbb 
 
 As we increase $$n$$: (a) the sample mean $$\bar X_n$$ *concentrates* arbitrarily close around the true mean $$\mu$$ in the WLLN; and (b) with certainty, the difference between the two vanishes in the SLLN.
 
+Convergence in $$L^r$$ norm for any $$r\ge1$$ implies $$T_n\xrightarrow{\mathbb P}T$$, as $$\mathbb P(\lvert T_n-T\rvert\ge\varepsilon)\le\frac{\mathbb E[\lvert T_n-T\rvert]}{\varepsilon}\rightarrow0$$. So, $$\mathbb E[T_n]\rightarrow t$$ implies that $$T_n\xrightarrow{\mathbb P}t$$; the converse, however, **is not necessarily true**{% if jekyll.environment == "development" %} (see [Stats L2 Q7](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u1s2_probredux/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u1s2_probredux-tab7)){% endif %}.
+
 ## Convergence properties
 
-According to the [continuous mapping theorem](https://en.wikipedia.org/wiki/Continuous_mapping_theorem) (CMP), for $$X_n\xrightarrow[n\rightarrow\infty]{a.s./\mathbb P/(d)}X$$ and a continuous $$f(\cdot)$$, we have that $$f(X_n)\xrightarrow[n\rightarrow\infty]{a.s./\mathbb P/(d)}f(X)$$. Note that CMP can be proved even when $$X_n$$ and $$X$$ are vectors.
+According to the [continuous mapping theorem](https://en.wikipedia.org/wiki/Continuous_mapping_theorem) (CMT), for $$X_n\xrightarrow{a.s./\mathbb P/(d)}X$$ and a continuous $$f(\cdot)$$, we have that $$f(X_n)\xrightarrow{a.s./\mathbb P/(d)}f(X)$$. Note that CMT can be proved even when $$X_n$$ and $$X$$ are vectors.
 
-In particular, if we consider a random vector $$(X_n,Y_n)\xrightarrow[n\rightarrow\infty]{a.s./\mathbb P}(X,Y)$$, and a continuous function $$f(X_n,Y_n)$$, we can derive the following relationships{% if jekyll.environment == "development" %} (see [Stats L2 Q8](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u1s2_probredux/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u1s2_probredux-tab8)){% endif %}.
-
-|$$f(\cdot)$$|Property|
-|:-:|:-:|
-|Addition|$$X_n+Y_n\xrightarrow[n\rightarrow\infty]{a.s./\mathbb P}X+Y$$|
-|Multiplication|$$X_nY_n\xrightarrow[n\rightarrow\infty]{a.s./\mathbb P}XY$$|
-|Division|$$\displaystyle\frac{X_n}{Y_n}\xrightarrow[n\rightarrow\infty]{a.s./\mathbb P}\frac X Y$$, if $$Y_n\neq0$$|
-
-Some partial results can also apply for convergence in distribution. Thanks to [Slutsky's theorem](https://en.wikipedia.org/wiki/Slutsky%27s_theorem), we have that if $$X_n\xrightarrow[n\rightarrow\infty]{(d)}X$$ and $$Y_n\xrightarrow[n\rightarrow\infty]{a.s./\mathbb P}y$$, where $$y\in\mathbb R$$, then $$(X_n,Y_n)\xrightarrow[n\rightarrow\infty]{(d)}(X,y)$$. Next we apply CMP, again relying on a continuous $$f(\cdot)$$.
+In particular, if we consider a random vector $$(X_n,Y_n)\xrightarrow{a.s./\mathbb P}(X,Y)$$, and a continuous function $$f(X_n,Y_n)$$, we can derive the following relationships{% if jekyll.environment == "development" %} (see [Stats L2 Q8](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u1s2_probredux/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u1s2_probredux-tab8)){% endif %}.
 
 |$$f(\cdot)$$|Property|
 |:-:|:-:|
-|Addition|$$X_n+Y_n\xrightarrow[n\rightarrow\infty]{(d)}X+y$$|
-|Multiplication|$$X_nY_n\xrightarrow[n\rightarrow\infty]{(d)}Xy$$|
-|Division|$$\displaystyle\frac{X_n}{Y_n}\xrightarrow[n\rightarrow\infty]{(d)}\frac X y$$, if $$y\neq 0$$|
+|Addition|$$X_n+Y_n\xrightarrow{a.s./\mathbb P}X+Y$$|
+|Multiplication|$$X_nY_n\xrightarrow{a.s./\mathbb P}XY$$|
+|Division|$$\displaystyle\frac{X_n}{Y_n}\xrightarrow{a.s./\mathbb P}\frac X Y$$, if $$Y_n\neq0$$|
+
+Some partial results can also apply for convergence in distribution. Thanks to [Slutsky's theorem](https://en.wikipedia.org/wiki/Slutsky%27s_theorem), we have that if $$X_n\xrightarrow{(d)}X$$ and $$Y_n\xrightarrow{a.s./\mathbb P}y$$, where $$y\in\mathbb R$$, then $$(X_n,Y_n)\xrightarrow{(d)}(X,y)$$. Next we apply CMT, again relying on a continuous $$f(\cdot)$${% if jekyll.environment == "development" %} (see [Stats HW1 Q7](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@hw1_u1intro/block-v1:MITx+18.6501x+2T2021+type@vertical+block@hw1_u1intro-tab7)){% endif %}.
+
+|$$f(\cdot)$$|Property|
+|:-:|:-:|
+|Addition|$$X_n+Y_n\xrightarrow{(d)}X+y$$|
+|Multiplication|$$X_nY_n\xrightarrow{(d)}Xy$$|
+|Division|$$\displaystyle\frac{X_n}{Y_n}\xrightarrow{(d)}\frac X y$$, if $$y\neq 0$$|
 
 ## Central Limit Theorem {#clt}
 
 The Central Limit Theorem (CLT) states that sum of i.i.d. r.v. tends towards a [Normal](/2022/01/13/continuous-random-variables.html#normal) distribution, as the sample size gets larger and regardless of the population's distribution. The remarkable thing is that not only this convergence (in distribution) is irrespective of the underlying distribution, but also that the sample size can be *moderate* (e.g. above 30), especially when the underlying distribution is unimodal and symmetric.
 
-Formally, the CLT states that if $$X_i\overset{i.i.d.}{\sim}\mathcal P$$, with $$\mu_X=\mathbb E[X_i]$$ and $$\sigma_X^2=\text{var}(X_i)$$, then for the sum $$S_n=\sum_{i=1}^n X_i$$ we have that $$S_n\xrightarrow[n\rightarrow\infty]{(d)}\mathcal N(n\mu_X,n\sigma_X^2)$$, or $$Z_n=\frac{S_n-n\mu_X}{\sqrt n\sigma_X}\xrightarrow[n\rightarrow\infty]{(d)}\mathcal N(0,1)$${% if jekyll.environment == "development" %} (see [Prob L19 Q3](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__19_The_Central_Limit_Theorem__CLT_/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch12-s3-tab3) and [Prob PS9 Q2](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_8/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch12-s7-tab2)){% endif %}. This approximation allows us performing the following queries{% if jekyll.environment == "development" %} (see [Prob PS9 Q3](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_8/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch12-s7-tab3)){% endif %}.
+Formally, the CLT states that if $$X_i\overset{i.i.d.}{\sim}\mathcal P$$, with $$\mu_X=\mathbb E[X_i]$$ and $$\sigma_X^2=\text{var}(X_i)$$, then for the sum $$S_n=\sum_{i=1}^n X_i$$ we have that $$S_n\xrightarrow{(d)}\mathcal N(n\mu_X,n\sigma_X^2)$$, or $$Z_n=\frac{S_n-n\mu_X}{\sqrt n\sigma_X}\xrightarrow{(d)}\mathcal N(0,1)$${% if jekyll.environment == "development" %} (see [Prob L19 Q3](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__19_The_Central_Limit_Theorem__CLT_/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch12-s3-tab3) and [Prob PS9 Q2](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_8/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch12-s7-tab2)){% endif %}. This approximation allows us performing the following queries{% if jekyll.environment == "development" %} (see [Prob PS9 Q3](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_8/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch12-s7-tab3)){% endif %}.
 
 |Query|Application|
 |-|:-:|
@@ -117,23 +124,23 @@ An additional application is estimating the probability that a sum of $$n$$ copi
 
 Assume $$N$$ is a r.v. describing the first value for which $$S_N$$ **exceeds** $$a$$. At the same time, $$N-1$$ is a r.v. describing the last value for which $$S_{N-1}$$ is **below** $$a$$. Observing that $$\mathbb P(N>n)=\mathbb P(N-1\ge n)$$ we can exploit the arrivals equivalent formulation and derive $$\mathbb P(N>n)=\mathbb P(S_n\le a)$${% if jekyll.environment == "development" %} (see [Prob L19 Q8](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__19_The_Central_Limit_Theorem__CLT_/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch12-s3-tab8)){% endif %}.
 
-## CLT and the arithmetic mean
+## CLT and the sample mean
 
-Arithmetic average is a *consistent* estimator of the expectation ([WLLN](/2022/02/21/introduction-to-statistics.html#wlln)) and we know its distribution ([CLT](/2022/02/21/introduction-to-statistics.html#clt)). In particular, $$\bar X_n\xrightarrow[n\rightarrow\infty]{(d)}\mathcal N(\mu_X,\frac{\sigma_X^2}{n})$${% if jekyll.environment == "development" %} (see [Stats L2 Q2](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u1s2_probredux/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u1s2_probredux-tab2)){% endif %} can be conveniently rewritten in the following two equivalent forms, thanks to standardization{% if jekyll.environment == "development" %} (see [Stats L2 Q5](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u1s2_probredux/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u1s2_probredux-tab5)){% endif %}.
+Sample mean is a *consistent* estimator of the expectation ([WLLN](/2022/02/21/introduction-to-statistics.html#wlln)) and we know its distribution ([CLT](/2022/02/21/introduction-to-statistics.html#clt)). In particular, $$\bar X_n\xrightarrow{(d)}\mathcal N(\mu_X,\frac{\sigma_X^2}{n})$${% if jekyll.environment == "development" %} (see [Stats L2 Q2](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u1s2_probredux/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u1s2_probredux-tab2)){% endif %} can be conveniently rewritten in the following two equivalent forms, thanks to standardization{% if jekyll.environment == "development" %} (see [Stats L2 Q5](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u1s2_probredux/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u1s2_probredux-tab5)){% endif %}.
 
-$$\sqrt{n}\frac{\bar X_n-\mu_X}{\sigma_X}\xrightarrow[n\rightarrow\infty]{(d)}\mathcal N(0,1)$$
+$$\sqrt{n}\frac{\bar X_n-\mu_X}{\sigma_X}\xrightarrow{(d)}\mathcal N(0,1)$$
 
-$$\sqrt{n}(\bar X_n-\mu_X)\xrightarrow[n\rightarrow\infty]{(d)}\mathcal N(0,\sigma_X^2)$$
+$$\sqrt{n}(\bar X_n-\mu_X)\xrightarrow{(d)}\mathcal N(0,\sigma_X^2)$$
 
 ## CLT and the binomial approximation {#clt_binomial}
 
-Taking into account that $$S_n\sim\text{Bin}(n,p)$$ is equivalent to $$S_n=\sum_{i=0}^n X_i$$, where $$X_i\overset{i.i.d.}{\sim}\text{Ber}(p)$$, one observes that $$\frac{S_n-np}{\sqrt{np(1-p)}}\xrightarrow[n\rightarrow\infty]{(d)}\mathcal N(0,1)$${% if jekyll.environment == "development" %} (see [Prob PS8 Q2](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_8/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch12-s7-tab2) and [Stats HW0 Q6](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@prob_linalg_diag/block-v1:MITx+18.6501x+2T2021+type@vertical+block@prob_linalg_diag-tab6)){% endif %}.
+Taking into account that $$S_n\sim\text{Bin}(n,p)$$ is equivalent to $$S_n=\sum_{i=0}^n X_i$$, where $$X_i\overset{i.i.d.}{\sim}\text{Ber}(p)$$, one observes that $$\frac{S_n-np}{\sqrt{np(1-p)}}\xrightarrow{(d)}\mathcal N(0,1)$${% if jekyll.environment == "development" %} (see [Prob PS8 Q2](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_8/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch12-s7-tab2) and [Stats HW0 Q6](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@prob_linalg_diag/block-v1:MITx+18.6501x+2T2021+type@vertical+block@prob_linalg_diag-tab6)){% endif %}.
 
 Above approximation suffers from Binomial and Normal living in different spaces: where the following holds true in discrete space $$\mathbb P(S_n\lt k+1)=\mathbb P(S_n\le k)$$, it may not be true in a continuous space. [De Moivre and Laplace](https://en.wikipedia.org/wiki/De_Moivre–Laplace_theorem) addressed this with *one-half* correction, and we compute $$\mathbb P(S_n\le k+\frac 1 2)$$ in the continuous space, which should be equivalent to the former two in the discrete space{% if jekyll.environment == "development" %} (see [Prob F Q5](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@sequential_Final_Exam/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch16-s1-tab6)){% endif %}.
 
 In particular, De Moivre-Laplace correction can be used to approximate binomial PMF as follows{% if jekyll.environment == "development" %} (see [Prob L19 Q10](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__19_The_Central_Limit_Theorem__CLT_/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch12-s3-tab10)){% endif %}.
 
-$$p_{S_n}(k)=\mathbb P(k-\frac 1 2\le S_n\le k+\frac 1 2)\xrightarrow[n\rightarrow\infty]{(d)}\Phi\left(\frac{k+\frac 1 2-np}{\sqrt{np(1-p)}}\right)-\Phi\left(\frac{k-\frac 1 2-np}{\sqrt{np(1-p)}}\right)$$
+$$p_{S_n}(k)=\mathbb P(k-\frac 1 2\le S_n\le k+\frac 1 2)\xrightarrow{(d)}\Phi\left(\frac{k+\frac 1 2-np}{\sqrt{np(1-p)}}\right)-\Phi\left(\frac{k-\frac 1 2-np}{\sqrt{np(1-p)}}\right)$$
 
 Try it out in R! (scroll down within the frame to see the result)
 
@@ -155,6 +162,14 @@ Go back to the [syllabi breakdown](/2022/01/02/prob-and-stats-syllabi.html).
 
 ## Back-up
 
+## Convergence of a sequence
+
+In this segment it is useful bearing in mind that a [sequence](https://en.wikipedia.org/wiki/Sequence) is an enumerated collection of elements in which repetitions are allowed and order matters (unlike in a set, where repetitions are not allowed and order does not matter). Formally a sequence can be defined as a function from natural numbers (the position of elements in the sequence) to the elements at each position.
+
+A sequence $$x_n$$ is said to [converge](https://en.wikipedia.org/wiki/Limit_of_a_sequence#Formal_definition) to $$x$$ if for any $$\varepsilon>0$$, there exists $$N$$ s.t. $$\forall n\ge N, \lvert x_n-x\rvert\le\varepsilon$$. Common notation to indicate convergence is $$x_n\xrightarrow[n\rightarrow\infty]{}x$$, or simply $$x_n\rightarrow x$$.
+
+Observe that if $$x_n\rightarrow x$$ and $$y_n\rightarrow y$$, then $$x_n+y_n\rightarrow x+y$$. To prove this, assume that $$\exists N,M$$ for which $$\forall n\ge N\implies\lvert x_n-x\rvert\lt\frac\varepsilon2$$ and $$\forall n\ge M\implies\lvert y_n-y\rvert\lt\frac\varepsilon2$$. This means that $$\forall n\ge\max\{N,M\}$$ we have that $$\lvert x_n+y_n-(x+y)\rvert\le\vert x_n-x\rvert+\lvert y_n-y\rvert\lt\varepsilon$$.
+
 ## Hoeffding's lemma {#hoeffding_lemma}
 
 Observe that $$e^{tx}\le\left(\frac{b-x}{b-a}\right)e^{ta}+\left(\frac{x-a}{b-a}\right)e^{tb}$$ due to convexity of the exponential function. If we replace $$x=X$$ and compute exponential on both sides of the inequality we have the following relation.
@@ -174,11 +189,3 @@ $$\mathbb E[e^{tX}]\le e^{\frac 1 8 t^2(b-a)^2}$$
 If we drop our assumption that $$\mathbb E[X]=0$$, the above inequality still holds for the first centered moment.
 
 $$\mathbb E[e^{t(X-\mathbb E[X])}]\le e^{\frac 1 8 t^2(b-a)^2}$$
-
-## Convergence of a sequence
-
-In this segment it is useful bearing in mind that a [sequence](https://en.wikipedia.org/wiki/Sequence) is an enumerated collection of elements in which repetitions are allowed and order matters (unlike in a set, where repetitions are not allowed and order does not matter). Formally a sequence can be defined as a function from natural numbers (the position of elements in the sequence) to the elements at each position.
-
-A sequence $$x_n$$ is said to [converge](https://en.wikipedia.org/wiki/Limit_of_a_sequence#Formal_definition) to $$x$$ if for any $$\varepsilon>0$$, there exists $$N$$ such that for every $$n\ge N$$, we have that $$\lvert x_n-x\rvert\le\varepsilon$$. Common notation to indicate converge is $$x_n\xrightarrow[n\rightarrow\infty]{}x$$, or simply $$x_n\rightarrow x$$.
-
-Observe that if $$x_n\rightarrow x$$ and $$y_n\rightarrow y$$, then $$x_n+y_n\rightarrow x+y$$. To prove this, assume that $$\exists N,M$$ for which $$\forall n\ge N\implies\lvert x_n-x\rvert\lt\frac\varepsilon2$$ and $$\forall n\ge M\implies\lvert y_n-y\rvert\lt\frac\varepsilon2$$. This means that $$\forall n\ge\max\{N,M\}$$ we have that $$\lvert x_n+y_n-(x+y)\rvert\le\vert x_n-x\rvert+\lvert y_n-y\rvert\lt\varepsilon$$.
