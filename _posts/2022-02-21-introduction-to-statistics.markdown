@@ -31,11 +31,11 @@ $$\mathbb P(\lvert Y-\mathbb E[Y]\lvert\ge\varepsilon)\le\frac{\text{var}(Y)}{\v
 
 One may be tempted to think that Chebyshev's inequality is *always* tighter than Markov's inequality; but this is not true{% if jekyll.environment == "development" %} (see [Prob L18 Q6](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__18_Inequalities__convergence__and_the_Weak_Law_of_Large_Numbers/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch12-s2-tab6)){% endif %} and one should evaluate on a case-by-case basis. In general, Markov's and Chebyshev's inequalities are too conservative, but are important to prove other claims, including derivation of significantly tigher (exponentially decaying) inequalities.
 
-Finally, let $$f(\cdot)$$ is a [convex](https://en.wikipedia.org/wiki/Convex_function) and [differentiable](https://en.wikipedia.org/wiki/Differentiable_function) function. In such case, for any $$a,b\in\mathbb R$$ and $$0\le p\le1$$, we have that $$f(a+(1-p)b)\le pf(a)+(1-p)f(b)$$, and that $$f'(c)(x-c)+f(c)\le f(x)$$, where $$c\in\mathbb R$$ is a constant. If we replace $$x=X$$, $$c=\mathbb E[X]$$, and apply expectation on both sides of inequality, we obtain the **Jensen's inequality**.
+Finally, let $$f(\cdot)$$ be a [convex](https://en.wikipedia.org/wiki/Convex_function) and [differentiable](https://en.wikipedia.org/wiki/Differentiable_function) function. Accordingly, for any $$c\in\mathbb R$$ constant, we have that $$f(x)\ge f(c)+f'(c)(x-c)$$. If we replace $$x=X$$, $$c=\mathbb E[X]$$, and apply expectation on both sides of inequality, we obtain the **Jensen's inequality**.
 
-$$\cancelto{0}{f'(\mathbb E[X])(\mathbb E[X]-\mathbb E[X])}+f(\mathbb E[X])\le\mathbb E[f(X)]$$
+$$\mathbb E[f(X)]\ge f(\mathbb E[X])+\cancelto{=0}{f'(\mathbb E[X])(\mathbb E[X]-\mathbb E[X])}$$
 
-Common derivations of the Jensen's inequality include $$(\mathbb E[X])^{2k}\le\mathbb E[X^{2k}]$$ (where $$k=1,2,\dots$$), $$-\ln(\mathbb E[X])\le\mathbb E[-\ln(X)]$$ and $$e^{\mathbb E[X]}\le\mathbb E[e^X]$$.
+Common derivations of the Jensen's inequality include $$\mathbb E[X^{2k}]\ge(\mathbb E[X])^{2k}$$ (where $$k=1,2,\dots$$), $$\mathbb E[-\ln(X)]\ge-\ln(\mathbb E[X])$$ and $$\mathbb E[e^X]\ge e^{\mathbb E[X]}$$.
 
 ## Exponentially decaying inequalities
 
@@ -88,7 +88,7 @@ As we increase $$n$$: (a) the sample mean $$\bar X_n$$ *concentrates* arbitraril
 
 Convergence in $$L^r$$ norm for any $$r\ge1$$ implies $$T_n\xrightarrow{\mathbb P}T$$, as $$\mathbb P(\lvert T_n-T\rvert\ge\varepsilon)\le\frac{\mathbb E[\lvert T_n-T\rvert]}{\varepsilon}\rightarrow0$$. So, $$\mathbb E[T_n]\rightarrow t$$ implies that $$T_n\xrightarrow{\mathbb P}t$$; the converse, however, **is not necessarily true**{% if jekyll.environment == "development" %} (see [Stats L2 Q7](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u1s2_probredux/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u1s2_probredux-tab7)){% endif %}.
 
-## Convergence properties
+## Convergence properties {#properties}
 
 According to the [continuous mapping theorem](https://en.wikipedia.org/wiki/Continuous_mapping_theorem) (CMT), for $$X_n\xrightarrow{a.s./\mathbb P/(d)}X$$ and a continuous $$f(\cdot)$$, we have that $$f(X_n)\xrightarrow{a.s./\mathbb P/(d)}f(X)$$. Note that CMT can be proved even when $$X_n$$ and $$X$$ are vectors.
 
@@ -124,13 +124,24 @@ An additional application is estimating the probability that a sum of $$n$$ copi
 
 Assume $$N$$ is a r.v. describing the first value for which $$S_N$$ **exceeds** $$a$$. At the same time, $$N-1$$ is a r.v. describing the last value for which $$S_{N-1}$$ is **below** $$a$$. Observing that $$\mathbb P(N>n)=\mathbb P(N-1\ge n)$$ we can exploit the arrivals equivalent formulation and derive $$\mathbb P(N>n)=\mathbb P(S_n\le a)$${% if jekyll.environment == "development" %} (see [Prob L19 Q8](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__19_The_Central_Limit_Theorem__CLT_/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch12-s3-tab8)){% endif %}.
 
-## CLT and the sample mean
+## CLT and the sample mean {#clt_mean}
 
 Sample mean is a *consistent* estimator of the expectation ([WLLN](/2022/02/21/introduction-to-statistics.html#wlln)) and we know its distribution ([CLT](/2022/02/21/introduction-to-statistics.html#clt)). In particular, $$\bar X_n\xrightarrow{(d)}\mathcal N(\mu_X,\frac{\sigma_X^2}{n})$${% if jekyll.environment == "development" %} (see [Stats L2 Q2](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u1s2_probredux/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u1s2_probredux-tab2)){% endif %} can be conveniently rewritten in the following two equivalent forms, thanks to standardization{% if jekyll.environment == "development" %} (see [Stats L2 Q5](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u1s2_probredux/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u1s2_probredux-tab5)){% endif %}.
 
-$$\sqrt{n}\frac{\bar X_n-\mu_X}{\sigma_X}\xrightarrow{(d)}\mathcal N(0,1)$$
+$$\begin{align}
+\sqrt{n}(\bar X_n-\mu_X)&\xrightarrow{(d)}\mathcal N(0,\sigma_X^2)\\
+\sqrt{n}\frac{(\bar X_n-\mu_X)}{\sigma_X}&\xrightarrow{(d)}\mathcal N(0,1)
+\end{align}$$
 
-$$\sqrt{n}(\bar X_n-\mu_X)\xrightarrow{(d)}\mathcal N(0,\sigma_X^2)$$
+## Multivariate CLT {#multivariate_clt}
+
+In case of a [random vector](/2022/01/24/further-topics-on-RV.html#covariance_matrix) $$\mathbf X$$, such that $$\boldsymbol\mu_\mathbf X=\mathbb E[\mathbf X]$$ and $$\boldsymbol\Sigma_\mathbf X=\text{cov}(\mathbf X)$$, [WLLT](/2022/02/21/introduction-to-statistics.html#wlln) and [CLT](/2022/02/21/introduction-to-statistics.html#clt) can be generalized to a vector of averages $$\bar{\mathbf X}_n$$ as follows{% if jekyll.environment == "development" %} (see [Stats L10 Q10](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u03s03_methodestimation/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u03s03_methodestimation-tab10)){% endif %}.
+
+$$\begin{align}
+\bar{\mathbf X}_n&\xrightarrow{\mathbb P}\boldsymbol\mu_\mathbf X&\href{/2022/02/21/introduction-to-statistics.html#wlln}{\text{(WLLN)}}\\
+\sqrt{n}(\bar{\mathbf X}_n-\boldsymbol\mu_{\mathbf X})&\xrightarrow{(d)}\mathcal N_d(\mathbf 0,\boldsymbol\Sigma_{\mathbf X})&\href{/2022/02/21/introduction-to-statistics.html#clt}{\text{(CLT)}}\\
+\sqrt{n}\boldsymbol\Sigma_{\mathbf X}^{-\frac 1 2}(\bar{\mathbf X}_n-\boldsymbol\mu_{\mathbf X})&\xrightarrow{(d)}\mathcal N_d(\mathbf 0,\mathbf I_d)
+\end{align}$$
 
 ## CLT and the binomial approximation {#clt_binomial}
 

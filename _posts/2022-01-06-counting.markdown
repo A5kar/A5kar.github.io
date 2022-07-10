@@ -31,12 +31,12 @@ There are $$\frac{n!}{(n-k)!}$$ ways to create a subset of $$k$$ elements out of
 
 ## Binomial probability
 
-Binomial coefficient $${n\choose k}$$ is the basis of the binomial probability. Assume a coin with $$\mathbb P(\text{heads})=p$$, probability of $$k$$ heads in $$n$$ tosses is $$\mathbb P(k\text{ heads})={n\choose k}p^k(1-p)^{n-k}$${% if jekyll.environment == "development" %} (see [Prob L4 Q10](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__4_Counting/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch5-s1-tab10)){% endif %}.
+Binomial coefficient $${k\choose x}$$ is the basis of the binomial probability. Assumimg a coin with $$\mathbb P(\text{heads})=p$$, the probability of $$x$$ heads in $$k$$ tosses is $$\mathbb P(x\text{ heads})={k\choose x}p^x(1-p)^{k-x}$${% if jekyll.environment == "development" %} (see [Prob L4 Q10](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__4_Counting/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch5-s1-tab10)){% endif %}.
 
-- $$p^k$$ is the probability of tossing $$k$$ heads;
-- $$(1-p)^{n-k}$$ is the probability of tossing $$n-k$$ tails;
-- $$p^k(1-p)^{n-k}$$ is the *joint* probability of the above two [independent](/2022/01/05/conditioning-and-independence.html#independence) events; and
-- $${n\choose k}p^k(1-p)^{n-k}$$ is the [additive](/2022/01/03/probability-models-and-axioms.html#axioms) probability of the mutually exclusive events.
+- $$p^x$$ is the probability of tossing $$x$$ heads;
+- $$(1-p)^{k-x}$$ is the probability of tossing $$k-x$$ tails;
+- $$p^x(1-p)^{k-x}$$ is the *joint* probability of the above two [independent](/2022/01/05/conditioning-and-independence.html#independence) events; and
+- $${k\choose x}p^x(1-p)^{k-x}$$ is the [additive](/2022/01/03/probability-models-and-axioms.html#axioms) probability of the mutually exclusive events.
 
 Many problems can be reduced to binomial probability. Start from counting **how may event(s)** are associated with probability $$p$${% if jekyll.environment == "development" %} (see [Prob PS3 Q1(2)](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_3/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch5-s3-tab2) and [Prob PS3 Q3](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_3/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch5-s3-tab3)){% endif %}, as well the event(s) associated with its complement $$1-p$${% if jekyll.environment == "development" %} (see [Prob PS3 Q1](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_3/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch5-s3-tab1) and [Prob PS3 Q1(1)](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_3/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch5-s3-tab2)){% endif %}.
 

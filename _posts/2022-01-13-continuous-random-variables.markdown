@@ -10,7 +10,7 @@ A r.v. $$X$$ is continuous if it can be described by a probability density funct
 - $$f_X(x)>0$$, non-negativity
 - $$\int_{-\infty}^\infty f_X(x)dx=1$$, normalization{% if jekyll.environment == "development" %} (see [Prob L8 Q7](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__8_Probability_density_functions/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch8-s2-tab7)){% endif %}
 
-## Expectation
+## Expectation {#expectation}
 
 Definition does not change with respect to [discrete r.v.](/2022/01/08/discrete-random-variables.html#expectation), except that integral replaces sum. Hence, $$\mu_X=\mathbb E[X]=\int_{-\infty}^\infty xf_X(x)dx$$, with the same assumption that $$\int_{-\infty}^\infty\vert x\rvert f_X(x)dx\le\infty$$.
 
@@ -35,7 +35,7 @@ Exactly same definitions and properties of a [discrete r.v.](/2022/01/08/discret
 |Exponential<br>$$\text{Exp}(\lambda)$${% if jekyll.environment == "development" %}<br>(see [Prob F Q1](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@sequential_Final_Exam/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch16-s1-tab2)){% endif %}|$$\begin{cases}\lambda e^{-\lambda x}&x\ge0\\0&\text{otherwise}\end{cases}$$|$$\displaystyle\frac{1}{\lambda}$$|$$\displaystyle\frac{1}{\lambda^2}$$|
 |Erlang order $$k$$<br>$$\text{Erlang}(k,\lambda)$$|$$\begin{cases}\displaystyle\frac{\lambda^k}{(k-1)!}x^{k-1}e^{-\lambda x}&x\ge0\\0&\text{otherwise}\end{cases}$$|$$\displaystyle k\frac{1}{\lambda}$$|$$\displaystyle k\frac{1}{\lambda^2}$$|
 |Gamma<br>$$\text{Gamma}(\alpha,\beta)$$|$$\begin{cases}\displaystyle\frac{\beta^\alpha}{\Gamma(\alpha)}x^{\alpha-1}e^{-\beta x}&x\ge0\\0&\text{otherwise}\end{cases}$$|$$\displaystyle\frac{\alpha}{\beta}$$|$$\displaystyle\frac{\alpha}{\beta^2}$$|
-|Normal<br>$$\mathcal N(\mu_X,\sigma_X^2)$$|$$\displaystyle\frac{1}{\sqrt{2\pi\sigma_X^2}}\exp\left(-\frac{1}{2\sigma^2}(x-\mu_X)^2\right)$$|$$\mu_X$$|$$\sigma^2$$|
+|Normal<br>$$\mathcal N(\mu_X,\sigma_X^2)$$|$$\displaystyle\frac{1}{\sqrt{2\pi\sigma_X^2}}\exp\left\{-\frac{1}{2\sigma^2}(x-\mu_X)^2\right\}$$|$$\mu_X$$|$$\sigma^2$$|
 
 Analogously to Pascal r.v., computing expectation and variance for Erlang r.v. is easier if we [assume](/2022/02/08/bernoulli-and-poisson-processes.html#kth_arrival) $$X=\sum_{i=1}^k X_i$$, with $$X_i\sim\text{Exp}(\lambda)$$, in which case $$\mathbb E[X]=k\mathbb E[X_i]$$ and $$\text{var}(X)=k\text{var}(X_i)$$. Also, Gamma distribution is an extension of Erlang distribution for $$k\in\mathbb R$$, where $$\Gamma(\alpha)$$ is a [smooth curve](https://en.wikipedia.org/wiki/Gamma_function#Motivation) equal to $$(\alpha-1)!$$, when $$\alpha$$ is a positive integer number.
 
@@ -88,7 +88,7 @@ Probability that $$X$$ will take a value less than $$x$$ is defined as cumulativ
 |Equivalency|$$\mathbb P(a\le X\le b)=F_X(b)-F_X(a)$$|
 |Bounds|$$\displaystyle\lim_{x\rightarrow-\infty} F_X(x)=0,\lim_{x\rightarrow\infty} F_X(x)=1$$|
 
-CDF can be calculated also for joint PMF; in such case $$F_{X,Y}(x,y)=\mathbb P(X\le x, Y\le y)$$, where $$f_{X,Y}(x,y)=\frac{\partial^2}{\partial x\partial y}F_{X,Y}(x,y)$$. For $$X$$ and $$Y$$ independent, it is therefore $$F_{X,Y}(x,y)=F_X(x)F_(y)$$, and vice-versa{% if jekyll.environment == "development" %} (see [Prob L10 Q11](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__10_Conditioning_on_a_random_variable__Independence__Bayes_rule/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch8-s4-tab11)){% endif %}. Also, note that if $$X\ge a$$ and $$Y\ge b$$, then $$F_{X,Y}(a,y)=0$$ and $$F_{X,Y}(x,b)=0$$, due to continuity{% if jekyll.environment == "development" %} (see [Prob L9 Q19](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__9_Conditioning_on_an_event__Multiple_r_v_s/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch8-s3-tab19)){% endif %}.
+CDF of a joint PDF is $$F_{X,Y}(x,y)=\mathbb P(X\le x, Y\le y)$$, where $$f_{X,Y}(x,y)=\frac{\partial^2}{\partial x\partial y}F_{X,Y}(x,y)$$. Thus, $$X\perp Y\iff F_{X,Y}(x,y)=F_X(x)F_Y(y)$${% if jekyll.environment == "development" %} (see [Prob L10 Q11](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__10_Conditioning_on_a_random_variable__Independence__Bayes_rule/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch8-s4-tab11)){% endif %}. If $$\mathbb P(X\lt a)=\mathbb P(Y\lt b)=0$$ then the CDF along those *lower* boundaries is zero $$F_{X,Y}(a,y)=F_{X,Y}(x,b)=0$$, due to continuity{% if jekyll.environment == "development" %} (see [Prob L9 Q19](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__9_Conditioning_on_an_event__Multiple_r_v_s/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch8-s3-tab19)){% endif %}.
 
 Under respective back-up sections, you will find CDF of the basic r.v. [discrete](/2022/01/08/discrete-random-variables.html#cdf) and [continuous](/2022/01/13/continuous-random-variables.html#basic) distributions.
 
@@ -116,7 +116,14 @@ In case $$X_i\overset{i.i.d.}{\sim}\mathcal N(\mu_X,\sigma_X^2)$$, their joint p
 
 $$\prod_{i=1}^n f_X(x)=\frac{1}{\sqrt{(2\pi\sigma_X^2)^n}}e^{-\frac{1}{2\sigma_X^2}\sum_{i=1}^n(x_i-\mu_X)^2}$$
 
-In addition to the above, standard normal has the property that one of which is that its moments can be easily derived with the following formula $$\mathbb E[Z^k]=(k-1)\mathbb E[Z^{k-2}]$$. Bearing in mind that $$\mathbb E[Z]=0$$, it follows that for *odd* $$k$$ we have $$\mathbb E[Z^k]=0$$, and for *even* $$k$$ we get $$\mathbb E[Z^k]=\prod_{i=1}^{k/2}(2i-1)$$ (that is a product of the first $$\frac{k}{2}$$ odd numbers){% if jekyll.environment == "development" %} (see [Stats HW0 Q3](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@prob_linalg_diag/block-v1:MITx+18.6501x+2T2021+type@vertical+block@prob_linalg_diag-tab3)){% endif %}.
+Higher moments of a standard Normal are $$\mathbb E[Z^k]=(k-1)\mathbb E[Z^{k-2}]$$. Since $$\mathbb E[Z]=0$$, it follows that for *odd* $$k$$ we have $$\mathbb E[Z^k]=0$$, and for *even* $$k$$ we get $$\mathbb E[Z^k]=\prod_{i=1}^{k/2}(2i-1)$$ (that is a product of the first $$\frac{k}{2}$$ odd numbers){% if jekyll.environment == "development" %} (see [Stats HW0 Q3](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@prob_linalg_diag/block-v1:MITx+18.6501x+2T2021+type@vertical+block@prob_linalg_diag-tab3)){% endif %}. This result comes from the following observation.
+
+$$\begin{align}
+\mathbb E[Z^k]&=\int_{-\infty}^\infty z^k f_Z(z)dz=\int_{-\infty}^\infty (-z^{k-1})\overbrace{(-z) f_Z(z)}^{=\frac\partial{\partial z}f_Z(z)}dz\\
+&=\cancelto{=0}{[f_Z(z)(-z^{k-1})]_{-\infty}^\infty}+\int_{-\infty}^\infty (k-1)z^{k-2} f_Z(z)dz=(k-1)\mathbb E[Z^{k-2}]
+\end{align}$$
+
+In the above, $$Z\sim\mathcal N(0,1)$$ and therefore $$f_Z(z)=\frac 1{\sqrt{2\pi}}\exp\{-\frac {z^2} 2\}$$.
 
 ## Bayes' rule
 
@@ -137,6 +144,7 @@ Go back to the [syllabi breakdown](/2022/01/02/prob-and-stats-syllabi.html).
 
 |Formula|Equivalent form|
 |:-:|:-:|
+|$$\displaystyle\int_a^b f'(x)g(x)dx$$|$$\displaystyle\left[f(x)g(x)\right]_a^b-\int_a^b f(x)g'(x)dx$$|
 |$$\displaystyle\int_a^b e^{-\lambda x}dx$$|$$\displaystyle\left[-\frac{1}{\lambda}e^{-\lambda x}\right]_a^b=\frac{1}{\lambda}(e^{-\lambda a}-e^{-\lambda b})$$|
 |$$\Gamma(\alpha)$$|$$\begin{cases}\displaystyle\int_0^\infty e^{-\lambda x}x^{\alpha-1}dx&\alpha\in\mathbb R_{\gt0}\\(\alpha-1)!=(\alpha-1)\Gamma(\alpha-1)&\alpha\in\mathbb Z_{\gt0}\end{cases}$$|
 |![pdf](/assets/images/2022-01-13-continuous-random-variables/pdf.png)<br>PDF|![cdf](/assets/images/2022-01-13-continuous-random-variables/cdf.png)<br>CDF|

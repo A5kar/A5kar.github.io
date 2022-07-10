@@ -35,30 +35,31 @@ Defined as $$\sigma_X^2=\text{var}(X)=\mathbb E[(X-\mathbb E[X])^2]$$, variance 
 |-|:-:|
 |Non negativity (*zero* only for constants)|$$\text{var}(X)\ge0$$|
 |Equivalency|$$\text{var}(X)=\mathbb E[X^2]-(\mathbb E[X])^2$${% if jekyll.environment == "development" %}<br>(see [Prob L6 Q8](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__6_Variance__Conditioning_on_an_event__Multiple_r_v_s/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s3-tab8), [Prob PS4 Q4](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_4/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s7-tab5) and [Prob MT1 Q5](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@sequential_Exam_1/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch7-s1-tab6)){% endif %}|
+|Bounded|$$\displaystyle\text{var}(X)\le\frac{1}{4}(b-a)^2$$, if $$a\le X\le b$$|
+|Scaled by the square|$$\text{var}(aX)=a^2\text{var}(X)$$|
+|Invariant with respect to location|$$\text{var}(X+b)=\text{var}(X)$$|
 
-From the above, we see that $$(\mathbb E[X])^2\le\mathbb E[X^2]$${% if jekyll.environment == "development" %} (see [Prob L6 Q4](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__6_Variance__Conditioning_on_an_event__Multiple_r_v_s/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s3-tab4)){% endif %}. A more general concept is known as [Jensens's inequality](/2022/02/21/introduction-to-statistics.html#basic).
-
-For any bounded r.v. $$X$$, that is $$a\le X\le b$$, the variances is also bounded $$\text{var}(X)\le\frac{1}{4}(b-a)^2$$. The rationale behind is that the *maximum* dispersion is when $$\mathbb P(X=a)=\mathbb P(X=b)$$, or equivalently $$X=a+(b-a)Y$$, where $$Y\sim\text{Ber}(\frac 1 2)$$.
+From the above, we see that $$(\mathbb E[X])^2\le\mathbb E[X^2]$${% if jekyll.environment == "development" %} (see [Prob L6 Q4](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__6_Variance__Conditioning_on_an_event__Multiple_r_v_s/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s3-tab4)){% endif %}. A more general concept is known as [Jensens's inequality](/2022/02/21/introduction-to-statistics.html#basic). As for the upper bound, intuitively the *maximum* dispersion is when $$X$$ has the same chances of being $$a$$ or $$b$$, or equivalently $$X=a+(b-a)Y$$, where $$Y\sim\text{Ber}(\frac 1 2)$$.
 
 ## Basic discrete r.v. distributions {#basic}
 
 |r.v.|PMF<br>$$p_X(x)$$|Expectation<br>$$\mu_X=\mathbb E[X]$$|Variance<br>$$\sigma_X^2=\text{var}(X)$$|
 |-|:-:|:-:|:-:|:-:|
-|Bernoulli<br>$$\text{Ber}(p)$$ or $$\text{Bin}(1,p)$$|$$\begin{cases}p^x(1-p)^{1-x}&x\in\{0,1\}\\0&\text{otherwise}\end{cases}$$|$$p$$|$$p(1-p)$$|
-|Binomial<br>$$\text{Bin}(n,p)$$|$$\begin{cases}\displaystyle{n\choose x}p^x(1-p)^{n-x}&x\in\{0,1,\dots,n\}\\0&\text{otherwise}\end{cases}$${% if jekyll.environment == "development" %}<br>(see [Prob L5 Q11](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__5_Probability_mass_functions_and_expectations/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s2-tab11)){% endif %}|$$np$$|$$np(1-p)$$|
+|Bernoulli<br>$$\text{Ber}(p)$$|$$\begin{cases}p^x(1-p)^{1-x}&x\in\{0,1\}\\0&\text{otherwise}\end{cases}$$|$$p$$|$$p(1-p)$$|
+|Binomial<br>$$\text{Bin}(k,p)$$|$$\begin{cases}\displaystyle{k\choose x}p^x(1-p)^{k-x}&x\in\{0,1,\dots,k\}\\0&\text{otherwise}\end{cases}$${% if jekyll.environment == "development" %}<br>(see [Prob L5 Q11](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__5_Probability_mass_functions_and_expectations/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s2-tab11)){% endif %}|$$kp$$|$$kp(1-p)$$|
 |Geometric<br>$$\text{Geom}(p)$$|$$\begin{cases}(1-p)^{x-1}p&\mathbb Z_{\ge1}\\0&\text{otherwise}\end{cases}$$|$$\displaystyle\frac{1}{p}$${% if jekyll.environment == "development" %}<br>(see [Prob MT1 Q3](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@sequential_Exam_1/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch7-s1-tab4)){% endif %}|$$\displaystyle\frac{1-p}{p^2}$$|
 |Pascal<br>$$\text{NBin}(k,p)$$|$$\begin{cases}\displaystyle{x-1\choose k-1}p^k(1-p)^{x-k}&\mathbb Z_{\ge k}\\0&\text{otherwise}\end{cases}$$|$$\displaystyle k\frac{1}{p}$$|$$\displaystyle k\frac{(1-p)}{p^2}$$|
 |Poisson<br>$$\displaystyle\text{Pois}(\lambda)$$|$$\begin{cases}e^{-\lambda}\displaystyle\frac{\lambda^x}{x!}&\mathbb Z_{\ge0}\\0&\text{otherwise}\end{cases}$$|$$\lambda$$|$$\lambda$$|
 |Uniform<br>$$\text{Unif}(a,b)$$|$$\begin{cases}\displaystyle\frac{1}{n}&x\in\{a,a+1,\dots,b-1,b\}\\0&\text{otherwise}\end{cases}$$<br>where $$n=b-a+1$$|$$\displaystyle\frac{a+b}{2}$$|$$\displaystyle\frac{1}{12}(n^2-1)$$|
 |Constant<br>$$\text{Unif}(c,c)$$|$$\begin{cases}1&\text{if $x=c$}\\0&\text{otherwise}\end{cases}$$|$$c$$|$$0$$|
 
-Second moment of $$X$$ can be derived as $$\mathbb E[X^2]=\text{var}(X)+(\mathbb E[X])^2=\sigma_X^2+\mu_X^2$$. As for Bernoulli, bear in mind that $$\mathbb E[X^k]=p$$, where $$k=1,2\dots$$
+Second moment of $$X$$ can be derived as $$\mathbb E[X^2]=\text{var}(X)+(\mathbb E[X])^2=\sigma_X^2+\mu_X^2$$. As for Bernoulli, bear in mind that $$\mathbb E[X^k]=p$$, for any $$k\ge1$$.
 
 Computing expectation and variance for Pascal r.v. (a.k.a. negative binomial) is easier if we [assume](/2022/02/08/bernoulli-and-poisson-processes.html#kth_arrival) $$X=\sum_{i=1}^k X_i$$, with $$X_i\sim\text{Geom}(p)$$, in which case $$\mathbb E[X]=k\mathbb E[X_i]$$ and $$\text{var}(X)=k\text{var}(X_i)$$.
 
-As for Poisson r.v., its PMF can be computed as Binomial with $$n\rightarrow\infty$$ and $$\lambda=np$$.
+As for Poisson r.v., its PMF can be computed as Binomial with $$k\rightarrow\infty$$ and $$\lambda=kp$$.
 
-$$\displaystyle p_X(k)=\lim_{n\rightarrow\infty}{n\choose k}\left(\frac{\lambda}{n}\right)^k\left(1-\frac{\lambda}{n}\right)^{n-k}=e^{-\lambda}\frac{\lambda^k}{k!}$$
+$$\displaystyle p_X(x)=\lim_{k\rightarrow\infty}{k\choose x}\left(\frac{\lambda}{k}\right)^x\left(1-\frac{\lambda}{k}\right)^{k-x}=e^{-\lambda}\frac{\lambda^x}{x!}$$
 
 Accordingly, derivation of $$\mathbb E[X]=np=\lambda$$ and $$\text{var}(X)=np(1-p)=\lambda-\frac{\lambda^2}{n}\rightarrow\lambda$$ is immediate.
 
@@ -81,7 +82,7 @@ Notice that $$\mathbb E[g(X,Y)\lvert Y=y']=\sum_x g(x,y')p_{X\lvert Y}(x\lvert y
 
 ## Independence {#independence}
 
-According to [independence](/2022/01/05/conditioning-and-independence.html#independence) of two events, $$X$$ is independent from $$A$$ if $$p_{X\lvert A}(x)=p_X(x)\mathbb P(A), \forall x$${% if jekyll.environment == "development" %} (see [Prob PS4 Q1](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_4/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s7-tab1)){% endif %}. Similarly, $$X$$ is independent from $$Y$$ if $$p_{X,Y}(x,y)=p_X(x)p_Y(y), \forall x,y$${% if jekyll.environment == "development" %} (see [Prob L7 Q8](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__7_Conditioning_on_a_random_variable__Independence_of_r_v_s/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s4-tab8)){% endif %}. In such case, below properties hold.
+According to [independence](/2022/01/05/conditioning-and-independence.html#independence) of two events, $$X\perp A$$ if $$p_{X\lvert A}(x)=p_X(x)\mathbb P(A), \forall x$${% if jekyll.environment == "development" %} (see [Prob PS4 Q1](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_4/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s7-tab1)){% endif %}. Similarly, $$X\perp Y$$ if $$p_{X,Y}(x,y)=p_X(x)p_Y(y), \forall x,y$${% if jekyll.environment == "development" %} (see [Prob L7 Q8](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__7_Conditioning_on_a_random_variable__Independence_of_r_v_s/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s4-tab8)){% endif %}. Below properties apply if $$X\perp Y$$.
 
 |Property|Formula|
 |-|:-:|
@@ -139,7 +140,7 @@ In deriving the various relations, it may be useful bearing in mind the followin
 |r.v.|CDF<br>$$F_X(x)$$|
 |-|:-:|
 |Bernoulli<br>$$\text{Ber}(p)$$|$$\begin{cases}0&x\lt 0\\1-p&0\le x\lt1\\1& x\ge 1\end{cases}$$|
-|Binomial<br>$$\text{Bin}(n,p)$$|$$\begin{cases}0&x\lt 0\\\displaystyle\sum_{k=0}^{\lfloor x\rfloor}{n\choose k}p^k(1-p)^{n-k}&0\le x\lt1\\1& x\ge n\end{cases}$$|
+|Binomial<br>$$\text{Bin}(k,p)$$|$$\begin{cases}0&x\lt 0\\\displaystyle\sum_{k=0}^{\lfloor x\rfloor}{k\choose x}p^x(1-p)^{k-x}&0\le x\lt k\\1& x\ge k\end{cases}$$|
 |Uniform<br>$$\text{Unif}(a,b)$$|$$\begin{cases}0&x\lt a\\\displaystyle\frac{\lfloor x\rfloor-a+1}{n}&a\le x\lt b\\1& x\ge b\end{cases}$$<br>where $$n=b-a+1$$|
 |Constant<br>$$\text{Unif}(c,c)$$|$$\begin{cases}0&x\lt c\\1& x\ge c\end{cases}$$|
 |Geometric<br>$$\text{Geom}(p)$$|$$\begin{cases}0&x\lt 1\\\displaystyle 1-(1-p)^{\lfloor x\rfloor}&x\ge1\end{cases}$$|
