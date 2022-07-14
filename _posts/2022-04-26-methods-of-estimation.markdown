@@ -40,6 +40,27 @@ Below are few examples of MM estimators for basic distributions{% if jekyll.envi
 
 Note that MM could also work for any custom collection of $$g_1,\dots,g_d:\Omega\rightarrow\mathbb R$$ functions, provided that the combined $$M(\theta)$$, where $$m_k(\theta)=\mathbb E[g_k(X)]$$, is *bijective* and invertible---in this case, we would be dealing with the **generalized method of moments** (GMM), where MM is a special case with $$g_k(x)=x^k$$.
 
+## Moment generating function
+
+The moment generating function (MGF) is a function that becomes handy for the computation of the first $$m_1,\dots,m_d$$ moments. MGF is defined as $$M_X(t)=\mathbb E[e^{tX}]$$. Bearing in mind Taylor expansion of $$e^x=\sum_{i=1}^\infty\frac{x^i}{i!}$$, it follows that $$M_X(t)=\sum_{i=1}^\infty\frac{t^i}{i!}\mathbb E[X^i]$$ and, in particular, that $$\frac{\partial^k}{\partial t^k}M_X(0)=m_k$$, or $$k$$-th moment of r.v. $$X$$.
+
+$$\begin{align}
+M_X(t)=\sum_x e^{tx}p_X(x)&&M_X(t)=\int_{-\infty}^\infty e^{tx}p_X(x)dx\\
+\text{(discrete r.v.)}&&\text{(continuous r.v.)}
+\end{align}$$
+
+Few examples of MGF for basic [discrete](/2022/01/08/discrete-random-variables.html#basic) and [continuous](/2022/01/13/continuous-random-variables.html#basic) r.v.
+
+|Distribution|$$M_X(t)$$|
+|-|:-:|
+|Bernoulli with parameter $$p$$|$$1-p+e^tp$$|
+|Binomial with parameters $$(k,p)$$|$$(1-p+e^tp)^k$$|
+|Geometric with parameter $$p$$|$$\displaystyle\frac{e^tp}{1-e^t(1-p)}$$|
+|Poisson with parameter $$\lambda$$|$$e^{\lambda(e^t-1)}$$|
+|Continuous uniform over $$[0,\theta]$$|$$\displaystyle\frac1{\theta t}(e^{t\theta}-1)$$|
+|Exponential with parameter $$\lambda$$|$$\displaystyle\frac\lambda{\lambda-t}$$|
+|Normal with parameters $$(\mu,\tau)$$|$$e^{\mu t+\frac12\sigma^2t^2}$$|
+
 ## Total variation distance
 
 Before introducing MLE, let us review the concept of *distance* between distributions, namely total variation distance and Kullback-Leibler divergence.
@@ -183,7 +204,7 @@ $$\begin{align}
 &=\int_{-\infty}^\infty\left(\frac{\frac\partial{\partial\theta}f_{\theta}(x)}{f_{\theta}(x)}\right)^2f_{\theta}(x)dx=\mathbb E[s(\theta)^2]=\text{var}(s(\theta))
 \end{align}$$
 
-Wrapping up, $$\sqrt n\bar s_n(\theta)\xrightarrow{(d)}\mathcal N(0,I(\theta))$$ ([CLT](/2022/02/21/introduction-to-statistics.html#clt)), and if one carries out first-order Taylor expansion of $$\bar s_n(\hat\Theta_n)=0$$ (by definition of $$\hat\Theta_n$$), then one can achieve the following result.
+Wrapping up, $$\sqrt n\bar s_n(\theta)\xrightarrow{(d)}\mathcal N(0,I(\theta))$$ ([CLT](/2022/02/21/introduction-to-statistics.html#clt)), and if one performs Taylor expansion of $$\bar s_n(\hat\Theta_n)=0$$ (by definition of $$\hat\Theta_n$$), then one can achieve the following result.
 
 $$\begin{align}
 \sqrt n 0=\sqrt n \frac 1 n\sum_{i=1}^n s_i(\hat\Theta_n)&\approx\sqrt n \frac 1 n\sum_{i=1}^n\left(s_i(\theta)+(\hat\Theta_n-\theta)s_i'(\theta)\right)\\
@@ -275,7 +296,7 @@ For a practical example consider two particular cases, [Laplace distribution](ht
 |Laplace<br>$$\text{Laplace}(\mu,\gamma)$$|$$\displaystyle\frac 1 {2\gamma}\exp\left\{-\left\lvert\frac{x-\mu}{\gamma}\right\rvert\right\}$$|$$\mu$$|$$2\gamma^2$$|
 |Cauchy<br>$$\text{Cauchy}(\mu,\gamma)$$|$$\displaystyle\frac 1{\pi\gamma}\left(1+\left(\frac{x-\mu}{\gamma}\right)^2\right)^{-1}$$|$$\infty$$|$$\infty$$|
 
-Assuming $$\gamma$$ are known below are examples of sample median used to estimate $$\mu$$.
+Assuming $$\gamma$$ are known, below are examples of sample median used to estimate $$\mu$$.
 
 |Distribution and unknown parameter|$$\hat\Theta_n$$|$$n\text{var}(\hat\Theta_n)$$|
 |-|:-:|:-:|
@@ -297,7 +318,7 @@ In the above relationship, $$J(\theta)=\mathbb E[\mathbf H_\theta\rho(X,\theta)]
 - $$J(\theta)$$ is invertible $$\forall\theta\in\Theta$$; and
 - few more technical conditions (see MLE).
 
-Thanks to their generality and efficiency, today ME dominate the field of [robust statistics](https://en.wikipedia.org/wiki/Robust_statistics#M-estimators), which focus on emulating common statistical methods, without being unduly affeted by outliers (which often occur in practice, due to data error or measurement limitations). Usually, robust statistics provide methods to find location, scale and regression parameters.
+Thanks to their generality and efficiency, today ME dominate the field of [robust statistics](https://en.wikipedia.org/wiki/Robust_statistics#M-estimators), which focus on emulating common statistical methods, without being unduly affected by outliers (which often occur in practice, due to data error or measurement limitations). Usually, robust statistics provide methods to find location, scale and regression parameters.
 
 ## Huber loss
 
@@ -308,7 +329,7 @@ Asymptotic normality may be difficult to derive when our estimator minimizes a n
 |definition|$$\begin{cases}\frac 1 2 x^2&\lvert x\rvert\le\delta\\\delta\lvert x\rvert-\frac 1 2\delta^2&\lvert x\rvert\gt\delta\end{cases}$$|$$\begin{cases}x&\lvert x\rvert\le\delta\\\delta\text{sign}(x)&\lvert x\rvert\gt\delta\end{cases}$$|$$\begin{cases}1&\lvert x\rvert\le\delta\\0&\lvert x\rvert\gt\delta\end{cases}$$|
 |synonym||$$\text{clip}_\delta(x)$$|$$\mathbb 1(\lvert x\rvert\le\delta)$$|
 
-Accordingly, finding $$\theta^\star=\arg\min_{\theta\in\Theta}\mathbb E[h_\delta(X-\theta)]$$ means finding $$\theta^\star$$ s.t. $$\mathbb E[\text{clip}_\delta(X-\theta^\star)]=0$$. If $$\delta\rightarrow\infty$$, we are minimizing the quadratic norm, and $$\theta^\star=\mathbb E[X]$$ is the solution of $$\mathbb E[(X-\theta^\star)^2]=0$$. On the other hand, if $$\delta\rightarrow 0^+$$, then we are minimizing the absolute value and $$\theta^\star=\text{med}(X)$$ is the solution of $$\mathbb E[\delta\text{sign}(X-\theta^\star)]=\delta(\mathbb P(X\lt\theta^\star)-\mathbb P(X\ge\theta^\star))=0$$.
+Accordingly, finding $$\theta^\star=\arg\min_{\theta\in\Theta}\mathbb E[h_\delta(X-\theta)]$$ means finding $$\theta^\star$$ s.t. $$\mathbb E[\text{clip}_\delta(X-\theta^\star)]=0$$. If $$\delta\rightarrow\infty$$, we are minimizing the quadratic norm, and $$\theta^\star=\mathbb E[X]$$ is the solution of $$\mathbb E[(X-\theta^\star)^2]=0$$. On the other hand, if $$\delta\rightarrow 0$$, then we are minimizing the absolute value and $$\theta^\star=\text{med}(X)$$ is the solution of $$\mathbb E[\delta\text{sign}(X-\theta^\star)]=\delta(\mathbb P(X\lt\theta^\star)-\mathbb P(X\ge\theta^\star))=0$$.
 
 Now, we can attempt computing the asymptotic normality (again, in the univariate case) as follows.
 
@@ -325,7 +346,7 @@ Let us revisit estimation of the location $$\mu$$ in case of Laplace and Cauchy 
 |$$\text{Laplace}(\mu,\gamma)$$|$$\displaystyle2e^{\frac\delta\gamma}\frac{\gamma^2(e^{\frac\delta\gamma}-1)-\gamma\delta}{\left(e^{\frac\delta\gamma}-1\right)^2}$$|$$\gamma^2$$|$$2\gamma^2$$|
 |$$\text{Cauchy}(\mu,\gamma)$$|$$\displaystyle\frac{\pi^2}4\frac{\delta^2+\frac2\pi(\gamma\delta-(\gamma^2+\delta^2)\arctan\frac\delta\gamma)}{\arctan^2\frac\delta\gamma}$$|$$\displaystyle\frac{\pi^2\gamma^2}4$$|$$\infty$$|
 
-Computations of $$\lim_{\delta\rightarrow0}$$ rely on second order Taylor expansions, $$e^\delta\approx 1+\delta+\frac 1 2\delta^2+O(x^3)$$ and $$\arctan x\approx x-\frac{x^3}3+\frac{x^5}5+O(x^7)$$.
+Computations of $$\lim_{\delta\rightarrow0}$$ rely on Taylor expansions, namely $$e^\delta\approx 1+\delta+\frac 1 2\delta^2+O(x^3)$$ and $$\arctan x\approx x-\frac{x^3}3+\frac{x^5}5+O(x^7)$$.
 
 ## Wrap-up
 
@@ -413,7 +434,7 @@ Regarding the last one, replace $$t=x^p-1$$ and $$s=1-\frac 1{x^p}$$ and observe
 
 $$\frac{x^p-1}{p}=\underbrace{\frac t{\ln(1+t)}}_{\ge1}\ln(x)\ge\ln(x)\ge\underbrace{\frac{-s}{\ln(1-s)}}_{\le1}\ln(x)=\frac{1-\frac 1{x^p}}{p}$$
 
-Where $$\lim_{t\rightarrow 0^+}\frac{t}{\ln(1+t)}=\lim_{t\rightarrow 0^+}(1+t)\ge1$$, and $$\lim_{s\rightarrow 0^+}\frac{-s}{\ln(1-s)}=\lim_{t\rightarrow 0^+}(1-s)\le1$$ can be derived according to L'Hôpital's rule.
+Where $$\lim_{t\rightarrow 0^+}\frac{t}{\ln(1+t)}=\lim_{t\rightarrow 0^+}(1+t)\ge1$$, and $$\lim_{s\rightarrow 0^+}\frac{-s}{\ln(1-s)}=\lim_{s\rightarrow 0^+}(1-s)\le1$$ can be derived according to L'Hôpital's rule.
 
 ## Cramér–Rao bound {#cramer-rao}
 
@@ -437,22 +458,24 @@ In conclusion, according to Cramér–Rao bound, $$1\le\text{var}(\hat\Theta_n)I
 
 ## Location estimation of Cauchy distribution
 
-Deriving the MLE for location parameter $$\mu$$, when $$\gamma=1$$, is straightforward. With the usual process, one obtains that $$\hat\mu$$ is the solution of $$\ell_n'(\hat\mu)=2\sum_{i=1}^n\frac{X_i-\hat\mu}{1+(X_i-\hat\mu)^2}=0$$, which however can only be solved through dedicated algorithms such as [Newton's method](https://en.wikipedia.org/wiki/Newton%27s_method). Associated Fisher information is $$I(\mu)=\frac 1 2$$ (see below derivation).
+Deriving the MLE for location parameter $$\mu$$, when $$\gamma=1$$, is straightforward. With the usual process, one obtains that $$\hat\mu$$ is the solution of $$\ell_n'(\hat\mu)=2\sum_{i=1}^n\frac{X_i-\hat\mu}{1+(X_i-\hat\mu)^2}=0$$, which however can only be solved through dedicated algorithms such as [Newton's method](https://en.wikipedia.org/wiki/Newton%27s_method). Associated Fisher information is $$I(\mu)=\frac1{2\gamma^2}$$ (see below derivation).
 
 Alternatively, one can observe that Cauchy distribution is symmetric around $$\mu$$ and therefore consider the median as its estimator. We know that $$X_{\left(\frac n2\right)}\xrightarrow{\mathbb P}\text{med}(X)$$, which has asymptotic variance equal to:
 
-$$\frac1{4f_X^2(\text{med}(X))}=\frac{\pi^2}4$$
+$$\frac1{4f_X^2(\text{med}(X))}=\frac{\pi^2\gamma^2}4$$
 
-Note that $$\frac{\pi^2}4\gt I^{-1}(\mu)=2$$, which is in line with the [Cramér–Rao bound](/2022/04/26/methods-of-estimation.html#cramer-rao). Therefore, the sample median does not seem to be the most efficient estimator, however computation of $$X_{\left(\frac n2\right)}$$ is much easier, if compared with the MLE described above.
+Note that $$\frac{\pi^2\gamma^2}4\gt I^{-1}(\mu)=2\gamma^2$$, which is in line with the [Cramér–Rao bound](/2022/04/26/methods-of-estimation.html#cramer-rao). Therefore, the sample median does not seem to be the most efficient estimator, however computation of $$X_{\left(\frac n2\right)}$$ is much easier, if compared with the MLE described above.
 
-To derive Fisher information, recall that $$I(\mu)=\mathbb E[-\ell''(\mu)]$$, where $$\ell''(\mu)=-2\frac{1-(X-\mu)^2}{(1+(X-\mu)^2)^2}$$.
+To derive Fisher information, recall that $$I(\mu)=\mathbb E[-\ell''(\mu)]$$, where $$\ell''(\mu)=-\frac2{\gamma^2}\frac{1-\left(\frac{X-\mu}\gamma\right)^2}{\left(1+\left(\frac{X-\mu}\gamma\right)^2\right)^2}$$.
 
 $$\begin{align}
 I(\mu)
-&=\int_{-\infty}^\infty2\frac{1-(x-\mu)^2}{(1+(x-\mu)^2)^2}\frac1\pi\frac1{1+(x-\mu)^2}dx\\
-&=\frac2\pi\int_{-\infty}^\infty\frac{1-(x-\mu)^2}{(1+(x-\mu)^2)^3}dx&(x-\mu=\tan y)\\
-&=\frac2\pi\int_{-\frac\pi2}^{\frac\pi2}\frac{1-\tan^2y}{(1+\tan^2y)^3}\frac1{\cos^2y}dy&\left(\tan^2y=\frac1{\cos^2y}-1\right)\\
-&=\frac2\pi\int_{-\frac\pi2}^{\frac\pi2}\left(2\cos^4y-\cos^2y\right)dy&\left(C(k)=\int_0^{\frac\pi2}\cos^k(y)dy\right)\\
-&=\frac4\pi(2C(4)-C(2))&\left(C(k)=\left(\frac{k-1}k\right)C(k-2)\right)\\
-&=\frac4\pi\left(2\frac 3 4\frac 1 2\frac\pi2-\frac 1 2\frac\pi2\right)=\frac 1 2
+&=\int_{-\infty}^\infty\frac2{\gamma^2}\frac{1-\left(\frac{x-\mu}\gamma\right)^2}{\left(1+\left(\frac{x-\mu}\gamma\right)^2\right)^2}\frac1{\pi\gamma}\frac1{1+\left(\frac{x-\mu}\gamma\right)^2}dx\\
+&=\frac2{\pi\gamma^3}\int_{-\infty}^\infty\frac{1-\left(\frac{x-\mu}\gamma\right)^2}{\left(1+\left(\frac{x-\mu}\gamma\right)^2\right)^3}dx&\left(\frac{x-\mu}\gamma=\tan y\right)\\
+&=\frac2{\pi\gamma^2}\int_{-\frac\pi2}^{\frac\pi2}\frac{1-\tan^2y}{(1+\tan^2y)^3}\frac1{\cos^2y}dy&\left(\tan^2y=\frac1{\cos^2y}-1\right)\\
+&=\frac2{\pi\gamma^2}\int_{-\frac\pi2}^{\frac\pi2}\left(2\cos^4y-\cos^2y\right)dy&\left(C(k)=\int_0^{\frac\pi2}\cos^k(y)dy\right)\\
+&=\frac4{\pi\gamma^2}(2C(4)-C(2))&\left(C(k)=\left(\frac{k-1}k\right)C(k-2)\right)\\
+&=\frac4{\pi\gamma^2}\left(2\frac 3 4\frac 1 2\frac\pi2-\frac 1 2\frac\pi2\right)=\frac1{2\gamma^2}
 \end{align}$$
+
+## Moment generating function
