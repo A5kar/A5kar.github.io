@@ -55,7 +55,7 @@ From the above, we see that $$(\mathbb E[X])^2\le\mathbb E[X^2]$${% if jekyll.en
 
 Second moment of $$X$$ can be derived as $$\mathbb E[X^2]=\text{var}(X)+(\mathbb E[X])^2=\sigma_X^2+\mu_X^2$$. As for Bernoulli, bear in mind that $$\mathbb E[X^k]=p$$, for any $$k\ge1$$.
 
-Computing expectation and variance for Pascal r.v. (a.k.a. negative binomial) is easier if we [assume](/2022/02/08/bernoulli-and-poisson-processes.html#kth_arrival) $$X=\sum_{i=1}^k X_i$$, with $$X_i\sim\text{Geom}(p)$$, in which case $$\mathbb E[X]=k\mathbb E[X_i]$$ and $$\text{var}(X)=k\text{var}(X_i)$$.
+Computing expectation and variance for Pascal r.v. (a.k.a. Negative Binomial) is easier if we [assume](/2022/02/08/bernoulli-and-poisson-processes.html#kth_arrival) $$X=\sum_{i=1}^k X_i$$, with $$X_i\sim\text{Geom}(p)$$, in which case $$\mathbb E[X]=k\mathbb E[X_i]$$ and $$\text{var}(X)=k\text{var}(X_i)$$.
 
 As for Poisson r.v., its PMF can be computed as Binomial with $$k\rightarrow\infty$$ and $$\lambda=kp$$.
 

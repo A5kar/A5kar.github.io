@@ -44,6 +44,8 @@ Note that MM could also work for any custom collection of $$g_1,\dots,g_d:\Omega
 
 The moment generating function (MGF) is a function that becomes handy for the computation of the first $$m_1,\dots,m_d$$ moments. MGF is defined as $$M_X(t)=\mathbb E[e^{tX}]$$. Bearing in mind Taylor expansion of $$e^x=\sum_{i=1}^\infty\frac{x^i}{i!}$$, it follows that $$M_X(t)=\sum_{i=1}^\infty\frac{t^i}{i!}\mathbb E[X^i]$$ and, in particular, that $$\frac{\partial^k}{\partial t^k}M_X(0)=m_k$$, or $$k$$-th moment of r.v. $$X$$.
 
+Properties of MGF include linear transformations, $$M_Y(t)=e^{\beta t}M_X(\alpha t)$$ if $$Y=\alpha X+\beta$$, and linear combination of independent r.v., $$M_{X+Y}(t)=M_X(t)M_Y(t)$$ if $$X\perp Y$$.
+
 $$\begin{align}
 M_X(t)=\sum_x e^{tx}p_X(x)&&M_X(t)=\int_{-\infty}^\infty e^{tx}p_X(x)dx\\
 \text{(discrete r.v.)}&&\text{(continuous r.v.)}
@@ -53,13 +55,20 @@ Few examples of MGF for basic [discrete](/2022/01/08/discrete-random-variables.h
 
 |Distribution|$$M_X(t)$$|
 |-|:-:|
+|Constant $$c$$|$$e^{tc}$$|
 |Bernoulli with parameter $$p$$|$$1-p+e^tp$$|
 |Binomial with parameters $$(k,p)$$|$$(1-p+e^tp)^k$$|
-|Geometric with parameter $$p$$|$$\displaystyle\frac{e^tp}{1-e^t(1-p)}$$|
+|Geometric with parameter $$p$$|$$\displaystyle\frac{e^tp}{1-e^t(1-p)}$$<br>where $$t\lt-\ln(1-p)$$|
+|Pascal with parameters $$(k,p)$$|$$\displaystyle\left(\frac{e^tp}{1-e^t(1-p)}\right)^k$$<br>where $$t\lt-\ln(1-p)$$|
 |Poisson with parameter $$\lambda$$|$$e^{\lambda(e^t-1)}$$|
-|Continuous uniform over $$[0,\theta]$$|$$\displaystyle\frac1{\theta t}(e^{t\theta}-1)$$|
-|Exponential with parameter $$\lambda$$|$$\displaystyle\frac\lambda{\lambda-t}$$|
+|Discrete uniform over $$[a,b]$$|$$\displaystyle\frac{e^{ta}}{n}\frac{1-e^{tn}}{1-e^t}$$<br>where $$n=b-a+1$$<br>|
+|Continuous uniform over $$[a,b]$$|$$\displaystyle\frac{e^{tb}-e^{ta}}{\theta t}$$<br>where $$\theta=b-a$$|
+|Exponential with parameter $$\lambda$$|$$\displaystyle\frac\lambda{\lambda-t}$$<br>where $$t\lt\lambda$$|
+|Erlang with parameters $$(k,\lambda)$$|$$\displaystyle\left(\frac\lambda{\lambda-t}\right)^k$$<br>where $$t\lt\lambda$$|
+|Gamma with parameters $$(\alpha,\beta)$$|$$\displaystyle\left(\frac{\beta}{\beta-t}\right)^\alpha$$<br>where $$t\lt\beta$$|
 |Normal with parameters $$(\mu,\tau)$$|$$e^{\mu t+\frac12\sigma^2t^2}$$|
+
+As for the derivation of Binomial, Pascal (or Negative Binomial), Erlang and even Gamma, consider that $$M_{X_1+\dots+X_n}(t)=(M_X(t))^n$$ where $$X_i$$ are $$n$$ i.i.d. r.v., therefore their derivation is immediate from Bernoulli, Geometric and Exponential MGFs.
 
 ## Total variation distance
 
