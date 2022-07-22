@@ -36,7 +36,7 @@ Below are few examples of MM estimators for basic distributions{% if jekyll.envi
 |Poisson with parameter $$\lambda$$|$$\hat\lambda=\bar X_n$$|$$\lambda$$|
 |Continuous uniform over $$[0,\theta]$$|$$\hat\theta=2\bar X_n$$|$$\frac 1 3\theta^2$$|
 |Exponential with parameter $$\lambda$$|$$\hat\lambda=\frac 1{\bar X_n}$$|$$\lambda^2$$|
-|Normal with parameters $$(\mu,\tau)$$|$$\begin{bmatrix}\hat\mu\\\hat\tau\end{bmatrix}=\begin{bmatrix}\bar X_n\\\overline{X_n^2}-(\bar X_n)^2\end{bmatrix}$$|$$\sigma^2\begin{bmatrix}1-4\mu^2(2-A)&2\mu(1-A)\\2\mu(1-A)&A\end{bmatrix}$$<br>$$A=2(\sigma^2+4\mu^2)$$|
+|Normal with parameters $$(\mu,\sigma^2)$$|$$\begin{bmatrix}\hat\mu\\\widehat{\sigma^2}\end{bmatrix}=\begin{bmatrix}\bar X_n\\\overline{X_n^2}-(\bar X_n)^2\end{bmatrix}$$|$$\begin{bmatrix}\sigma^2&0\\0&2\sigma^4\end{bmatrix}$$|
 
 Note that MM could also work for any custom collection of $$g_1,\dots,g_d:\Omega\rightarrow\mathbb R$$ functions, provided that the combined $$M(\theta)$$, where $$m_k(\theta)=\mathbb E[g_k(X)]$$, is *bijective* and invertible---in this case, we would be dealing with the **generalized method of moments** (GMM), where MM is a special case with $$g_k(x)=x^k$$.
 
@@ -66,7 +66,7 @@ Few examples of MGF for basic [discrete](/2022/01/08/discrete-random-variables.h
 |Exponential with parameter $$\lambda$$|$$\displaystyle\frac\lambda{\lambda-t}$$<br>where $$t\lt\lambda$$|
 |Erlang with parameters $$(k,\lambda)$$|$$\displaystyle\left(\frac\lambda{\lambda-t}\right)^k$$<br>where $$t\lt\lambda$$|
 |Gamma with parameters $$(\alpha,\beta)$$|$$\displaystyle\left(\frac{\beta}{\beta-t}\right)^\alpha$$<br>where $$t\lt\beta$$|
-|Normal with parameters $$(\mu,\tau)$$|$$e^{\mu t+\frac12\sigma^2t^2}$$|
+|Normal with parameters $$(\mu,\sigma^2)$$|$$e^{\mu t+\frac12\sigma^2t^2}$$|
 
 As for the derivation of Binomial, Pascal (or Negative Binomial), Erlang and even Gamma, consider that $$M_{X_1+\dots+X_n}(t)=(M_X(t))^n$$ where $$X_i$$ are $$n$$ i.i.d. r.v., therefore their derivation is immediate from Bernoulli, Geometric and Exponential MGFs.
 
@@ -186,7 +186,7 @@ Follow few examples of likelihood functions $$\mathcal L_n(\theta)$$ and estimat
 |Poisson with parameter $$\lambda$$|$$\displaystyle e^{-n\lambda}\frac{\lambda^{\sum_{i=1}^n X_i}}{\prod_{i=1}^n X_i!}$$|$$\hat\lambda=\bar X_n$${% if jekyll.environment == "development" %}<br>(see [Stats L9 Q13](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u03s02_methodestimation/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u03s02_methodestimation-tab13)){% endif %}|
 |Continuous uniform over $$[0,\theta]$$|$$\frac{1}{\theta^n}\mathbb 1(X_{(n)}\le\theta)$$|$$X_{(n)}$${% if jekyll.environment == "development" %}<br>(see [Stats L10 Q2](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u03s03_methodestimation/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u03s03_methodestimation-tab2)){% endif %}|
 |Exponential with parameter $$\lambda$$|$$\lambda^n e^{-\lambda\sum_{i=1}^n X_i}$$|$$\hat\lambda=\frac 1 {\bar X_n}$$|
-|Normal with parameters $$(\mu,\tau)$$|$$(2\pi\tau)^{-\frac n 2}e^{-\frac{1}{2\tau}\sum_{i=1}^n (X_i-\mu)^2}$$|$$\hat\mu=\bar X_n$$<br>$$\hat\tau=\frac 1 n\sum_{i=1}^n(X_i-\bar X_n)^2$${% if jekyll.environment == "development" %}<br>(see [Stats L9 Q14](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u03s02_methodestimation/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u03s02_methodestimation-tab14)){% endif %}|
+|Normal with parameters $$(\mu,\sigma^2)$$|$$(2\pi\sigma^2)^{-\frac n 2}e^{-\frac{1}{2\sigma^2}\sum_{i=1}^n (X_i-\mu)^2}$$|$$\begin{bmatrix}\hat\mu\\\widehat{\sigma^2}\end{bmatrix}=\begin{bmatrix}\bar X_n\\\overline{X_n^2}-(\bar X_n)^2\end{bmatrix}$${% if jekyll.environment == "development" %}<br>(see [Stats L9 Q14](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u03s02_methodestimation/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u03s02_methodestimation-tab14)){% endif %}|
 
 As for the Categorical estimator, consider that $$\frac 1 n\ln\mathcal L_n(X_1,\dots,X_n,p_1,\dots,p_d)=\sum_{j=1}^d\frac {a_j}n\ln(p_j)$$ (negative cross entropy) and that $$\mathbb E[\ln(p(X))]=\sum_{j=1}^d p_j\ln(p_j)$$ (negative entropy). This means that when $$p_j=\frac {a_j}n$$, cross entropy and entropy will coincide and therefore KL divergence will be zero.
 
@@ -235,7 +235,7 @@ Again, few examples of score functions $$s(\theta)$$ and Fisher information $$I(
 |Poisson with parameter $$\lambda$$|$$-1+\frac X \lambda$$|$$\frac 1 \lambda$$|
 |Continuous uniform over $$[0,\theta]$$|$$\begin{cases}-\frac n \theta&X_{(n)}\le\theta\\-\infty&\text{otherwise}\end{cases}$$|does not exist|
 |Exponential with parameter $$\lambda$$|$$\frac 1 \lambda-X$$|$$\frac 1 {\lambda^2}$$|
-|Normal with parameters $$(\mu,\tau)$$|$$\begin{bmatrix}-\frac 1 \tau(X-\mu)\\-\frac 1 {2\tau}+\frac 1 {2\tau^2}(X-\mu)^2\end{bmatrix}$$|$$\begin{bmatrix}\frac 1 \tau&0\\0&\frac 1 {2\tau^2}\end{bmatrix}$$|
+|Normal with parameters $$(\mu,\sigma^2)$$|$$\begin{bmatrix}-\frac 1{\sigma^2}(X-\mu)\\-\frac 1 {2\sigma^2}+\frac 1 {2\sigma^4}(X-\mu)^2\end{bmatrix}$$|$$\begin{bmatrix}\frac 1{\sigma^2}&0\\0&\frac 1 {2\sigma^4}\end{bmatrix}$$|
 
 Above shows that $$I(\theta)$$ associated with the a continuous Uniform does not exist, which is justified by $$\mathcal P_\theta$$ depending on $$\theta$$. This does not mean that $$X_{(n)}$$ has no variance, in fact $$\text{var}(X_{(n)})=\frac{n\theta^2}{(n+1)^2(n+2)}$$. Also, $$\text{MSE}(X_{(n)})=\frac{2\theta^2}{(n+1)(n+2)}$$ is smaller than $$\text{MSE}(2\bar X_n)=\frac{\theta^2}{3n}$$ for $$n>2$$, despite the latter is an unbiased estimator found via the MM.
 
