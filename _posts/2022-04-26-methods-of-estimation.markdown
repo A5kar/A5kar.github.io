@@ -3,6 +3,8 @@ layout: post
 title: "Methods of estimation"
 ---
 
+$$\newcommand{\ind}{\perp\!\!\!\perp}$$
+
 ## Introduction
 
 We saw earlier that [natural estimators](/2022/03/24/foundation-of-inference.html#estimation) can easily apply to a large set of parameters, when used in conjunction with the [Delta method](/2022/03/24/foundation-of-inference.html#delta). However, not always the (unknown) parameter $$\theta$$ is a function of $$\mu_X=\mathbb E[X]$$. In such cases, we can rely on the following general approaches:
@@ -44,7 +46,7 @@ Note that MM could also work for any custom collection of $$g_1,\dots,g_d:\Omega
 
 The moment generating function (MGF) is a function that becomes handy for the computation of the first $$m_1,\dots,m_d$$ moments. MGF is defined as $$M_X(t)=\mathbb E[e^{tX}]$$. Bearing in mind Taylor expansion of $$e^x=\sum_{i=1}^\infty\frac{x^i}{i!}$$, it follows that $$M_X(t)=\sum_{i=1}^\infty\frac{t^i}{i!}\mathbb E[X^i]$$ and, in particular, that $$\frac{\partial^k}{\partial t^k}M_X(0)=m_k$$, or $$k$$-th moment of r.v. $$X$$.
 
-Properties of MGF include linear transformations, $$M_Y(t)=e^{\beta t}M_X(\alpha t)$$ if $$Y=\alpha X+\beta$$, and linear combination of independent r.v., $$M_{X+Y}(t)=M_X(t)M_Y(t)$$ if $$X\perp Y$$.
+Properties of MGF include linear transformations, $$M_Y(t)=e^{\beta t}M_X(\alpha t)$$ if $$Y=\alpha X+\beta$$, and linear combination of independent r.v., $$M_{X+Y}(t)=M_X(t)M_Y(t)$$ if $$X\ind Y$$.
 
 $$\begin{align}
 M_X(t)=\sum_x e^{tx}p_X(x)&&M_X(t)=\int_{-\infty}^\infty e^{tx}p_X(x)dx\\
@@ -486,5 +488,3 @@ I(\mu)
 &=\frac4{\pi\gamma^2}(2C(4)-C(2))&\left(C(k)=\left(\frac{k-1}k\right)C(k-2)\right)\\
 &=\frac4{\pi\gamma^2}\left(2\frac 3 4\frac 1 2\frac\pi2-\frac 1 2\frac\pi2\right)=\frac1{2\gamma^2}
 \end{align}$$
-
-## Moment generating function

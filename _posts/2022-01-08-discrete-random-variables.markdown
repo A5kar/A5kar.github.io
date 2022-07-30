@@ -3,6 +3,8 @@ layout: post
 title: "Discrete Random Variables"
 ---
 
+$$\newcommand{\ind}{\perp\!\!\!\perp}$$
+
 ## Definition {#definition}
 
 A random variable (r.v.) $$X$$ is a function that associates a value with every possible outcome $$\omega\in\Omega$$. A random variable $$X(\omega)=x$$ can map into discrete (e.g. $$x\in\mathbb Z$$) or continuous (e.g. $$x\in\mathbb R$$) values. There could be multiple r.v. associated with the same sample space; and a function of one or more r.v. is in turn a r.v.{% if jekyll.environment == "development" %} (see [Prob L5 Q3](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__5_Probability_mass_functions_and_expectations/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s2-tab3) and [Prob L5 Q6](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__5_Probability_mass_functions_and_expectations/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s2-tab6)){% endif %}.
@@ -82,7 +84,7 @@ Notice that $$\mathbb E[g(X,Y)\lvert Y=y']=\sum_x g(x,y')p_{X\lvert Y}(x\lvert y
 
 ## Independence {#independence}
 
-According to [independence](/2022/01/05/conditioning-and-independence.html#independence) of two events, $$X\perp A$$ if $$p_{X\lvert A}(x)=p_X(x)\mathbb P(A), \forall x$${% if jekyll.environment == "development" %} (see [Prob PS4 Q1](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_4/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s7-tab1)){% endif %}. Similarly, $$X\perp Y$$ if $$p_{X,Y}(x,y)=p_X(x)p_Y(y), \forall x,y$${% if jekyll.environment == "development" %} (see [Prob L7 Q8](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__7_Conditioning_on_a_random_variable__Independence_of_r_v_s/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s4-tab8)){% endif %}. Below properties apply if $$X\perp Y$$.
+According to [independence](/2022/01/05/conditioning-and-independence.html#independence) of two events, $$X\ind A$$ if $$p_{X\lvert A}(x)=p_X(x)\mathbb P(A), \forall x$${% if jekyll.environment == "development" %} (see [Prob PS4 Q1](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_4/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s7-tab1)){% endif %}. Similarly, $$X\ind Y$$ if $$p_{X,Y}(x,y)=p_X(x)p_Y(y), \forall x,y$${% if jekyll.environment == "development" %} (see [Prob L7 Q8](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__7_Conditioning_on_a_random_variable__Independence_of_r_v_s/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s4-tab8)){% endif %}. Therefore, if $$X\ind Y$$ then we have as follows.
 
 |Property|Formula|
 |-|:-:|

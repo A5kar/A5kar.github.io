@@ -52,7 +52,7 @@ While setting up the statistical model, we should ask ourselves if the parameter
 Any quantity computed from values in a sample is called a **statistic**. Common examples are:
 
 - sample mean ($$\bar X_n$$), sample mode ($$\arg\max f_X(x)$$);
-- sample variance (e.g. biased $$\sigma^2$$, unbiased $$s^2$$);
+- sample variance (e.g. biased $$S_n^2$$, unbiased $$\tilde S_n^2$$);
 - order statistics (e.g. sample maximum $$X_{(n)}$$, minimum $$X_{(1)}$$ or median $$X_{\left(\frac n 2\right)}$$);
 - test statistics (e.g. $$z$$-statistic, $$t$$-statistic, $$\chi^2$$-statistic, $$F$$-statistic); and
 - in general, any *measurable* (i.e. computable) function of the sample.
@@ -61,7 +61,7 @@ When a statistic is used for estimation of a population parameter, it is called 
 
 Below are examples of some empirical (or natural) estimators, where the term "[empirical](https://en.wikipedia.org/wiki/Empirical_distribution_function)" stands for observation of **relative frequency** obtained from sample of data. An important property of any estimator is **bias**, or $$\text{bias}(\hat\Theta_n)=\mathbb E[\hat\Theta_n]-\theta$${% if jekyll.environment == "development" %} (see [Stats L4 Q3](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u02s02_parainference/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u02s02_parainference-tab3)){% endif %}. Except for expectation, all below empirical (or natural) estimators are *biased*, hence adjustments have been applied{% if jekyll.environment == "development" %} (see [Stats HW1 Q2](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@hw1_u1intro/block-v1:MITx+18.6501x+2T2021+type@vertical+block@hw1_u1intro-tab2)){% endif %}.
 
-|Property|Empirical/Natural estimator|Alternative/Unbiased estimator|
+|Property|Natural estimator|Alternative estimator|
 |-|:-:|:-:|
 |expectation $$\mathbb E[X_i]$$|$$\displaystyle\bar X_n=\frac 1 n \sum_{i=1^n}X_i$$|$$\displaystyle\bar X_n=\frac 1 n \sum_{i=1^n}X_i$$|
 |expectation of a function $$\mathbb E[Y_i]$$, where $$Y_i=f(X_i)$$|$$\displaystyle\bar Y_n=\frac 1 n \sum_{i=1^n}f(X_i)$$|depends on $$f(X_i)$${% if jekyll.environment == "development" %}<br>(see [Prob L20 Q14](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__20_An_introduction_to_classical_statistics/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch12-s4-tab14)){% endif %}|

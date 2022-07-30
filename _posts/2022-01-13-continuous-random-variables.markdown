@@ -3,6 +3,8 @@ layout: post
 title: "Continuous Random Variables"
 ---
 
+$$\newcommand{\ind}{\perp\!\!\!\perp}$$
+
 ## Definition
 
 A r.v. $$X$$ is continuous if it can be described by a probability density function (PDF) $$f_X(x)$$, where $$f_X(x)\delta\simeq\mathbb P(x\le X\le x+\delta)$$ for an arbitraty small $$\delta>0$$. It follows that continuous r.v. [almost never](https://en.wikipedia.org/wiki/Almost_surely) takes an exact value $$x$$ (formally, $$\mathbb P(X=x)=0$$){% if jekyll.environment == "development" %} (see [Prob L8 Q3](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__8_Probability_density_functions/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch8-s2-tab3)){% endif %}; indeed, in such case the probability is associated with an interval where it could lie, $$\mathbb P(a\le X\le b)=\int_a^b f_X(x)dx$${% if jekyll.environment == "development" %} (see [Prob L8 Q5](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__8_Probability_density_functions/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch8-s2-tab5)){% endif %}. Analogously to [discrete r.v.](/2022/01/08/discrete-random-variables.html#definition), the basic axioms apply.
@@ -35,9 +37,10 @@ Exactly same definitions and properties of a [discrete r.v.](/2022/01/08/discret
 |Exponential<br>$$\text{Exp}(\lambda)$${% if jekyll.environment == "development" %}<br>(see [Prob F Q1](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@sequential_Final_Exam/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch16-s1-tab2)){% endif %}|$$\begin{cases}\lambda e^{-\lambda x}&x\ge0\\0&\text{otherwise}\end{cases}$$|$$\displaystyle\frac{1}{\lambda}$$|$$\displaystyle\frac{1}{\lambda^2}$$|
 |Erlang order $$k$$<br>$$\text{Erlang}(k,\lambda)$$|$$\begin{cases}\displaystyle\frac{\lambda^k}{(k-1)!}x^{k-1}e^{-\lambda x}&x\ge0\\0&\text{otherwise}\end{cases}$$|$$\displaystyle k\frac{1}{\lambda}$$|$$\displaystyle k\frac{1}{\lambda^2}$$|
 |Gamma<br>$$\text{Gamma}(\alpha,\beta)$$|$$\begin{cases}\displaystyle\frac{\beta^\alpha}{\Gamma(\alpha)}x^{\alpha-1}e^{-\beta x}&x\ge0\\0&\text{otherwise}\end{cases}$$|$$\displaystyle\frac{\alpha}{\beta}$$|$$\displaystyle\frac{\alpha}{\beta^2}$$|
-|Normal<br>$$\mathcal N(\mu_X,\sigma_X^2)$$|$$\displaystyle\frac{1}{\sqrt{2\pi\sigma_X^2}}\exp\left\{-\frac{1}{2\sigma^2}(x-\mu_X)^2\right\}$$|$$\mu_X$$|$$\sigma^2$$|
+|Normal<br>$$\mathcal N(\mu,\sigma^2)$$|$$\displaystyle\frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{1}{2\sigma^2}(x-\mu)^2}$$|$$\mu$$|$$\sigma^2$$|
+|$$\chi^2$$ order $$k$$<br>$$\displaystyle\text{Gamma}\left(\frac 1 2k,\frac 1 2\right)$$|$$\begin{cases}\displaystyle\frac{\left(\frac 1 2\right)^{\frac 1 2 k}}{\Gamma\left(\frac 1 2 k\right)}x^{\frac 1 2 k-1}e^{-\frac 1 2 x}&x\ge0\\0&\text{otherwise}\end{cases}$$|$$k$$|$$2k$$|
 
-Analogously to Pascal r.v., computing expectation and variance for Erlang r.v. is easier if we [assume](/2022/02/08/bernoulli-and-poisson-processes.html#kth_arrival) $$X=\sum_{i=1}^k X_i$$, with $$X_i\sim\text{Exp}(\lambda)$$, in which case $$\mathbb E[X]=k\mathbb E[X_i]$$ and $$\text{var}(X)=k\text{var}(X_i)$$. Also, Gamma distribution is an extension of Erlang distribution for $$k\in\mathbb R$$, where $$\Gamma(\alpha)$$ is a [smooth curve](https://en.wikipedia.org/wiki/Gamma_function#Motivation) equal to $$(\alpha-1)!$$, when $$\alpha$$ is a positive integer number.
+Analogously to Pascal r.v., computing expectation and variance for Erlang r.v. is easier if we [assume](/2022/02/08/bernoulli-and-poisson-processes.html#kth_arrival) $$X=\sum_{i=1}^k X_i$$, with $$X_i\sim\text{Exp}(\lambda)$$, in which case $$\mathbb E[X]=k\mathbb E[X_i]$$ and $$\text{var}(X)=k\text{var}(X_i)$$. Also, Gamma distribution is an extension of Erlang distribution for $$k\in\mathbb R$$. Furthermore, $$\chi^2_n$$ distribution is a [special case](/2022/01/13/continuous-random-variables.html#chisq) of Gamma distribution.
 
 If you are curious about distributions and want to experiment with various parameters, check out this [great resource](https://share.streamlit.io/kaykozaronek/distributed/main/app.py) built by a fellow edX learner!
 
@@ -88,7 +91,7 @@ Probability that $$X$$ will take a value less than $$x$$ is defined as cumulativ
 |Equivalency|$$\mathbb P(a\le X\le b)=F_X(b)-F_X(a)$$|
 |Bounds|$$\displaystyle\lim_{x\rightarrow-\infty} F_X(x)=0,\lim_{x\rightarrow\infty} F_X(x)=1$$|
 
-CDF of a joint PDF is $$F_{X,Y}(x,y)=\mathbb P(X\le x, Y\le y)$$, where $$f_{X,Y}(x,y)=\frac{\partial^2}{\partial x\partial y}F_{X,Y}(x,y)$$. Thus, $$X\perp Y\iff F_{X,Y}(x,y)=F_X(x)F_Y(y)$${% if jekyll.environment == "development" %} (see [Prob L10 Q11](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__10_Conditioning_on_a_random_variable__Independence__Bayes_rule/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch8-s4-tab11)){% endif %}. If $$\mathbb P(X\lt a)=\mathbb P(Y\lt b)=0$$ then the CDF along those *lower* boundaries is zero $$F_{X,Y}(a,y)=F_{X,Y}(x,b)=0$$, due to continuity{% if jekyll.environment == "development" %} (see [Prob L9 Q19](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__9_Conditioning_on_an_event__Multiple_r_v_s/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch8-s3-tab19)){% endif %}.
+CDF of a joint PDF is $$F_{X,Y}(x,y)=\mathbb P(X\le x, Y\le y)$$, where $$f_{X,Y}(x,y)=\frac{\partial^2}{\partial x\partial y}F_{X,Y}(x,y)$$. Thus, $$X\ind Y\iff F_{X,Y}(x,y)=F_X(x)F_Y(y)$${% if jekyll.environment == "development" %} (see [Prob L10 Q11](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__10_Conditioning_on_a_random_variable__Independence__Bayes_rule/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch8-s4-tab11)){% endif %}. If $$\mathbb P(X\lt a)=\mathbb P(Y\lt b)=0$$ then the CDF along those *lower* boundaries is zero $$F_{X,Y}(a,y)=F_{X,Y}(x,b)=0$$, due to continuity{% if jekyll.environment == "development" %} (see [Prob L9 Q19](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__9_Conditioning_on_an_event__Multiple_r_v_s/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch8-s3-tab19)){% endif %}.
 
 Under respective back-up sections, you will find CDF of the basic r.v. [discrete](/2022/01/08/discrete-random-variables.html#cdf) and [continuous](/2022/01/13/continuous-random-variables.html#basic) distributions.
 
@@ -146,7 +149,6 @@ Go back to the [syllabi breakdown](/2022/01/02/prob-and-stats-syllabi.html).
 |:-:|:-:|
 |$$\displaystyle\int_a^b f'(x)g(x)dx$$|$$\displaystyle\left[f(x)g(x)\right]_a^b-\int_a^b f(x)g'(x)dx$$|
 |$$\displaystyle\int_a^b e^{-\lambda x}dx$$|$$\displaystyle\left[-\frac{1}{\lambda}e^{-\lambda x}\right]_a^b=\frac{1}{\lambda}(e^{-\lambda a}-e^{-\lambda b})$$|
-|$$\Gamma(\alpha)$$|$$\begin{cases}\displaystyle\int_0^\infty e^{-\lambda x}x^{\alpha-1}dx&\alpha\in\mathbb R_{\gt0}\\(\alpha-1)!=(\alpha-1)\Gamma(\alpha-1)&\alpha\in\mathbb Z_{\gt0}\end{cases}$$|
 |![pdf](/assets/images/2022-01-13-continuous-random-variables/pdf.png)<br>PDF|![cdf](/assets/images/2022-01-13-continuous-random-variables/cdf.png)<br>CDF|
 
 ## CDF of basic discrete r.v. distributions {#cdf}
@@ -157,3 +159,64 @@ Go back to the [syllabi breakdown](/2022/01/02/prob-and-stats-syllabi.html).
 |Triangular<br>$$\text{Tri}(a,b,c)$$||
 |Exponential<br>$$\text{Exp}(\lambda)$$|$$\begin{cases}0&x\lt 0\\1-e^{\lambda x}& x\ge 0\end{cases}$${% if jekyll.environment == "development" %}<br>(see [Stats HW0 Q5](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@prob_linalg_diag/block-v1:MITx+18.6501x+2T2021+type@vertical+block@prob_linalg_diag-tab5)){% endif %}|
 |Erlang<br>$$\text{Erlang}(k,\lambda)$$|$$\begin{cases}0&x\lt 0\\\displaystyle\int_{0}^x e^{-\lambda s}\frac{\lambda(\lambda s)^{k-1}}{(k-1)!}ds=1-e^{-\lambda x}\sum_{n=0}^{k-1}\frac{(\lambda x)^n}{n!}& x\ge 0\end{cases}$$|
+
+## Gamma function
+
+Assume you want to compute $$k!$$, with $$k$$ not being an integer number. $$\Gamma(\alpha)$$ addresses this question and represents a [smooth curve](https://en.wikipedia.org/wiki/Gamma_function#Motivation) that is equal to $$(\alpha-1)!$$, when $$\alpha$$ is a positive integer number.
+
+$$\Gamma(\alpha)=\int_0^\infty e^{-z}z^{\alpha-1}dz$$
+
+One observes that $$\Gamma(\alpha)=\cancelto{=0}{[-e^{-z}z^{\alpha-1}]_0^\infty}+(\alpha-1)\int_0^\infty e^{-z}z^{\alpha-2}dz=(\alpha-1)\Gamma(\alpha-1)$$. As $$\Gamma(1)=1$$, it follows that $$\Gamma(\alpha)=(\alpha-1)(\alpha-2)\dots 1=(\alpha-1)!$$ for any integer and positive $$\alpha$$.
+
+The most notable value at a non-integer argument is $$\Gamma\left(\frac 1 2\right)=\sqrt\pi$$. First notice the following.
+
+$$\begin{align}
+\Gamma\left(\frac 1 2\right)
+&=\int_0^\infty e^{-z}z^{-\frac 1 2}dz&(z=x^2)\\
+&=2\int_0^\infty e^{-x^2}dx=\int_{-\infty}^\infty e^{-x^2}dx&\text{($e^{-x^2}$ is an $\href{https://en.wikipedia.org/wiki/Even_and_odd_functions#Analytic_properties}{\text{even}}$ function)}
+\end{align}$$
+
+Now, consider the square of the above, and in particular observe that $$\left(\Gamma\left(\frac 1 2\right)\right)^2=\pi$$.
+
+$$\begin{align}
+\left(\Gamma\left(\frac 1 2\right)\right)^2=\left(\int_{-\infty}^\infty e^{-x^2}dx\right)^2
+&=\int_{-\infty}^\infty e^{-x^2}dx\int_{-\infty}^\infty e^{-y^2}dy\\
+&=\int_{-\infty}^\infty\int_{-\infty}^\infty e^{-(x^2+y^2)}dxdy&\text{(polar coordinates)}\\
+&=\int_0^\infty\left(\int_0^{2\pi}e^{-r^2}rd\theta\right)dr&\text{(integrate w.r.t. $d\theta$)}\\
+&=\int_0^\infty e^{-r^2}(2\pi)rdr&\text{(replace $r^2=t$)}\\
+&=\pi\int_0^\infty e^{-t}dt=\pi
+\end{align}$$
+
+Accordingly, we derive the equality $$\int_{-\infty}^\infty e^{-x^2}dx=\sqrt\pi$$, that is handy to derive the following.
+
+$$\begin{align}
+\int_{-\infty}^\infty e^{-az^2}dz=\frac1{\sqrt{a}}\int_{-\infty}^\infty e^{-x^2}dx=\sqrt{\frac\pi a}\text{, and in particular }\int_{-\infty}^\infty e^{-\frac1{2\sigma^2}z^2}dz=\sqrt{2\pi\sigma^2}
+\end{align}$$
+
+That is useful to derive the normalization factor for a generic $$X\sim\mathcal N(\mu,\sigma^2)$$.
+
+$$\int_{-\infty}^\infty\frac1{\sqrt{2\pi\sigma^2}}e^{-\frac1{2\sigma^2}(z-\mu)^2}dz=1$$
+
+## Derivation of $$\chi^2$$ distribution {#chisq}
+
+Distribution of $$\sum_{i=1}^k Z_i^2$$, where $$Z_i\overset{i.i.d.}{\sim}\mathcal N(0,1)$$, is defined as $$\chi^2$$ distribution with $$k$$ degrees of freedom and is indicated as $$\sum_{i=1}^k Z_i^2\sim\chi^2_k$$. When $$k=1$$ (or $$Z^2\sim\chi^2_1$$), $$F_{Z^2}(z)=2\Phi(\sqrt z)-1$$, where $$z\ge0$$. In particular:
+
+$$\begin{align}
+F_{Z^2}(z)=\mathbb P(Z^2\le z)
+&=\mathbb P(\lvert Z\rvert\le\sqrt z)=2\mathbb P(0\le Z\le\sqrt z)\\
+&=2(\mathbb P(Z\le\sqrt z)-\mathbb P(Z\le0))\\
+&=2\Phi(\sqrt z)-2\Phi(0)=2\Phi(\sqrt z)-1
+\end{align}$$
+
+Accordingly, $$f_{Z^2}(z)$$ can be derived as $$\frac\partial{\partial z}F_{Z^2}(z)$$.
+
+$$\begin{align}
+f_{Z^2}(z)
+&=\frac\partial{\partial z}F_{Z^2}(z)=\frac\partial{\partial z}(2\Phi(\sqrt z)-1)\\
+&=2f_Z(\sqrt z)\frac 1{2\sqrt z}=\frac1{\sqrt{2\pi}}e^{-\frac 1 2 z}z^{-\frac 1 2}\\
+&=\frac{\left(\frac 1 2\right)^{\frac 1 2}}{\Gamma\left(\frac 1 2\right)}z^{\frac 1 2-1}e^{-\frac 1 2 z}
+\end{align}$$
+
+The last equation can be written as $$f_{Z^2}(z)=\frac{\beta^\alpha}{\Gamma(\alpha)}z^{\alpha-1}e^{-\beta z}$$, with $$\alpha=\beta=\frac 1 2$$, that is the PDF of $$\text{Gamma}(\alpha,\beta)$$. Since $$\text{Gamma}(\alpha,\beta)$$ is in turn a generalization of $$\text{Erlang}(k,\beta)$$, it follows that if $$X\sim\text{Gamma}(\alpha,\beta)$$, then $$X_1+X_2\sim\Gamma(2\alpha,\beta)$$, and that in general $$\sum_{i=1}^k X_i\sim\text{Gamma}(k\alpha,\beta)$$. In particular, this way we obtain that $$\chi_k^2=\sum_{i=1}^k Z_i^2\sim\text{Gamma}\left(\frac 1 2 k,\frac 1 2\right)$$. If $$k$$ is even, then $$\chi_k^2\sim\text{Erlang}\left(\frac 1 2 k,\frac 1 2\right)$$, which in case of $$k=2$$ reduces to $$\chi_2^2\sim\text{Exp}\left(\frac 1 2\right)$$.
+
+Expectation and variance of $$\chi_k^2$$ are immediately available if we consider $$\chi_k^2\sim\text{Gamma}\left(\frac 1 2 k,\frac 1 2\right)$$, as $$\mathbb E[\chi_k^2]=\frac{\frac 1 2 k}{\frac 1 2}=k$$ and $$\text{var}(\chi_k^2)=\frac{\frac 1 2 k}{\left(\frac 1 2\right)^2}=2k$$.
