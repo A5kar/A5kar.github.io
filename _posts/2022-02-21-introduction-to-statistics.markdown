@@ -45,7 +45,7 @@ $$\mathbb P(S_n\ge n\varepsilon)\le\left(\frac{\mathbb E[e^{tX_i}]}{e^{t\varepsi
 
 Note that $$h(\varepsilon)=\ln\left(\mathbb E[e^{tX_i}]\right)-t\varepsilon\lt0$$ for $$\mathbb E[X_i]=0$$ and a suitably small $$t\gt0$$, which means that the probability decays exponentially with $$n$$ and this general result is known as **Chernoff's bound**.
 
-A special case is obtained thanks to the [Hoeffding's lemma](https://en.wikipedia.org/wiki/Hoeffding%27s_inequality) that says that when $$X_i\in[a,b]$$ a.s., then $$\mathbb E[e^{tX_i}]\le e^{\frac{1}{8}t^2(b-a)^2}$$ (see [back-up](/2022/02/21/introduction-to-statistics.html#hoeffding_lemma)). This means that $$h(\varepsilon)\le\frac{1}{8}t^2(a-b)^2-t\varepsilon$$, with an upper bound at $$t=\frac{4\varepsilon^2}{(b-a)^2}$$. Accordingly, $$\mathbb P(S_n\ge n\varepsilon)\le e^{-\frac{2n\varepsilon^2}{(b-a)^2}}$$.
+A special case is obtained thanks to the [Hoeffding's lemma](https://en.wikipedia.org/wiki/Hoeffding%27s_inequality) that says that when $$X_i\in[a,b]$$ a.s., then $$\mathbb E[e^{tX_i}]\le e^{\frac{(b-a)^2}{8}t^2}$$ (see [back-up](/2022/02/21/introduction-to-statistics.html#hoeffding_lemma)). This means that $$h(\varepsilon)\le\frac{(b-a)^2}{8}t^2-t\varepsilon$$, with an upper bound at $$t=\frac{4\varepsilon}{(b-a)^2}$$. Accordingly, $$\mathbb P(S_n\ge n\varepsilon)\le e^{-\frac{2n\varepsilon^2}{(b-a)^2}}$$.
 
 Last manipulation is to replace $$S_n$$ with $$S_n-\mathbb E[S_n]$$, so that we do not need to assume $$\mathbb E[X_i]=0$$ anymore, and  divide both hand sides within the probability by $$n$$ to obtain the **Hoeffding's inequality**{% if jekyll.environment == "development" %} (see [Stats L2 Q3](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u1s2_probredux/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u1s2_probredux-tab3)){% endif %}, which holds for any $$n\ge1$$.
 
@@ -183,7 +183,7 @@ Observe that if $$x_n\rightarrow x$$ and $$y_n\rightarrow y$$, then $$x_n+y_n\ri
 
 ## Hoeffding's lemma {#hoeffding_lemma}
 
-Observe that $$e^{tx}\le\left(\frac{b-x}{b-a}\right)e^{ta}+\left(\frac{x-a}{b-a}\right)e^{tb}$$ due to convexity of the exponential function. If we replace $$x=X$$ and compute exponential on both sides of the inequality we have the following relation.
+Observe that $$e^{tx}\le\left(\frac{b-x}{b-a}\right)e^{ta}+\left(\frac{x-a}{b-a}\right)e^{tb}$$ due to convexity of the exponential function. If we replace $$x=X$$ and compute expectation on both sides of the inequality we have the following relation.
 
 $$\mathbb E[e^{tX}]\le\left(\frac{b-\mathbb E[X]}{b-a}\right)e^{ta}+\left(\frac{\mathbb E[X]-a}{b-a}\right)e^{tb}$$
 

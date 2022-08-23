@@ -166,7 +166,7 @@ $$\begin{align}\nabla f(\theta)=\left[\begin{array}{}\frac{\partial}{\partial\th
 
 For completeness, function $$f(\theta)$$ is concave (without *strictly*) if $$f''(x)\le0$$, or in case of multivariate function $$x^T\mathbf H_\theta f(\theta)x\le0$$ (matrix is negative *semi*-definite). To avoid confusion, bear in mind that strictly concave $$\implies$$ concave, and negative definite $$\implies$$ negative semi-definite{% if jekyll.environment == "development" %} (see [Stats L9 Q8](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u03s02_methodestimation/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u03s02_methodestimation-tab8)){% endif %}. Maximization is to concave the same way minimization is to **convex**, and all analogous considerations can be made with respect to convex functions{% if jekyll.environment == "development" %} (see [Stats HW4 Q3](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@hw4_u3methods/block-v1:MITx+18.6501x+2T2021+type@vertical+block@hw4_u3methods-tab3)){% endif %}.
 
-## Maximum likelihood estimation
+## Maximum likelihood estimation {#mle}
 
 Since maximization of likelihood is equivalent to minimization of KL, **maximum likelihood estimator** (MLE) of $$\theta$$ is defined as $$\hat\Theta_n=\arg\max_{\theta\in\Theta}\mathcal L_n(\theta)$$, provided that $$\mathcal L_n(\theta)$$ is strictly concave in $$\theta$$. Maximization is often performed in the log-space, as $$\hat\Theta_n=\arg\max_{\theta\in\Theta}\ln(\mathcal L_n(\theta))$$, because of the same concavity considerations and the convenience in manipulating [exponential family](https://en.wikipedia.org/wiki/Exponential_family) distributions.
 
@@ -266,7 +266,7 @@ As for the asymptotic normality, note that the distribution of $$\hat\Theta_n$$ 
 
 When MLE is constrained to a region $$\Theta\subset\mathbb R^d$$ which does not capture the global maximum (e.g. does not cover the entire $$\mathbb R^d$$ space), then $$\hat\Theta_n=\arg\max_{\theta\in\Theta}\ell_n(X_1,\dots,X_n,\theta)$$ will fall on the boundary of $$\Theta$${% if jekyll.environment == "development" %} (see [Stats HW4 Q5](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@hw4_u3methods/block-v1:MITx+18.6501x+2T2021+type@vertical+block@hw4_u3methods-tab5)){% endif %}, and MLE will not be asymptotically Normal.
 
-## M-estimation
+## M-estimation {#m-estimation}
 
 Reviewing MLE, one could say that the estimator was determined as follows:
 
@@ -300,7 +300,7 @@ In particular, if we consider $$p=\frac 1 2$$ and $$q=\text{med}(X)$$, we have t
 
 $$\sqrt n(X_{\left(\frac n2\right)}-\text{med}(X))\xrightarrow{(d)}\mathcal N\left(0,\frac{1}{4f_X^2(\text{med}(X))}\right)$$
 
-For a practical example consider two particular cases, [Laplace distribution](https://en.wikipedia.org/wiki/Laplace_distribution) (or double exponential) and [Cauchy distribution](https://en.wikipedia.org/wiki/Cauchy_distribution) (or $$t$$-distribution with $$n=1$$){% if jekyll.environment == "development" %} (see [Stats L12 Q6](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u03s05_methodestimation/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u03s05_methodestimation-tab6) and [Stats L12 Q8](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u03s05_methodestimation/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u03s05_methodestimation-tab8)){% endif %}.
+For a practical example consider two particular cases, [Laplace distribution](https://en.wikipedia.org/wiki/Laplace_distribution) (or double exponential) and [Cauchy distribution](https://en.wikipedia.org/wiki/Cauchy_distribution) (or $$t$$ distribution with $$n=1$$){% if jekyll.environment == "development" %} (see [Stats L12 Q6](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u03s05_methodestimation/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u03s05_methodestimation-tab6) and [Stats L12 Q8](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u03s05_methodestimation/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u03s05_methodestimation-tab8)){% endif %}.
 
 |r.v.|PDF<br>$$f_X(x)$$|Expectation<br>$$\mu_X=\mathbb E[X]$$|Variance<br>$$\sigma_X^2=\text{var}(X)$$|
 |-|:-:|:-:|:-:|:-:|

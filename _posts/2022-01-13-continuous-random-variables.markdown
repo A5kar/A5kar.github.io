@@ -40,7 +40,7 @@ Exactly same definitions and properties of a [discrete r.v.](/2022/01/08/discret
 |Normal<br>$$\mathcal N(\mu,\sigma^2)$$|$$\displaystyle\frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{1}{2\sigma^2}(x-\mu)^2}$$|$$\mu$$|$$\sigma^2$$|
 |$$\chi^2$$ order $$k$$<br>$$\displaystyle\text{Gamma}\left(\frac 1 2k,\frac 1 2\right)$$|$$\begin{cases}\displaystyle\frac{\left(\frac 1 2\right)^{\frac 1 2 k}}{\Gamma\left(\frac 1 2 k\right)}x^{\frac 1 2 k-1}e^{-\frac 1 2 x}&x\ge0\\0&\text{otherwise}\end{cases}$$|$$k$$|$$2k$$|
 
-Analogously to Pascal r.v., computing expectation and variance for Erlang r.v. is easier if we [assume](/2022/02/08/bernoulli-and-poisson-processes.html#kth_arrival) $$X=\sum_{i=1}^k X_i$$, with $$X_i\sim\text{Exp}(\lambda)$$, in which case $$\mathbb E[X]=k\mathbb E[X_i]$$ and $$\text{var}(X)=k\text{var}(X_i)$$. Also, Gamma distribution is an extension of Erlang distribution for $$k\in\mathbb R$$. Furthermore, $$\chi^2_n$$ distribution is a [special case](/2022/01/13/continuous-random-variables.html#chisq) of Gamma distribution.
+Analogously to Pascal r.v., computing expectation and variance for Erlang r.v. is easier if we [assume](/2022/02/08/bernoulli-and-poisson-processes.html#kth_arrival) $$X=\sum_{i=1}^k X_i$$, with $$X_i\sim\text{Exp}(\lambda)$$, in which case $$\mathbb E[X]=k\mathbb E[X_i]$$ and $$\text{var}(X)=k\text{var}(X_i)$$. Also, Gamma distribution is an extension of Erlang distribution for $$k\in\mathbb R$$. Furthermore, $$\chi^2_n$$ distribution is a [special case](/2022/07/15/hypothesis-testing.html#chisq) of Gamma distribution.
 
 If you are curious about distributions and want to experiment with various parameters, check out this [great resource](https://share.streamlit.io/kaykozaronek/distributed/main/app.py) built by a fellow edX learner!
 
@@ -196,27 +196,3 @@ $$\begin{align}
 That is useful to derive the normalization factor for a generic $$X\sim\mathcal N(\mu,\sigma^2)$$.
 
 $$\int_{-\infty}^\infty\frac1{\sqrt{2\pi\sigma^2}}e^{-\frac1{2\sigma^2}(z-\mu)^2}dz=1$$
-
-## Derivation of $$\chi^2$$ distribution {#chisq}
-
-Distribution of $$\sum_{i=1}^k Z_i^2$$, where $$Z_i\overset{i.i.d.}{\sim}\mathcal N(0,1)$$, is defined as $$\chi^2$$ distribution with $$k$$ degrees of freedom and is indicated as $$\sum_{i=1}^k Z_i^2\sim\chi^2_k$$. When $$k=1$$ (or $$Z^2\sim\chi^2_1$$), $$F_{Z^2}(z)=2\Phi(\sqrt z)-1$$, where $$z\ge0$$. In particular:
-
-$$\begin{align}
-F_{Z^2}(z)=\mathbb P(Z^2\le z)
-&=\mathbb P(\lvert Z\rvert\le\sqrt z)=2\mathbb P(0\le Z\le\sqrt z)\\
-&=2(\mathbb P(Z\le\sqrt z)-\mathbb P(Z\le0))\\
-&=2\Phi(\sqrt z)-2\Phi(0)=2\Phi(\sqrt z)-1
-\end{align}$$
-
-Accordingly, $$f_{Z^2}(z)$$ can be derived as $$\frac\partial{\partial z}F_{Z^2}(z)$$.
-
-$$\begin{align}
-f_{Z^2}(z)
-&=\frac\partial{\partial z}F_{Z^2}(z)=\frac\partial{\partial z}(2\Phi(\sqrt z)-1)\\
-&=2f_Z(\sqrt z)\frac 1{2\sqrt z}=\frac1{\sqrt{2\pi}}e^{-\frac 1 2 z}z^{-\frac 1 2}\\
-&=\frac{\left(\frac 1 2\right)^{\frac 1 2}}{\Gamma\left(\frac 1 2\right)}z^{\frac 1 2-1}e^{-\frac 1 2 z}
-\end{align}$$
-
-The last equation can be written as $$f_{Z^2}(z)=\frac{\beta^\alpha}{\Gamma(\alpha)}z^{\alpha-1}e^{-\beta z}$$, with $$\alpha=\beta=\frac 1 2$$, that is the PDF of $$\text{Gamma}(\alpha,\beta)$$. Since $$\text{Gamma}(\alpha,\beta)$$ is in turn a generalization of $$\text{Erlang}(k,\beta)$$, it follows that if $$X\sim\text{Gamma}(\alpha,\beta)$$, then $$X_1+X_2\sim\Gamma(2\alpha,\beta)$$, and that in general $$\sum_{i=1}^k X_i\sim\text{Gamma}(k\alpha,\beta)$$. In particular, this way we obtain that $$\chi_k^2=\sum_{i=1}^k Z_i^2\sim\text{Gamma}\left(\frac 1 2 k,\frac 1 2\right)$$. If $$k$$ is even, then $$\chi_k^2\sim\text{Erlang}\left(\frac 1 2 k,\frac 1 2\right)$$, which in case of $$k=2$$ reduces to $$\chi_2^2\sim\text{Exp}\left(\frac 1 2\right)$$.
-
-Expectation and variance of $$\chi_k^2$$ are immediately available if we consider $$\chi_k^2\sim\text{Gamma}\left(\frac 1 2 k,\frac 1 2\right)$$, as $$\mathbb E[\chi_k^2]=\frac{\frac 1 2 k}{\frac 1 2}=k$$ and $$\text{var}(\chi_k^2)=\frac{\frac 1 2 k}{\left(\frac 1 2\right)^2}=2k$$.

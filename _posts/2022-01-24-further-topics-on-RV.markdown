@@ -28,7 +28,7 @@ An approach similar to derived distributions can be used to simulate *any* distr
 - **Discrete case**: we assign to $$X$$ the $$k$$-th value that satisfies $$F_X(k-1)\lt u\le F_X(k)$$; and
 - **Continuous case**: we assign to $$X$$ that $$x$$ that satisfies $$u=F_X(x)$$.
 
-## Function of multiple r.v.
+## Function of multiple r.v. {#derived_distributions_multiple}
 
 Calculating probability law on $$Z=g(X,Y)$$ is not different from the single r.v. case. If $$f_{Y\lvert X}(y\lvert x)$$ is available and $$\exists h:Y=h(Z,X)$$, we can compute $$f_{Z\lvert X}(z\lvert x)$$ in terms of $$f_{Y\lvert X}(y\lvert x)$$ and $$y=h(z,x)$$ bearing in mind that $$X=x$$ is given. In other words, we derive $$F_{Z\lvert X}(z\lvert x)=F_{Y\lvert X}(h(x,z)\lvert x)$$, and then differentiate $$f_{Z\lvert X}(z\lvert x)=f_{Y\lvert X}(h(x,z)\lvert x)\left\lvert\frac{\partial}{\partial z}h(x,z)\right\rvert$$. At this point, total probability theorem tells us that $$f_Z(z)=\int_{-\infty}^\infty f_X(x)f_{Z\lvert X}(z\lvert x)dx$$.
 
@@ -127,6 +127,8 @@ $$\begin{align}
 &=\mathbb E[XY]-\mathbb E[X]\mathbb E[Y]=\mathbb E[X\mu_{Y\lvert X}]-\mu_X\mu_Y\\
 &=\rho_{XY}\frac{\sigma_Y}{\sigma_X}(\mathbb E[X^2]-\mu_X^2)=\rho_{XY}\sigma_X\sigma_Y
 \end{align}$$
+
+Prior to concluding, an important observation is that $$f_{XY}(x,y)=f_X(x)f_Y(y)$$ when $$\rho_{XY}=0$$. This means that in case of jointly Normal r.v, when two r.v. are **uncorrelated** they are also **independent**.
 
 ## Covariance matrix {#covariance_matrix}
 
