@@ -36,9 +36,9 @@ Exactly same definitions and properties of a [discrete r.v.](/2022/01/08/discret
 |Triangular<br>$$\text{Tri}(a,b,c)$$|$$\begin{cases}\frac{2}{(c-a)}\frac{(x-a)}{(b-a)}&a\le x\le b\\\frac{2}{(c-a)}\frac{(c-x)}{(c-b)}&b\lt x\le c\\0&\text{otherwise}\end{cases}$$|$$\displaystyle\frac{a+b+c}{3}$${% if jekyll.environment == "development" %}<br>(see [Prob PS5 Q4](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_5/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch8-s7-tab4)){% endif %}|$$\displaystyle\frac{\begin{align}a^2+b^2+c^2\\-ab-ac-bc\end{align}}{18}$$|
 |Exponential<br>$$\text{Exp}(\lambda)$${% if jekyll.environment == "development" %}<br>(see [Prob F Q1](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@sequential_Final_Exam/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch16-s1-tab2)){% endif %}|$$\begin{cases}\lambda e^{-\lambda x}&x\ge0\\0&\text{otherwise}\end{cases}$$|$$\displaystyle\frac{1}{\lambda}$$|$$\displaystyle\frac{1}{\lambda^2}$$|
 |Erlang order $$k$$<br>$$\text{Erlang}(k,\lambda)$$|$$\begin{cases}\displaystyle\frac{\lambda^k}{(k-1)!}x^{k-1}e^{-\lambda x}&x\ge0\\0&\text{otherwise}\end{cases}$$|$$\displaystyle k\frac{1}{\lambda}$$|$$\displaystyle k\frac{1}{\lambda^2}$$|
-|Gamma<br>$$\text{Gamma}(\alpha,\beta)$$|$$\begin{cases}\displaystyle\frac{\beta^\alpha}{\Gamma(\alpha)}x^{\alpha-1}e^{-\beta x}&x\ge0\\0&\text{otherwise}\end{cases}$$|$$\displaystyle\frac{\alpha}{\beta}$$|$$\displaystyle\frac{\alpha}{\beta^2}$$|
+|Gamma<br>$$\text{Gamma}(\alpha,\beta)$$|$$\begin{cases}\displaystyle\frac{\beta^\alpha}{\Gamma(\alpha)}x^{\alpha-1}e^{-\beta x}&x\ge0\\0&\text{otherwise}\end{cases}$$|$$\displaystyle\alpha\frac1{\beta}$$|$$\displaystyle\alpha\frac1{\beta^2}$$|
 |Normal<br>$$\mathcal N(\mu,\sigma^2)$$|$$\displaystyle\frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{1}{2\sigma^2}(x-\mu)^2}$$|$$\mu$$|$$\sigma^2$$|
-|$$\chi^2$$ order $$k$$<br>$$\displaystyle\text{Gamma}\left(\frac 1 2k,\frac 1 2\right)$$|$$\begin{cases}\displaystyle\frac{\left(\frac 1 2\right)^{\frac 1 2 k}}{\Gamma\left(\frac 1 2 k\right)}x^{\frac 1 2 k-1}e^{-\frac 1 2 x}&x\ge0\\0&\text{otherwise}\end{cases}$$|$$k$$|$$2k$$|
+|$$\chi^2$$ order $$k$$<br>$$\displaystyle\text{Gamma}\left(\frac12l,\frac12\right)$$|$$\begin{cases}\displaystyle\frac{\left(\frac12\right)^{\frac12l}}{\Gamma\left(\frac12l\right)}x^{\frac12l-1}e^{-\frac12x}&x\ge0\\0&\text{otherwise}\end{cases}$$|$$l$$|$$2l$$|
 
 Analogously to Pascal r.v., computing expectation and variance for Erlang r.v. is easier if we [assume](/2022/02/08/bernoulli-and-poisson-processes.html#kth_arrival) $$X=\sum_{i=1}^k X_i$$, with $$X_i\sim\text{Exp}(\lambda)$$, in which case $$\mathbb E[X]=k\mathbb E[X_i]$$ and $$\text{var}(X)=k\text{var}(X_i)$$. Also, Gamma distribution is an extension of Erlang distribution for $$k\in\mathbb R$$. Furthermore, $$\chi^2_n$$ distribution is a [special case](/2022/07/15/hypothesis-testing.html#chisq) of Gamma distribution.
 
@@ -81,9 +81,9 @@ A mixed r.v. $$Z$$ can be conveniently seen as a combination of discrete r.v. $$
 
 $$Z=\begin{cases}X&\text{with probability $p$}\\Y&\text{with probability $(1-p)$}\end{cases}$$
 
-## Cumulative distribution function
+## Cumulative distribution function {#cdf}
 
-Probability that $$X$$ will take a value less than $$x$$ is defined as cumulative distribution function (CDF), or $$F_X(x)=\mathbb P(X\le x)$$. Note that CDF does not distinguish if $$X$$ is discrete or continuous (or mixed), and applies analogously except that in case of discrete r.v. it is calculated as $$F_X(x)=\sum_{k\le x}p_X(x)$$, while in case of continuous r.v. we use $$F_X(x)=\int_{-\infty}^x f_X(x)dx$$. The latter clearly expresses that $$f_X(x)=\frac{\partial}{\partial x}F_X(x)$${% if jekyll.environment == "development" %} (see [Prob L8 Q12](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__8_Probability_density_functions/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch8-s2-tab12) and [Prob PS5 Q2](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_5/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch8-s7-tab2)){% endif %}.
+Probability that $$X$$ will take a value less than $$x$$ is defined as cumulative distribution function (CDF), or $$F_X(x)=\mathbb P(X\le x)$$. Note that CDF does not distinguish if $$X$$ is discrete or continuous (or mixed), and applies analogously except that in case of discrete r.v. it is calculated as $$F_X(x)=\sum_{k\le x}p_X(x)$$, while in case of continuous r.v. we use $$F_X(x)=\int_{-\infty}^x f_X(x)dx$$. The latter clearly expresses that $$f_X(x)=\frac{\partial}{\partial x}F_X(x)$${% if jekyll.environment == "development" %} (see [Prob L8 Q12](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__8_Probability_density_functions/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch8-s2-tab12), [Prob PS5 Q2](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_5/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch8-s7-tab2) and [Stats L16 Q2](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u04s06_hypotesting/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u04s06_hypotesting-tab2)){% endif %}.
 
 |Property|Formula|
 |-|:-:|
@@ -151,7 +151,7 @@ Go back to the [syllabi breakdown](/2022/01/02/prob-and-stats-syllabi.html).
 |$$\displaystyle\int_a^b e^{-\lambda x}dx$$|$$\displaystyle\left[-\frac{1}{\lambda}e^{-\lambda x}\right]_a^b=\frac{1}{\lambda}(e^{-\lambda a}-e^{-\lambda b})$$|
 |![pdf](/assets/images/2022-01-13-continuous-random-variables/pdf.png)<br>PDF|![cdf](/assets/images/2022-01-13-continuous-random-variables/cdf.png)<br>CDF|
 
-## CDF of basic discrete r.v. distributions {#cdf}
+### CDF of basic discrete r.v. distributions {#cdf_continuous}
 
 |r.v.|CDF<br>$$F_X(x)$$|
 |-|:-:|
@@ -160,7 +160,7 @@ Go back to the [syllabi breakdown](/2022/01/02/prob-and-stats-syllabi.html).
 |Exponential<br>$$\text{Exp}(\lambda)$$|$$\begin{cases}0&x\lt 0\\1-e^{\lambda x}& x\ge 0\end{cases}$${% if jekyll.environment == "development" %}<br>(see [Stats HW0 Q5](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@prob_linalg_diag/block-v1:MITx+18.6501x+2T2021+type@vertical+block@prob_linalg_diag-tab5)){% endif %}|
 |Erlang<br>$$\text{Erlang}(k,\lambda)$$|$$\begin{cases}0&x\lt 0\\\displaystyle\int_{0}^x e^{-\lambda s}\frac{\lambda(\lambda s)^{k-1}}{(k-1)!}ds=1-e^{-\lambda x}\sum_{n=0}^{k-1}\frac{(\lambda x)^n}{n!}& x\ge 0\end{cases}$$|
 
-## Gamma function
+### Gamma function
 
 Assume you want to compute $$k!$$, with $$k$$ not being an integer number. $$\Gamma(\alpha)$$ addresses this question and represents a [smooth curve](https://en.wikipedia.org/wiki/Gamma_function#Motivation) that is equal to $$(\alpha-1)!$$, when $$\alpha$$ is a positive integer number.
 

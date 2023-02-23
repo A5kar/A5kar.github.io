@@ -44,13 +44,16 @@ Putting together the three axioms above, it follows that $$\mathbb P(A)\leq 1$$ 
 |$$\mathbb P(A\cup B)$$|$$\begin{cases}\mathbb P(B),&\text{if }A\subseteq B\\\mathbb P(A)+\mathbb P(B)-\mathbb P(A\cap B),&\text{otherwise}\end{cases}$$<br>(it follows that $$\mathbb P(A)\le\mathbb P(B)$$ if $$A\subseteq B$$){% if jekyll.environment == "development" %} (see [Prob L1 Q8](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__1_Probability_models_and_axioms/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch3-s1-tab8) and [Prob L1 Q10](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__1_Probability_models_and_axioms/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch3-s1-tab10)){% endif %}|
 |$$\mathbb P(A\cap B)$$|$$\begin{cases}\mathbb P(A),&\text{if }A\subseteq B\\\mathbb P(A)+\mathbb P(B)-\mathbb P(A\cup B),&\text{otherwise}\end{cases}$$|
 
-From $$\mathbb P(A\cup B)$$, we have $$\mathbb P(A)+\mathbb P(B)-\mathbb P(B\cap A)\le1$$, or $$\mathbb P(A\cap B)\ge\mathbb P(A)+\mathbb P(B)-1$$. In general, we have $$\mathbb P\left(\bigcap_{i=1}^n A_i\right)\ge\sum_{i=1}^n\mathbb P(A_i)-(n-1)$$, known as Bonferroni inequality.
+From $$\mathbb P(A\cup B)=\mathbb P(A)+\mathbb P(B)-\mathbb P(A\cap B)$$ we can derive two inequalities: (a) the **union bound**, $$\mathbb P(A\cup B)\le\mathbb P(A)+\mathbb P(B)$$, because $$\mathbb P(A\cap B)\ge0$$; and (b) the **Bonferroni inequality**, that is obtained by swapping the union with the intersection, $$\mathbb P(A\cap B)\ge\mathbb P(A)+\mathbb P(B)-1$$, because $$\mathbb P(A\cup B)\le1$$. Both inequalities can be generalized using the method of [mathematical induction](https://en.wikipedia.org/wiki/Mathematical_induction).
 
-Note that the union could have been written also as $$\mathbb P(A\cup B)=\mathbb P(A)+\mathbb P(A^C\cap B)$$. Accordingly, $$\mathbb P((A\cup B)\cup C)=\mathbb P(A)+\mathbb P(A^C\cap B)+\mathbb P(A^C\cap B^C\cap C)$${% if jekyll.environment == "development" %} (see [Prob L1 Q12](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__1_Probability_models_and_axioms/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch3-s1-tab12)){% endif %}.
+|Formula|Equivalent form|
+|:-:|:-:|
+|**union bound**|$$\displaystyle\mathbb P\left(\bigcup_{i=1}^n A_i\right)\le\sum_{i=1}^n\mathbb P(A_i)$$|
+|**Bonferroni inequality**|$$\displaystyle\mathbb P\left(\bigcap_{i=1}^n A_i\right)\ge\sum_{i=1}^n\mathbb P(A_i)-(n-1)$$|
 
-Another possible derivation is that $$\mathbb P((A\cup B)\cup C)=\mathbb P(A\cup B)+\mathbb(C)-\mathbb P((A\cup B)\cap C)$$, which in turn becomes $$\mathbb P(A)+\mathbb P(B)+\mathbb P(C)-\mathbb P(A\cap B)-\mathbb P(B\cap C)-\mathbb P(A\cap C)+\mathbb P(A\cap B\cap C)$$. In general, this relationship is known as the [inclusion-exclusion](https://en.wikipedia.org/wiki/Inclusion–exclusion_principle) formula.
+Since $$\mathbb P(B)-\mathbb P(A\cap B)=\mathbb P(A^C\cap B)$$, then $$\mathbb P(A\cup B)=\mathbb P(A)+\mathbb P(A^C\cap B)$$ is an alternative expression of the union, using complements{% if jekyll.environment == "development" %} (see [Prob L1 Q12](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__1_Probability_models_and_axioms/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch3-s1-tab12)){% endif %}. Note that if we join another event, we have $$\mathbb P((A\cup B)\cup C)=\mathbb P(A\cup B)+\mathbb P(C)-\mathbb P((A\cup B)\cap C)$$, which can be further expanded into $$\mathbb P(A)+\mathbb P(B)+\mathbb P(C)-\mathbb P(A\cap B)-\mathbb P(B\cap C)-\mathbb P(A\cap C)+\mathbb P(A\cap B\cap C)$$. In general, this relationship is known as the [inclusion-exclusion](https://en.wikipedia.org/wiki/Inclusion–exclusion_principle) formula.
 
-$$\mathbb P\left(\bigcup_{i=1}^n A_i\right)=\sum_{i=1}^n\mathbb P(A_i)-\sum_{i\lt j}\mathbb P(A_i\cap A_j)+\sum_{i\lt j\lt k}\mathbb P(A_i\cap A_j\cap A_k)+\dots(-1)^{n-1}\mathbb P\left(\bigcap_{i=1}^n A_i\right)$$
+$$\mathbb P\left(\bigcup_{i=1}^n A_i\right)=\sum_{i=1}^n\mathbb P(A_i)-\sum_{i\lt j}\mathbb P(A_i\cap A_j)+\sum_{i\lt j\lt k}\mathbb P(A_i\cap A_j\cap A_k)+\dots(-1)^{n+1}\mathbb P\left(\bigcap_{i=1}^n A_i\right)$$
 
 ## Miscellanea
 
@@ -71,6 +74,8 @@ Go back to the [syllabi breakdown](/2022/01/02/prob-and-stats-syllabi.html).
 ***
 
 ## Back-up
+
+### Set algebra
 
 The properties below come from the basic [properties of set algebra](https://en.wikipedia.org/wiki/Algebra_of_sets). You should know them by heart (especially the De Morgan's law). You may add them in case you have some spare space and if they keep slipping out of your mind.
 

@@ -48,6 +48,7 @@ From the above, we see that $$(\mathbb E[X])^2\le\mathbb E[X^2]$${% if jekyll.en
 |r.v.|PMF<br>$$p_X(x)$$|Expectation<br>$$\mu_X=\mathbb E[X]$$|Variance<br>$$\sigma_X^2=\text{var}(X)$$|
 |-|:-:|:-:|:-:|:-:|
 |Bernoulli<br>$$\text{Ber}(p)$$|$$\begin{cases}p^x(1-p)^{1-x}&x\in\{0,1\}\\0&\text{otherwise}\end{cases}$$|$$p$$|$$p(1-p)$$|
+|Rademacher<br>$$\text{Rad}$$|$$\begin{cases}\frac12&x=1\\\frac12&x=-1\\0&\text{otherwise}\end{cases}$$|$$0$$|$$1$$|
 |Binomial<br>$$\text{Bin}(k,p)$$|$$\begin{cases}\displaystyle{k\choose x}p^x(1-p)^{k-x}&x\in\{0,1,\dots,k\}\\0&\text{otherwise}\end{cases}$${% if jekyll.environment == "development" %}<br>(see [Prob L5 Q11](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__5_Probability_mass_functions_and_expectations/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s2-tab11)){% endif %}|$$kp$$|$$kp(1-p)$$|
 |Geometric<br>$$\text{Geom}(p)$$|$$\begin{cases}(1-p)^{x-1}p&\mathbb Z_{\ge1}\\0&\text{otherwise}\end{cases}$$|$$\displaystyle\frac{1}{p}$${% if jekyll.environment == "development" %}<br>(see [Prob MT1 Q3](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@sequential_Exam_1/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch7-s1-tab4)){% endif %}|$$\displaystyle\frac{1-p}{p^2}$$|
 |Pascal<br>$$\text{NBin}(k,p)$$|$$\begin{cases}\displaystyle{x-1\choose k-1}p^k(1-p)^{x-k}&\mathbb Z_{\ge k}\\0&\text{otherwise}\end{cases}$$|$$\displaystyle k\frac{1}{p}$$|$$\displaystyle k\frac{(1-p)}{p^2}$$|
@@ -55,15 +56,9 @@ From the above, we see that $$(\mathbb E[X])^2\le\mathbb E[X^2]$${% if jekyll.en
 |Uniform<br>$$\text{Unif}(a,b)$$|$$\begin{cases}\displaystyle\frac{1}{n}&x\in\{a,a+1,\dots,b-1,b\}\\0&\text{otherwise}\end{cases}$$<br>where $$n=b-a+1$$|$$\displaystyle\frac{a+b}{2}$$|$$\displaystyle\frac{1}{12}(n^2-1)$$|
 |Constant<br>$$\text{Unif}(c,c)$$|$$\begin{cases}1&\text{if $x=c$}\\0&\text{otherwise}\end{cases}$$|$$c$$|$$0$$|
 
-Second moment of $$X$$ can be derived as $$\mathbb E[X^2]=\text{var}(X)+(\mathbb E[X])^2=\sigma_X^2+\mu_X^2$$. As for Bernoulli, bear in mind that $$\mathbb E[X^k]=p$$, for any $$k\ge1$$.
+Note that $$\mathbb E[X^2]\text{var}(X)+(\mathbb E[X])^2=\sigma_X^2+\mu_X^2$$. Also, observe that for $$X\sim\text{Ber}(p)$$, $$\mathbb E[X^k]=p$$, $$\forall k\ge1$$, while for $$X\sim\text{Rad}$$ we have that $$\mathbb E[X^k]$$ is equal to $$0$$ if $$k$$ is odd, and $$1$$ if $$k$$ is even.
 
 Computing expectation and variance for Pascal r.v. (a.k.a. Negative Binomial) is easier if we [assume](/2022/02/08/bernoulli-and-poisson-processes.html#kth_arrival) $$X=\sum_{i=1}^k X_i$$, with $$X_i\sim\text{Geom}(p)$$, in which case $$\mathbb E[X]=k\mathbb E[X_i]$$ and $$\text{var}(X)=k\text{var}(X_i)$$.
-
-As for Poisson r.v., its PMF can be computed as Binomial with $$k\rightarrow\infty$$ and $$\lambda=kp$$.
-
-$$\displaystyle p_X(x)=\lim_{k\rightarrow\infty}{k\choose x}\left(\frac{\lambda}{k}\right)^x\left(1-\frac{\lambda}{k}\right)^{k-x}=e^{-\lambda}\frac{\lambda^x}{x!}$$
-
-Accordingly, derivation of $$\mathbb E[X]=np=\lambda$$ and $$\text{var}(X)=np(1-p)=\lambda-\frac{\lambda^2}{n}\rightarrow\lambda$$ is immediate.
 
 Refer to [back-up](/2022/01/08/discrete-random-variables.html#cdf) for CDF of the above basic distributions and if you are curious about distributions and want to experiment with various parameters, check out this [great resource](https://share.streamlit.io/kaykozaronek/distributed/main/app.py) built by a fellow edX learner!
 
@@ -137,7 +132,7 @@ In deriving the various relations, it may be useful bearing in mind the followin
 |$$\displaystyle\sum_{k=0}^\infty\frac{\lambda^k}{k!}$$|$$e^\lambda$${% if jekyll.environment == "development" %}<br>(see [Stats HW0 Q2](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@prob_linalg_diag/block-v1:MITx+18.6501x+2T2021+type@vertical+block@prob_linalg_diag-tab2)){% endif %}|
 |$$(X_1+\dots+X_n)^2$$|$$\displaystyle\underbrace{\sum_{i=1}^n X^2}_\text{$n$ terms}+\underbrace{\sum_{i\neq j}X_iX_j}_\text{$n^2-n$ terms}$$|
 
-## CDF of basic discrete r.v. distributions {#cdf}
+### CDF of basic discrete r.v. distributions {#cdf}
 
 |r.v.|CDF<br>$$F_X(x)$$|
 |-|:-:|

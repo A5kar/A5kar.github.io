@@ -55,3 +55,49 @@ Reliability is good example of *joint* probability of *independent* events. In t
 Assuming $$L_i\in\{0,1\}$$ indicates that the *network* is up when the link $$i$$ has failed, then the probability of the *network* being up despite one element failing is $$\mathbb P(L)=\sum_{i=1}^n \frac{p_i}{\sum_{i=1}^np_i}L_i$${% if jekyll.environment == "development" %} (see [Prob PS2 Q2](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_2/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch4-s5-tab2)){% endif %}.
 
 Go back to the [syllabi breakdown](/2022/01/02/prob-and-stats-syllabi.html).
+
+***
+
+## Back-up
+
+### Logical operators
+
+When assessing events, or their combinations, logical operators help expressing in an alternative (and somehow more natural) way set algebra operations. Indeed the following expressions are equivalent.
+
+|**description**|**logical operator**|**set algebra operator**|
+|:-:|:-:|:-:|
+|$$A$$ or $$B$$|$$A\lor B$$|$$A\cup B$$|
+|$$A$$ and $$B$$|$$A\land B$$|$$A\cap B$$|
+|not $$A$$|$$\lnot A$$|$$A^C$$|
+|$$A$$ implies $$B$$|$$A\implies B$$|$$A\subseteq B$$|
+
+### Sum of non negative quantities {#sum}
+
+Assume you have a collection of $$k$$ non negative elements $$\{a_i\}$$, s.t. $$a_i\ge0$$ for $$i=1,\dots,k$$. Let's define a series of events $$A_i=\left(a_i\lt\frac1k\varepsilon\right)$$ and an event $$C=\left(\sum_{i=1}^ka_i\lt\varepsilon\right)$$, accordingly in natural language we can say "***if** every $$a_i$$ is smaller than $$\frac1k\varepsilon$$, **then** the sum of $$k$$ elements $$a_i$$ will be smaller than $$\varepsilon$$*".
+
+$$\begin{align}
+\bigwedge\limits_{i=1}^k A_i\implies C&&\text{equivalent to}&&\bigcap_{i=1}^k A_i\subseteq C
+\end{align}$$
+
+If we negate (complement) the above expressions we obtain the following statement "***if** the sum of $$k$$ elements $$a_i$$ is larger or equal than $$\varepsilon$$, **then** at least one of $$a_i$$ is larger or equal than $$\frac1k\varepsilon$$*".
+
+$$\begin{align}
+\lnot C\implies\bigvee\limits_{i=1}^k\lnot A_i&&\text{equivalent to}&&C^C\subseteq\bigcup_{i=1}^k A_i^C
+\end{align}$$
+
+By computing probabilities of the expression described with set algebra (on the right), we obtain the following relation.
+
+$$\begin{align}
+\mathbb P(C^C)&\le\mathbb P\left(\bigcup_{i=1}^k A_i^C\right)\\
+\mathbb P\left(\sum_{i=1}^k a_i\ge\varepsilon\right)&\le\mathbb P\left(\bigcup_{i=1}^k\left(a_i\ge\frac1k\varepsilon\right)\right)&\text{($A_i\ind A_j$ for every $i\neq j$)}\\
+&\le\sum_{i=1}^k\mathbb P\left(a_i\ge\frac1k\varepsilon\right)\\
+&=k\mathbb P\left(a_i\ge\frac1k\varepsilon\right)
+\end{align}$$
+
+An alternative result could be obtained starting with the following statement "***if** the sum of $$a_i$$ is bigger than $$\varepsilon$$, and one of them is smaller than $$\frac1k\varepsilon$$, **then** the sum of the remaining elements is larger or equal than $$\frac{k-1}k\varepsilon$$*"
+
+$$\begin{align}
+(\lnot C)\land(A_i)\implies&\left(\sum_{j\neq i}a_j\ge\frac{k-1}k\varepsilon\right)&\text{($C\ind A_i$)}\\
+\mathbb P\left(\sum_{i=1}^k a_i\ge\varepsilon\right)\mathbb P\left(a_i\lt\frac1k\varepsilon\right)\le\mathbb P&\left(\sum_{j\neq i}a_j\ge\frac{k-1}k\varepsilon\right)\\
+\mathbb P\left(\sum_{i=1}^k a_i\ge\varepsilon\right)\left(1-\mathbb P\left(a_i\ge\frac1k\varepsilon\right)\right)\le\mathbb P&\left(\sum_{j\neq i}a_j\ge\frac{k-1}k\varepsilon\right)
+\end{align}$$

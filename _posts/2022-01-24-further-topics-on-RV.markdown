@@ -21,12 +21,12 @@ The general continuous case assumes that the domain can be split into intervals 
 
 Finally, observe that if $$X\sim\mathcal N(\mu_X,\sigma_X^2)$$ then for any $$Y=aX+b$$, we have that $$Y\sim\mathcal N(a\mu_X+b,a^2\sigma_X^2)$$.
 
-## Simulation
+## Simulation {#simulation}
 
-An approach similar to derived distributions can be used to simulate *any* distribution, starting from $$U\sim\text{Unif}(0,1)$$. In particular, by observing that $$\mathbb P(U\le F_X(x))=F_X(x)$$, we can adopt the following solutions, depending on whether $$X$$ is discrete or continuous.
+Assume $$U=F_X(X)$$ with $$F_X$$ invertible. To compute CDF of $$U$$, we can rely on the above and derive $$F_U(u)=\mathbb P(U\le u)=\mathbb P(F_X(X)\le u)=\mathbb P(X\le F_X^{-1}(u))=F_X(F_X^{-1}(u))=u$$. [Recall](/2022/01/13/continuous-random-variables.html#cdf_continuous) that the only r.v. that satisfies this CDF is $$\text{Unif}([0,1])$$. In addition, this also means that if $$U_i\overset{i.i.d.}{\sim}\text{Unif}([0,1])$$, then $$F_X(U_i)\overset{i.i.d.}{\sim}X$$. This allows us to conclude an approach to simulate *any* distribution, depending on whether $$X$$ is discrete or continuous.
 
-- **Discrete case**: we assign to $$X$$ the $$k$$-th value that satisfies $$F_X(k-1)\lt u\le F_X(k)$$; and
-- **Continuous case**: we assign to $$X$$ that $$x$$ that satisfies $$u=F_X(x)$$.
+- $$X$$ **discrete r.v.**: we assign to $$X$$ the $$k$$-th value that satisfies $$F_X(k-1)\lt u\le F_X(k)$$; and
+- $$X$$ **continuous r.v.**: we assign to $$X$$ that $$x$$ that satisfies $$u=F_X(x)$$.
 
 ## Function of multiple r.v. {#derived_distributions_multiple}
 
@@ -143,15 +143,6 @@ Assume a **random vector** $$\mathbf X=\begin{bmatrix}X^{(1)}&\dots&X^{(d)}\end{
 |Scaled by the square|$$\text{cov}(\mathbf A^T\mathbf X)=\mathbf A^T\Sigma_{\mathbf X}\mathbf A$$|
 |Invariant with respect to location|$$\text{cov}(\mathbf A^T\mathbf X+\mathbf B)=\mathbf A^T\Sigma_{\mathbf X}\mathbf A$${% if jekyll.environment == "development" %}<br>(see [Stats L10 Q8](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u03s03_methodestimation/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u03s03_methodestimation-tab8)){% endif %}|
 
-Basic example of covariance matrix is in case of Categorical distribution, being a multivariate generalization of Bernoulli distribution. In case of $$\mathbf p=\begin{bmatrix}p_1&\dots&p_d\end{bmatrix}^T$$, covariance matrix $$\Sigma_{\mathbf X}$$ becomes as follows.
-
-$$\Sigma_{\mathbf X}=\begin{bmatrix}p_1(1-p_1)&&-p_1p_d\\&\ddots&\\-p_1p_d&&p_d(1-p_d)\end{bmatrix}\text{ or }(\Sigma_{\mathbf X})_{ij}=\begin{cases}\text{var}(X_i)&i=j\\\text{cov}(X_i,X_j)&i\neq j\end{cases}$$
-
-|r.v.|PMF<br>$$p_X(x)$$|Expectation<br>$$\mu_{\mathbf X}=\mathbb E[\mathbf X]$$|Variance<br>$$\Sigma_{\mathbf X}=\text{cov}(\mathbf X)$$|
-|-|:-:|:-:|:-:|:-:|
-|Categorical<br>$$\text{Cat}(\mathbf p)$$|$$\begin{cases}\prod_{j=1}^d p_j^{x_j}&x_j\in\{0,1\}\\0&\text{otherwise}\end{cases}$$<br>$$\sum_{j=1}^d x_j=1$$, $$\sum_{j=1}^d p_j=1$$|$$\mathbf p$$|$$\text{cov}(\mathbf X)$$|
-|Multinomial<br>$$\text{Mult}(k,\mathbf p)$$|$$\begin{cases}{k \choose a_1,\dots,a_d}\prod_{j=1}^d p_j^{x_j}&x_j\in\{0,1,\dots,k\}\\0&\text{otherwise}\end{cases}$$<br>$$\sum_{j=1}^d x_j=k$$, $$\sum_{j=1}^d p_j=1$$|$$k\mathbf p$$|$$k\text{cov}(\mathbf X)$$|
-
 ## Multivariate Normal r.v. {#multivariate_normal}
 
 $$\mathbf X=\begin{bmatrix}X^{(1)}&\dots&X^{(d)}\end{bmatrix}\in\mathbb R^d$$ is a **multivariate** Normal r.v., and is defined as $$\mathbf X\sim\mathcal N_d(\mu_\mathbf X,\Sigma_\mathbf X)$$ if $$\forall\mathbf A=\begin{bmatrix}a_1&\dots&a_d\end{bmatrix}^T\in\mathbb R^d$$, we have that $$\mathbf A^T\mathbf X\sim\mathcal N_d\left(\mathbf A^T\mu_\mathbf X,\mathbf A^T\Sigma_\mathbf X\mathbf A\right)$$.
@@ -170,7 +161,7 @@ Conversely, any bivariate Normal r.v. can be derived from multivariate Normal r.
 
 $$\mathbf A^T\mathbf Z+\mu_{\mathbf X}=\begin{bmatrix}\sigma_1&0\\\sigma_2\rho&\sigma_2\sqrt{1-\rho^2}\end{bmatrix}\begin{bmatrix}Z_1\\Z_2\end{bmatrix}+\begin{bmatrix}\mu_1\\\mu_2\end{bmatrix}=\begin{bmatrix}\sigma_1 Z_1+\mu_1\\\sigma_2(Z_1\rho+Z_2\sqrt{1-\rho^2})+\mu_2\end{bmatrix}$$
 
-In particular, if $$\mathbf Z\sim\mathcal N_2(\mathbf 0,\mathbf I_2)$$, then $$\mathbf X\sim\mathcal N_2(\mu_\mathbf X,\Sigma_\mathbf X)$$, where the covariance matrix is as follows.
+In particular, if $$\mathbf Z\sim\mathcal N_2(\mathbf 0_2,\mathbf I_2)$$, then $$\mathbf X\sim\mathcal N_2(\mu_\mathbf X,\Sigma_\mathbf X)$$, where the covariance matrix is as follows.
 
 $$\Sigma_\mathbf X=\mathbf A^T\mathbf A=\begin{bmatrix}\sigma_1&0\\\sigma_2\rho&\sigma_2\sqrt{1-\rho^2}\end{bmatrix}\begin{bmatrix}\sigma_1&\sigma_2\rho\\0&\sigma_2\sqrt{1-\rho^2}\end{bmatrix}=\begin{bmatrix}\sigma_1^2&\rho\sigma_1\sigma_2\\\rho\sigma_1\sigma_2&\sigma_2^2\end{bmatrix}$$
 
@@ -188,16 +179,102 @@ A very common situation is when $$X=\sum_{i=1}^N X_i$$, with $$X_i\overset{\text
 
 Final remark is that $$\mathbb E[g(Y)X\lvert Y]=g(Y)\mathbb E[X\lvert Y]$$, which comes from the observation that given $$Y=y$$, $$g(Y)$$ is a constant and can be pulled out of the expectation. Also, for any invertible function $$h(Y)$$, we have that $$\mathbb E[X\lvert Y]=\mathbb E[X\lvert h(Y)]$$, due to the fact that $$\mathbb P(Y\le y)=\mathbb P(h(Y)\le h(y))$$.
 
+## Categorical distribution {#categorical}
+
+Assume you have a r.v. $$X$$ that can take on one of $$d$$ possible categories. There is no innate underlying ordering of these outcomes, and sometimes numerical labels are often attached for convenience in describing the distribution, such as $$\{a_1,\dots,a_d\}$$. For convenience, a multivariate r.v. $$\mathbf X$$ is defined in the form $$\mathbf X=\begin{bmatrix}\mathbb 1(X=a_1)&\dots&\mathbb 1(X=a_d)\end{bmatrix}^T$$. Individual probabilities $$p_i$$ associated with each category $$j$$ are collected in a **parameter vector** $$\mathbf p=\begin{bmatrix}p_1&\dots&p_d\end{bmatrix}^T\in\Delta_d$$, where $$\Delta_d\subset\mathbb R^d$$ is a **probability simplex** of dimension $$d$$, defined as $$\Delta_d=\left\{\mathbf p\in\mathbb R^d:p_j\ge0,\sum_{j=1}^d p_j=1\right\}$$.
+
+Accordingly, $$\text{Cat}(\mathbf p)$$ determines a [Categorical distribution](https://en.wikipedia.org/wiki/Categorical_distribution) that is the most general distribution over a $$d$$-way event, where any other [discrete distribution](/2022/01/08/discrete-random-variables.html#basic) over a size $$d$$ sample space is a special case. For example, $$\text{Ber}(p)=\text{Cat}(\begin{bmatrix}1-p&p\end{bmatrix}^T)$$ and $$\text{Unif}(1,d)=\text{Cat}\left(\frac1d\mathbf 1_d\right)$${% if jekyll.environment == "development" %} (see [Stats L15 Q5](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u04s05_hypotesting/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u04s05_hypotesting-tab5)){% endif %}, where we only need to specify the categories attached with the probabilities, such as $$\{0,1\}$$ in case of Bernoulli and $$\{1,\dots,d\}$$ in case of Uniform distribution.
+
+Categorical can also approximate discrete r.v. with infinite support, such as $$\text{Geom}(p)$$ or $$\text{Pois}(\lambda)$$, although it is clear that to describe *completely* these distributions, $$\mathbf p$$ would be an infinite long vector, which is a clear example of non parametric statistics. The approximation can be done by taking a bin to hold all residual numbers, that could occur with extremely low probability.
+
+Observe that due to its construction, when one element of $$\mathbf X$$ is equal to $$1$$ all others are necessarily $$0$$. This means that elements of $$\mathbf X$$ are not *independent* from each other. Accordingly, we can build the associated covariance matrix as follows.
+
+$$\Sigma_{\mathbf X}=\begin{bmatrix}p_1(1-p_1)&&-p_1p_d\\&\ddots&\\-p_1p_d&&p_d(1-p_d)\end{bmatrix}\text{ or }(\Sigma_{\mathbf X})_{ij}=\begin{cases}\text{var}(X_i)&i=j\\\text{cov}(X_i,X_j)&i\neq j\end{cases}$$
+
+Prior to moving on, consider that in the same way Binomial describes the distribution of a sum of $$k$$ Bernoulli r.v., we have Multinomial that describes the distribution of a sum of $$k$$ Categorical r.v.
+
+|r.v.|PMF<br>$$p_X(x)$$|Expectation<br>$$\mu_{\mathbf X}=\mathbb E[\mathbf X]$$|Variance<br>$$\Sigma_{\mathbf X}=\text{cov}(\mathbf X)$$|
+|-|:-:|:-:|:-:|:-:|
+|Categorical<br>$$\text{Cat}(\mathbf p)$$|$$\begin{cases}\prod_{j=1}^d p_j^{(\mathbf X)_j}&\mathbf X\in\{0,1\}^d\\0&\text{otherwise}\end{cases}$$<br>$$\mathbf 1_n^T\mathbf X=1$$, $$\mathbf 1_n^T\mathbf p=1$$|$$\mathbf p$$|$$\text{cov}(\mathbf X)$$|
+|Multinomial<br>$$\text{Mult}(k,\mathbf p)$$|$$\begin{cases}\frac{k!}{x_1!\dots x_d!}\prod_{j=1}^d p_j^{(\mathbf X)_j}&\mathbf X\in\{0,1,\dots,k\}^d\\0&\text{otherwise}\end{cases}$$<br>$$\mathbf 1_n^T\mathbf X=k$$, $$\mathbf 1_n^T\mathbf p=1$$|$$k\mathbf p$$|$$k\text{cov}(\mathbf X)$$|
+
 Go back to the [syllabi breakdown](/2022/01/02/prob-and-stats-syllabi.html).
 
 ***
 
-## Back-up
+## Back-up {#back-up}
 
 |Formula|Equivalent form|
 |:-:|:-:|
-|$$\sum_{i=1}^d\lambda_d$$<br>$$\lambda_d$$ eigenvalues of $$\mathbf A$$|$$\text{tr}(\mathbf A)$$|
-|$$\prod_{i=1}^d\lambda_d$$<br>$$\lambda_d$$ eigenvalues of $$\mathbf A$$|$$\text{det}(\mathbf A)$$|
+|$$\text{tr}(\mathbf A)$$|$$\sum_{i=1}^d\lambda_i$$<br>$$\lambda_i$$ eigenvalues of $$\mathbf A$$|
+|$$\text{det}(\mathbf A)$$|$$\prod_{i=1}^d\lambda_i$$<br>$$\lambda_i$$ eigenvalues of $$\mathbf A$$|
+|$$\mathbf V^T\mathbf V=\mathbf V\mathbf V^T=\mathbf I_n$$<br>$$\mathbf V$$ [orthogonal matrix](https://en.wikipedia.org/wiki/Orthogonal_matrix)|$$\mathbf V^{-1}=\mathbf V^T$$ and $$\mathbf V=\sum_{i=1}^n\mathbf v_i\mathbf e_i^T$$<br>$$\mathbf v_i$$ and $$\mathbf e_i$$ are $$i$$-th columns of $$\mathbf V$$ and $$\mathbf I_n$$|
+|$$\mathbf x\mathbf I_n=\mathbf I_n\mathbf x=\mathbf x,\forall\mathbf x\in\mathbb R^n$$<br>$$\mathbf I_n$$ [identity matrix](https://en.wikipedia.org/wiki/Identity_matrix)|$$\mathbf I_n=\mathbf V\mathbf V^T=\sum_{i=1}^n\mathbf v_i\mathbf v_i^T$$|
+|$$(\mathbf D)_{ij}=0,i\neq j$$<br>$$\mathbf D$$ [diagonal matrix](https://en.wikipedia.org/wiki/Diagonal_matrix)|$$\mathbf D=\text{diag}(\lambda_1,\dots,\lambda_n)=\sum_{i=1}^n\lambda_i\mathbf e_i\mathbf e_i^T$$<br>$$\lambda_i$$ eigenvalues of $$\mathbf D$$|
+|$$\mathbf A^T=\mathbf A$$<br>$$\mathbf A=\mathbf A^{\frac12}\mathbf A^{\frac12}$$<br>$$\mathbf A$$ [symmetric matrix](https://en.wikipedia.org/wiki/Symmetric_matrix)|$$\mathbf A=\mathbf V\mathbf D\mathbf V^T=\sum_{i=1}^n\lambda_i\mathbf v_i\mathbf v_i^T$$<br>$$\mathbf A^{\frac 1 2}=\mathbf V\mathbf D^{\frac 1 2}\mathbf V^T$$<br>(see [spectral theorem](/2022/01/24/further-topics-on-RV.html#spectral))|
+|$$\mathbf A$$ [positive semi-definite matrix](https://en.wikipedia.org/wiki/Definite_matrix)|$$\mathbf x^T\mathbf A\mathbf x\ge0,\forall\mathbf x\in\mathbb R^n$$|
+|$$\mathbf A^2=\mathbf A\mathbf A=\mathbf A$$<br>$$\mathbf A$$ [idempotent matrix](https://en.wikipedia.org/wiki/Idempotent_matrix)|$$\lambda_i\in\{0,1\}\implies\text{tr}(\mathbf A)=\text{rank}(\mathbf A)$$<br>$$\lambda_i$$ eigenvalues of $$\mathbf A$$|
 |$$\text{det}\left(\begin{bmatrix}a&b\\c&d\end{bmatrix}\right)$$|$$ad-bc$$|
 |$$\text{det}\left(\begin{bmatrix}a&b&c\\d&e&f\\g&h&i\end{bmatrix}\right)$$|$$({\color{red}aei}+{\color{blue}bfg}+{\color{green}cdh})-({\color{red}ceg}+{\color{blue}afh}+{\color{green}bdi})$$<br>$$\left[\begin{array}{ccc:cc}\color{red}{a}&\color{blue}{b}&\color{green}{c}&a&b\\d&\color{red}{e}&\color{blue}{f}&\color{green}{d}&e\\g&h&\color{red}{i}&\color{blue}{g}&\color{green}{h}\end{array}\right]-\left[\begin{array}{ccc:cc}a&b&\color{red}{c}&\color{blue}{a}&\color{green}{b}\\d&\color{red}{e}&\color{blue}{f}&\color{green}{d}&e\\\color{red}{g}&\color{blue}{h}&\color{green}{i}&g&h\end{array}\right]$$|
 |$$2\times 2$$ matrix $$\mathbf A$$ is strictly convex|$$\begin{cases}\text{tr}(\mathbf A)\lt0\\\text{det}(\mathbf A)\gt0\end{cases}$$|
+
+### Orthogonal matrix {#orthogonal_matrix}
+
+Consider an orthogonal matrix $$\mathbf V\in\mathbb R^{n\times n}$$, so that $$\mathbf V\mathbf V^T=\mathbf V^T\mathbf V=\mathbf I_n$$. This is due the construction of $$\mathbf V=\begin{bmatrix}\mathbf v_1&\mathbf v_2&\dots&\mathbf v_n\end{bmatrix}$$, where $$\mathbf v_i^T\mathbf v_i=1$$ and $$\mathbf v_i^T\mathbf v_j=0$$, $$i\neq j$$. Furthermore, $$\mathbf V$$ can be written as follows (where $$\mathbf e_i$$ represent the column vectors of $$\mathbf I_n$$)
+
+$$\begin{align}
+\mathbf V
+&=\begin{bmatrix}
+\mid&\mid&&\mid\\
+\mathbf v_1&\mathbf v_2&\dots&\mathbf v_n\\
+\mid&\mid&&\mid
+\end{bmatrix}=\begin{bmatrix}\mid\\\mathbf v_1\\\mid\end{bmatrix}\begin{bmatrix}1&0&\dots&0\end{bmatrix}+\dots+\begin{bmatrix}\mid\\\mathbf v_n\\\mid\end{bmatrix}\begin{bmatrix}0&0&\dots&1\end{bmatrix}\\
+&=\mathbf v_1\mathbf e_1^T+\mathbf v_2\mathbf e_2^T+\dots+\mathbf v_n\mathbf e_n^T=\sum_{i=1}^n\mathbf v_i\mathbf e_i^T
+\end{align}$$
+
+The last relationship is handy if we want to review the nature of $$\mathbf V\mathbf V^T$$ (where $$\mathbf e_i^T\mathbf e_i=1$$ and $$\mathbf e_i^T\mathbf e_j=0$$, $$i\neq j$$).
+
+$$\begin{align}
+\mathbf I_n=\mathbf V\mathbf V^T
+&=\left(\sum_{i=1}^n\mathbf v_i\mathbf e_i^T\right)\left(\sum_{j=1}^n\mathbf v_j\mathbf e_j^T\right)^T=\left(\sum_{i=1}^n\mathbf v_i\mathbf e_i^T\right)\left(\sum_{j=1}^n\mathbf e_j\mathbf v_j^T\right)\\
+&=\sum_{i=1}^n\sum_{j=1}^n\mathbf v_i\mathbf e_i^T\mathbf e_j\mathbf v_j^T=\sum_{i=1}^n\mathbf v_i\mathbf v_j^T
+\end{align}$$
+
+### Spectral theorem for symmetric matrices {#spectral}
+
+Using induction, one can provide some intuitive arguments without going into rigorous derivation. In general, the [spectral theorem](https://en.wikipedia.org/wiki/Spectral_theorem) claims that any symmetric matrix $$\mathbf A\in\mathbb R^{n\times n}$$ can be decomposed into $$\mathbf A=\mathbf V\mathbf D\mathbf V^T$$, where $$\mathbf V$$ is an orthogonal matrix and $$\mathbf D=\text{diag}(\lambda_1,\dots,\lambda_n)$$ is a diagonal matrix with $$\lambda_i$$ eigenvalues of $$\mathbf A$$ on its main diagonal. Notice that $$\mathbf V^T\mathbf A\mathbf V=\mathbf V^T(\mathbf V\mathbf D\mathbf V^T)\mathbf V=\mathbf D$$.
+
+Consider $$n=1$$, and assume $$\mathbf A=\lambda$$, $$\mathbf V=1$$ and $$\mathbf D=\lambda$$. The relationship is obvious $$\mathbf A=1\lambda1^T$$.
+
+Now, consider $$n=2$$ and observe as follows, bearing in mind that $$\mathbf v_i$$ is the eigenvector associated with eigenvalue $$\lambda_i$$, and that for each $$\mathbf v_i$$ we have that $$\mathbf v_i^T\mathbf v_i=\lVert\mathbf v_i\rVert_2^2=1$$ and $$\mathbf v_i^T\mathbf v_j=0$$ if $$i\neq j$$.
+
+$$\begin{align}
+\mathbf V^T\mathbf A\mathbf V&=\begin{bmatrix}\mathbf v_1^T\\\mathbf v_2^T\end{bmatrix}\mathbf A\begin{bmatrix}\mathbf v_1&\mathbf v_2\end{bmatrix}
+=\begin{bmatrix}\mathbf v_1^T\mathbf A\mathbf v_1&\mathbf v_1^T\mathbf A\mathbf v_2\\\mathbf v_2^T\mathbf A\mathbf v_1&\mathbf v_2^T\mathbf A\mathbf v_2\end{bmatrix}\\
+&=\begin{bmatrix}\lambda_1\mathbf v_1^T\mathbf v_1&\lambda_2\mathbf v_1^T\mathbf v_2\\\lambda_1\mathbf v_2^T\mathbf v_1&\lambda_2\mathbf v_2^T\mathbf v_2\end{bmatrix}=\begin{bmatrix}\lambda_1&0\\0&\lambda_2\end{bmatrix}=\mathbf D
+\end{align}$$
+
+Finally, consider $$n>2$$ with $$\mathbf V=\begin{bmatrix}\mathbf v_1&\mathbf V_2\end{bmatrix}$$, where $$\mathbf V_2\in\mathbb R^{n\times(n-1)}$$ and follow the same steps as above, observing that symmetry of $$\mathbf A$$ leads to $$\mathbf v_1^T\mathbf A\mathbf V_2=(\mathbf A\mathbf v_1)^T\mathbf V_2=\lambda_1\mathbf v_1^T\mathbf V_2=\mathbf 0_{n-1}^T$$.
+
+$$\begin{align}
+\mathbf V^T\mathbf A\mathbf V&=\begin{bmatrix}\mathbf v_1^T\\\mathbf V_2^T\end{bmatrix}\mathbf A\begin{bmatrix}\mathbf v_1&\mathbf V_2\end{bmatrix}
+=\begin{bmatrix}\mathbf v_1^T\mathbf A\mathbf v_1&\mathbf v_1^T\mathbf A\mathbf V_2\\\mathbf V_2^T\mathbf A\mathbf v_1&\mathbf V_2^T\mathbf A\mathbf V_2\end{bmatrix}=\begin{bmatrix}\lambda_1&\mathbf 0_{n-1}^T\\\mathbf 0_{n-1}&\mathbf D_2\end{bmatrix}=\mathbf D
+\end{align}$$
+
+Where the relationship $$\mathbf D_2=\text{diag}(\lambda_2,\dots,\lambda_n)=\mathbf V_2^T\mathbf A\mathbf V_2\in\mathbb R^{n-1\times n-1}$$ can be proved recursively.
+
+Bearing in mind that $$\mathbf D=\sum_{i=1}^n\lambda_i\mathbf e_i\mathbf e_i^T$$, it follows that $$\mathbf A$$ can also be expressed as follows.
+
+$$\mathbf A=\mathbf V\left(\sum_{i=1}^n\lambda_i\mathbf e_i\mathbf e_i^T\right)\mathbf V^T=\sum_{i=1}^n\lambda_i(\mathbf V\mathbf e_i)(\mathbf V\mathbf e_i)^T=\sum_{i=1}^n\lambda_i\mathbf v_i\mathbf v_i^T$$
+
+### Trace of a symmetric matrix
+
+By definition, $$\text{tr}(\mathbf A)=\sum_{i=1}^n\mathbf e_i^T\mathbf A\mathbf e_i$$. If $$\mathbf A=\sum_{i=1}^n\lambda_i\mathbf v_i\mathbf v_i^T$$ is symmetric, the following can be derived.
+
+$$\begin{align}
+\text{tr}(\mathbf A)=\sum_{i=1}^n\mathbf e_i^T\left(\sum_{j=1}^n\lambda_j\mathbf v_j\mathbf v_j^T\right)\mathbf e_i=\sum_{j=1}^n\lambda_j\sum_{i=1}^n(\mathbf e_i^T\mathbf v_j)^2=\sum_{j=1}^n\lambda_j\lVert\mathbf v_j\rVert_2^2=\sum_{j=1}^n\lambda_j
+\end{align}$$
+
+### Determinant of a matrix
+
+Recall that $$\text{det}(t\mathbf I_n-\mathbf A)=\prod_{i=1}^n(t-\lambda_i)$$, which is defined as characteristic polynomial. If we set $$t=0$$, we obtain that $$\text{det}(-\mathbf A)=\prod_{i=1}^n(-\lambda_i)$$. Analogously, one can obtain $$\text{det}(\mathbf A)=\prod_{i=1}^n\lambda_i$$.
