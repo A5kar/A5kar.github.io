@@ -3,7 +3,7 @@ layout: post
 title: "Hypothesis testing"
 ---
 
-$$\newcommand{\ind}{\perp\!\!\!\perp}$$
+$$\newcommand{\ind}{\perp\kern-5pt\perp}$$
 
 ## Parameter hypothesis testing {#parameter_testing}
 
@@ -95,6 +95,12 @@ $$d\approx\frac{\left(\frac{s_X^2}n+\frac{s_Y^2}m\right)^2}{\frac{s_X^4}{n^2(n-1
 
 Note that this makes relies on the fact that $$X_i$$ and $$Y_j$$ are drawn from Normal distributions. Therefore, Welch's $$t$$ cannot be universally applied.
 
+### Introduction to likelihood ratio test (LRT) {#lrt}
+
+Before we move to the next segment, there is an additional framework used for parameter hypothesis testing that is based on the intuition that the likelihood $$\mathcal L_n(X_1,\dots,X_n,\theta)$$ is [maximum](/2022/04/26/methods-of-estimation.html#kl) for $$\theta=\theta^\star$$, or the true, unknown parameter. In this case we expect that $$T_n=\frac{\mathcal L_n(\theta)}{\mathcal L_n(\theta^\star)}\le1$$ for any other $$\theta\in\Theta$$.
+
+Put differently, one could test if under the null $$H_0:\theta=\theta_0$$, a test statistic $$T_n=\frac{\mathcal L_n(\hat{\Theta}_n)}{\mathcal L_n(\theta_0)}\gt c$$ in which case one could say that with probability of error $$\alpha$$ the sample has not been drawn from a distribution with parameter $$\theta_0$$. Hence the name of the LRT, which foresees the test of the form $$\mathbb 1(T_n\gt c_\alpha)$$,  where $$c_\alpha$$ is set in a way so that chances of false positive does not exceed level $$\alpha$${% if jekyll.environment == "development" %} (see [Stats L14 Q10](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u04s04_hypotesting/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u04s04_hypotesting-tab10)){% endif %}. If we deal with an asymptotically Normal MLE, and sufficiently large sample size, [Wilks' test](/2022/07/15/hypothesis-testing.html#wilks) may be more appropriate.
+
 ## Asymptotic tests
 
 ### Two-sample comparison of proportions {#two_proportions}
@@ -125,13 +131,13 @@ In the multivariate case, the above is generalized as follows, where $$\boldsymb
 
 $$n(\hat{\boldsymbol\Theta}_n-\boldsymbol\theta)^TI(\boldsymbol\theta)(\hat{\boldsymbol\Theta}_n-\boldsymbol\theta)\xrightarrow{(d)}\chi_d^2$$
 
-Based on the above, we have the following (asymptotically equivalent) tests: Rao's (score) test, Wald's test, and Wilk's (likelihood-ratio) test; again, provided that in each case MLE technical conditions and Fisher information exist{% if jekyll.environment == "development" %} (see [Stats L15 Q3](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u04s05_hypotesting/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u04s05_hypotesting-tab2)){% endif %}.
+Based on the above, we have the following (asymptotically equivalent) tests: Rao's (score) test, Wald's test, and Wilks' (likelihood ratio) test; again, provided that in each case MLE technical conditions and Fisher information exist{% if jekyll.environment == "development" %} (see [Stats L15 Q3](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u04s05_hypotesting/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u04s05_hypotesting-tab2)){% endif %}.
 
-The main difference between them is that Rao's test depends exclusively on $$\boldsymbol{\theta}_0$$, where Wald's test (in its form as implicit test) depends exclusively on $$\boldsymbol{\Theta}_n$$. Finally, the Wilk's test considers them both.
+The main difference between them is that Rao's test depends exclusively on some $$\boldsymbol{\theta}=\boldsymbol{\theta}_0$$, where Wald's test (in its form as implicit test) depends exclusively on $$\hat{\boldsymbol{\Theta}}_n$$. Finally, Rao's and Wald's tests are an approximation of Wilks' test, which considers both $$\boldsymbol{\theta}_0$$ and $$\hat{\boldsymbol{\Theta}}_n$$.
 
 ### Rao's (score) test
 
-As the average score function of a univariate $$\theta$$ is asymptotically Normal, $$\sqrt n\bar s_n(\theta)\xrightarrow{(d)}\mathcal N(0,I(\theta))$$, we can test $$H_0:\theta=\theta_0$$, by defining a test statistic as its quadratic form and assuming $$\theta=\theta_0$$. In particular, replace $$\bar s_n(\theta_0)=\frac1n\ell_n'(\theta_0)$$ and $$\frac1n\left(-\ell_n''(\theta_0)\right)\xrightarrow{\mathbb P}I(\theta_0)$$, apply [Slutsky's theorem](/2022/02/21/introduction-to-statistics.html#properties) and and define the following test statistic.
+As the average score function of a univariate $$\theta$$ is asymptotically Normal, $$\sqrt n\bar s_n(\theta)\xrightarrow{(d)}\mathcal N(0,I(\theta))$$, we can test $$H_0:\theta=\theta_0$$, by defining a test statistic as its quadratic form and assuming $$\theta=\theta_0$$. In particular, replace $$\bar s_n(\theta_0)=\frac1n\ell_n'(\theta_0)$$ and $$\frac1n\left(-\ell_n''(\theta_0)\right)\xrightarrow{\mathbb P}I(\theta_0)$$, apply [Slutsky's theorem](/2022/02/21/introduction-to-statistics.html#properties) and and define the following test statistic, which *under the null* will converge to a $$\chi^2$$ distribution.
 
 $$T_n=\frac{(\ell_n'(\theta_0))^2}{(-\ell_n''(\theta_0))}=n\frac{\bar s_n^2(\theta)}{I(\theta)}\xrightarrow{(d)}\chi_1^2$$
 
@@ -141,9 +147,9 @@ $$T_n=(\nabla_\theta\ell_n(\boldsymbol{\theta}_0))^T(-\nabla_\theta^2\ell(\bolds
 
 ### Wald's test {#wald}
 
-Since the quadratic form of the MLE is $$\chi^2$$ distributed, the main problem would be determining the [Fisher information](/2022/04/26/methods-of-estimation.html#score) necessary to normalize the MLE distribution. Again, start from the univariate case and define the following statistic under the null, bearing in mind that the MLE is a consistent estimator, $$\hat\Theta_n\xrightarrow{\mathbb P}\theta$$.
+Considering that under certain technical conditions, the [MLE](/2022/04/26/methods-of-estimation.html#mle) is asymptotically Normal, it follows that its quadratic form is $$\chi^2$$ distributed, if properly scaled. In particular, assuming $$H_0:\boldsymbol{\theta}=\boldsymbol{\theta}_0$$ one can test if $$\lVert\sqrt{nI(\boldsymbol{\theta})}\left(\hat{\boldsymbol{\Theta}}_n-\boldsymbol{\theta}_0\right)\rVert_2^2$$ is sufficiently large to reject the null. This is straightforward, if one considers the univariate case first, bearing in mind that $$I(\theta)$$ is the [Fisher information](/2022/04/26/methods-of-estimation.html#score).
 
-$$T_n=nI(\hat\Theta_n)(\hat\Theta_n-\theta_0)^2\xrightarrow{(d)}nI(\theta)(\hat\Theta_n-\theta_0)^2=nI(\theta_0)(\hat\Theta_n-\theta_0)^2\xrightarrow{(d)}\chi_1^2$$
+$$T_n=nI(\hat\Theta_n)(\hat\Theta_n-\theta_0)^2\xrightarrow{(d)}nI(\theta)(\hat\Theta_n-\theta_0)^2=nI(\theta)(\hat\Theta_n-\theta)^2\xrightarrow{(d)}\chi_1^2$$
 
 Occasionally, the test may use $$I(\theta_0)$$ instead of $$I(\hat\Theta_n)$$. In principle, both methods are valid, although $$I(\hat\Theta_n)$$ should be used if no additional information or requirement is provided{% if jekyll.environment == "development" %} (see [Stats L14 Q9](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u04s04_hypotesting/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u04s04_hypotesting-tab9)){% endif %}.
 
@@ -157,15 +163,15 @@ Assume $$\boldsymbol{A}$$ that maps $$\boldsymbol{\theta}$$ into $$\mathbb R^k$$
 
 $$T_n=n(\boldsymbol{A}\hat{\boldsymbol{\Theta}}_n)^T\boldsymbol{\Gamma}^{-1}(\hat{\boldsymbol{\Theta}}_n)(\boldsymbol{A}\hat{\boldsymbol{\Theta}}_n)\xrightarrow{(d)}\chi_k^2$$
 
-The above approach can be generalized to any function $$g:\mathbb R^d\rightarrow\mathbb R^k$$, at the condition that $$g(\cdot)$$ is continuously differentiable. In this case, the test statistic will take the following form, also assuming that $$H_0:g(\boldsymbol{\theta})=\mathbf0$${% if jekyll.environment == "development" %} (see [Stats L14 Q12](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u04s04_hypotesting/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u04s04_hypotesting-tab12)){% endif %}.
+The above approach can be generalized to any function $$g:\mathbb R^d\rightarrow\mathbb R^k$$, at the condition that $$g(\cdot)$$ is continuously differentiable. In its **general form**, the Wald's test assumes $$H_0:g(\boldsymbol{\theta})=\mathbf0$${% if jekyll.environment == "development" %} (see [Stats L14 Q12](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u04s04_hypotesting/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u04s04_hypotesting-tab12)){% endif %} and the test statistic takes the following form.
 
 $$T_n=n(g(\hat{\boldsymbol{\Theta}}_n))^T\boldsymbol{\Gamma}^{-1}(\hat{\boldsymbol{\Theta}}_n)(g(\hat{\boldsymbol{\Theta}}_n))\xrightarrow{(d)}\chi_k^2$$
 
 Where $$\boldsymbol{\Gamma}(\boldsymbol{\theta})=(\nabla_\theta g(\boldsymbol{\theta}))^T I^{-1}(\boldsymbol{\theta})(\nabla_\theta g(\boldsymbol{\theta}))$$ is the result of [multivariate Delta](/2022/03/24/foundation-of-inference.html#multivariate_delta) method.
 
-### Wilk's (likelihood-ratio) test
+### Wilks' (likelihood ratio) test {#wilks}
 
-As the name suggests, likelihood-ratio test exploits the ratio between likelihood functions. Assume you have two competing hypotheses, $$H_0:\boldsymbol\theta=\boldsymbol\theta_0$$ and $$H_1:\boldsymbol\theta=\boldsymbol\theta_1$$. Intuitively, if likelihood $$\mathcal L_n(\boldsymbol\theta_1)$$ is below or around the $$\mathcal L_n(\boldsymbol\theta_0)$$, then we are unable to reject the null hypothesis. On the other hand, if $$\mathcal L_n(\boldsymbol\theta_1)$$ is *significantly* higher than $$\mathcal L_n(\boldsymbol\theta_0)$$, then can reject the null hypothesis. In other words, we test $$\mathbb 1\left(\frac{\mathcal L_n(\boldsymbol\theta_1)}{\mathcal L_n(\boldsymbol\theta_0)}\gt c_\alpha\right)$$, where $$c_\alpha$$ is set in a way so that chances of false positive does not exceed level $$\alpha$${% if jekyll.environment == "development" %} (see [Stats L14 Q10](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u04s04_hypotesting/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u04s04_hypotesting-tab10)){% endif %}. Said that, consider the following statistic, which according to [Wilk's theorem](https://en.wikipedia.org/wiki/Wilks%27_theorem) is asymptotically $$\chi^2$$ distributed under the null.
+Bearing in mind the introduction to [LRT](/2022/07/15/hypothesis-testing.html#lrt), consider the following statistic, which according to [Wilks' theorem](https://en.wikipedia.org/wiki/Wilks%27_theorem) is asymptotically $$\chi^2$$ distributed under the null.
 
 $$T_n=2\ln\frac{\mathcal L_n(\hat{\boldsymbol{\Theta}}_n)}{\mathcal L_n(\boldsymbol\theta_0)}=2(\ell_n(\hat{\boldsymbol{\Theta}}_n)-\ell_n(\boldsymbol\theta_0))\xrightarrow{(d)}\chi_d^2$$
 
@@ -181,7 +187,7 @@ Again, if $$\boldsymbol{\theta}\in\mathbb R^d$$ is multivariate, the test statis
 
 $$T_n=2(\ell_n(\hat{\boldsymbol\Theta}_n)-\ell_n(\boldsymbol{\theta}_0))\approx n(\hat{\boldsymbol\Theta}_n-\boldsymbol\theta_0)^TI(\hat{\boldsymbol\Theta}_n)(\hat{\boldsymbol\Theta}_n-\boldsymbol\theta_0)\xrightarrow{(d)}\chi_d^2$$
 
-Wilk's theorem applies as well to a more general problem, which considers a **constrained** MLE, that is $$\hat{\boldsymbol{\Theta}}_n^c=\arg\max_{\theta\in\Theta_0}\ell_n(\boldsymbol\theta)$$. To give an idea, consider the following unconstrained and constrained MLEs, respectively.
+Wilks' theorem applies as well to a more general problem, which considers a **constrained** MLE, that is $$\hat{\boldsymbol{\Theta}}_n^c=\arg\max_{\theta\in\Theta_0}\ell_n(\boldsymbol\theta)$$. To give an idea, consider the following unconstrained and constrained MLEs, respectively.
 
 $$\begin{align}
 \hat{\boldsymbol{\Theta}}_n=\begin{bmatrix}\hat{\boldsymbol\Theta}_n^\star\\\hat{\boldsymbol{\Theta}}_n'\end{bmatrix}&&\hat{\boldsymbol{\Theta}}^c_n=\begin{bmatrix}\hat{\boldsymbol\Theta}_n^\star\\\boldsymbol\theta_0'\end{bmatrix}
@@ -322,7 +328,7 @@ Often, we consider vector notation, that is $$\mathbf Z=\begin{bmatrix}Z_1&\dots
 
 ### Cochran's theorem (sample mean and variance) {#cochran}
 
-Consider [orthogonal matrices](/2022/01/24/further-topics-on-RV.html#orthogonal_matrix) $$\mathbf V\in\mathbb R^{n\times n}$$ and $$\mathbf W\in\mathbb R^{n-1\times n-1}$$, so that $$\mathbf V=\begin{bmatrix}\mathbf v_1&\mathbf W\end{bmatrix}$$, where $$\mathbf v_1=\frac1{\sqrt n}\mathbf 1_n$$ and observe that $$\mathbf W\mathbf W^T=\sum_{i=2}^n \mathbf v_i\mathbf v_i^T=\mathbf I_n-\mathbf v_1\mathbf v_1^T$$ and that $$\mathbf W^T\mathbf W=\mathbf I_{n-1}$$.
+Consider [orthogonal matrices](/2022/01/24/further-topics-on-RV.html#orthogonal_matrix) $$\mathbf V\in\mathbb R^{n\times n}$$ and $$\mathbf W\in\mathbb R^{n\times n-1}$$, such that $$\mathbf V=\begin{bmatrix}\mathbf v_1&\mathbf W\end{bmatrix}$$, where $$\mathbf v_1=\frac1{\sqrt n}\mathbf 1_n$$ and observe that $$\mathbf W\mathbf W^T=\sum_{i=2}^n \mathbf v_i\mathbf v_i^T=\mathbf I_n-\mathbf v_1\mathbf v_1^T$$ and that $$\mathbf W^T\mathbf W=\mathbf I_{n-1}$$.
 
 Consider also $$\mathbf Z\sim\mathcal N_n(\mathbf 0_n,\mathbf I_n)$$ and note that $$\mathbf V^T\mathbf Z\sim\mathcal N_n(\mathbf 0_n,\mathbf I_n)$$ and $$\mathbf W^T\mathbf Z\sim\mathcal N_{n-1}(\mathbf 0_{n-1},\mathbf I_{n-1})$$. Therefore, $$\lVert\mathbf V^T\mathbf Z\rVert_2^2\sim\chi_n^2$$ and $$\lVert\mathbf W^T\mathbf Z\rVert_2^2\sim\chi_{n-1}^2$$, respectively. In addition $$\mathbf v_1^T\mathbf Z\ind\mathbf W^T\mathbf Z$$, since $$\text{cov}(\mathbf v_1^T\mathbf Z,\mathbf W^T\mathbf Z)=\mathbb E[\mathbf v_1^T\mathbf Z\mathbf Z^T\mathbf W]-\mathbb E[\mathbf v_1^T\mathbf Z]\mathbb E[\mathbf Z^T\mathbf W]=\mathbf 0$$, which stems from $$\text{cov}(\mathbf Z)=\mathbf I_n$$ and $$\mathbf v_1^T\mathbf W=\mathbf 0$$, because $$\mathbf v_1$$ is orthogonal to each column of $$\mathbf W$$.
 
@@ -619,3 +625,18 @@ In particular, AD recalled that $$\sqrt n\frac{F_n(x)-F_X(x)}{\sqrt{F_X(1-F_X(x)
 $$d^2(F_n,F_X)=\int_{x\in\mathbb R}\frac{\left(F_n(x)-F_X(x)\right)^2}{F_X(x)(1-F_X(x))}d F_X(x)$$
 
 CVM and AD test statistic is $$T_n=d^2(F_n,F_X)$$, where $$w(x)=1$$ reduces the AD statistic to CVM. Critical values can be again derived thorough simulations.
+
+# Two sample KS test
+
+KS test can be promptly adjusted to test if two samples have been drawn from the same distribution $$F(x)$$.
+
+Assume collecting two samples of size $$n$$ and $$m$$ with $$F_n(x)$$ and $$G_m(x)$$ as respective [ECDF](/2022/07/15/hypothesis-testing.html#ecdf). [GC](/2022/07/15/hypothesis-testing.html#gc) tells us that that both $$F_n(x)$$ and $$G_m(x)$$ with converge uniformly to the same *unknown* CDF $$F(x)$$. Thus, we expect that $$\sup_{x\in\mathbb R}\lvert F_n(x)-G_m(x)\rvert\xrightarrow{a.s.}0$$. Also, as $$F_n(x)\sim\frac1{\sqrt n}\mathcal N(F(x),F(x)(1-F(x)))$$ and $$G_m(x)\sim\frac1{\sqrt m}\mathcal N(F(x),F(x)(1-F(x)))$$, we can reach the following conclusion.
+
+$$\begin{align}
+\sqrt{\frac{nm}{n+m}}(F_n(x)-G_m(x))&\xrightarrow{(d)}\mathcal N(0,F_X(x)(1-F_X(x)))\\
+T_{n,m}=\sqrt{\frac{nm}{n+m}}\sup_{x\in\mathbb R}\lvert F_n(x)-G_m(x)\rvert&\xrightarrow{(d)}\sup_{t\in[0,1]}\lvert\mathbb B(t)\rvert
+\end{align}$$
+
+To find the critical values of $$T_{n,m}$$ statistic one can again rely on the simulations. The simulation below estiamtes $$c_\alpha$$ for $$\alpha=0.05$$, $$n=5$$ and $$m=8$$. As mentioned above, the tables usually report the number without the scaling factor $$\sqrt{\frac{nm}{n+m}}$$.
+
+<iframe width='100%' height='950' src='https://rdrr.io/snippets/embed/?code=n%3C-8%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%23%20size%20of%20the%20sample%20X%0Am%3C-5%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%23%20size%20of%20the%20sample%20Y%0Ak%3C-1e4%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%23%20number%20of%20simulations%0AX%3C-matrix(runif(n*k)%2Cnrow%3Dk)%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%23%20X~U(0%2C1)%0AY%3C-matrix(runif(m*k)%2Cnrow%3Dk)%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%23%20Y~U(0%2C1)%0AgetSup%3C-function(A%2CB)%20%7B%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%23%20gets%20supremum%20of%0A%20%20j%3C-t(apply(A%2C1%2Crank))%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%23%20sup%7CF_A(t)-F_B(t)%7C%0A%20%20U%3C-t(%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%23%20for%20t%3DA_i%0A%20%20%20%20sapply(1%3Anrow(A)%2Cfunction(s)%0A%20%20%20%20%20%20sapply(1%3Ancol(A)%2Cfunction(t)%20sum(B%5Bs%2C%5D%3C%3DA%5Bs%2Ct%5D))%0A%20%20%20%20)%0A%20%20)%2Fncol(B)%0A%20%20return(sqrt(n*m%2F(n%2Bm))*%0A%20%20%20%20apply(pmax(abs((j-1)%2Fn-U)%2Cabs(j%2Fn-U))%2C1%2Cmax))%0A%7D%0AD%3C-getSup(X%2CY)%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%23%20differences%20at%20X_i%0AD%3C-pmax(D%2CgetSup(Y%2CX))%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%23%20differences%20at%20Y_j%0Ahist(D%2Cfreq%3DFALSE)%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%23%20D%20statistic%20histogram%0Ac_alpha%3C-quantile(D%2Cprobs%3D.95)%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%23%20compute%20c_alpha%0Asprintf(%220.95%20quantile%20for%20simulated%20KS%20%3D%20%25f%22%2C%20%20%20%20%20%20%20%20%20%20%20%23%20c_alpha%20with%20scaling%0A%20%20%20%20%20%20%20%20c_alpha)%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%23%20converting%20to%20BB(t)%0Anum%3C-c_alpha*sqrt(n*m*(n%2Bm))%0Aden%3C-n*m%0Asprintf(%22same%20quantile%20without%20scaling%20%3D%20%25.2f%2F%25.2f%22%2C%20%20%20%20%20%23%20compute%20without%20scaling%0A%20%20%20%20%20%20%20%20num%2Cden)%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%23%20as%20reported%20in%20KS%20tables' frameborder='0'></iframe>

@@ -3,7 +3,7 @@ layout: post
 title: "Conditioning and Independence"
 ---
 
-$$\newcommand{\ind}{\perp\!\!\!\perp}$$
+$$\newcommand{\ind}{\perp\kern-5pt\perp}$$
 
 ## Conditioning
 

@@ -3,7 +3,7 @@ layout: post
 title: "Methods of estimation"
 ---
 
-$$\newcommand{\ind}{\perp\!\!\!\perp}$$
+$$\newcommand{\ind}{\perp\kern-5pt\perp}$$
 
 ## Introduction {#intro}
 
@@ -83,7 +83,7 @@ For our purposes, consider $$\mathcal P=\mathcal P_{\theta^\star}$$ and $$\mathc
 
 From earlier introduction to [estimation](/2022/03/24/foundation-of-inference.html#estimation), we learnt that we can estimate $$\mathbb E[X_i]$$ or $$\mathbb E[f(X_i)]$$ thanks to the [sample mean](/2022/02/21/introduction-to-statistics.html#clt_mean) and [Delta method](/2022/03/24/foundation-of-inference.html#delta). This means that we could estimate $$\text{TV}(\mathcal P_{\theta^\star}, \mathcal P_\theta)$$ if KL was in turn a sort of $$\mathbb E[f(\mathcal P_{\theta^\star}, \mathcal P_\theta)]$$. As this is not the case, we need an alternative *distance* function in the form of estimation.
 
-## Kullback-Leibler divergence
+## Kullback-Leibler divergence {#kl}
 
 The solution to the above dilemma comes from [information theory](https://en.wikipedia.org/wiki/Information_theory), under the name of [Kullback-Leibler divergence](https://en.wikipedia.org/wiki/Kullback–Leibler_divergence) (KL), defined as follows{% if jekyll.environment == "development" %} (see [Stats HW4 Q1](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@hw4_u3methods/block-v1:MITx+18.6501x+2T2021+type@vertical+block@hw4_u3methods-tab1)){% endif %} (replace integral with sum, in case of $$\Omega$$ discrete).
 
@@ -486,3 +486,9 @@ I(\mu)
 &=\frac4{\pi\gamma^2}(2C(4)-C(2))&\left(C(k)=\left(\frac{k-1}k\right)C(k-2)\right)\\
 &=\frac4{\pi\gamma^2}\left(2\frac 3 4\frac 1 2\frac\pi2-\frac 1 2\frac\pi2\right)=\frac1{2\gamma^2}
 \end{align}$$
+
+### $$p$$-hacking
+
+Also referred to as **data dredging** or **data snooping**, is a technique to misuse the data analysis to find patters that can be presented as statistically significant, while in reality they are not (or not in the intended way, in any case). A common example is testing multiple hypothesis n the single data set and searching exhaustively some statistically significant pattern---perhaps occurred, just for a combination of variables. The larger is the sample, the easier is to find random sequence that resembles a pattern.
+
+Another common example is when a researcher tests a hypothesis on a sample, which is then discarded in favour of another, newly collected sample, if the test on the first sample did not lead to a desired conclusion. In this case, we are definitely changing the original $$\alpha$$ level. Assume the test with the first sample failed to reject, and so the researcher collected another, independent sample and run another test. In both tests, the threshold to decide the test $$c_\alpha$$ is the same. For this, the probability of rejecting under the null is not $$\mathbb P_{\Theta_0}(\psi=1)=\alpha$$, but $$\mathbb P_{\Theta_0}(\psi_1=1)+\mathbb P_{\Theta_0}(\psi_1=0\land\psi_2=1)$$ or $$\alpha+(1-\alpha)\alpha$$, where $$\psi_1$$ and $$\psi_2$$ are the two test with the first and second sample, respectively.

@@ -3,7 +3,7 @@ layout: post
 title: "Bernoulli and Poisson Processes"
 ---
 
-$$\newcommand{\ind}{\perp\!\!\!\perp}$$
+$$\newcommand{\ind}{\perp\kern-5pt\perp}$$
 
 ## Stochastic Processes {#stochastic_processes}
 

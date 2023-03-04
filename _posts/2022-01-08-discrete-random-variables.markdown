@@ -3,7 +3,7 @@ layout: post
 title: "Discrete Random Variables"
 ---
 
-$$\newcommand{\ind}{\perp\!\!\!\perp}$$
+$$\newcommand{\ind}{\perp\kern-5pt\perp}$$
 
 ## Definition {#definition}
 

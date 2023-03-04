@@ -3,7 +3,7 @@ layout: post
 title: "Introduction to statistics"
 ---
 
-$$\newcommand{\ind}{\perp\!\!\!\perp}$$
+$$\newcommand{\ind}{\perp\kern-5pt\perp}$$
 
 ## Motivation
 

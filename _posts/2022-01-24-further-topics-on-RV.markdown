@@ -3,7 +3,7 @@ layout: post
 title: "Further topics on r.v."
 ---
 
-$$\newcommand{\ind}{\perp\!\!\!\perp}$$
+$$\newcommand{\ind}{\perp\kern-5pt\perp}$$
 
 ## Derived distributions {#derived_distributions}
 
