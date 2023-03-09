@@ -85,7 +85,7 @@ From earlier introduction to [estimation](/2022/03/24/foundation-of-inference.ht
 
 ## Kullback-Leibler divergence {#kl}
 
-The solution to the above dilemma comes from [information theory](https://en.wikipedia.org/wiki/Information_theory), under the name of [Kullback-Leibler divergence](https://en.wikipedia.org/wiki/Kullback–Leibler_divergence) (KL), defined as follows{% if jekyll.environment == "development" %} (see [Stats HW4 Q1](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@hw4_u3methods/block-v1:MITx+18.6501x+2T2021+type@vertical+block@hw4_u3methods-tab1)){% endif %} (replace integral with sum, in case of $$\Omega$$ discrete).
+The solution to the above dilemma comes from [information theory](https://en.wikipedia.org/wiki/Information_theory), under the name of [Kullback-Leibler divergence](https://en.wikipedia.org/wiki/Kullback–Leibler_divergence) (KL), defined as follows{% if jekyll.environment == "development" %} (see [Stats HW4 Q1](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@hw4_u3methods/block-v1:MITx+18.6501x+2T2021+type@vertical+block@hw4_u3methods-tab1)){% endif %} (replace integral with sum, if $$\Omega$$ is discrete).
 
 $$\text{KL}(\mathcal P,\mathcal Q)=\begin{cases}\displaystyle\int_{x\in\Omega}p(x)\ln\left(\frac{p(x)}{q(x)}\right)dx&q(x)=0\implies p(x)=0\\+\infty&\exists x:q(x)=0,p(x)\neq0\end{cases}$$
 
@@ -134,7 +134,7 @@ More generally, a multivariate function $$f:\mathbb R^d\rightarrow\mathbb R$$, w
 
 $$\begin{align}\nabla_\theta f(\boldsymbol\theta)=\left[\begin{array}{}\frac{\partial}{\partial\theta_1}f(\boldsymbol\theta)\\\vdots\\\frac{\partial}{\partial\theta_d}f(\boldsymbol\theta)\end{array}\right]\in\mathbb R^d&&\mathbf H_\theta f(\boldsymbol\theta)=\left[\begin{array}{ccc}\frac{\partial^2}{\partial\theta_1^2}f(\boldsymbol\theta)&\dots&\frac{\partial^2}{\partial\theta_1\partial\theta_d}f(\boldsymbol\theta)\\\vdots&\ddots&\vdots\\\frac{\partial^2}{\partial\theta_d\partial\theta_1}f(\boldsymbol\theta)&\dots&\frac{\partial^2}{\partial\theta_d^2}f(\boldsymbol\theta)\end{array}\right]\end{align}\in\mathbb R^{d\times d}$$
 
-For completeness, function $$f(\theta)$$ is concave (without *strictly*) if $$f''(x)\le0$$, or in case of multivariate function $$x^T\mathbf H_\theta f(\boldsymbol\theta)x\le0$$ (matrix is negative *semi*-definite). To avoid confusion, bear in mind that strictly concave $$\implies$$ concave, and negative definite $$\implies$$ negative semi-definite{% if jekyll.environment == "development" %} (see [Stats L9 Q8](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u03s02_methodestimation/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u03s02_methodestimation-tab8)){% endif %}. Maximization is to concave the same way minimization is to **convex**, and all analogous considerations can be made with respect to convex functions{% if jekyll.environment == "development" %} (see [Stats HW4 Q3](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@hw4_u3methods/block-v1:MITx+18.6501x+2T2021+type@vertical+block@hw4_u3methods-tab3)){% endif %}.
+For completeness, function $$f(\theta)$$ is concave if $$f''(x)\le0$$, or if $$x^T\mathbf H_\theta f(\boldsymbol\theta)x\le0$$ (i.e. $$\mathbf H_\theta f(\boldsymbol\theta)$$ is negative semi-definite) if $$\boldsymbol{\theta}\in\mathbb R^d$$. To avoid confusion, bear in mind that *strictly* concave $$\implies$$ concave, and negative definite $$\implies$$ negative *semi*-definite{% if jekyll.environment == "development" %} (see [Stats L9 Q8](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u03s02_methodestimation/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u03s02_methodestimation-tab8)){% endif %}. Maximization is to concave the same way minimization is to **convex**, and all analogous considerations can be made with respect to convex functions{% if jekyll.environment == "development" %} (see [Stats HW4 Q3](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@hw4_u3methods/block-v1:MITx+18.6501x+2T2021+type@vertical+block@hw4_u3methods-tab3)){% endif %}.
 
 ## Maximum likelihood estimation {#mle}
 
@@ -166,7 +166,7 @@ As for the [Categorical distribution](/2022/01/24/further-topics-on-RV.html#cate
 
 ## Score and Fisher information {#score}
 
-MLE can also be explained through the **score** function, defined as $$s_n(\boldsymbol\theta)=\nabla_\theta\ell_n(\boldsymbol\theta)$$, which in case of a single observation of a continuous r.v. $$X$$ becomes $$s(\boldsymbol\theta)=\nabla_\theta\ln f_\theta(X)$$. Note that $$s_n(\boldsymbol\theta)$$ can also be expressed as the sum of single scores per observation $$s_n(\boldsymbol\theta)=\sum_{i=1}^n s_i(\boldsymbol\theta)$$. Considering that $$X$$ is random, $$s(\boldsymbol\theta)$$ is also random, with a defined expectation and variance.
+MLE can also be explained through the **score** function, defined as $$s_n(\boldsymbol\theta)=\nabla_\theta\ell_n(\boldsymbol\theta)$$, which for a single observation becomes $$s(\boldsymbol\theta)=\nabla_\theta\ln f_\theta(X)$$. Note that $$s_n(\boldsymbol\theta)$$ can also be expressed as the sum of single scores per observation $$s_n(\boldsymbol\theta)=\sum_{i=1}^n s_i(\boldsymbol\theta)$$. Considering that $$X$$ is random, $$s(\boldsymbol\theta)$$ is also random, with a defined expectation and variance.
 
 Let us consider the univariate case and assume that $$\theta\in\mathbb R$$ is the true, unknown parameter, for which we are able to compute $$s(\theta)=\frac\partial{\partial\theta}\ln f_\theta(X)$$. Our first observation is that $$\mathbb E[s(\theta)]=0$${% if jekyll.environment == "development" %} (see [Stats L11 Q3](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u03s04_methodestimation/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u03s04_methodestimation-tab3)){% endif %}.
 
@@ -263,7 +263,7 @@ The above steps can be generalized setting a different **loss function** in the 
 |negative log-likelihood|$$-\ell(X,\theta)$$|true parameter of $$X$$|
 |quadratic norm|$$\lVert X-\theta\rVert^2_2$$|$$\mathbb E[X]$$|
 |absolute value|$$\lvert X-\theta\rvert$$|median $$\text{med}(X)$$<br>($$\frac 1 2$$ quantile of $$X$$)|
-|check function|$$C_\alpha(X-\theta)=\begin{cases}\alpha(X-\theta)&X\ge\theta\\(1-\alpha)(\theta-X)&X\lt\theta\end{cases}$$|$$q$$<br>($$\alpha$$ quantile of $$X$$)|
+|check function|$$C_\alpha(X-\theta)=\begin{cases}(1-\alpha)(\theta-X)&X\lt\theta\\\alpha(X-\theta)&X\ge\theta\end{cases}$$|$$q_{1-\alpha}$$|
 
 Derivation of $$q$$ as minimizer of $$\mathbb E[C_\alpha(X-\theta)]$$ in the univariate case is as follows, although other derivations can be obtained analogously.
 
@@ -271,7 +271,7 @@ $$\begin{align}
 \frac\partial{\partial\theta}\mathbb E[C_\alpha(X-\theta)]&=\frac\partial{\partial\theta}\left(\int_{-\infty}^\theta(1-\alpha)(\theta-x)f(x)dx+\int_{\theta}^\infty\alpha(x-\theta)f(x)dx\right)\\
 &=(1-\alpha)\int_{-\infty}^\theta f(x)dx-\alpha\int_\theta^\infty f(x)dx=\mathbb P(X\lt\theta)-\alpha\end{align}$$
 
-Since $$\frac\partial{\partial\theta}\mathbb E[C_\alpha(X-\theta^\star)]=0$$, it follows that $$\mathbb P(X\lt\theta^\star)-\alpha=0$$, which has solution for $$\theta^\star$$ being the $$q$$ of $$X\sim\mathcal P$$. Derivation of $$\text{med}(X)$$ as minimizer of $$\mathbb E[\lvert X-\theta\rvert]$$ can also be obtained by setting the loss function to $$C_{\frac 1 2}(X-\theta)$$, which will lead to $$\arg\min_\theta\frac 1 2\mathbb E[\lvert X-\theta\rvert]=\arg\min_\theta\mathbb E[\lvert X-\theta\rvert]$$.
+Since $$\frac\partial{\partial\theta}\mathbb E[C_\alpha(X-\theta^\star)]=0$$, it follows that $$\mathbb P(X\lt\theta^\star)-\alpha=0$$, which has solution for $$\theta^\star$$ being the $$1-\alpha$$ quantile of $$X$$. Derivation of $$\text{med}(X)$$ as minimizer of $$\mathbb E[\lvert X-\theta\rvert]$$ is obtained by setting the loss function to $$C_{\frac 1 2}(X-\theta)$$, which will lead to $$\arg\min_\theta\frac 1 2\mathbb E[\lvert X-\theta\rvert]=\arg\min_\theta\mathbb E[\lvert X-\theta\rvert]$$.
 
 As for the variance of quantile estimators (e.g. median or $$50$$-th percentile), consider $$X_i\overset{i.i.d.}{\sim}\mathcal P$$, where $$F_X(q)$$ is the CDF of such $$\mathcal P$$ at $$q$$-th quantile and $$Y_i(q)=\mathbb 1(X_i\le q)$$. Accordingly, $$Y_i(q)\overset{i.i.d.}{\sim}\text{Ber}(p)$$, where $$p=F_X(q)$$, and therefore $$\sqrt n(\bar Y_n(q)-p)\xrightarrow{(d)}\mathcal N(0,p(1-p))$$ (see [CLT](/2022/02/21/introduction-to-statistics.html#clt_mean)).
 
@@ -300,7 +300,7 @@ Assuming $$\gamma$$ are known, below are examples of sample median used to estim
 |$$\text{Laplace}(\mu,\gamma)$$|$$\hat\mu=X_{\left(\frac n 2\right)}$$|$$\gamma^2$$|
 |$$\text{Cauchy}(\mu,\gamma)$$|$$\hat\mu=X_{\left(\frac n 2\right)}$$|$$\displaystyle\frac{\pi^2\gamma^2}4$$|
 
-By the same argument applied in case of MLE, one could claim that *mild regularity conditions* allow transferring **consistency** from $$\mathcal Q_n(\theta)$$ to estimator $$\hat\Theta_n=\arg\min_{\theta\in\Theta}\mathcal Q_n(\theta)$${% if jekyll.environment == "development" %} (see [Stats L12 Q3](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u03s05_methodestimation/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u03s05_methodestimation-tab3)){% endif %}.
+If we review the MLE within the ME framework, we can see how *mild regularity conditions* allow transferring **consistency** from $$\mathcal Q_n(\theta)$$ to estimator $$\hat\Theta_n=\arg\min_{\theta\in\Theta}\mathcal Q_n(\theta)$${% if jekyll.environment == "development" %} (see [Stats L12 Q3](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u03s05_methodestimation/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u03s05_methodestimation-tab3)){% endif %}.
 
 $$\begin{align}\mathcal Q_n(\theta)=\frac 1 n\sum_{i=1}^n\rho(X_i,\theta)&\xrightarrow{\mathbb P}\mathbb E[\rho(X,\theta)]=\mathcal Q(\theta)\\
 \hat\Theta_n=\arg\min_{\theta\in\Theta}\mathcal Q_n(\theta)&\xrightarrow{\mathbb P}\arg\min_{\theta\in\Theta}\mathcal Q(\theta)=\theta^\star\end{align}$$
@@ -332,11 +332,11 @@ Now, we can attempt computing the asymptotic normality (again, in the univariate
 
 $$\Gamma_\delta(\theta)=J^{-1}(\theta)K(\theta)J^{-1}(\theta)=\frac{K(\theta)}{J^2(\theta)}=\frac{\text{var}\left(\frac{\partial}{\partial\theta}h_\delta(X-\theta)\right)}{\left(\mathbb E\left[\frac{\partial^2}{\partial\theta^2}h_\delta(X-\theta)\right]\right)^2}=\frac{\mathbb E\left[(\text{clip}_\delta^2(X-\theta))\right]}{\left(\mathbb E\left[\mathbb 1(\lvert X-\theta\rvert\le\delta)\right]\right)^2}$$
 
-In case of a PDF symmetric around true parameter $$\theta$$, the above can be conveniently rewritten as follows, where $$A=\left\{\lvert X-\theta\rvert\le\delta\right\}$$.
+If the PDF is symmetric around true parameter $$\theta$$, the above can be conveniently rewritten as follows, where $$A=\left\{\lvert X-\theta\rvert\le\delta\right\}$$.
 
 $$\Gamma_\delta(\theta)=\frac{\mathbb E[(X-\theta)^2\lvert A]\mathbb P(A)+\delta^2(1-\mathbb P(A))}{(\mathbb P(A))^2}$$
 
-Let us revisit estimation of the location $$\mu$$ in case of Laplace and Cauchy distributions, by calculating the associated $$\Gamma_\delta(\mu)$$, as well as the two limits ($$\delta\rightarrow0$$ and $$\delta\rightarrow\infty$$) associated with the sample median and sample mean as estimators{% if jekyll.environment == "development" %} (see [Stats L12 Q9](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u03s05_methodestimation/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u03s05_methodestimation-tab9)){% endif %}.
+Let us revisit estimation of the location $$\mu$$ with regards to Laplace and Cauchy distributions, by calculating the associated $$\Gamma_\delta(\mu)$$, as well as the two limits ($$\delta\rightarrow0$$ and $$\delta\rightarrow\infty$$) associated with the sample median and sample mean as estimators{% if jekyll.environment == "development" %} (see [Stats L12 Q9](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u03s05_methodestimation/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u03s05_methodestimation-tab9)){% endif %}.
 
 |Distribution and unknown parameter|$$\Gamma_\delta(\mu)$$|$$\displaystyle\lim_{\delta\rightarrow0}\Gamma_\delta(\mu)$$|$$\displaystyle\lim_{\delta\rightarrow\infty}\Gamma_\delta(\mu)$$|
 |-|:-:|:-:|:-:|

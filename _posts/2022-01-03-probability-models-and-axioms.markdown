@@ -77,7 +77,7 @@ Go back to the [syllabi breakdown](/2022/01/02/prob-and-stats-syllabi.html).
 
 ### Set algebra
 
-The properties below come from the basic [properties of set algebra](https://en.wikipedia.org/wiki/Algebra_of_sets). You should know them by heart (especially the De Morgan's law). You may add them in case you have some spare space and if they keep slipping out of your mind.
+The properties below come from the basic [properties of set algebra](https://en.wikipedia.org/wiki/Algebra_of_sets). You should know them by heart (especially the De Morgan's law). You may add them in the case you have some spare space and if they keep slipping out of your mind.
 
 |Property|Formula|
 |-|:-:|

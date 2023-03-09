@@ -128,7 +128,7 @@ $$\begin{align}
 &=\rho_{XY}\frac{\sigma_Y}{\sigma_X}(\mathbb E[X^2]-\mu_X^2)=\rho_{XY}\sigma_X\sigma_Y
 \end{align}$$
 
-Prior to concluding, an important observation is that $$f_{XY}(x,y)=f_X(x)f_Y(y)$$ when $$\rho_{XY}=0$$. This means that in case of jointly Normal r.v, when two r.v. are **uncorrelated** they are also **independent**.
+Prior to concluding, an important observation is that $$f_{XY}(x,y)=f_X(x)f_Y(y)$$ when $$\rho_{XY}=0$$. This means that if $$X$$ and $$Y$$ are jointly Normal and **uncorrelated**, then they are also **independent**.
 
 ## Covariance matrix {#covariance_matrix}
 
@@ -165,7 +165,7 @@ In particular, if $$\mathbf Z\sim\mathcal N_2(\mathbf 0_2,\mathbf I_2)$$, then $
 
 $$\Sigma_\mathbf X=\mathbf A^T\mathbf A=\begin{bmatrix}\sigma_1&0\\\sigma_2\rho&\sigma_2\sqrt{1-\rho^2}\end{bmatrix}\begin{bmatrix}\sigma_1&\sigma_2\rho\\0&\sigma_2\sqrt{1-\rho^2}\end{bmatrix}=\begin{bmatrix}\sigma_1^2&\rho\sigma_1\sigma_2\\\rho\sigma_1\sigma_2&\sigma_2^2\end{bmatrix}$$
 
-Computing $$f_{X_1X_2}(x_1,x_2)$$ as PDF of a bivariate Normal r.v. from direct application of the definition of $$f_\mathbf X(\mathbf x)$$ should be straightforward. Prior to concluding, observe that standardization of $$\mathbf X$$ can be obtained as $$\mathbf Z=\Sigma_{\mathbf X}^{-\frac 1 2}(\mathbf X-\mu_{\mathbf X})$$, which in case of $$d=2$$ becomes $$\mathbf Z=(\mathbf A^T)^{-1}(\mathbf X-\mu_{\mathbf X})$$.
+Computing $$f_{X_1X_2}(x_1,x_2)$$ as PDF of a bivariate Normal r.v. from direct application of the definition of $$f_\mathbf X(\mathbf x)$$ should be straightforward. Prior to concluding, observe that standardization of $$\mathbf X$$ can be obtained as $$\mathbf Z=\Sigma_{\mathbf X}^{-\frac 1 2}(\mathbf X-\mu_{\mathbf X})$$, which with $$d=2$$ becomes $$\mathbf Z=(\mathbf A^T)^{-1}(\mathbf X-\mu_{\mathbf X})$$.
 
 ## Conditional expectation as r.v.
 
@@ -183,7 +183,7 @@ Final remark is that $$\mathbb E[g(Y)X\lvert Y]=g(Y)\mathbb E[X\lvert Y]$$, whic
 
 Assume you have a r.v. $$X$$ that can take on one of $$d$$ possible categories. There is no innate underlying ordering of these outcomes, and sometimes numerical labels are often attached for convenience in describing the distribution, such as $$\{a_1,\dots,a_d\}$$. For convenience, a multivariate r.v. $$\mathbf X$$ is defined in the form $$\mathbf X=\begin{bmatrix}\mathbb 1(X=a_1)&\dots&\mathbb 1(X=a_d)\end{bmatrix}^T$$. Individual probabilities $$p_i$$ associated with each category $$j$$ are collected in a **parameter vector** $$\mathbf p=\begin{bmatrix}p_1&\dots&p_d\end{bmatrix}^T\in\Delta_d$$, where $$\Delta_d\subset\mathbb R^d$$ is a **probability simplex** of dimension $$d$$, defined as $$\Delta_d=\left\{\mathbf p\in\mathbb R^d:p_j\ge0,\sum_{j=1}^d p_j=1\right\}$$.
 
-Accordingly, $$\text{Cat}(\mathbf p)$$ determines a [Categorical distribution](https://en.wikipedia.org/wiki/Categorical_distribution) that is the most general distribution over a $$d$$-way event, where any other [discrete distribution](/2022/01/08/discrete-random-variables.html#basic) over a size $$d$$ sample space is a special case. For example, $$\text{Ber}(p)=\text{Cat}(\begin{bmatrix}1-p&p\end{bmatrix}^T)$$ and $$\text{Unif}(1,d)=\text{Cat}\left(\frac1d\mathbf 1_d\right)$${% if jekyll.environment == "development" %} (see [Stats L15 Q5](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u04s05_hypotesting/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u04s05_hypotesting-tab5)){% endif %}, where we only need to specify the categories attached with the probabilities, such as $$\{0,1\}$$ in case of Bernoulli and $$\{1,\dots,d\}$$ in case of Uniform distribution.
+Accordingly, $$\text{Cat}(\mathbf p)$$ determines a [Categorical distribution](https://en.wikipedia.org/wiki/Categorical_distribution) that is the most general distribution over a $$d$$-way event, where any other [discrete distribution](/2022/01/08/discrete-random-variables.html#basic) over a size $$d$$ sample space is a special case. For example, $$\text{Ber}(p)=\text{Cat}(\begin{bmatrix}1-p&p\end{bmatrix}^T)$$ and $$\text{Unif}(1,d)=\text{Cat}\left(\frac1d\mathbf 1_d\right)$${% if jekyll.environment == "development" %} (see [Stats L15 Q5](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u04s05_hypotesting/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u04s05_hypotesting-tab5)){% endif %}, where we only need to specify the categories attached with the probabilities, such as $$\{0,1\}$$ or $$\{1,\dots,d\}$$ in the case of Bernoulli or Uniform distribution, respectively.
 
 Categorical can also approximate discrete r.v. with infinite support, such as $$\text{Geom}(p)$$ or $$\text{Pois}(\lambda)$$, although it is clear that to describe *completely* these distributions, $$\mathbf p$$ would be an infinite long vector, which is a clear example of non parametric statistics. The approximation can be done by taking a bin to hold all residual numbers, that could occur with extremely low probability.
 
