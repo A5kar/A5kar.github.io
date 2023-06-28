@@ -47,20 +47,22 @@ From the above, we see that $$(\mathbb E[X])^2\le\mathbb E[X^2]$${% if jekyll.en
 
 |r.v.|PMF<br>$$p_X(x)$$|Expectation<br>$$\mu_X=\mathbb E[X]$$|Variance<br>$$\sigma_X^2=\text{var}(X)$$|
 |-|:-:|:-:|:-:|:-:|
-|Bernoulli<br>$$\text{Ber}(p)$$|$$\begin{cases}p^x(1-p)^{1-x}&x\in\{0,1\}\\0&\text{otherwise}\end{cases}$$|$$p$$|$$p(1-p)$$|
-|Rademacher<br>$$\text{Rad}$$|$$\begin{cases}\frac12&x=1\\\frac12&x=-1\\0&\text{otherwise}\end{cases}$$|$$0$$|$$1$$|
-|Binomial<br>$$\text{Bin}(k,p)$$|$$\begin{cases}\displaystyle{k\choose x}p^x(1-p)^{k-x}&x\in\{0,1,\dots,k\}\\0&\text{otherwise}\end{cases}$${% if jekyll.environment == "development" %}<br>(see [Prob L5 Q11](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__5_Probability_mass_functions_and_expectations/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s2-tab11)){% endif %}|$$kp$$|$$kp(1-p)$$|
-|Geometric<br>$$\text{Geom}(p)$$|$$\begin{cases}(1-p)^{x-1}p&\mathbb Z_{\ge1}\\0&\text{otherwise}\end{cases}$$|$$\displaystyle\frac{1}{p}$${% if jekyll.environment == "development" %}<br>(see [Prob MT1 Q3](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@sequential_Exam_1/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch7-s1-tab4)){% endif %}|$$\displaystyle\frac{1-p}{p^2}$$|
-|Pascal<br>$$\text{NBin}(k,p)$$|$$\begin{cases}\displaystyle{x-1\choose k-1}p^k(1-p)^{x-k}&\mathbb Z_{\ge k}\\0&\text{otherwise}\end{cases}$$|$$\displaystyle k\frac{1}{p}$$|$$\displaystyle k\frac{(1-p)}{p^2}$$|
-|Poisson<br>$$\displaystyle\text{Pois}(\lambda)$$|$$\begin{cases}e^{-\lambda}\displaystyle\frac{\lambda^x}{x!}&\mathbb Z_{\ge0}\\0&\text{otherwise}\end{cases}$$|$$\lambda$$|$$\lambda$$|
-|Uniform<br>$$\text{Unif}(a,b)$$|$$\begin{cases}\displaystyle\frac{1}{n}&x\in\{a,a+1,\dots,b-1,b\}\\0&\text{otherwise}\end{cases}$$<br>where $$n=b-a+1$$|$$\displaystyle\frac{a+b}{2}$$|$$\displaystyle\frac{1}{12}(n^2-1)$$|
-|Constant<br>$$\text{Unif}(c,c)$$|$$\begin{cases}1&\text{if $x=c$}\\0&\text{otherwise}\end{cases}$$|$$c$$|$$0$$|
+|Bernoulli<br>$$\text{Ber}(p)$$|$$p^x(1-p)^{1-x}$$<br>where $$x\in\{0,1\}$$|$$p$$|$$p(1-p)$$|
+|Rademacher<br>$$\text{Rad}$$|$$\frac12$$<br>where $$x\in\{-1,1\}$$|$$0$$|$$1$$|
+|Binomial<br>$$\text{Bin}(k,p)$$|$$\displaystyle{k\choose x}p^x(1-p)^{k-x}$$<br>where $$x\in\{0,1\dots,k\}$${% if jekyll.environment == "development" %}<br>(see [Prob L5 Q11](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__5_Probability_mass_functions_and_expectations/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s2-tab11)){% endif %}|$$kp$$|$$kp(1-p)$$|
+|Geometric<br>$$\text{Geom}(p)$$|$$(1-p)^{x-1}p$$<br>where $$x\in\mathbb Z_{\ge1}$$|$$\displaystyle\frac{1}{p}$${% if jekyll.environment == "development" %}<br>(see [Prob MT1 Q3](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@sequential_Exam_1/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch7-s1-tab4)){% endif %}|$$\displaystyle\frac{1-p}{p^2}$$|
+|[Pascal](/2022/02/08/bernoulli-and-poisson-processes.html#kth_arrival)<br>$$\text{NBin}(k,p)$$|$$\displaystyle{x-1\choose k-1}p^k(1-p)^{x-k}$$<br>where $$x\in\mathbb Z_{\ge k}$$|$$\displaystyle k\frac1p$$|$$\displaystyle k\frac{1-p}{p^2}$$|
+|[Poisson](/2022/02/08/bernoulli-and-poisson-processes.html#stochastic_processes)<br>$$\displaystyle\text{Pois}(\lambda)$$|$$\displaystyle e^{-\lambda}\frac{\lambda^x}{x!}$$<br>where $$x\in\mathbb Z_{\ge0}$$|$$\lambda$$|$$\lambda$$|
+|Uniform<br>$$\text{Unif}(a,b)$$|$$\displaystyle\frac{1}{n}$$<br>where $$x\in\{a,a+1,\dots,b-1,b\}$$ and $$n=b-a+1$$|$$\displaystyle\frac{a+b}{2}$$|$$\displaystyle\frac{1}{12}(n^2-1)$$|
+|Constant<br>$$\text{Unif}(c,c)$$|$$1$$<br>where $$x=c$$|$$c$$|$$0$$|
+|[Categorical](/2022/01/24/further-topics-on-RV.html#categorical)<br>$$\text{Cat}(\mathbf p)$$|$$\begin{cases}\prod_{j=1}^d p_j^{x_j}&\mathbf x\in\{0,1\}^d\\0&\text{otherwise}\end{cases}$$<br>where $$\mathbf 1_d^T\mathbf x=1$$, $$\mathbf 1_d^T\mathbf p=1$$|$$\mathbf p$$|$$\href{/2022/01/24/further-topics-on-RV.html#categorical}{\Sigma_\mathbf X}$$|
+|[Multinomial](/2022/01/24/further-topics-on-RV.html#categorical)<br>$$\text{Mult}(k,\mathbf p)$$|$$\begin{cases}{k\choose\mathbf x}\prod_{j=1}^d p_j^{x_j}&\mathbf x\in\{0,1,\dots,k\}^d\\0&\text{otherwise}\end{cases}$$<br>where $$\mathbf 1_d^T\mathbf x=k$$, $$\mathbf 1_d^T\mathbf p=1$$|$$k\mathbf p$$|$$k\href{/2022/01/24/further-topics-on-RV.html#categorical}{\Sigma_\mathbf X}$$|
 
-Note that $$\mathbb E[X^2]\text{var}(X)+(\mathbb E[X])^2=\sigma_X^2+\mu_X^2$$. Also, observe that for $$X\sim\text{Ber}(p)$$, $$\mathbb E[X^k]=p$$, $$\forall k\ge1$$, while for $$X\sim\text{Rad}$$ we have that $$\mathbb E[X^k]$$ is equal to $$0$$ if $$k$$ is odd, and $$1$$ if $$k$$ is even.
+From the definition of variance, we have $$\mathbb E[X^2]=\text{var}(X)+(\mathbb E[X])^2=\sigma_X^2+\mu_X^2$$. Also, observe that for $$X\sim\text{Ber}(p)$$, $$\mathbb E[X^k]=p$$, $$\forall k\ge1$$, while for $$X\sim\text{Rad}$$ we have that $$\mathbb E[X^k]$$ is equal to $$0$$ if $$k$$ is odd, and $$1$$ if $$k$$ is even.
 
 Computing expectation and variance for Pascal r.v. (a.k.a. Negative Binomial) is easier if we [assume](/2022/02/08/bernoulli-and-poisson-processes.html#kth_arrival) $$X=\sum_{i=1}^k X_i$$, with $$X_i\sim\text{Geom}(p)$$, in which case $$\mathbb E[X]=k\mathbb E[X_i]$$ and $$\text{var}(X)=k\text{var}(X_i)$$.
 
-Refer to [back-up](/2022/01/08/discrete-random-variables.html#cdf) for CDF of the above basic distributions and if you are curious about distributions and want to experiment with various parameters, check out this [great resource](https://share.streamlit.io/kaykozaronek/distributed/main/app.py) built by a fellow edX learner!
+Refer to [back-up](/2022/01/08/discrete-random-variables.html#cdf) for CDF of the above basic distributions and if you are curious about distributions and want to experiment with various parameters.
 
 ## Conditioning {#conditioning}
 
@@ -72,7 +74,7 @@ Conditioning to an event $$A$$, with $$\mathbb P(A)>0$$, does not alter the main
 |Normalization|$$\displaystyle\sum_x p_{X\lvert A}(x)=1$$|$$\displaystyle\sum_x p_{X\lvert Y}(x\lvert y)=1$$|
 |Expectation|$$\displaystyle\mathbb E[X\lvert A]=\sum_x xp_{X\lvert A}(x)$$|$$\displaystyle\mathbb E[X\lvert Y=y]=\sum_x xp_{X\lvert Y}(x\lvert y)$$|
 |LOTUS|$$\displaystyle\mathbb E[g(X)\lvert A]=\sum_x g(x)p_{X\lvert A}(x)$$|$$\displaystyle\mathbb E[g(X)\lvert Y=y]=\sum_x g(x)p_{X\lvert Y}(x\lvert y)$$|
-|[Total probability](2022-01-05-conditioning-and-independence.markdown#main_three_tools)|$$\displaystyle p_X(x)=\sum_{i=1}^n\mathbb P(A_i)\mathbb P(X\lvert A_i)$$|$$\displaystyle p_X(x)=\sum_y p_Y(y)p_{X\lvert Y}(x\lvert y)$$|
+|[Total probability](/2022/01/05/conditioning-and-independence.html#main_three_tools)|$$\displaystyle p_X(x)=\sum_{i=1}^n\mathbb P(A_i)\mathbb P(X\lvert A_i)$$|$$\displaystyle p_X(x)=\sum_y p_Y(y)p_{X\lvert Y}(x\lvert y)$$|
 |Total expectation|$$\displaystyle\mathbb  E[X]=\sum_{i=1}^n\mathbb P(A_i)\mathbb E[X\lvert A_i]$${% if jekyll.environment == "development" %}<br>(see [Prob L6 Q11](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__6_Variance__Conditioning_on_an_event__Multiple_r_v_s/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s3-tab11)){% endif %}|$$\displaystyle\mathbb E[X]=\sum_y p_Y(y)\mathbb E[X\lvert Y=y]$${% if jekyll.environment == "development" %}<br>(see [Prob L6 Q15](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__6_Variance__Conditioning_on_an_event__Multiple_r_v_s/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s3-tab15)){% endif %}|
 
 Notice that $$\mathbb E[g(X,Y)\lvert Y=y']=\sum_x g(x,y')p_{X\lvert Y}(x\lvert y')=\sum_x\sum_y g(x,y)p_{X,Y\lvert Y}(x,y\lvert y')$$ because $$p_{X,Y\lvert Y}(x,y\lvert y')=0$$ for any $$y\neq y'$${% if jekyll.environment == "development" %} (see [Prob L7 Q5](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__7_Conditioning_on_a_random_variable__Independence_of_r_v_s/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch6-s4-tab5)){% endif %}.

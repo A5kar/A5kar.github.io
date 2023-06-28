@@ -244,7 +244,7 @@ The CLT claims that for any sequence $$X_i\overset{i.i.d.}{\sim}\mathcal P$$, wi
 
 Since $$\frac{S_n-n\mu}{\sqrt n\sigma}=\frac1{\sqrt n\sigma}\sum_{i=1}^n(X_i-\mu)$$, then $$M_{S_n}(t)=\mathbb E\left[e^{t\frac1{\sqrt n\sigma}\sum_{i=1}^n(X_i-\mu)}\right]=\left(M_{(X-\mu)}\left(\frac t{\sqrt n\sigma}\right)\right)^n$$. Also, as $$\mathbb E[X-\mu]=0$$, by [Taylor's expansion](/2022/02/21/introduction-to-statistics.html#mgf) we have that $$M_{X-\mu}\left(\frac t{\sqrt n\sigma}\right)\approx1+\frac{t^2}{2n}$$. In conclusion, $$M_{S_n}(t)\approx\left(1+\frac{t^2}{2n}\right)^n\rightarrow e^{\frac12t^2}$$, which is exactly the MGF of $$\mathcal N(0,1)$$.
 
-Aside from the exceptional generality of the CLT, it is important to bear in mind that CLT will not work with r.v. with undefined moments. This is the case of [Cauchy](/2022/04/26/methods-of-estimation.html#m-estimation) r.v., for which $$\mathbb E[X]=\infty$$.
+Aside from the exceptional generality of the CLT, it is important to bear in mind that CLT will not work with r.v. with undefined moments. This is the case of [Cauchy](/2022/04/26/methods-of-estimation.html#me) r.v., for which $$\mathbb E[X]=\infty$$.
 
 ### Hoeffding's lemma {#hoeffding_lemma}
 

@@ -155,7 +155,7 @@ Follow few examples of likelihood functions $$\mathcal L_n(\boldsymbol\theta)$$ 
 |-|:-:|:-:|
 |Bernoulli with parameter $$p$$|$$p^{\sum_{i=1}^n X_i}(1-p)^{n-\sum_{i=1}^n X_i}$$|$$\hat p=\bar X_n$${% if jekyll.environment == "development" %}<br>(see [Stats L9 Q12](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u03s02_methodestimation/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u03s02_methodestimation-tab12)){% endif %}|
 |Binomial with parameters $$(k,p)$$|$$\left(\prod_{i=1}^n{k\choose X_i}\right)p^{\sum_{i=1}^n X_i}(1-p)^{nk-\sum_{i=1}^n X_i}$$|$$\hat p=\frac {\bar X_n}k$$|
-|Categorical with parameter $$\mathbf p$$|$$\prod_{j=1}^d p_j^{(n\bar{\mathbf X}_n)_j}$$|$$\hat{\mathbf p}=\bar{\mathbf X}_n$${% if jekyll.environment == "development" %}<br>(see [Stats L10 Q3](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u03s03_methodestimation/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u03s03_methodestimation-tab3)){% endif %}|
+|Categorical with parameter $$\mathbf p$$|$$\prod_{j=1}^d p_j^{n(\bar{\mathbf X}_n)_j}$$|$$\hat{\mathbf p}=\bar{\mathbf X}_n$${% if jekyll.environment == "development" %}<br>(see [Stats L10 Q3](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u03s03_methodestimation/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u03s03_methodestimation-tab3)){% endif %}|
 |Geometric with parameter $$p$$|$$p^n(1-p)^{\sum_{i=1}^n X_i-n}$$|$$\hat p=\frac 1 {\bar X_n}$$|
 |Poisson with parameter $$\lambda$$|$$\displaystyle e^{-n\lambda}\frac{\lambda^{\sum_{i=1}^n X_i}}{\prod_{i=1}^n X_i!}$$|$$\hat\lambda=\bar X_n$${% if jekyll.environment == "development" %}<br>(see [Stats L9 Q13](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u03s02_methodestimation/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u03s02_methodestimation-tab13)){% endif %}|
 |Continuous uniform over $$[0,\theta]$$|$$\frac{1}{\theta^n}\mathbb 1(X_{(n)}\le\theta)$$|$$X_{(n)}$${% if jekyll.environment == "development" %}<br>(see [Stats L10 Q2](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u03s03_methodestimation/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u03s03_methodestimation-tab2)){% endif %}|
@@ -182,9 +182,9 @@ Variance of the score is known as [Fisher information](https://en.wikipedia.org/
 
 $$\begin{align}
 \mathbb E[-\ell''(\theta)]
-&=-\int_{-\infty}^\infty\frac\partial{\partial\theta}\left(\frac\partial{\partial\theta}\ln f_{\theta}(x)\right)f_{\theta}(x)dx\\
-&=\cancelto{=0}{-\int_{-\infty}^\infty\frac{\partial^2}{\partial\theta^2}f_{\theta}(x)dx}+\int_{-\infty}^\infty\frac{\left(\frac\partial{\partial\theta}f_{\theta}(x)\right)^2}{f_{\theta}(x)}dx\\
-&=\int_{-\infty}^\infty\left(\frac{\frac\partial{\partial\theta}f_{\theta}(x)}{f_{\theta}(x)}\right)^2f_{\theta}(x)dx=\mathbb E[s(\theta)^2]=\text{var}(s(\theta))
+&=-\int_{-\infty}^\infty\frac\partial{\partial\theta}\left(\frac\partial{\partial\theta}\ln f_{\theta}(x)\right)f_{\theta}(x)dx=-\int_{-\infty}^\infty\frac\partial{\partial\theta}\left(\frac{\frac\partial{\partial\theta}f_{\theta}(x)}{f_{\theta}(x)}\right)f_{\theta}(x)dx\\
+&=\cancelto{=0}{-\int_{-\infty}^\infty\frac{\partial^2}{\partial\theta^2}f_{\theta}(x)dx}+\int_{-\infty}^\infty\left(\frac{\frac\partial{\partial\theta}f_{\theta}(x)}{f_{\theta}(x)}\right)^2f_{\theta}(x)dx\\
+&=\int_{-\infty}^\infty s^2(\theta)f_\theta(x)dx=\mathbb E[s(\theta)^2]=\text{var}(s(\theta))
 \end{align}$$
 
 Wrapping up, $$\sqrt n\bar s_n(\theta)\xrightarrow{(d)}\mathcal N(0,I(\theta))$$ ([CLT](/2022/02/21/introduction-to-statistics.html#clt)), and if one performs Taylor expansion of $$\bar s_n(\hat\Theta_n)=0$$ (by definition of $$\hat\Theta_n$$), then one can achieve the following result.
@@ -247,7 +247,7 @@ As for the asymptotic normality, note that the distribution of $$\hat\Theta_n$$ 
 
 When MLE is constrained to a region $$\Theta\subset\mathbb R^d$$ which does not capture the global maximum (e.g. does not cover the entire $$\mathbb R^d$$ space), then $$\hat\Theta_n=\arg\max_{\theta\in\Theta}\ell_n(X_1,\dots,X_n,\theta)$$ will fall on the boundary of $$\Theta$${% if jekyll.environment == "development" %} (see [Stats HW4 Q5](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@hw4_u3methods/block-v1:MITx+18.6501x+2T2021+type@vertical+block@hw4_u3methods-tab5)){% endif %}, and MLE will not be asymptotically Normal.
 
-## M-estimation {#m-estimation}
+## M-estimation {#me}
 
 Reviewing MLE, one could say that the estimator was determined as follows:
 
@@ -286,14 +286,7 @@ In particular, if we consider $$p=\frac 1 2$$ and $$q=\text{med}(X)$$, we have t
 
 $$\sqrt n(X_{\left(\frac n2\right)}-\text{med}(X))\xrightarrow{(d)}\mathcal N\left(0,\frac{1}{4f_X^2(\text{med}(X))}\right)$$
 
-For a practical example consider two particular cases, [Laplace distribution](https://en.wikipedia.org/wiki/Laplace_distribution) (or double exponential) and [Cauchy distribution](https://en.wikipedia.org/wiki/Cauchy_distribution) (or $$t$$ distribution with $$n=1$$){% if jekyll.environment == "development" %} (see [Stats L12 Q6](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u03s05_methodestimation/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u03s05_methodestimation-tab6) and [Stats L12 Q8](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u03s05_methodestimation/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u03s05_methodestimation-tab8)){% endif %}.
-
-|r.v.|PDF<br>$$f_X(x)$$|Expectation<br>$$\mu_X=\mathbb E[X]$$|Variance<br>$$\sigma_X^2=\text{var}(X)$$|
-|-|:-:|:-:|:-:|:-:|
-|Laplace<br>$$\text{Laplace}(\mu,\gamma)$$|$$\displaystyle\frac 1 {2\gamma}\exp\left\{-\left\lvert\frac{x-\mu}{\gamma}\right\rvert\right\}$$|$$\mu$$|$$2\gamma^2$$|
-|Cauchy<br>$$\text{Cauchy}(\mu,\gamma)$$|$$\displaystyle\frac 1{\pi\gamma}\left(1+\left(\frac{x-\mu}{\gamma}\right)^2\right)^{-1}$$|$$\infty$$|$$\infty$$|
-
-Assuming $$\gamma$$ are known, below are examples of sample median used to estimate $$\mu$$.
+For a practical example consider two particular cases, [Laplace and Cauchy](/2022/01/13/continuous-random-variables.html#basic) distributions{% if jekyll.environment == "development" %} (see [Stats L12 Q6](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u03s05_methodestimation/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u03s05_methodestimation-tab6) and [Stats L12 Q8](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u03s05_methodestimation/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u03s05_methodestimation-tab8)){% endif %}. Assuming $$\gamma$$ are known, below are examples of sample median used to estimate $$\mu$$.
 
 |Distribution and unknown parameter|$$\hat\Theta_n$$|$$n\text{var}(\hat\Theta_n)$$|
 |-|:-:|:-:|
@@ -345,7 +338,7 @@ Let us revisit estimation of the location $$\mu$$ with regards to Laplace and Ca
 
 Computations of $$\lim_{\delta\rightarrow0}$$ rely on Taylor expansions, namely $$e^\delta\approx 1+\delta+\frac 1 2\delta^2+O(x^3)$$ and $$\arctan x\approx x-\frac{x^3}3+\frac{x^5}5+O(x^7)$$.
 
-## Wrap-up
+## Wrap-up {#wrapup}
 
 In this segment, we saw three main methodologies to develop an estimator. All three of them proved to be **consistent**, and **asymptotically Normal** subject to certain conditions.
 
@@ -368,6 +361,7 @@ Go back to the [syllabi breakdown](/2022/01/02/prob-and-stats-syllabi.html).
 
 |Formula|Equivalent form|
 |:-:|:-:|
+|$$a^b$$|$$\displaystyle\log_a(b)=\frac{\ln(b)}{\ln(a)}$$|
 |$$\displaystyle\frac\partial{\partial x}f^{-1}(x)$$|$$\begin{align}\displaystyle1=\frac\partial{\partial x}x=\frac\partial{\partial x}f(y)=f'(y)\frac{\partial y}{\partial x}\\\implies\frac{\partial y}{\partial x}=\frac\partial{\partial x}f^{-1}(x)=\frac1{f'(y)}\end{align}$$|
 |$$\prod_{i=1}^n\mathbb 1(X_i\ge\alpha)$$|$$\mathbb 1(X_{(1)}\ge\alpha)$$|
 |$$\prod_{i=1}^n\mathbb 1(X_i\le\alpha)$$|$$\mathbb 1(X_{(n)}\le\alpha)$$|
@@ -387,7 +381,7 @@ The latter is called [cross entropy](https://en.wikipedia.org/wiki/Cross_entropy
 
 Changing the base of the logarithm does not change the general considerations. In statistics, we usually rely on natural base, or $$\ln(\cdot)$$.
 
-### Lagrange multipliers
+### Lagrange multiplier {#lagrange_multiplier}
 
 Occasionally, [maximization](/2022/04/26/methods-of-estimation.html#maximization) of concave function $$f(\theta) $$ needs to be carried out under constraints, e.g. we need to find $$\max_{\theta\in\Theta}f(\theta)$$, provided that $$g(\theta)=0$$. In such case, instead of looking for a point where $$\nabla_\theta f(\hat\theta_n)=0$$, we look for a point where $$\nabla_\theta f(\hat\theta_n)=\lambda\nabla_\theta g(\hat\theta_n)$$, with $$\lambda\in\mathbb R$$. Accordingly, $$\hat\theta_n$$ is found by solving the following system of equations.
 
@@ -397,7 +391,7 @@ The above relies on the fact that (a) two vectors $$\mathbf x,\mathbf y\in\mathb
 
 ### MLE for Categorical r.v. {#mle_categorical}
 
-Consider [Categorical distribution](/2022/01/24/further-topics-on-RV.html#categorical), where $$\mathbf X_i\sim\text{Cat}(\mathbf p)$$ are vectors indicating if $$i$$-th sample is of category $$j$$. MLE is determined by maximizing the log-likelihood $$\ell_n(\hat{\mathbf p})$$ is maximized, subject to a constraint that the sum of probabilities associated with each category is equal to $$1$$. Hence, we need to consider $$\ell_n(\hat{\mathbf p})=\ln\left(\prod_{j=1}^d(\hat{\mathbf p})_j^{(n\bar{\mathbf X}_n)_j}\right)=\ln(\hat{\mathbf p}^T)n\bar{\mathbf X}_n$$, that is subject to $$g(\hat{\mathbf p})=\hat{\mathbf p}^T\mathbf 1_d-1=0$$ (i.e., $$\hat{\mathbf p}^T\mathbf 1_d=1$$), where $$\bar{\mathbf X}_n$$ and $$n\bar{\mathbf X}_n$$ are vectors of *relative* and *absolute* frequencies, respectively. Finally, note that $$\nabla_p\ell_n(\hat{\mathbf p})=\nabla_p\ln(\hat{\mathbf p}^T)n\bar{\mathbf X}_n=\text{diag}^{-1}(\hat{\mathbf p})n\bar{\mathbf X}_n$$.
+Consider a sample of [Categorical r.v.](/2022/01/24/further-topics-on-RV.html#categorical) $$\mathbf X_i\overset{i.i.d}{\sim}\text{Cat}(\mathbf p)$$. MLE is determined by maximizing the log-likelihood $$\ell_n(\hat{\mathbf p})$$, subject to a constraint that the sum of probabilities associated with each category is equal to $$1$$. Hence, we need to consider $$\ell_n(\hat{\mathbf p})=\ln\left(\prod_{j=1}^d(\hat{\mathbf p})_j^{n(\bar{\mathbf X}_n)_j}\right)=\ln(\hat{\mathbf p}^T)n\bar{\mathbf X}_n$$, that is subject to $$g(\hat{\mathbf p})=\mathbf 1_d^T\hat{\mathbf p}-1=0$$ (i.e., $$\mathbf 1_d^T\hat{\mathbf p}=1$$), where $$\bar{\mathbf X}_n$$ and $$n\bar{\mathbf X}_n$$ are vectors of *relative* and *absolute* frequencies, respectively. Finally, note that $$\nabla_p\ell_n(\hat{\mathbf p})=\nabla_p\ln(\hat{\mathbf p}^T)n\bar{\mathbf X}_n=\text{diag}^{-1}(\hat{\mathbf p})n\bar{\mathbf X}_n$$.
 
 If we ignore the constraint and compute $$\hat{\mathbf p}$$ s.t. $$\nabla_p\ell_n(\hat{\mathbf p})=\mathbf 0$$, we will obtain $$\hat{\mathbf p}=\boldsymbol{\infty}_d$$. On the other hand, if we compute $$\hat{\mathbf p}$$ s.t. $$\nabla_p\ell_n(\hat{\mathbf p})=\lambda\nabla_p g(\hat{\mathbf p})$$, we will have as follows.
 
@@ -408,24 +402,17 @@ n\bar{\mathbf X}_n&=\lambda\text{diag}(\hat{\mathbf p})\mathbf 1_d=\lambda\hat{\
 \frac1\lambda n\bar{\mathbf X}_n&=\hat{\mathbf p}
 \end{align}$$
 
-In conclusion, $$\lambda=n$$ because $$\frac n\lambda\bar{\mathbf X}_n^T\mathbf 1_d=\frac n\lambda=\hat{\mathbf p}^T\mathbf 1_d=1$$ and therefore $$\hat{\mathbf p}=\bar{\mathbf X}_n$$. Furthermore, as $$\mathbf H_p\ell_n(\mathbf p)$$ is negative semi-definite (diagonal matrix with non positive entries), $$\hat{\mathbf p}$$ is a maximum.
+From the above, it follows that $$\lambda=n$$ because $$\mathbf 1_d^T\frac1\lambda n\bar{\mathbf X}_n=\frac n\lambda=\mathbf 1_d^T\hat{\mathbf p}=1$$. Therefore $$\hat{\mathbf p}=\bar{\mathbf X}_n$$. Furthermore, as $$\mathbf H_p\ell_n(\mathbf p)$$ is negative semi-definite (diagonal matrix with non positive entries), $$\hat{\mathbf p}$$ is a maximum.
 
 $$\begin{align}
-\mathbf H_p\ell_n(\mathbf p)=\nabla_p^2\ell_n(\mathbf p)=\nabla_p\text{diag}^{-1}({\mathbf p})n\bar{\mathbf X}_n=\nabla_p\begin{bmatrix}\frac{(n\bar{\mathbf X}_n)_1}{p_1}\\\vdots\\\frac{(n\bar{\mathbf X}_n)_d}{p_d}\end{bmatrix}=\begin{bmatrix}-\frac{(n\bar{\mathbf X}_n)_1}{p_1^2}&\dots&0\\\vdots&\ddots&\\0&&-\frac{(n\bar{\mathbf X}_n)_d}{p_d^2}\end{bmatrix}
+\mathbf H_p\ell_n(\mathbf p)=\nabla_p^2\ell_n(\mathbf p)=\nabla_p\text{diag}^{-1}({\mathbf p})n\bar{\mathbf X}_n=\nabla_p\begin{bmatrix}\frac{n(\bar{\mathbf X}_n)_1}{p_1}\\\vdots\\\frac{n(\bar{\mathbf X}_n)_d}{p_d}\end{bmatrix}=\begin{bmatrix}-\frac{n(\bar{\mathbf X}_n)_1}{p_1^2}&\dots&0\\\vdots&\ddots&\\0&&-\frac{n(\bar{\mathbf X}_n)_d}{p_d^2}\end{bmatrix}
 \end{align}$$
 
-It is worth noting that even where $$(\bar{\mathbf X}_n)_k=0$$ for some $$k$$, $$(\hat{\mathbf p})_k=0$$ is still the best solution. Since $$(\hat{\mathbf p})_k^{(n\bar{\mathbf X}_n)_k}=1$$ it will have no influence on $$\mathcal L_n(\hat{\mathbf p})=\prod_{j=1}^d(\hat{\mathbf p})_j^{(n\bar{\mathbf X}_n)_j}$$ regardless of $$(\hat{\mathbf p})_k$$. However, if $$(\hat{\mathbf p})_k\gt0$$, other $$(\hat{\mathbf p})_{j\neq k}$$ will reduce due to constraint $$\hat{\mathbf p}^T\mathbf 1_d=1$$, and in turn bring down $$\mathcal L_n(\hat{\mathbf p})$$ as well. This means that $$\hat{\mathbf p}=\bar{\mathbf X}_n$$ is a **global** maximum even when $$\mathbf H_p\ell_n(\mathbf p)$$ is negative semi-definite.
+It is worth noting that even where $$(\bar{\mathbf X}_n)_k=0$$ for some $$k$$, $$(\hat{\mathbf p})_k=0$$ is still the best solution. Since $$(\hat{\mathbf p})_k^{n(\bar{\mathbf X}_n)_k}=1$$ it will have no influence on $$\mathcal L_n(\hat{\mathbf p})=\prod_{j=1}^d(\hat{\mathbf p})_j^{n(\bar{\mathbf X}_n)_j}$$ regardless of $$(\hat{\mathbf p})_k$$. However, if $$(\hat{\mathbf p})_k\gt0$$, other $$(\hat{\mathbf p})_{j\neq k}$$ will reduce due to constraint $$\mathbf 1_d^T\hat{\mathbf p}=1$$, and in turn bring down $$\mathcal L_n(\hat{\mathbf p})$$ as well. This means that $$\hat{\mathbf p}=\bar{\mathbf X}_n$$ is a **global** maximum even when $$\mathbf H_p\ell_n(\mathbf p)$$ is negative semi-definite.
 
 Finally, $$I^{-1}(\mathbf p)=\mathbb E[-\mathbf H_p\ell_1(\mathbf p)]$$ **will not** coincide with the [expected](/2022/01/24/further-topics-on-RV.html#categorical) $$\Sigma_{\mathbf X}$$, because $$g(\hat{\mathbf p})=0$$ imposes that one entry of $$\hat{\mathbf p}$$ is a linear combination of others, which in turn means that $$I(\mathbf p)$$ is not invertible.
 
 $$I^{-1}(\mathbf p)=\left(\text{diag}^{-1}(\mathbf p)\right)^{-1}=\text{diag}(\mathbf p)\neq\begin{bmatrix}p_1(1-p_1)&&-p_1p_d\\&\ddots&\\-p_1p_d&&p_d(1-p_d)\end{bmatrix}=\Sigma_\mathbf X$$
-
-<!-- If we do not re-parametrize to dimension $$d-1$$, then Fisher information is over-parametrized. Note that $${\color{red}\mathbf e_d^T\text{diag}^{-1}(\mathbf p)\mathbf X=\frac{X_d}{p_d}}$$ and $${\color{blue}\mathbf e_d^T\text{diag}^{-1}(\mathbf p)\mathbf e_d^T=\frac1{p_d}}$$ are scalars.
-
-$$\begin{align}
-s(\boldsymbol{\theta})&=\begin{bmatrix}\frac{X_1}{p_1}-{\color{red}\frac{X_d}{p_d}}\\{\color{red}\vdots}\\\frac{X_{d-1}}{p_{d-1}}-{\color{red}\frac{X_d}{p_d}}\\\frac{X_d}{p_d}\end{bmatrix}=\begin{bmatrix}\frac{X_1}{p_1}\\\vdots\\\frac{X_{d-1}}{p_{d-1}}\\\frac{X_d}{p_d}\end{bmatrix}-{\color{red}\begin{bmatrix}\frac{X_d}{p_d}\\\vdots\\\frac{X_d}{p_d}\\0\end{bmatrix}}=\text{diag}^{-1}(\mathbf p)\mathbf X-{\color{red}\mathbf e_d^T\text{diag}^{-1}(\mathbf p)\mathbf X}(\mathbf 1_d-\mathbf e_d)\\
-I(\boldsymbol{\theta})&=\begin{bmatrix}\frac1{p_1}+{\color{blue}\frac1{p_d}}&{\color{blue}\dots}&&{\color{blue}\frac1{p_d}}\\{\color{blue}\vdots}&{\color{blue}\ddots}&&\\&&\frac1{p_{d-1}}+{\color{blue}\frac1{p_d}}&\\{\color{blue}\frac1{p_d}}&&&{\color{blue}\frac1{p_d}}\end{bmatrix}=\text{diag}^{-1}(\mathbf p)(\mathbf I_d-\mathbf e_d\mathbf e_d^T)+{\color{blue}\mathbf e_d^T\text{diag}^{-1}(\mathbf p)\mathbf e_d}\mathbf 1_d\mathbf 1_d^T
-\end{align}$$ -->
 
 ### Power inequalities
 

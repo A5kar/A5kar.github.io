@@ -1,15 +1,15 @@
 ---
 layout: post
-title: "Hypothesis testing"
+title: "Hypothesis Testing"
 ---
 
 $$\newcommand{\ind}{\perp\kern-5pt\perp}$$
 
-## Parameter hypothesis testing {#parameter_testing}
+## Parameter Hypothesis Testing {#parameter_testing}
 
 Having seen the main ideas behind [parameters estimation](/2022/04/26/methods-of-estimation.html#intro), it is time to test if evidence obtained from actual observations can match a given hypothesis. Common questions are---Is the unknown parameter $$\theta=\theta_0$$? Based on what criteria, can the hypothesis $$\theta=\theta_0$$ be rejected? What are the chances of false positives based on that criteria?
 
-To answer those questions, one can define an estimator (e.g. (G)MM, MLE or ME), determine the corresponding probability distribution, plug it into the framework of the [hypothesis testing](/2022/03/24/foundation-of-inference.html#testing), while setting the desired parameters such as the rejection region associated with the desired level $$\alpha$$.
+To answer those questions, one can define an estimator (e.g. (G)MM, MLE or ME), determine the corresponding probability distribution, plug it into the framework of the [Hypothesis Testing](/2022/03/24/foundation-of-inference.html#testing), while setting the desired parameters such as the rejection region associated with the desired level $$\alpha$$.
 
 In this segment, we will see non asymptotic and asymptotic tests. Where the former methods are applicable only when the underlying distribution is Normal, the latter either relies on the properties of CLT or explores the properties of an MLE.
 
@@ -17,7 +17,7 @@ In this segment, we will see non asymptotic and asymptotic tests. Where the form
 
 ### Relationship between sample mean and variance
 
-Distribution of $$\sum_{i=1}^k Z_i^2$$, where $$Z_i\overset{i.i.d.}{\sim}\mathcal N(0,1)$$, is defined as $$\chi^2$$ distribution with $$k$$ degrees of freedom and is indicated as $$\sum_{i=1}^k Z_i^2\sim\chi^2_k$$. If $$k=1$$, we have $$Z^2\sim\chi^2_1$$ and $$F_{Z^2}(t)=2\Phi(\sqrt t)-1$$, with the quantile of order $$1-\alpha$$ that can be computed from a quantile of a Normal distribution as $$q_\alpha(\chi_1^2)=q_{\frac1\alpha}(\mathcal N(0,1))$${% if jekyll.environment == "development" %} (see [Stats L14 Q7](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u04s04_hypotesting/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u04s04_hypotesting-tab7)){% endif %}.
+Distribution of $$\sum_{i=1}^k Z_i^2$$, where $$Z_i\overset{i.i.d.}{\sim}\mathcal N(0,1)$$, is defined as $$\chi^2$$ distribution with $$k$$ degrees of freedom and is indicated as $$\sum_{i=1}^k Z_i^2\sim\chi^2_k$$. If $$k=1$$, we have $$Z^2\sim\chi^2_1$$ and $$F_{Z^2}(t)=2\Phi(\sqrt t)-1$$, with the quantile of order $$1-\alpha$$ that can be computed from a quantile of a Normal distribution as $$q_\alpha(\chi_1^2)=q_{\frac\alpha2}^2(\mathcal N(0,1))$${% if jekyll.environment == "development" %} (see [Stats L14 Q7](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u04s04_hypotesting/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u04s04_hypotesting-tab7)){% endif %}.
 
 Any collection of $$X_i\overset{i.i.d.}{\sim}\mathcal N(\mu,\sigma^2)$$ can match $$\chi^2$$ distribution, if properly [standardized](/2022/01/13/continuous-random-variables.html#normal){% if jekyll.environment == "development" %} (see [Stats L13 Q7](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u04s03_hypotesting/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u04s03_hypotesting-tab7)){% endif %}. For this reason, $$\chi_n^2$$ is also referred to as a [pivotal quantity](https://en.wikipedia.org/wiki/Pivotal_quantity), because its distribution does not depend on unknown parameters.
 
@@ -56,7 +56,7 @@ $$T_n=\sqrt n\frac{\bar X_n-\mu^\star}{\sqrt{s_X^2}}=\sqrt{n-1}\frac{\bar X_n-\m
 
 Analogously to the [previous case](/2022/07/15/hypothesis-testing.html#two_proportions), a test of level $$\alpha$$ is $$\psi_\alpha=\mathbb 1(\lvert T_n\rvert\gt q_{\frac\alpha2})$$, with the only difference that $$q_{\frac\alpha2}$$ indicates here the $$1-\frac\alpha2$$ quantile of $$t$$ distribution with $$n-1$$ degrees of freedom.
 
-The $$t$$ test makes the strong assumption that the sample is Normally distributed. For this, [KL test](/2022/07/15/hypothesis-testing.html#kl) (or other normality tests) are performed first, to ensure that normality is not rejected.
+The $$t$$ test makes the strong assumption that the sample is Normally distributed, because in order to be distributed according to $$t_{n-1}$$, we need to have $$\bar X_n\ind\hat\sigma^2$$, which the [Cochran's](/2022/07/15/hypothesis-testing.html#cochran) theorem guarantees only if $$X_i\overset{i.i.d.}{\sim}\mathcal N(\mu,\sigma^2)$${% if jekyll.environment == "development" %} (see [Stats MT2 Q1](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@midterm2/block-v1:MITx+18.6501x+2T2021+type@vertical+block@midterm2-tab2)){% endif %}. For this, [KL test](/2022/07/15/hypothesis-testing.html#kl) (or other normality tests) are performed first, to ensure that normality is not rejected.
 
 ### Welch–Satterthwaite approximation {#ws}
 
@@ -95,9 +95,9 @@ $$d\approx\frac{\left(\frac{s_X^2}n+\frac{s_Y^2}m\right)^2}{\frac{s_X^4}{n^2(n-1
 
 Note that this makes relies on the fact that $$X_i$$ and $$Y_j$$ are drawn from Normal distributions. Therefore, Welch's $$t$$ cannot be universally applied.
 
-### Introduction to likelihood ratio test (LRT) {#lrt}
+## Introduction to likelihood ratio test (LRT) {#lrt}
 
-Before we move to the next segment, there is an additional framework used for parameter hypothesis testing that is based on the intuition that the likelihood $$\mathcal L_n(X_1,\dots,X_n,\theta)$$ is [maximum](/2022/04/26/methods-of-estimation.html#kl) for $$\theta=\theta^\star$$, or the true, unknown parameter. In this case we expect that $$T_n=\frac{\mathcal L_n(\theta)}{\mathcal L_n(\theta^\star)}\le1$$ for any other $$\theta\in\Theta$$.
+Before we move to the next segment, there is an additional framework used for parameter Hypothesis Testing that is based on the intuition that the likelihood $$\mathcal L_n(X_1,\dots,X_n,\theta)$$ is [maximum](/2022/04/26/methods-of-estimation.html#kl) for $$\theta=\theta^\star$$, or the true, unknown parameter. In this case we expect that $$T_n=\frac{\mathcal L_n(\theta)}{\mathcal L_n(\theta^\star)}\le1$$ for any other $$\theta\in\Theta$$.
 
 Put differently, one could test if under the null $$H_0:\theta=\theta_0$$, a test statistic $$T_n=\frac{\mathcal L_n(\hat{\Theta}_n)}{\mathcal L_n(\theta_0)}\gt c$$ in which case one could say that with probability of error $$\alpha$$ the sample has not been drawn from a distribution with parameter $$\theta_0$$. Hence the name of the LRT, which foresees the test of the form $$\mathbb 1(T_n\gt c_\alpha)$$,  where $$c_\alpha$$ is set in a way so that chances of false positive does not exceed level $$\alpha$${% if jekyll.environment == "development" %} (see [Stats L14 Q10](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u04s04_hypotesting/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u04s04_hypotesting-tab10)){% endif %}. If we deal with an asymptotically Normal MLE, and sufficiently large sample size, [Wilks' test](/2022/07/15/hypothesis-testing.html#wilks) may be more appropriate.
 
@@ -151,7 +151,7 @@ Considering that under certain technical conditions, the [MLE](/2022/04/26/metho
 
 $$T_n=nI(\hat\Theta_n)(\hat\Theta_n-\theta_0)^2\xrightarrow{(d)}nI(\theta)(\hat\Theta_n-\theta_0)^2=nI(\theta)(\hat\Theta_n-\theta)^2\xrightarrow{(d)}\chi_1^2$$
 
-Note that $$T_n$$ is a quadratic form of a random variable that otherwise is Normally distributed. Hence, $$T_n$$ is employed in **two-sided** tests and proper care is necessary in the selection of quantiles{% if jekyll.environment == "development" %} (see [Stats HW7 Q4](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@hw7_u4hyptest/block-v1:MITx+18.6501x+2T2021+type@vertical+block@hw7_u4hyptest-tab4)){% endif %}. Apart from this, note that the above test may use $$I(\theta_0)$$ instead of $$I(\hat\Theta_n)$$. In principle, both methods are valid and $$I(\hat\Theta_n)$$ should be preferred if no additional information is provided{% if jekyll.environment == "development" %} (see [Stats L14 Q9](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u04s04_hypotesting/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u04s04_hypotesting-tab9)){% endif %}, although [simulation studies](/2022/07/15/hypothesis-testing.html#sstudies) can provide a better insight on the more appropriate test to consider.
+Note that $$T_n$$ is a quadratic form of a random variable that otherwise is Normally distributed. Hence, $$T_n$$ is employed in **two-sided** tests and proper care is necessary in the selection of quantiles{% if jekyll.environment == "development" %} (see [Stats HW7 Q4](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@hw7_u4hyptest/block-v1:MITx+18.6501x+2T2021+type@vertical+block@hw7_u4hyptest-tab4)){% endif %}. Apart from this, note that the above test may use $$I(\theta_0)$$ instead of $$I(\hat\Theta_n)$${% if jekyll.environment == "development" %} (see [Stats MT2 Q4](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@midterm2/block-v1:MITx+18.6501x+2T2021+type@vertical+block@midterm2-tab6)){% endif %}. In principle, either can be used, although $$I(\hat\Theta_n)$$ may be preferred when available or if no additional information is provided{% if jekyll.environment == "development" %} (see [Stats L14 Q9](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u04s04_hypotesting/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u04s04_hypotesting-tab9)){% endif %}. When in doubt, [simulation studies](/2022/07/15/hypothesis-testing.html#sstudies) can provide a better insight on the more appropriate test to consider.
 
 If $$\boldsymbol{\theta}\in\mathbb R^d$$ is multivariate, our test statistic will take the following form{% if jekyll.environment == "development" %} (see [Stats L14 Q6](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u04s04_hypotesting/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u04s04_hypotesting-tab6)){% endif %}.
 
@@ -203,7 +203,7 @@ Finally, since unconstrained MLE is the maximizer of the likelihood in a *larger
 
 ## Goodness of fit test {#gof}
 
-So far, we saw the [parameters estimation](/2022/04/26/methods-of-estimation.html#intro) and [parameter hypothesis testing](/2022/07/15/hypothesis-testing.html#parameter_testing), and in both cases we could develop methods based on the assumption that the underlying probability law is known and is fixed. However, there is a family of methods that aim at solving a more general problem, where they test if the probability law governing our observations is an exact candidate distribution. Indeed, the parameter hypothesis testing is a special case of **goodness of fit** testing, which is also a topic in non parametric statistics.
+So far, we saw the [parameters estimation](/2022/04/26/methods-of-estimation.html#intro) and [parameter Hypothesis Testing](/2022/07/15/hypothesis-testing.html#parameter_testing), and in both cases we could develop methods based on the assumption that the underlying probability law is known and is fixed. However, there is a family of methods that aim at solving a more general problem, where they test if the probability law governing our observations is an exact candidate distribution. Indeed, the parameter Hypothesis Testing is a special case of **goodness of fit** testing, which is also a topic in non parametric statistics.
 
 As a practical example, assume that a random sequence $$X_1,\dots,X_n\sim\mathcal P$$ is observed. Probability law $$\mathcal P$$ is unknown, but we can test if $$\text{Cat}(\mathbf p_0)$$ could have generated $$X_1,\dots,X_n$$, with certain probability or, alternatively, with some statistical evidence{% if jekyll.environment == "development" %} (see [Stats L15 Q4](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u04s05_hypotesting/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u04s05_hypotesting-tab4)){% endif %}. In other words, we test a null hypothesis of the form $$H_0:\mathbf p=\mathbf p_0$$. Note that $$\mathbf p_0$$ can in turn be a function of a smaller set of parameters $$\boldsymbol\theta$$, that is $$\mathbf p_0=\mathbf p_0(\boldsymbol\theta)$$, where the unknown $$\boldsymbol{\theta}$$ can be estimated as $$\boldsymbol\theta=\hat{\boldsymbol{\Theta}}_n$$.
 
@@ -272,7 +272,7 @@ As for the computational complexity, this method requires generating $$n$$ Unifo
 
 ### Kolmogorov-Lilliefors (normality) test {#kl}
 
-KS test is appropriate when all parameters of the reference distribution $$F_X(x)$$ are known, which is more [parameters hypothesis testing](/2022/07/15/hypothesis-testing.html#parameter_testing) than [goodness of fit](/2022/07/15/hypothesis-testing.html#gof) test. What happens in practice is that we assume a family of probability laws and estimate associated parameters, eventually usng the most suitable [MLE](/2022/04/26/methods-of-estimation.html#mle).
+KS test is appropriate when all parameters of the reference distribution $$F_X(x)$$ are known, which is more [parameters Hypothesis Testing](/2022/07/15/hypothesis-testing.html#parameter_testing) than [goodness of fit](/2022/07/15/hypothesis-testing.html#gof) test. What happens in practice is that we assume a family of probability laws and estimate associated parameters, eventually usng the most suitable [MLE](/2022/04/26/methods-of-estimation.html#mle).
 
 Assume we observe a sample $$X_i\overset{i.i.d.}{\sim}\mathcal P$$. We have no idea what $$\mathcal P$$ might be, and we assume it could follow a Normal distribution. However, as we are not aware of its parameters we decide to estimate them using an MLE of the form $$\begin{bmatrix}\hat\mu&\hat{\sigma}^2\end{bmatrix}^T$$. For this reason, our null becomes $$H_0:\mathcal P=\mathcal N(\hat\mu,\hat\sigma^2)$$.
 
@@ -290,7 +290,7 @@ Another (less formal) goodness of fit test is given by quantile-quantile (QQ) pl
 
 QQ plot is particularly handy to test the normality of a distribution, which is the default method in many software applications. In essence, if QQ points are distributed along the $$y=x$$ line, then the sample is likely drawn from a Normal distribution{% if jekyll.environment == "development" %} (see [Stats L16 Q15](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u04s06_hypotesting/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u04s06_hypotesting-tab15)){% endif %}. To achieve this, some software packages normalize the sample by taking $$X_i'=\frac{X_i-\bar X_n}s$$ and then compare it with quantiles from $$\mathcal N(0,1)$$, by drawing a scatter plot with points $$\left(\Phi^{-1}(\frac in),X_{(i)}'\right)$${% if jekyll.environment == "development" %} (see [Stats HW8 Q3](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@hw8_u4hyptest/block-v1:MITx+18.6501x+2T2021+type@vertical+block@hw8_u4hyptest-tab3)){% endif %}.
 
-To get the idea, consider the following cases in which the sample is drawn from $$\mathcal N(0,1)$$ (Normal distribution), $$t_5$$ (distribution with tails heavier than Normal), $$\text{Unif}(0,1)$$ (distribution with tails thinner than Normal), $$\text{Exp}(1)$$ (right skewed distribution), and $$\chi_1^2$$ (left skewed distribution). Uncomment the appropriate assignment to `X` variable and try the various cases{% if jekyll.environment == "development" %} (see [Stats L16 Q16](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u04s06_hypotesting/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u04s06_hypotesting-tab16) and [Stats L16 Q17](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u04s06_hypotesting/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u04s06_hypotesting-tab17)){% endif %}.
+To get the idea, consider the following cases in which the sample is drawn from $$\mathcal N(0,1)$$ (Normal distribution), $$t_5$$ (distribution with tails heavier than Normal), $$\text{Unif}(0,1)$$ (distribution with tails thinner than Normal), $$\text{Exp}(1)$$ (right skewed distribution), and $$\chi_1^2$$ (left skewed distribution). Uncomment the appropriate assignment to `X` variable and try the various cases{% if jekyll.environment == "development" %} (see [Stats L16 Q16](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u04s06_hypotesting/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u04s06_hypotesting-tab16), [Stats L16 Q17](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u04s06_hypotesting/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u04s06_hypotesting-tab17) and [Stats MT2 Q2](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@midterm2/block-v1:MITx+18.6501x+2T2021+type@vertical+block@midterm2-tab4)){% endif %}.
 
 <iframe width='100%' height='950' src='https://rdrr.io/snippets/embed/?code=zs%3C-seq(-3%2C3%2C.01)%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%23%20points%20for%20N(0%2C1)%0Az%3C-dnorm(zs)%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%23%20PDF%20of%20N(0%2C1)%0An%3C-1e4%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%23%20sample%20size%0A%0AX%3C-rnorm(n%2Cmean%3D0%2Csd%3Dsqrt(1))%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%23%20X~N(0%2C1)%0A%23%20X%3C-rt(n%2Cdf%3D5)%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%23%20X~t_5%0A%23%20X%3C-runif(n)%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%23%20X~U(0%2C1)%0A%23%20X%3C-rexp(n)%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%23%20X~Exp(1)%0A%23%20X%3C--rchisq(n%2Cdf%3D1)%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%23%20X~-ChiSq(1)%0A%0Apar(pty%3D%22s%22%2Cmfrow%3Dc(1%2C2))%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%23%20side-by-side%20graphs%0Ahist(X%2Cfreq%3DFALSE%2Cxlim%3Dc(-4%2C4)%2Cylim%3Dc(0%2C1.2))%20%23%20hist%20of%20X%0Alines(zs%2Cz%2Ccol%3D%22red%22)%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%23%20N(0%2C1)%20line%0Aqqnorm(X)%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%23%20QQ%20plot%20of%20X%0Aqqline(X%2Ccol%3D%22red%22)%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%23%20reference%20line' frameborder='0'></iframe>
 
@@ -300,7 +300,7 @@ Go back to the [syllabi breakdown](/2022/01/02/prob-and-stats-syllabi.html).
 
 ## Back-up
 
-### Derivation of $$\chi^2$$ distribution {#chisq}
+### $$\chi^2$$ distribution {#chisq}
 
 Consider the case when $$\sum_{i=1}^k Z_i^2\sim\chi_k^2$$ with $$k=1$$, that is $$Z^2\sim\chi_1^2$$. To compute $$F_{Z^2}(t)$$, where $$t\ge0$$, observe as follows.
 
@@ -408,9 +408,7 @@ f_{T_d}(t)
 &=\frac 1{\sqrt d}\frac{\Gamma\left(\frac{d+1}2\right)}{\Gamma\left(\frac 1 2\right)\Gamma\left(\frac d 2\right)}\left(1+\frac{t^2}d\right)^{-\frac{d+1}2}=\frac 1{\sqrt d}\frac 1{B\left(\frac d 2,\frac 1 2\right)}\left(1+\frac{t^2}d\right)^{-\frac{d+1}2}
 \end{align}$$
 
-The two last equations are equivalent and give evidence that $$t_d$$ distribution can be expressed using either gamma function $$\Gamma(\alpha)$$ or beta function $$\text{B}(\alpha,\beta)=\frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha+\beta)}$$.
-
-If $$d=1$$ we have a special case when $$f_{T_n}(t)$$ becomes $$\frac 1\pi\frac{1}{1+t^2}$$ that is essentially the PDF of a [Cauchy distribution](/2022/04/26/methods-of-estimation.html#m-estimation), with location $$\mu=0$$ and scale $$\gamma=1$$.
+The last equality exploits the definition of the [Beta](/2023/03/13/bayesian-statistics.html#beta) function, $$\text{B}(\alpha,\beta)=\frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha+\beta)}$$. Finally, if $$d=1$$, then the PDF becomes $$\frac 1\pi\frac{1}{1+t^2}$$, which is a [Cauchy distribution](/2022/04/26/methods-of-estimation.html#me), with location $$\mu=0$$ and scale $$\gamma=1$$.
 
 ### Simulation studies {#sstudies}
 
@@ -426,7 +424,7 @@ $$f_X(x)=\begin{cases}
 \theta^2&x=1
 \end{cases}$$
 
-The associated likelihood is $$L_1(X,\theta)=(1-\theta)^{2\mathbb 1(x=-1)}(2\theta(1-\theta))^{\mathbb 1(x=0)}\theta^{2\mathbb 1(x=1)}$$, based on which we can derive MLE $$\hat\Theta_n=\frac{\bar X_n+1}2$$, and the corresponding Fisher information $$I(\theta)=\frac2{\theta(1-\theta)}$$. Under the null, $$nI(\hat\Theta_n)(\hat\Theta_n-\theta_0)^2\xrightarrow{(d)}nI(\theta_0)(\hat\Theta_n-\theta_0)^2\xrightarrow{(d)}\chi_1^2$$. Assuming $$q_\alpha$$ is the $$1-\alpha$$ quantile of a $$\chi_1^2$$ distribution, follow the two possible tests to assess whether $$H_0:\theta=\theta_0$$ can be rejected or not.
+The associated likelihood is $$\mathcal L_1(X,\theta)=(1-\theta)^{2\mathbb 1(x=-1)}(2\theta(1-\theta))^{\mathbb 1(x=0)}\theta^{2\mathbb 1(x=1)}$$, based on which we can derive MLE $$\hat\Theta_n=\frac{\bar X_n+1}2$$, and the corresponding Fisher information $$I(\theta)=\frac2{\theta(1-\theta)}$$. Under the null, $$nI(\hat\Theta_n)(\hat\Theta_n-\theta_0)^2\xrightarrow{(d)}nI(\theta_0)(\hat\Theta_n-\theta_0)^2\xrightarrow{(d)}\chi_1^2$$. Assuming $$q_\alpha$$ is the $$1-\alpha$$ quantile of a $$\chi_1^2$$ distribution, follow the two possible tests to assess whether $$H_0:\theta=\theta_0$$ can be rejected or not.
 
 $$\begin{align}
 \psi_\alpha^1=\left(T_n^1\gt q_\alpha\right)&&\psi_\alpha^2=\left(T_n^2\gt q_\alpha\right)
@@ -458,13 +456,13 @@ $$\sum_{j=1}^d n\frac{(\hat p_j-p_j)^2}{p_j}=n(\hat{\mathbf p}-\mathbf p)^TI(\ma
 
 ### Pearson's theorem vs Wald test {#pearson_wald}
 
-[Pearson's theorem](2022-07-15-hypothesis-testing.markdown#pearson) result can be achieved by attempting Wald's test. Since $$\Sigma_\mathbf X$$ is not invertible, we re-parametrize the problem by setting $$\mathbf b=\begin{bmatrix}p_1&\dots&p_{d-1}\end{bmatrix}^T$$ $$p_d=1-\sum_{j=1}^{d-1}p_j$$ and develop $$s(\mathbf b)$$ and $$I(\mathbf b)$$ from $$\ell_1(\mathbf b)=\sum_{j=1}^{d-1}X_j\ln(p_j)+(1-\sum_{j=1}^{d-1}X_j)\ln(1-\sum_{j=1}^{d-1}p_j)$$.
+[Pearson's theorem](2022-07-15-hypothesis-testing.markdown#pearson) result can be achieved by attempting Wald's test. Since $$\Sigma_\mathbf X$$ is not invertible, we re-parametrize the problem by setting $$\mathbf b=\begin{bmatrix}p_1&\dots&p_{d-1}\end{bmatrix}^T$$ and $$p_d=1-\mathbf 1_{d-1}^T\mathbf b$$ and develop $$s(\mathbf b)$$ and $$I(\mathbf b)$$ from $$\ell_1(\mathbf b)=\sum_{j=1}^d X_j\ln(p_j)=\sum_{j=1}^{d-1}X_j\ln(p_j)+X_d\ln(1-\sum_{j=1}^{d-1}p_j)$$.
 
 |Distribution and unknown parameter|$$s(\mathbf b)=\nabla_b\ell(\mathbf X,\mathbf b)$$|$$I(\mathbf b)=\mathbb E[-\mathbf H_b\ell(\mathbf b)]$$|
 |-|:-:|:-:|
 |Categorical with parameter $$\mathbf b$$|$$\begin{bmatrix}\frac{X_1}{p_1}\\\vdots\\\frac{X_{d-1}}{p_{d-1}}\end{bmatrix}-\frac{X_d}{p_d}\mathbf 1_{d-1}$$|$$\text{diag}^{-1}(\mathbf b)+\frac1{p_d}\mathbf 1_d\mathbf 1_d^T$$|
 
-For example, if $$d=3$$, using the above approach we obtain that $$I^{-1}(\mathbf b)=\Sigma(\mathbf b)$$, where $$\mathbf b=(p_1,p_2)$$.
+If $$d=3$$, using the above approach we obtain that $$I^{-1}(\mathbf b)=\Sigma(\mathbf b)$$, where $$\mathbf b=(p_1,p_2)$$.
 
 $$I^{-1}(\mathbf b)=\left(\frac 1 {1-p_1-p_2}\begin{bmatrix}\frac{1-p_2}{p_1}&1\\1&\frac{1-p_1}{p_2}\end{bmatrix}\right)^{-1}=\begin{bmatrix}p_1(1-p_1)&-p_1p_2\\-p_1p_2&p_2(1-p_2)\end{bmatrix}=\Sigma(\mathbf b)$$
 
