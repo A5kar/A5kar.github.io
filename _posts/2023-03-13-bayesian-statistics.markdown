@@ -258,8 +258,8 @@ As [Beta](/2023/03/13/bayesian-statistics.html#beta) is conjugate to the Binomia
 
 |Parameter dimensions|single copy|$$k$$ i.i.d. copies|conjugate|
 |:-:|:-:|:-:|:-:|
-|$$p\in[0,1]\subset\mathbb R$$|$$X\lvert P\sim\text{Ber}(P)$$|$$\displaystyle\sum_{i=1}^k X_i\lvert P\overset{i.i.d.}{\sim}\text{Bin}(k,P)$$|$$P\sim\text{Beta}(\alpha,\beta)$$|
-|$$\mathbf p\in\Delta_p\subset\mathbb R^d$$|$$\mathbf X\lvert\mathbf P\sim\text{Cat}(\mathbf P)$$|$$\displaystyle\sum_{i=1}^k\mathbf X_i\lvert\mathbf P\overset{i.i.d.}{\sim}\text{Mult}(k,\mathbf P)$$|$$\mathbf P\sim\text{Dir}(\boldsymbol{\alpha})$$|
+|$$p\in[0,1]\subset\mathbb R$$|$$X\lvert P\sim\text{Ber}(P)$$|$$\displaystyle\sum_{i=1}^k X_i\lvert P\sim\text{Bin}(k,P)$$|$$P\sim\text{Beta}(\alpha,\beta)$$|
+|$$\mathbf p\in\Delta_p\subset\mathbb R^d$$|$$\mathbf X\lvert\mathbf P\sim\text{Cat}(\mathbf P)$$|$$\displaystyle\sum_{i=1}^k\mathbf X_i\lvert\mathbf P\sim\text{Mult}(k,\mathbf P)$$|$$\mathbf P\sim\text{Dir}(\boldsymbol{\alpha})$$|
 
 Bearing in mind the following forms of [Binomial PMF](/2022/01/08/discrete-random-variables.html#basic) and [Beta PDF](/2022/01/13/continuous-random-variables.html#basic):
 
@@ -337,7 +337,7 @@ $$\begin{align}
 &=-\frac{\alpha_i\alpha_j}{\alpha_0^2(\alpha_0+1)}=-\frac{\tilde\alpha_i\tilde\alpha_j}{\alpha_0+1}
 \end{align}$$
 
-To find the mode of the Dirichlet distribution, we exploit the [Lagrange multiplier](/2022/04/26/methods-of-estimation.html#lagrange_multiplier), analogously to what we with the [MLE for the Categorical r.v.](/2022/04/26/methods-of-estimation.html#mle_categorical). Considering that $$\arg\max_{\mathbf p}\pi(\mathbf p)=\arg\max_{\mathbf p}\ln\pi(\mathbf p)$$ is subject to the constraint $$g(\mathbf p)=\mathbf 1_d^T\mathbf p-1=0$$, vector $$\mathbf p$$ that maximizes the PDF is the solution of the following equation.
+To find the mode, analogously to what we did forthe [MLE](/2022/04/26/methods-of-estimation.html#mle_categorical) we can exploit the [Lagrange multiplier](/2022/04/26/methods-of-estimation.html#lagrange_multiplier). Considering that $$\arg\max_{\mathbf p}\pi(\mathbf p)=\arg\max_{\mathbf p}\ln\pi(\mathbf p)$$ is subject to $$g(\mathbf p)=\mathbf 1_d^T\mathbf p-1=0$$, vector $$\mathbf p$$ that maximizes the PDF is the solution of the following equation.
 
 $$\begin{align}
 \nabla_p\ln\pi(\hat{\mathbf p})&=\nabla_p\lambda g(\hat{\mathbf p})\\
