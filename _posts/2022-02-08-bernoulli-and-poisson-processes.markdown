@@ -9,7 +9,7 @@ $$\newcommand{\ind}{\perp\kern-5pt\perp}$$
 
 Occasionally referred as a **random process**, stochastic process is a collection of r.v. indexed by some set, usually a subset of a real line. In particular, the process is called either *discrete* or *continuous* if the index set is either integer or continuous.
 
-Discrete processes are easier to study, and their simplest form is a **Bernoulli process**, denoted as $$\{X_i:i=1,\dots,n\}$$, where $$X_i\overset{i.i.d.}{\sim}\text{Ber}(p)$$. To picture the process, imagine a sequence of $$i$$ steps, where at each step we collect an observation from $$\text{Ber}(p)$$. It turns out that the number of stepts to observe the first success is [Geometrically distributed](/2022/02/08/bernoulli-and-poisson-processes.html#arrivals), and that the total occurrence of successes in $$n$$ steps follows a [Binomial distribution](/2022/02/08/bernoulli-and-poisson-processes.html#kth_arrival).
+Discrete processes are easier to study, and their simplest form is a **Bernoulli process**, denoted as $$\{X_i:i=1,\dots,n\}$$, where $$X_i\overset{\text{i.i.d.}}{\sim}\text{Ber}(p)$$. To picture the process, imagine a sequence of $$i$$ steps, where at each step we collect an observation from $$\text{Ber}(p)$$. It turns out that the number of stepts to observe the first success is [Geometrically distributed](/2022/02/08/bernoulli-and-poisson-processes.html#arrivals), and that the total occurrence of successes in $$n$$ steps follows a [Binomial distribution](/2022/02/08/bernoulli-and-poisson-processes.html#kth_arrival).
 
 **Poisson process** as an example of continuous process. Note that $$\text{Pois}(\lambda\tau)$$ is a *discrete* r.v. and it describes the distribution of the number of successes within a *continuous* interval $$\tau$$, in the same way as $$\text{Bin}(n,p)$$ describes the number of successes within $$n$$ discrete steps. It turns out that Poisson r.v. is equivalent to a Binomial r.v., if we split a single step into $$n\rightarrow\infty$$ intervals, and provided that the *rate* of success $$\lambda=np$$ remains constant. This means that within every *infinitesimal* interval $$\delta=\frac1n$$ the probability of success is $$p=\frac\lambda n=\lambda\delta$$. Starting from $$X\sim\text{Bin}(n,p)$$, PMF of $$X\sim\text{Pois}(\lambda)$$ can be therefore derived by replacing $$p=\frac\lambda n$$ and observing the limit of $$p_X(k)$$ as $$n\rightarrow\infty$$:
 
@@ -32,7 +32,7 @@ Considering the many analogies between Bernoulli and Poisson processes, the two 
 
 ||Bernoulli|Poisson|
 |-|:-:|:-:|
-|**Definition**|Sequence of $$X_i\overset{i.i.d.}{\sim}\text{Ber}(p)$${% if jekyll.environment == "development" %}<br>(see [Prob L21 Q3](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__21_The_Bernoulli_process/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch13-s2-tab3)){% endif %}|Series of discrete events during a continuous interval|
+|**Definition**|Sequence of $$X_i\overset{\text{i.i.d.}}{\sim}\text{Ber}(p)$${% if jekyll.environment == "development" %}<br>(see [Prob L21 Q3](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__21_The_Bernoulli_process/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch13-s2-tab3)){% endif %}|Series of discrete events during a continuous interval|
 |**Unit time**|slot $$i$$|infinitesimal interval $$\delta$$|
 |**Arrival during unit time**|$$p_X(x_i)=\begin{cases}1-p&\text{$x_i=0$}\\p,&\text{$x_i=1$}\end{cases}$$|$$p_X(x,\delta)=\begin{cases}1-\lambda\delta+O(\delta^2)&\text{$x=0$}\\\lambda\delta+O(\delta^2)&\text{$x=1$}\\O(\delta^2)&\text{$x\gt1$}\end{cases}$$|
 |**Independence**|$$X_j\ind X_i$$, $$\forall i<j$$|Arrivals occurred in disjoint intervals are independent{% if jekyll.environment == "development" %}<br>(see [Prob L23 Q10](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__23_More_on_the_Poisson_process/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch13-s4-tab10), [Prob PS9 Q5](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_9/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch13-s7-tab5) and [Prob F Q6](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@sequential_Final_Exam/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch16-s1-tab7)){% endif %}|
@@ -42,7 +42,7 @@ Considering the many analogies between Bernoulli and Poisson processes, the two 
 
 |# of arrivals|Bernoulli|Poisson|
 |-|:-:|:-:|
-|**Definition**|$$\displaystyle X=\sum_{i=1}^n X_i$$, $$X_i\overset{i.i.d.}{\sim}\text{Ber}(p)$$|$$\displaystyle X=\lim_{n\rightarrow\infty}\sum_{i=1}^{\tau/\delta} X_i$$, $$X_i\overset{i.i.d.}{\sim}\text{Ber}(\lambda\delta)$$|
+|**Definition**|$$\displaystyle X=\sum_{i=1}^n X_i$$, $$X_i\overset{\text{i.i.d.}}{\sim}\text{Ber}(p)$$|$$\displaystyle X=\lim_{n\rightarrow\infty}\sum_{i=1}^{\tau/\delta} X_i$$, $$X_i\overset{\text{i.i.d.}}{\sim}\text{Ber}(\lambda\delta)$$|
 |**Probability law**|$$k$$ arrivals in $$n$$ slots $$\sim\text{Bin}(n,p)$$|$$k$$ arrivals during interval $$\tau$$ $$\sim\text{Pois}(\lambda\tau)$$|
 
 For expectation and variance of the above, refer to the [summary](/2022/01/08/discrete-random-variables.html#basic) of basic discrete r.v., bearing in mind that Poisson PMF can be derived assuming $$np\simeq\lambda\tau$$, obtained from $$p=\lambda\delta+O(\delta^2)$$ and $$n=\frac \tau \delta$$.
@@ -62,7 +62,7 @@ Earlier summary tables provide for expectations and variances of [Geometric](/20
 
 |$$k$$-th arrival|Bernoulli|Poisson|
 |-|:-:|:-:|
-|**Definition**|$$\displaystyle Y_k=\sum_{i=1}^k T_i$$, $$T_i\overset{i.i.d.}{\sim}\text{Geom}(p)$$|$$\displaystyle Y_k=\sum_{i=1}^k T_i$$, $$T_i\overset{i.i.d.}{\sim}\text{Exp}(\lambda)$${% if jekyll.environment == "development" %}<br>(see [Prob L23 Q11](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__23_More_on_the_Poisson_process/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch13-s4-tab11)){% endif %}|
+|**Definition**|$$\displaystyle Y_k=\sum_{i=1}^k T_i$$, $$T_i\overset{\text{i.i.d.}}{\sim}\text{Geom}(p)$$|$$\displaystyle Y_k=\sum_{i=1}^k T_i$$, $$T_i\overset{\text{i.i.d.}}{\sim}\text{Exp}(\lambda)$${% if jekyll.environment == "development" %}<br>(see [Prob L23 Q11](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__23_More_on_the_Poisson_process/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch13-s4-tab11)){% endif %}|
 |**Probability law**|$$Y_k\sim\text{NBin}(k,p)$${% if jekyll.environment == "development" %}<br>(see [Prob PS9 Q1](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_9/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch13-s7-tab1) and [Prob PS9 Q4](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_9/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch13-s7-tab4)){% endif %}|$$Y_k\sim\text{Erlang}(k,\lambda)$$|
 
 Refer to the summary tables for basic [discrete](/2022/01/08/discrete-random-variables.html#basic) and [continuous](/2022/01/13/continuous-random-variables.html#basic) r.v. for further detail. Note that Pascal distribution (referred above as $$\text{NBin}(k,p)$$ or Negative Binomial) is ready for use to describe the PMF of failures before $$k$$-th arrival. Think of the $$n$$-th slot when $$k$$-th arrival occurs. Considering that out of those $$n$$ slots, $$k$$ slots are arrivals, it follows that total failures occurred meantime are $$n-k$${% if jekyll.environment == "development" %} (see [Prob PS9 Q3](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_9/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch13-s7-tab3)){% endif %}.
@@ -124,7 +124,7 @@ Go back to the [syllabi breakdown](/2022/01/02/prob-and-stats-syllabi.html).
 
 An important form of [stochastic processes](/2022/02/08/bernoulli-and-poisson-processes.html#stochastic_processes) is a **random walk**, which is usually defined as a path consisting of a succession of i.i.d. random steps.
 
-An elementary form of random walk is a sequence of $$\{X_i\}$$, with $$X_i=2Y_i-1$$ and $$Y_i\overset{i.i.d.}{\sim}\text{Ber}(p)$$. This means that starting from a position $$0$$, at each step we would move $$+1$$ or $$-1$$, with probabilities $$p$$ and $$1-p$$, respectively.
+An elementary form of random walk is a sequence of $$\{X_i\}$$, with $$X_i=2Y_i-1$$ and $$Y_i\overset{\text{i.i.d.}}{\sim}\text{Ber}(p)$$. This means that starting from a position $$0$$, at each step we would move $$+1$$ or $$-1$$, with probabilities $$p$$ and $$1-p$$, respectively.
 
 If $$\{X_i\}$$ is a sequence of [Rademacher r.v.](/2022/01/08/discrete-random-variables.html#basic), then the associated process is a form of *symmetric* or *standard* random walk (SRW). After $$n$$ steps, SRW will stop at $$S_n=\sum_{i=1}^n X_i$$, which will have the same distribution as $$2\sum_{i=1}^nY_i-n$$ with $$\sum_{i=1}^nY_i\sim\text{Bin}\left(n,\frac12\right)$$. Therefore, that $$\mathbb E[S_n]=0$$ and $$\text{var}(S_n)=n$$. [CLT](/2022/02/21/introduction-to-statistics.html#clt) tells us that $$\text{Bin}\left(n,\frac12\right)\xrightarrow{(d)}\mathcal N\left(\frac n2,\frac n4\right)$$, hence it follows that $$S_n\xrightarrow{(d)}\mathcal N(0,n)$$. In particular, with proper scaling we obtain $$\frac{S_n}{\sqrt{n}}\xrightarrow{(d)}\mathcal N(0,1)$$.
 
@@ -157,7 +157,7 @@ W_n(t+u)-W_n(t)
 &\xrightarrow{(d)}\sqrt u\mathcal N(0,1)=\mathcal N(0,u)
 \end{align}$$
 
-- $$W_n(t+u)-W_n(t)\ind W_n(s),\forall s\lt t$$ because $$X_i\overset{i.i.d.}\sim\text{Rad}$$. In particular, $$X_i\ind X_j$$ for any $$1\le i\le\lfloor nt\rfloor$$ and $$\lfloor nt\rfloor +1\le j\le\lfloor nt+nu\rfloor$$.
+- $$W_n(t+u)-W_n(t)\ind W_n(s),\forall s\lt t$$ because $$X_i\overset{\text{i.i.d.}}\sim\text{Rad}$$. In particular, $$X_i\ind X_j$$ for any $$1\le i\le\lfloor nt\rfloor$$ and $$\lfloor nt\rfloor +1\le j\le\lfloor nt+nu\rfloor$$.
 
 Now, consider a vector of $$k$$ increments $$\{W_n(t_k)-W_n(t_{k-1})\}_{j=1}^{m}$$ and a linear mapping as follows.
 
@@ -185,7 +185,7 @@ $$\begin{align}
 &=\mathbb P\left(\frac1n\sum_{i=1}^m(nt_i-\lfloor nt_i\rfloor)^2X_{\lfloor nt_i\rfloor+1}^2\ge\varepsilon^2\right)&\href{/2022/01/05/conditioning-and-independence.html#sum}{\text{(probability of a sum)}}\\
 &\le\sum_{i=1}^m\mathbb P\left((nt_i-\lfloor nt_i\rfloor)^2X_{\lfloor nt_i\rfloor+1}^2\ge n\varepsilon^2\right)\\
 &=m\max_{i=1,\dots,m}\mathbb P\left(X_{\lfloor nt_i\rfloor+1}^2\ge\frac{n\varepsilon^2}{(nt_i-\lfloor nt_i\rfloor)^2}\right)&\href{/2022/02/21/introduction-to-statistics.html#basic}{\text{(Markov's inequality)}}\\
-&\le m\frac{(nt_i-\lfloor nt_i\rfloor)^2}{n\varepsilon^2}{\mathbb E[X_{\lfloor nt_i\rfloor+1}^2]}\le\frac m{n\varepsilon^2}\rightarrow0&\text{($X_i\overset{i.i.d.}{\sim}\text{Rad}$)}
+&\le m\frac{(nt_i-\lfloor nt_i\rfloor)^2}{n\varepsilon^2}{\mathbb E[X_{\lfloor nt_i\rfloor+1}^2]}\le\frac m{n\varepsilon^2}\rightarrow0&\text{($X_i\overset{\text{i.i.d.}}{\sim}\text{Rad}$)}
 \end{align}$$
 
 Accordingly, $$\mathbf B_n(t)=\mathbf W_n(t)+\boldsymbol{\Delta}_n(t)\xrightarrow{(d)}\mathbf B(t)+\mathbf 0$$. Put differently, this means that $$B_n(t)$$ converges in finite-dimension distributions to $$B(t)$$, which brings us to the main claim of the Donsker's thorem, according to which $$B_n(t)\xrightarrow{(d)}B(t)$$, which proof is omitted.

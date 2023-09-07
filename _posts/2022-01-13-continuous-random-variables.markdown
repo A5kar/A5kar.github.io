@@ -35,7 +35,7 @@ Exactly same definitions and properties of a [discrete r.v.](/2022/01/08/discret
 |Uniform<br>$$\text{Unif}(a,b)$$|$$\displaystyle\frac{1}{b-a}$$<br>where $$a\le x\le b$$|$$\displaystyle\frac{b+a}{2}$$|$$\displaystyle\frac{1}{12}(b-a)^2$$|
 |Triangular<br>$$\text{Tri}(a,b,c)$$|$$\begin{cases}\frac{2}{(c-a)}\frac{(x-a)}{(b-a)}&a\le x\le b\\\frac{2}{(c-a)}\frac{(c-x)}{(c-b)}&b\lt x\le c\\0&\text{otherwise}\end{cases}$$|$$\displaystyle\frac{a+b+c}{3}$${% if jekyll.environment == "development" %}<br>(see [Prob PS5 Q4](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Problem_Set_5/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch8-s7-tab4)){% endif %}|$$\displaystyle\frac{\begin{align}a^2+b^2+c^2\\-ab-ac-bc\end{align}}{18}$$|
 |Exponential<br>$$\text{Exp}(\lambda)$${% if jekyll.environment == "development" %}<br>(see [Prob F Q1](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@sequential_Final_Exam/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch16-s1-tab2)){% endif %}|$$\lambda e^{-\lambda x}$$<br>where $$x\ge0$$|$$\displaystyle\frac{1}{\lambda}$$|$$\displaystyle\frac{1}{\lambda^2}$$|
-|[Normal](/2022/01/13/continuous-random-variables.html#normal)<br>$$\mathcal N(\mu,\sigma^2)$$|$$\displaystyle\frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{1}{2\sigma^2}(x-\mu)^2}$$|$$\mu$$|$$\sigma^2$$|
+|[Normal](/2022/01/13/continuous-random-variables.html#normal)<br>$$\mathcal N(\mu,\sigma^2)$$|$$\displaystyle\frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac12\left(\frac{x-\mu}{\sigma}\right)^2}$$|$$\mu$$|$$\sigma^2$$|
 |Erlang order $$k$$<br>$$\text{Erlang}(k,\lambda)$$|$$\displaystyle\frac{\lambda^k}{(k-1)!}x^{k-1}e^{-\lambda x}$$<br>where $$x\ge0$$|$$\displaystyle\frac k{\lambda}$$|$$\displaystyle\frac k{\lambda^2}$$|
 |[Gamma](/2022/01/13/continuous-random-variables.html#gamma)<br>$$\text{Gamma}(\alpha,\beta)$$|$$\displaystyle\frac{\beta^\alpha}{\Gamma(\alpha)}x^{\alpha-1}e^{-\beta x}$$<br>where $$x\ge0$$|$$\displaystyle\frac\alpha{\beta}$$|$$\displaystyle\frac\alpha{\beta^2}$$|
 |Laplace<br>$$\text{Laplace}(\mu,\gamma)$$|$$\displaystyle\frac 1 {2\gamma}e^{-\left\lvert\frac{x-\mu}{\gamma}\right\rvert}$$|$$\mu$$|$$2\gamma^2$$|
@@ -121,9 +121,9 @@ $$X$$ is a Normal r.v. with mean $$\mu_X$$ and variance $$\sigma_X^2$$ if $$X\si
 
 In the above examples, $$q$$ is the quantile. Often, we use quantile of order $$1-\alpha$$, denoted $$q_\alpha$$, that indicates the number (specific to each underlying r.v. $$X$$) s.t. $$\mathbb P(X\le q_\alpha)=1-\alpha$${% if jekyll.environment == "development" %} (see [Stats L2 Q6](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u1s2_probredux/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u1s2_probredux-tab6)){% endif %}.
 
-If $$X_i\overset{i.i.d.}{\sim}\mathcal N(\mu_X,\sigma_X^2)$$, their joint probability $$f_{X_1,\dots X_n}(x_1,\dots,x_2)$$ is as follows{% if jekyll.environment == "development" %} (see [Prob L10 Q15](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__10_Conditioning_on_a_random_variable__Independence__Bayes_rule/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch8-s4-tab15)){% endif %}.
+If $$X_i\overset{\text{i.i.d.}}{\sim}\mathcal N(\mu_X,\sigma_X^2)$$, their joint probability $$f_{X_1,\dots X_n}(x_1,\dots,x_2)$$ is as follows{% if jekyll.environment == "development" %} (see [Prob L10 Q15](https://learning.edx.org/course/course-v1:MITx+6.431x+1T2020/block-v1:MITx+6.431x+1T2020+type@sequential+block@Lec__10_Conditioning_on_a_random_variable__Independence__Bayes_rule/block-v1:MITx+6.431x+1T2020+type@vertical+block@ch8-s4-tab15)){% endif %}.
 
-$$\prod_{i=1}^n f_X(x)=\frac{1}{\sqrt{(2\pi\sigma_X^2)^n}}e^{-\frac{1}{2\sigma_X^2}\sum_{i=1}^n(x_i-\mu_X)^2}$$
+$$\prod_{i=1}^n f_X(x)=\frac{1}{\sqrt{(2\pi\sigma_X^2)^n}}e^{-\frac12\sum_{i=1}^n\left(\frac{x_i-\mu_X}{\sigma_X}\right)^2}$$
 
 Higher moments of a standard Normal are $$\mathbb E[Z^k]=(k-1)\mathbb E[Z^{k-2}]$$. Since $$\mathbb E[Z]=0$$, it follows that for *odd* $$k$$ we have $$\mathbb E[Z^k]=0$$, and for *even* $$k$$ we get $$\mathbb E[Z^k]=\prod_{i=1}^{k/2}(2i-1)$$ (that is a product of the first $$\frac{k}{2}$$ odd numbers){% if jekyll.environment == "development" %} (see [Stats HW0 Q3](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@prob_linalg_diag/block-v1:MITx+18.6501x+2T2021+type@vertical+block@prob_linalg_diag-tab3)){% endif %}. This result comes from the following observation.
 
@@ -147,7 +147,7 @@ Go back to the [syllabi breakdown](/2022/01/02/prob-and-stats-syllabi.html).
 |$$\displaystyle\int_a^b f'(x)g(x)dx$$|$$\displaystyle\left[f(x)g(x)\right]_a^b-\int_a^b f(x)g'(x)dx$$|
 |$$\displaystyle\int_a^b e^{-\lambda x}dx$$|$$\displaystyle\left[-\frac{1}{\lambda}e^{-\lambda x}\right]_a^b=\frac{1}{\lambda}(e^{-\lambda a}-e^{-\lambda b})$$|
 |$$\displaystyle\int_{-\infty}^\infty e^{-ax^2}dx$$|$$\displaystyle\sqrt{\frac\pi a}$$|
-|$$\Gamma(\alpha)$$|$$\displaystyle\int_0^\infty x^{\alpha-1}e^{-x}dx=(\alpha-1)!$$<br>for $$\alpha$$ positive integers|
+|$$\displaystyle\int_0^\infty x^{\alpha-1}e^{-x}dx$$|$$\Gamma(\alpha)$$, where $$\Gamma(\alpha)=(\alpha-1)!$$ if $$\alpha\in\mathbb Z_+$$|
 |$$\displaystyle\int_0^\infty x^{\alpha-1}e^{-\beta x}dx$$|$$\displaystyle\frac{\Gamma(\alpha)}{\beta^\alpha}$$|
 |![pdf](/assets/images/2022-01-13-continuous-random-variables/pdf.png)<br>PDF|![cdf](/assets/images/2022-01-13-continuous-random-variables/cdf.png)<br>CDF|
 
