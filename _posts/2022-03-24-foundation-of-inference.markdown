@@ -80,7 +80,7 @@ The above can also be explained as convergence in $$L^2$$ norm implies convergen
 
 ## Delta method {#delta}
 
-Occasionally, the unknown parameter is a *function* of the expectation, $$\theta=g(\mu_X)$$. In such cases, CMT preserves consistency $$g(\bar X_n)\xrightarrow{\mathbb P}g(\mu_X)$$ and asymptotic normality, but not the asymptotic variance. By the Taylor's expansion, $$g(\bar X_n)=g(\mu_X)+g'(\mu_X)(\bar X_n-\mu_X)+O(\bar X_n^2)$$; therefore, $$g(\bar X_n)-g(\mu_X)\simeq g'(\bar X_n)(X_n-\mu_X)$$, which allows computing the new variance, provided that is continuously differentiable around $$\mu_X$$, which in turn may depend on the possible values of $$\theta$${% if jekyll.environment == "development" %} (see [Stats L5 Q9](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u02s03_parainference/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u02s03_parainference-tab9) and [Stats HW5 Q4](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@hw5_u3methods/block-v1:MITx+18.6501x+2T2021+type@vertical+block@hw5_u3methods-tab4)){% endif %}.
+Occasionally, the unknown parameter is a *function* of the expectation, $$\theta=g(\mu_X)$$. In such cases, [CMT](/2022/02/21/introduction-to-statistics.html#properties) preserves consistency $$g(\bar X_n)\xrightarrow{\mathbb P}g(\mu_X)$$ and asymptotic normality, but not the asymptotic variance. By the Taylor's expansion, $$g(\bar X_n)=g(\mu_X)+g'(\mu_X)(\bar X_n-\mu_X)+O(\bar X_n^2)$$; therefore, $$g(\bar X_n)-g(\mu_X)\simeq g'(\bar X_n)(X_n-\mu_X)$$, which allows computing the new variance, provided that is continuously differentiable around $$\mu_X$$, which in turn may depend on the possible values of $$\theta$${% if jekyll.environment == "development" %} (see [Stats L5 Q9](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u02s03_parainference/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u02s03_parainference-tab9) and [Stats HW5 Q4](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@hw5_u3methods/block-v1:MITx+18.6501x+2T2021+type@vertical+block@hw5_u3methods-tab4)){% endif %}.
 
 $$\sqrt{n}(g(\bar X_n)-g(\mu_X))\xrightarrow{(d)}\mathcal N(0,(g'(\mu_X))^2\sigma_X^2)$$
 
@@ -156,9 +156,9 @@ The CI is obtained by solving a (quadratic) equation is generally staggered with
 
 The generic approach in determining a new estimator, can be as follows:
 
-- check out the converging limit of the sample mean (WLLN);
-- observe the Normal distribution and its asymptotic variance (CLT);
-- apply necessary transformations to isolate the desired (unknown) parameter (CMT);
+- check out the converging limit of the sample mean ([WLLN](/2022/02/21/introduction-to-statistics.html#wlln));
+- observe the Normal distribution and its asymptotic variance ([CLT](/2022/02/21/introduction-to-statistics.html#clt));
+- apply necessary transformations to isolate the desired (unknown) parameter ([CMT](/2022/02/21/introduction-to-statistics.html#properties));
 - determine the new asymptotic variance (Delta method){% if jekyll.environment == "development" %} (see [Stats HW2 Q2](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@hw2_u2parainf/block-v1:MITx+18.6501x+2T2021+type@vertical+block@hw2_u2parainf-tab2)){% endif %}; and
 - compute CI of the desired level{% if jekyll.environment == "development" %} (see [Stats HW2 Q3](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@hw2_u2parainf/block-v1:MITx+18.6501x+2T2021+type@vertical+block@hw2_u2parainf-tab3)){% endif %}.
 

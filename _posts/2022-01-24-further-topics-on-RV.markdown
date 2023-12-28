@@ -261,7 +261,7 @@ $$\begin{align}
 f_X(x)f_Y(z-x)&=\underbrace{\frac{1}{\sqrt{2\pi\sigma_{X\lvert Z}^2}}\exp\left\{-\frac12\left(\frac{x-\mu_{X\lvert Z}}{\sigma_{X\lvert Z}}\right)^2\right\}}_{=f_{X\lvert Z}(x\lvert z)}\underbrace{\frac{1}{\sqrt{2\pi\sigma_Z^2}}\exp\left\{-\frac12\left(\frac{z-\mu_Z}{\sigma_Z}\right)^2\right\}}_{f_Z(z)}
 \end{align}$$
 
-An additional interpretation, which will be particularly useful for the [linear models](/2023/06/30/linear-regression.html#lm), is that $$\sigma_{X\lvert Z}^2$$ is the harmonic mean of $$\sigma_X^2$$ and $$\sigma_Y^2$$, while $$\mu_{X\lvert Z}$$ is an average of $$\mu_X$$ and $$(z-\mu_Y)$$, weighted in accordance with the associated inverse variances.
+An additional interpretation, which will be particularly useful for [LMs with Normal noise](/2023/06/30/linear-regression.html#lms_norm), is that $$\sigma_{X\lvert Z}^2$$ is the harmonic mean of $$\sigma_X^2$$ and $$\sigma_Y^2$$, while $$\mu_{X\lvert Z}$$ is an average of $$\mu_X$$ and $$(z-\mu_Y)$$, weighted in accordance with the associated inverse variances.
 
 $$\begin{align}
 \sigma_{X\lvert Z}^2=\frac1{\frac1{\sigma_X^2}+\frac1{\sigma_Y^2}}&&\text{and}&&\mu_{X\lvert Z}=\frac1{\frac1{\sigma_X^2}+\frac1{\sigma_Y^2}}\left(\frac1{\sigma_X^2}\mu_X+\frac1{\sigma_Y^2}(z-\mu_Y)\right)
@@ -390,3 +390,25 @@ By definition, $$\text{tr}(\mathbf A)=\sum_{i=1}^n\mathbf e_i^T\mathbf A\mathbf 
 $$\begin{align}
 \text{tr}(\mathbf A)=\sum_{i=1}^n\mathbf e_i^T\left(\sum_{j=1}^n\lambda_j\mathbf v_j\mathbf v_j^T\right)\mathbf e_i=\sum_{j=1}^n\lambda_j\sum_{i=1}^n(\mathbf e_i^T\mathbf v_j)^2=\sum_{j=1}^n\lambda_j\lVert\mathbf v_j\rVert_2^2=\sum_{j=1}^n\lambda_j
 \end{align}$$
+
+### Matrix calculus
+
+If $$f:\mathbb R^d\rightarrow\mathbb R$$, with parameter $$\mathbf x=\begin{bmatrix}x_1&\dots&x_d\end{bmatrix}$$, the **gradient** of $$f$$ is defined as a *column* vector $$\nabla_x f\in\mathbb R^d$$ that contains partial derivatives with respect to each dimensions on its rows.
+
+$$\nabla_x f(x_1,\dots,x_d)=\begin{bmatrix}\frac\partial{\partial x_1}f\\\vdots\\\frac\partial{\partial x_d}f\end{bmatrix}$$
+
+Consider $$\mathbf v=\begin{bmatrix}v_1&\dots&v_d\end{bmatrix}^T$$ and $$f(x_1,\dots,x_d)=\mathbf x^T\mathbf v=\sum_{i=1}^dx_iv_i$$.
+
+$$\nabla_x(\mathbf x^T\mathbf v)=\begin{bmatrix}\frac\partial{\partial x_1}\sum_{i=1}^dx_iv_i\\\vdots\\\frac\partial{\partial x_d}\sum_{i=1}^dx_iv_i\end{bmatrix}=\begin{bmatrix}v_1\\\vdots\\v_d\end{bmatrix}=\mathbf v$$
+
+Note that $$\mathbf x^T\mathbf v$$ is a scalar, and is equal to $$\mathbf v^T\mathbf x$$. Since the gradient by definition is a column vector in $$d$$ dimensions, it follows that $$\nabla_x(\mathbf x^T\mathbf v)=\nabla_x(\mathbf v^T\mathbf x)=\mathbf v\in\mathbb R^d$$.
+
+For $$\mathbf A=\begin{bmatrix}\mathbf v_1&\dots&\mathbf v_r\end{bmatrix}$$, we have as follows
+
+$$\nabla_x(\mathbf x^T\mathbf A)=\begin{bmatrix}\nabla_x(\mathbf x^T\mathbf v_1)&\dots&\nabla_x(\mathbf x^T\mathbf v_r)\end{bmatrix}=\begin{bmatrix}\mathbf v_1&\dots&\mathbf v_r\end{bmatrix}=\mathbf A$$
+
+To remain consistent with the convention that $$\nabla_x(\mathbf x^T\mathbf v)=\nabla_x(\mathbf v^T\mathbf x)=\mathbf v$$, we have to consider $$\nabla_x(\mathbf A^T\mathbf x)=\nabla_x(\mathbf x^T\mathbf A)=\mathbf A$$. As one may reasonably expect, $$\nabla_x(\mathbf x^T\mathbf I)=\nabla_x(\mathbf I\mathbf x)=\mathbf I$$. Finally, for quadratic form we have the following.
+
+$$\nabla_x(\mathbf x^T\mathbf A\mathbf x)=\nabla_x(\mathbf x^T\mathbf A)\mathbf x+\mathbf x^T\mathbf A\nabla_x(\mathbf x)=\mathbf A\mathbf x+\mathbf A^T\mathbf x=(\mathbf A+\mathbf A^T)\mathbf x$$
+
+Note that to maintain dimensions consistency, in the above we had to transpose $$\mathbf x^T\mathbf A$$. If $$\mathbf A=\mathbf A^T$$, then $$\nabla_x(\mathbf x^T\mathbf A\mathbf x)=2\mathbf A\mathbf x$$, which is very comforting as it gives an intuitive answer if $$\mathbf A$$ were a scalar.

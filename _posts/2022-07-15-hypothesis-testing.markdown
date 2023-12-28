@@ -284,7 +284,7 @@ In practice, Lilliefors simulated a random sample from the standard Normal distr
 
 Lilliefors' approach can be extended to other distributions, provided that the appropriate MLE is used to estimate its parameters and new $$c_\alpha$$ are determined via simulation. Anyhow, the KL tables are usually the first step in testing normality of a sample, before carrying out a [$$t$$ test](/2022/07/15/hypothesis-testing.html#ttest) on its parameter $$\mu$$.
 
-### QQ plots
+### QQ plots {#qq}
 
 Another (less formal) goodness of fit test is given by quantile-quantile (QQ) plot, where alternatively to comparing $$F_n(X_i)$$ with $$F_X(X_i)$$ one draws points $$\left(F_X^{-1}(\frac in),F_n^{-1}\left(\frac in\right)\right)$$, which is the same as $$\left(q_{1-\frac in},X_{(i)}\right)$$, and inspects how they stack up together **visually**{% if jekyll.environment == "development" %} (see [Stats L16 Q13](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@u04s06_hypotesting/block-v1:MITx+18.6501x+2T2021+type@vertical+block@u04s06_hypotesting-tab13) and [Stats HW8 Q2](https://learning.edx.org/course/course-v1:MITx+18.6501x+2T2021/block-v1:MITx+18.6501x+2T2021+type@sequential+block@hw8_u4hyptest/block-v1:MITx+18.6501x+2T2021+type@vertical+block@hw8_u4hyptest-tab2)){% endif %}.
 
