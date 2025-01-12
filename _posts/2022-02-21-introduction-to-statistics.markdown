@@ -199,7 +199,7 @@ The moment generating function (MGF) is a function that becomes handy for the co
 Properties of MGF include linear transformations, $$M_Y(t)=e^{\beta t}M_X(\alpha t)$$ if $$Y=\alpha X+\beta$$, and linear combination of independent r.v., $$M_{X+Y}(t)=M_X(t)M_Y(t)$$ if $$X\ind Y$$.
 
 $$\begin{align}
-M_X(t)=\sum_x e^{tx}p_X(x)&&M_X(t)=\int_{-\infty}^\infty e^{tx}p_X(x)dx\\
+M_X(t)=\sum_x e^{tx}p_X(x)&&M_X(t)=\int_{-\infty}^\infty e^{tx}f_X(x)dx\\
 \text{(discrete r.v.)}&&\text{(continuous r.v.)}
 \end{align}$$
 
@@ -222,6 +222,13 @@ Few examples of MGF for basic [discrete](/2022/01/08/discrete-random-variables.h
 
 As for the derivation of Binomial, Pascal (or Negative Binomial), Erlang and even Gamma, consider that $$M_{X_1+\dots+X_n}(t)=(M_X(t))^n$$ where $$X_i$$ are $$n$$ i.i.d. r.v., therefore their derivation is immediate from Bernoulli, Geometric and Exponential MGFs.
 
+$$\begin{align}
+M_{X_1+\dots+X_n}(t)
+&=\int_{-\infty}^\infty\dots\int_{-\infty}^\infty e^{t(X_1+\dots+X_n)}f_{X_1,\dots,X_n}(x_1,\dots,x_n)dx_1\dots dx_n\\
+&=\left(\int_{-\infty}^\infty e^{tX_1}f_{X_1}(x_1)dx_1\right)\dots\left(\int_{-\infty}^\infty e^{tX_n}f_{X_n}(x_n)dx_n\right)\\
+&=\left(\int_{-\infty}^\infty e^{tX}f_{X}(x)dx\right)^n=\left(M_X(t)\right)^n
+\end{align}$$
+
 Another useful tool is the following [Taylor's expansion](https://en.wikipedia.org/wiki/Taylor_series) of the MFG, for any sufficiently small $$t$$.
 
 $$\begin{align}
@@ -232,19 +239,21 @@ M_X(t)
 
 The above approximation simplifies further when $$\mathbb E[X]=0$$, in which case $$M_X(t)\approx1+\frac12\sigma_X^2t^2$$.
 
-Final remark is that if $$M_X(t)=M_Y(t)$$ for all $$t$$ in the neighborhood of $$0$$, then $$F_X(u)=F_Y(u)$$ for all $$u$$. Also, if $$X_n$$ is a sequence of r.v. and $$\lim_{n\rightarrow\infty}M_{X_n}(t)=M_Y(t)$$ for all $$t$$ in the neighborhood of $$0$$, then $$\lim_{n\rightarrow\infty}F_{X_n}(u)=F_Y(u)$$ for all $$u$$. For instance, consider $$X_n\sim\text{Ber}(n,p)$$, where $$np=\lambda$$.
+Final remark is that if $$M_X(t)=M_Y(t)$$ for all $$t$$ in the neighborhood of $$0$$, then $$F_X(u)=F_Y(u)$$ for all $$u$$. Considering that the Maclaurin expansion of the MGF, $$M_X(t)=1+\mathbb E[X]+\frac12t^2\mathbb E[X^2]+O(t^3)$$, highlights that the MGF *incapsulates* ***all*** moments of $$X$$, then if $$M_X(t)=M_Y(t)$$, for any $$t$$ near $$0$$ we have that $$\mathbb E[X^i]=\mathbb E[Y^i]$$, for any $$i$$.
+
+Accordingly, if $$X_n$$ is a sequence of r.v. and $$\lim_{n\rightarrow\infty}M_{X_n}(t)=M_Y(t)$$ for all $$t$$ in the neighborhood of $$0$$, then $$\lim_{n\rightarrow\infty}F_{X_n}(u)=F_Y(u)$$ for all $$u$$. For instance, consider $$X_n\sim\text{Bin}(n,p)$$, where $$np=\lambda$$.
 
 $$M_{X_n}(t)=(1-p+e^tp)^n=\left(1+\frac{\lambda(e^t-1)}{n}\right)^n\rightarrow e^{\lambda(e^t-1)}=M_Y(t)$$
 
-Considering that $$Y\sim\text{Pois}(\lambda)$$, the above proves that the $$X_n$$ converges to a Poisson r.v. as $$n\rightarrow\infty$$.
+Since $$Y\sim\text{Pois}(\lambda)$$, it follows that for a given $$\lambda=np$$, Binomial [converges](/2022/02/08/bernoulli-and-poisson-processes.html#stochastic_processes) to a Poisson as $$n\rightarrow\infty$$.
 
 ### Lindeberg–Lévy Central Limit Theorem {#ll_clt}
 
 The CLT claims that for any sequence $$X_i\overset{\text{i.i.d.}}{\sim}\mathcal P$$, with $$\mathbb E[X]=\mu\lt\infty$$ and $$\text{var}(X)=\sigma^2\lt\infty$$, then $$\frac{S_n-n\mu}{\sqrt n \sigma}\xrightarrow{(d)}\mathcal N(0,1)$$, where $$S_n=\sum_{i=1}^n X_i$$.
 
-Since $$\frac{S_n-n\mu}{\sqrt n\sigma}=\frac1{\sqrt n\sigma}\sum_{i=1}^n(X_i-\mu)$$, then $$M_{S_n}(t)=\mathbb E\left[e^{t\frac1{\sqrt n\sigma}\sum_{i=1}^n(X_i-\mu)}\right]=\left(M_{(X-\mu)}\left(\frac t{\sqrt n\sigma}\right)\right)^n$$. Also, as $$\mathbb E[X-\mu]=0$$, by [Taylor's expansion](/2022/02/21/introduction-to-statistics.html#mgf) we have that $$M_{X-\mu}\left(\frac t{\sqrt n\sigma}\right)\approx1+\frac{t^2}{2n}$$. In conclusion, $$M_{S_n}(t)\approx\left(1+\frac{t^2}{2n}\right)^n\rightarrow e^{\frac12t^2}$$, which is exactly the MGF of $$\mathcal N(0,1)$$.
+Since $$\frac{S_n-n\mu}{\sqrt n\sigma}=\frac1{\sqrt n\sigma}\sum_{i=1}^n(X_i-\mu)$$, then $$M_{S_n}(t)=\mathbb E\left[e^{t\frac1{\sqrt n\sigma}\sum_{i=1}^n(X_i-\mu)}\right]=\left(M_{X-\mu}\left(\frac t{\sqrt n\sigma}\right)\right)^n$$. Also, as $$\mathbb E[X-\mu]=0$$, by [Taylor's expansion](/2022/02/21/introduction-to-statistics.html#mgf) we have that $$M_{X-\mu}\left(\frac t{\sqrt n\sigma}\right)\approx1+\frac{t^2}{2n}$$. In conclusion, $$M_{S_n}(t)\approx\left(1+\frac{t^2}{2n}\right)^n\rightarrow e^{\frac12t^2}$$, which is exactly the MGF of $$\mathcal N(0,1)$$.
 
-Aside from the exceptional generality of the CLT, it is important to bear in mind that CLT will not work with r.v. with undefined moments. This is the case of [Cauchy](/2022/04/26/methods-of-estimation.html#me) r.v., for which $$\mathbb E[X]=\infty$$.
+Aside from the exceptional generality of the CLT, it is important to bear in mind that CLT will not work with r.v. with undefined moments, such as [Cauchy](/2022/01/13/continuous-random-variables.html#basic) r.v.
 
 ### Hoeffding's lemma {#hoeffding_lemma}
 

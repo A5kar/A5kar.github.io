@@ -7,7 +7,7 @@ General framework to calculate probability consists of the following steps:
 
 - Specify the sample space $$\Omega$$.
 - Specify the probability law/distribution
-- Identify an event of interest
+- Identify an event $$A$$ of interest
 - Calculate...
 
 ## Sample Space
@@ -18,12 +18,12 @@ A sample space is legitimate{% if jekyll.environment == "development" %} (see [P
 - collectively exhaustive
 - at the *right* granularity
 
-## Probability Law/Distribution
+## Probability Law
 
 The mathematical function that describes the probabilities of different possible outcomes are mainly of two types:
 
-- **discrete**, in which case $$\mathbb P(A)=\frac{k}{n}$$, where $$k$$ is the number of elements in $$A$$ and $$n$$ is the number of elements in $$\Omega$$ (e.g. uniform, geometric...).
-- **continuous**, in which case $$\mathbb P(A)$$ is the area/volume of the relevant range within which a variable can vary (e.g. uniform, exponential...).
+- **discrete**, in which case the probability of an event $$A$$ can be computed as the ratio of the number of elements $$k$$ in $$A$$ to the number of elements $$n$$ in $$\Omega$$, and defined as $$\mathbb P(A)=\frac{k}{n}$$. Examples of discrete distributions include Uniform, Geometric, Binomial, Poisson distributions.
+- **continuous**, in which case the probability of an event $$A$$ can be computed as the integral of the probability density function (PDF) over the range in $$A$$, and defined as $$\mathbb P(A)=\int_A f_X(x)dx$$. Examples of continuous distributions include Uniform, Exponential, Normal distributions.
 
 ## Axioms {#axioms}
 
