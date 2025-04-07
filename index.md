@@ -15,7 +15,7 @@ My resolutions for 2022 include succeeding the Capstone Exam for the MM program 
   text-align:center;
   /* width: 100%; */
 }</style>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/P4zzBNo4v8w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="center"></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/AtdGh4zoL-g?si=xHlBgnIfLPmf7n5F" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="center"></iframe>
 
 TL;DR, if you are interested about the preparation of cheat sheets, feel free to jump directly to the [last section](#conclusion) of this introductory page. Otherwise, feel free to read below a little more detail, to refresh the contents of the Capstone Exam and general requirements.
 

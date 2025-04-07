@@ -16,5 +16,6 @@
         "Smirnov",
         "subseteq",
         "xmlschema"
-    ]
+    ],
+    "mdmath.delimiters": "kramdown"
 }

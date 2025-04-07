@@ -6,3 +6,5 @@ vendor
 *.drawio
 *.sh
 test
+.vscode
+Gemfile.lock

@@ -18,16 +18,18 @@ A sample space is legitimate{% if jekyll.environment == "development" %} (see [P
 - collectively exhaustive
 - at the *right* granularity
 
+In the above, the right granularity indicates an appropriate level of detail, such that events of interest can be described clearly and without ambiguity(e.g., for a die a sample space $$\Omega=\{1,3,6\}$$ is too coarse, while $$\Omega=\{1.0,1.1,\dots,6.0\}$$ is too fine). The sample space can be finite or infinite.
+
 ## Probability Law
 
-The mathematical function that describes the probabilities of different possible outcomes are mainly of two types:
+The mathematical functions that describes the probabilities of different possible outcomes are mainly of two types:
 
 - **discrete**, in which case the probability of an event $$A$$ can be computed as the ratio of the number of elements $$k$$ in $$A$$ to the number of elements $$n$$ in $$\Omega$$, and defined as $$\mathbb P(A)=\frac{k}{n}$$. Examples of discrete distributions include Uniform, Geometric, Binomial, Poisson distributions.
 - **continuous**, in which case the probability of an event $$A$$ can be computed as the integral of the probability density function (PDF) over the range in $$A$$, and defined as $$\mathbb P(A)=\int_A f_X(x)dx$$. Examples of continuous distributions include Uniform, Exponential, Normal distributions.
 
 ## Axioms {#axioms}
 
- Assuming $$A$$, $$B$$ and $$C$$ are events $$\subseteq\Omega$$, the following axioms are defined:
+Now that we understand the space and probability law, let’s formalize what properties any valid probability measure must satisfy. Assuming $$A$$, $$B$$ and $$C$$ are events $$\subseteq\Omega$$, these axioms are:
 
 |Axiom|Formula|
 |-|:-:|

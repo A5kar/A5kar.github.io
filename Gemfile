@@ -38,3 +38,6 @@ gem "kramdown-parser-gfm"
 
 # required after upgrade from 2.7 to 3.1
 gem "webrick", "~> 1.7"
+
+# possibly required for ruby33
+#gem 'liquid', '>= 5.4.0'
